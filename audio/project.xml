@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<project>
+  <pomVersion>3</pomVersion>
+  <groupId>excelsiorg</groupId>
+  <currentVersion>1.0-beta7-debug1</currentVersion>
+  <build>
+    <resources>
+      <resource>
+        <directory>${basedir}/src/res</directory>
+        <includes>
+          <include>**/*.ogg</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+</project>

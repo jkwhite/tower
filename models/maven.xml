@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+  xmlns:maven="jelly:maven"
+  xmlns:a="jelly:ant"
+  xmlns:j="jelly:core">
+
+  <goal name="tower:models"
+    description="batch converts all .xml to .jme">
+    <a:java classname="org.excelsi.aether.ui.NodeFactory" fork="true">
+        <classpath>
+            <j:forEach var="lib" items="${pom.artifacts}">
+                <j:set var="dep" value="${lib.dependency}"/>
+                <j:if test="${dep.getProperty('jar.manifest.classpath')=='true' and dep.type=='jar'}">
+                    <a:fileset dir="${lib.file.parent}">
+                        <a:include name="${lib.file.name}"/>
+                    </a:fileset>
+                </j:if>
+            </j:forEach>
+            <pathelement location="${basedir}/target/classes"/>
+        </classpath>
+        <arg value="${basedir}/src/res/models"/>
+    </a:java>
+  </goal>
+</project>

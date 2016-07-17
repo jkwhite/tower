@@ -1,0 +1,27 @@
+//
+// $Id$
+//
+// Default BUI style sheet
+
+window {
+  color: #000000;
+  font: "${tower.uifont}" plain 28;
+}
+
+label {
+  font: "${tower.uifont}" plain 28;
+  text-align: right;
+  vertical-align: top;
+}
+
+keylabel {
+  font: "${tower.monouifont}" plain 28;
+  text-align: left;
+  vertical-align: top;
+}
+
+windowsel {
+  text-effect: outline;
+  effect-color: #333333;
+  font: "${tower.uifont}" plain 28;
+}

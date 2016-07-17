@@ -1,0 +1,62 @@
+INTRODUCTION
+============
+
+Good evening.
+
+
+BUILDING
+=================================
+
+1. You should be on a POSIX-ish system that has Ruby. I doubt any of
+   this works on Windows. Fortunately, every single other modern OS
+   is pretty close if not entirely POSIX-conformant. It's not worth
+   complicating mu to add Windows support. If you insist, you might
+   try Cygwin.
+2. Tower uses a new build system called 'mu'. Mu is not generally
+   available, so I have included the distribution here as 'mu-1.0.tgz'.
+   It's a very standard binary distribution, with bin and lib subdirs.
+   Hopefully you know what to do with this.
+3. Make sure mu knows about all the dependent libraries and stuff;
+   from the root tower directory, run 'mu put repo/*'.
+4. From the root tower directory or any subdir, run 'mu app.image'.
+   This will build a standalone application tree.
+5. Alternatively, run 'mu app.run' to both build (if necessary) and run Tower.
+   This should be enough to start. Take a look at src/resources for
+   the runtime configuration, which is stored in YAML format, or
+   src/main/java for the rest of the code.
+
+
+GENERATING FONT MODELS
+======================
+
+1. Obtain Blender 2.42 or higher. Lesser versions have a fatal python
+   font loading bug.
+2. Create a tree structure similar to the models/courier directory,
+   except replacing "courier" with the name of the font which you
+   are about to generate.
+3. Copy the generate.py script from models/courier/src/res/models/courier
+   to your corresponding directory.
+4. cd to said directory and run "./generate.py". Unless you're on a mac,
+   you will likely need to change the script header to point to your
+   Blender installation location.
+5. This'll take a while. Why not have a refreshing glass of rainwater,
+   or grain alcohol?
+6. Convert models from XML to JME binary format. From the root of your
+   model area:
+   maven tower:models
+7. This will also take some time. Whatever you didn't choose in step 5,
+   drink now.
+8. Jar the models:
+   maven jar
+9. Copy the jar to your ~/.tower directory, making that directory if you
+   haven't already:
+   mkdir ~/.tower
+   cp <the-jar-what-I-just-made> ~/.tower
+10. To use this font, add a line like this to your ~/.towerrc:
+    font=<font name>
+
+
+CONCLUSION
+==========
+
+eof

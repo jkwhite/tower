@@ -1,0 +1,21 @@
+//
+// $Id$
+//
+// Default BUI style sheet
+
+window {
+  border: 1 solid #FF0000;
+    //color: #FFFFFF;
+    color: #000000;
+    background: solid #00000000;
+    text-align: center;
+  //text-effect: outline;
+  //effect-color: #333333;
+  font: "${tower.uifont}" plain 28;
+}
+
+windowsel {
+  text-effect: outline;
+  effect-color: #333333;
+  font: "${tower.uifont}" plain 28;
+}

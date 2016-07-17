@@ -1,0 +1,68 @@
+BETA 8
+======
+
+New Features:
+
+- added some sound effects
+- revamped robotics: new command is #robotics
+- revamped animatronics: any monster that leaves a corpse can be
+  animatronicized
+- added scroll creation (priest ability): command is #scribe
+- many minor adjustments in monster stats and frequencies
+- resolve lycanthropy by corpse-eating
+- added gem shops
+- alchemists can create a chimeric familiar with the appropriate altar
+  sacrifice
+
+Bugfixes:
+
+- fix NullPointerException on start for hardware without multisampling
+- multiple pets have a much better chance of getting along together
+- equipped weapon display in UI
+- combat, digging, drinking UI effects
+- update monster height on ground height change
+
+- also, on the developer side, NO MORE MAVEN! details on the new build system,
+  called mu, are in README.
+
+
+BETA 7
+======
+
+New Features:
+
+- add Multidrop command ('D')
+- move Dip command (formerly 'D') to #dip
+- add Quiver command ('Q')
+- add Howl command (#howl)
+- lycanthropy
+- add error dialog so that errors are visible in gui-only environments
+- new level design for the disputed zone and the great void
+- added more creatures and shuffled some around
+- added more melee weapons
+- AI improvements
+- constructable walls
+- more shops, steadier guards in town
+- destroyable rfid transponders
+- allow removing rfid tags with water
+
+Bugfixes:
+
+- correct walling problems with pits
+- cosmetic fixes to skills and help windows
+- minor grammatical and ui fixes
+- buckets of paint don't show color when blind
+- crash on ink untrap
+- ascend/descend race conditions
+- item count fixes on dissolve
+- propagate more events to ui layer
+- traps fixes
+- ensure non-toroidal tower
+- remove destroyed armaments on shatter
+- allow bless/curse of laminated scrolls
+- fix item counts for dipped items
+- update status on concussion pill
+- blank parchments inherits progenitor status
+- wand of wishing works in creator mode
+- reduce object creation
+- improve pathing

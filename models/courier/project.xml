@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<project>
+  <extend>../project.xml</extend>
+  <id>tower-models-courier</id>
+</project>
