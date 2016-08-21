@@ -22,6 +22,7 @@ package org.excelsi.aether;
 
 public interface GameAction extends java.io.Serializable {
     void perform();
+    void perform(Context c);
     boolean isRepeat();
     boolean isRecordable();
     String getDescription();

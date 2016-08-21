@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import java.net.URL;
+import java.net.URI;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,7 +35,15 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Logger;
 import java.io.BufferedInputStream;
-import java.util.*;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Enumeration;
 import java.net.MalformedURLException;
 
 
@@ -93,6 +102,17 @@ public class Data {
             }
         }
         throw new IOException("no such resource '"+name+"'");
+    }
+
+    public static final String resource(final String url) {
+        try {
+            final URI uri = Data.class.getResource(url).toURI();
+            final FileSystem fs = FileSystems.newFileSystem(uri, new HashMap<String,String>(){{ put("create", "true");}});
+            return new String(Files.readAllBytes(Paths.get(uri)), "UTF-8");
+        }
+        catch(Exception e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
     interface Loader {

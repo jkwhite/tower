@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 
-public abstract class DefaultBot implements Bot {
+public abstract class DefaultBot extends Id implements Bot {
     public static final long serialVersionUID = 1L;
     private Environment _e;
     private List<EnvironmentListener> _listeners;
@@ -56,5 +56,9 @@ public abstract class DefaultBot implements Bot {
 
     public Environment getEnvironment() {
         return _e;
+    }
+
+    @Override public String getObjectType() {
+        return "bot";
     }
 }

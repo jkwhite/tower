@@ -23,7 +23,7 @@ package org.excelsi.matrix;
 import java.util.List;
 
 
-public interface MSpace extends java.io.Serializable {
+public interface MSpace extends Typed, java.io.Serializable {
     MSpace move(Direction direction);
     MSpace move(Direction direction, boolean anull);
     Direction directionTo(MSpace neighbor);
@@ -60,4 +60,5 @@ public interface MSpace extends java.io.Serializable {
     MSpace[] path(MSpace to, boolean cardinal, Filter filter, float sanity, Affinity a);
     MSpace[][] paths(MSpace to, boolean cardinal, int count, Filter filter, float sanity, Affinity a);
     void update();
+    Environs getEnvirons();
 }

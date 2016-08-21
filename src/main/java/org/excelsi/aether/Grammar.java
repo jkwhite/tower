@@ -562,6 +562,10 @@ public class Grammar {
     }
 
     private static NHBot _player;
+    public static void setPov(final NHBot player) {
+        _player = player;
+    }
+
     public static NHBot pov() {
         if(_player==null) {
             Universe u = Universe.getUniverse();

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.image.*?>
+<?import org.excelsi.aether.ui.jfx.*?>
+
+
+<!-- 307 51 6 45 -->
+<JfxNarrative>
+    <children>
+        <JfxTitle prefWidth='%screen_width' prefHeight='22' styleClass='title' transition='slideInoutNorth'/>
+        <BorderPane>
+            <top>
+            </top>
+            <center>
+                <JfxState transition='fadeOut'/>
+            </center>
+            <!-- bottom needs to be defined with non-empty element
+                 otherwise JfxState will not render due to the
+                 sheer magnificence and solid maturity of javafx -->
+            <bottom><Label text=' '/></bottom>
+        </BorderPane>
+        <!--
+        <JfxMessages/>
+        -->
+    </children>
+</JfxNarrative>

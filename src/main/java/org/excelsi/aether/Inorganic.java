@@ -57,6 +57,13 @@ public class Inorganic extends DefaultNHBot {
     /**
      * Throws IllegalStateException.
      */
+    public void act(final Context c) {
+        throw new IllegalStateException("inorganics cannot act");
+    }
+
+    /**
+     * Throws IllegalStateException.
+     */
     public void setEventSource(EventSource e) {
         throw new IllegalStateException("inorganics cannot process events");
     }

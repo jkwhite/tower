@@ -142,6 +142,9 @@ public class EventRelayer extends EverythingAdapter implements EventSource {
     }
 
     public void faced(Bot b, Direction old, Direction d) {
+        for(NHEnvironmentListener e:_nhelisteners) {
+            e.faced(b, old, d);
+        }
     }
 
     public void moved(Bot b) {

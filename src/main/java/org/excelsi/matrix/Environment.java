@@ -38,4 +38,5 @@ public interface Environment extends java.io.Serializable {
     Direction getFacing();
     void die(MSource s);
     List getListeners();
+    MSpace getSpace();
 }

@@ -27,6 +27,7 @@ public interface BotFactory extends java.io.Serializable {
     public NHBot[] getNPCs();
     public NHBot[] getBots();
 
+    @FunctionalInterface
     interface Constraints extends java.io.Serializable {
         boolean accept(NHBot b);
     }

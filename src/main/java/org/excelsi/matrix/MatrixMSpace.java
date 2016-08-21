@@ -34,7 +34,7 @@ import java.util.LinkedList;
 /** 
  * Matrix-based implementation of MSpace.
  */
-public abstract class MatrixMSpace implements MSpace, Cloneable {
+public abstract class MatrixMSpace extends Id implements MSpace, Cloneable {
     public static final long serialVersionUID = 1L;
     private int _i;
     private int _j;
@@ -44,6 +44,10 @@ public abstract class MatrixMSpace implements MSpace, Cloneable {
 
 
     public MatrixMSpace() {
+    }
+
+    @Override public String getObjectType() {
+        return "space";
     }
 
     public MatrixMSpace clone() {
@@ -517,6 +521,10 @@ public abstract class MatrixMSpace implements MSpace, Cloneable {
             }
         }
         return false;
+    }
+
+    @Override public Environs getEnvirons() {
+        return _m;
     }
 
     public MSpace[] spaces() {

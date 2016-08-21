@@ -21,11 +21,14 @@ package org.excelsi.matrix;
 
 import java.util.List;
 
+import org.excelsi.aether.Context;
 
-public interface Bot extends java.io.Serializable {
+
+public interface Bot extends Typed, java.io.Serializable {
     void setEnvironment(Environment e);
     Environment getEnvironment();
     void act();
+    void act(Context c);
     void addListener(EnvironmentListener listener);
     void removeListener(EnvironmentListener listener);
     List<EnvironmentListener> getListeners();

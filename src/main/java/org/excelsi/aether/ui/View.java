@@ -20,17 +20,19 @@
 package org.excelsi.aether.ui;
 
 
-import com.jme.math.Vector3f;
-import com.jme.scene.Node;
+import com.jme3.math.Vector3f;
+import com.jme3.scene.Spatial;
 
 
 interface View {
+    public static final String NODE_CAMERA = "camera";
+
     void activate();
     void deactivate();
     void center(Vector3f pos);
     void zoomIn();
     void zoomOut();
     String next();
-    void setPlayer(Node player);
+    void setPlayer(Spatial player);
     boolean isOverhead();
 }

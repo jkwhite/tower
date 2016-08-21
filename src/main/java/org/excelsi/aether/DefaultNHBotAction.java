@@ -39,6 +39,10 @@ public abstract class DefaultNHBotAction implements NHBotAction {
         return _bot;
     }
 
+    @Override public void perform(final Context c) {
+        perform();
+    }
+
     public boolean isRepeat() {
         return false;
     }

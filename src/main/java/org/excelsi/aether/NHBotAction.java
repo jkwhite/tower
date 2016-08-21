@@ -20,7 +20,7 @@
 package org.excelsi.aether;
 
 
-public interface NHBotAction extends GameAction {
+public interface NHBotAction extends Action {
     void init();
     void setBot(NHBot bot);
 }

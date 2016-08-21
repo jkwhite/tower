@@ -21,6 +21,9 @@ package org.excelsi.matrix;
 
 
 public class NullMatrixMSpace extends MatrixMSpace {
+    public NullMatrixMSpace() {
+    }
+
     public NullMatrixMSpace(Matrix m, int i, int j) {
         setMatrix(m);
         setI(i);

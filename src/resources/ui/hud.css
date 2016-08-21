@@ -1,0 +1,68 @@
+/*.root {
+    -fx-background-color: rgba(0,0,0,0);
+}
+*/
+.outline {
+    -fx-stroke: green;
+    -fx-stroke-width: 5;
+    -fx-stroke-dash-offset: 6;
+    -fx-stroke-line-cap: butt;
+    -fx-stroke-dash-array: 12 2 4 2;
+    -fx-border-color: green;
+    -fx-border-width: 4;
+}
+
+#title_root {
+}
+
+.key {
+    -fx-font: normal bold 28pt "Courier New";
+    -fx-text-fill: #000;
+    /*
+    -fx-opacity: 1;
+    -fx-font-smoothing-type: gray;
+    -fx-font-size:28;
+    */
+}
+
+.keydesc {
+    -fx-font: normal normal 28pt "Palatino";
+    -fx-text-fill: #000;
+}
+
+.title {
+    -fx-font: normal normal 12pt "Palatino";
+    -fx-background-image: url('/ui/parchment-small2.jpg');
+    -fx-text-fill: #000;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.status {
+    -fx-font: normal normal 12pt "Palatino";
+    -fx-background-image: url('/ui/parchment-small2.jpg');
+    -fx-text-fill: #000;
+}
+
+.menu {
+    padding-top: 20px;
+    -fx-background-image: url('/ui/parchment-small2.jpg');
+}
+
+.query {
+    -fx-padding: 10px;
+    -fx-font: normal normal 12pt "Palatino";
+    -fx-background-image: url('/ui/parchment-small2.jpg');
+}
+
+.message {
+    -fx-font: normal normal 28pt "Palatino";
+    -fx-text-fill: #000;
+    -fx-background-image: url('/ui/parchment-small2.jpg');
+}
+
+.permanent {
+    -fx-font: normal normal 12pt "Palatino";
+    -fx-text-fill: #000;
+    -fx-background-image: url('/ui/parchment-small2.jpg');
+}

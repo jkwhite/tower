@@ -20,12 +20,13 @@
 package org.excelsi.aether;
 
 
-import groovy.lang.*;
+//import groovy.lang.*;
 import java.io.InputStream;
 
 
 public class GroovyDataSource implements DataSource {
     public Universe populate(Universe u, Data d) {
+        /*
         Universe.setUniverse(u);
         Binding b = new Binding();
         GroovyShell s = new GroovyShell(b);
@@ -33,11 +34,13 @@ public class GroovyDataSource implements DataSource {
         b.setVariable("d", d);
         try {
             s.evaluate(d.getResource("universe.groovy"));
-            //org.ho.yaml.Yaml.dump(u.getBots(), new java.io.File("/tmp/bots.yaml"), true);
         }
         catch(Exception e) {
             throw new Error(e);
         }
         return u;
+        */
+        throw new UnsupportedOperationException();
+        //final Script s = new Script("universe.groovy");
     }
 }

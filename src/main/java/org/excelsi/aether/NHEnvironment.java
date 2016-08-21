@@ -314,7 +314,8 @@ public class NHEnvironment extends MatrixEnvironment implements MatrixListener {
             }
         }
         else {
-            float max = getBot().getModifiedVision()*(((Level)((MatrixMSpace)getMSpace()).getMatrix()).getLight());
+            // AETHER
+            float max = getBot().getModifiedVision()*getMSpace().getEnvirons().findFloat(Keys.LIGHT, 1f);
             max += getBot().getCandela()/1f;
             max += getBot().getModifiedNightvision();
             discovered = s.visible(visibleBots, _visible, _known, Math.max(1, (int) Math.ceil(max)));
@@ -379,11 +380,14 @@ public class NHEnvironment extends MatrixEnvironment implements MatrixListener {
                 } while(Rand.d100(85));
                 break;
         }
+        // AETHER
+        /*
         for(Bot b:((Level)((MatrixMSpace)getBot().getEnvironment().getMSpace()).getMatrix()).bots()) {
             if(((NHBot)b).isAudible()) {
                 visibleBots.add(b);
             }
         }
+        */
         List noticedBots = new ArrayList();
         List missedBots = new ArrayList();
         for(Iterator i=visibleBots.iterator();i.hasNext();) {

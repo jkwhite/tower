@@ -20,7 +20,7 @@
 package org.excelsi.aether;
 
 
-import org.ho.yaml.*;
+//import org.ho.yaml.*;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.io.IOException;
@@ -28,6 +28,7 @@ import java.io.IOException;
 
 public class YamlDataSource implements DataSource {
     public Universe populate(Universe u, Data d) {
+        /*
         // need to split into two steps in order to
         // load singleton universe before loading
         // items and bots
@@ -63,5 +64,7 @@ public class YamlDataSource implements DataSource {
         //uni.print();
         //System.exit(0);
         return uni;
+        */
+        throw new UnsupportedOperationException();
     }
 }

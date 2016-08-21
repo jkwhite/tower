@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language javascript?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.image.*?>
+
+<?import org.excelsi.aether.ui.jfx.*?>
+
+
+<BorderPane xmlns:fx='http://javafx.com/fxml' fx:id='title_root' prefWidth="%screen_width" prefHeight="%screen_height">
+    <center>
+        <HBox alignment='TOP_CENTER'>
+        <VBox spacing='20' alignment='TOP_CENTER'>
+            <children>
+                <ImageView>
+                    <image>
+                        <Image url='/ui/title-image3.png'/>
+                    </image>
+                </ImageView>
+                <ImageView>
+                    <image>
+                        <Image url='/ui/title-text4.png'/>
+                    </image>
+                </ImageView>
+                <JfxSelector transition='fadeIn'/>
+            </children>
+        </VBox>
+        </HBox>
+    </center>
+</BorderPane>

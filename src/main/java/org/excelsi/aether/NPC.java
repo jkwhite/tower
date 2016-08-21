@@ -151,8 +151,12 @@ public class NPC extends DefaultNHBot {
         return r!=null;
     }
 
+    @Override public void act(final Context c) {
+        act();
+    }
+
     private boolean _last = Rand.om.nextBoolean();
-    public void act() {
+    @Override public void act() {
         if(isOccupied()) {
             return;
         }

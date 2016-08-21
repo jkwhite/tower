@@ -20,8 +20,12 @@
 package org.excelsi.matrix;
 
 
+import org.excelsi.aether.Context;
+
+
 public class Actor {
     private static Bot _current;
+    private static Context _ctx;
 
 
     private Actor() {
@@ -33,5 +37,13 @@ public class Actor {
 
     public static Bot current() {
         return _current;
+    }
+
+    public static void setContext(Context c) {
+        _ctx = c;
+    }
+
+    public static Context context() {
+        return _ctx;
     }
 }

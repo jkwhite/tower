@@ -29,8 +29,9 @@ import java.util.Random;
 import java.util.LinkedList;
 
 
-public class Matrix implements java.io.Serializable, MSpaceListener {
+public class Matrix extends MapEnvirons implements java.io.Serializable, MSpaceListener, Environs {
     public static final long serialVersionUID = 1L;
+    //private final Environs _env = new MapEnvirons();
     private MatrixMSpace[] _matrix;
     private int _width;
     private List<MatrixListener> _listeners = new ArrayList<MatrixListener>();
@@ -42,13 +43,38 @@ public class Matrix implements java.io.Serializable, MSpaceListener {
         _width = m;
     }
 
-    public void addListener(MatrixListener listener) {
+    @Override public String getObjectType() {
+        return "matrix";
+    }
+
+    //@Override public String findString(String name) {
+        //return _env.findString(name);
+    //}
+//
+    //@Override public float findFloat(String name) {
+        //return _env.findFloat(name);
+    //}
+//
+    //@Override public Environs putProperty(String name, Object value) {
+        //_env.putProperty(name, value);
+        //return this;
+    //}
+
+    @Deprecated public void addListener(MatrixListener listener) {
+        addMatrixListener(listener);
+    }
+
+    public void addMatrixListener(MatrixListener listener) {
         if(!_listeners.contains(listener)) {
             _listeners.add(listener);
         }
     }
 
-    public void removeListener(MatrixListener listener) {
+    @Deprecated public void removeListener(MatrixListener listener) {
+        removeMatrixListener(listener);
+    }
+
+    public void removeMatrixListener(MatrixListener listener) {
         if(!_listeners.remove(listener)) {
             throw new IllegalArgumentException(listener+" is not listening to "+this);
         }
@@ -74,14 +100,14 @@ public class Matrix implements java.io.Serializable, MSpaceListener {
         return "M"+width()+"x"+height();
     }
 
-    public void occupied(MSpace s, Bot occupant) {
+    @Override public void occupied(MSpace s, Bot occupant) {
     }
 
-    public void unoccupied(MSpace s, Bot occupant) {
+    @Override public void unoccupied(MSpace s, Bot occupant) {
         //occupant.setEnvironment(null);
     }
 
-    public void moved(MSpace source, MSpace from, MSpace to, Bot occupant) {
+    @Override public void moved(MSpace source, MSpace from, MSpace to, Bot occupant) {
     }
 
     public void setSpace(MatrixMSpace m, int i, int j) {

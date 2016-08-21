@@ -20,17 +20,13 @@
 package org.excelsi.aether.ui;
 
 
-import com.jme.app.AbstractGame;
-import com.jme.input.action.*;
-import com.jme.math.Vector3f;
-import com.jme.scene.Spatial;
-import com.jme.scene.Node;
-import com.jme.renderer.Camera;
-import com.jme.input.*;
-import org.excelsi.matrix.*;
-import org.excelsi.aether.*;
-import com.jme.math.Quaternion;
-import com.jme.scene.CameraNode;
+import com.jme3.math.Vector3f;
+import com.jme3.scene.Spatial;
+import com.jme3.scene.Node;
+import com.jme3.renderer.Camera;
+import com.jme3.math.Quaternion;
+import com.jme3.scene.CameraNode;
+import org.excelsi.aether.Constants;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -40,7 +36,7 @@ class CloseView extends CameraNode implements View {
     private Vector3f _target;
     private Vector3f _move = new Vector3f(0, 0, 0);
     private Node _root;
-    private Node _player;
+    private Spatial _player;
     private Camera _camera;
     private float _speed = 1000f;
     private float _zoom = 1f;
@@ -58,21 +54,21 @@ class CloseView extends CameraNode implements View {
     private Vector3f _position;
 
 
-    public CloseView(String name, Node root, Node player, Camera camera) {
+    public CloseView(String name, Node root, Spatial player, Camera camera) {
         this(name, root, player, camera, new Vector3f(0.0f, 10.0f, 10.0f).mult(2f));
     }
 
-    public CloseView(String name, Node root, Node player, Camera camera, Vector3f zoomVector) {
+    public CloseView(String name, Node root, Spatial player, Camera camera, Vector3f zoomVector) {
         super(name, camera);
         _root = root;
-        _root.attachChild(this);
+        //_root.attachChild(this);
         _player = player;
         _camera = camera;
         List<Angle> filtered = new ArrayList<Angle>();
         for(String a:System.getProperty("tower.views", "follow,follow-left,above,first-person").split("[ ,]")) {
             Angle angle = null;
             if("follow".equals(a)) {
-                angle = new Angle("follow", 5f, new float[]{0f, 1f}, new float[]{1f, (float)Math.PI, 0f}, 40f, new Vector3f(0f, 0f, -9f), false, false);
+                angle = new Angle("follow", 5f, new float[]{0f, 1f}, new float[]{1f, (float)Math.PI, 0f}, 40f, new Vector3f(0f, -2f, -9f), false, false);
             }
             else if("follow-left".equals(a)) {
                 angle = new Angle("follow-left", 5f, new float[]{-0.6f, 1f}, new float[]{1f, 7f*(float)Math.PI/8f, 0f}, 40f, new Vector3f(10f, 0f, -9f), false, false);
@@ -81,7 +77,7 @@ class CloseView extends CameraNode implements View {
                 angle = new Angle("follow-right", 5f, new float[]{0.6f, 1f}, new float[]{1f, 8f*(float)Math.PI/7f, 0f}, 40f, new Vector3f(-10f, 0f, -9f), false, false);
             }
             else if("above".equals(a)) {
-                angle = new Angle("above", Float.MAX_VALUE, new float[]{0f, 0f}, new float[]{(float)Math.PI/2f, (float)Math.PI, 0f}, 0f, new Vector3f(MatrixNode.HORIZ_RATIO*Game.LEVEL_WIDTH/2f, 250f, MatrixNode.VERT_RATIO*Game.LEVEL_HEIGHT/2f), true, false);
+                angle = new Angle("above", Float.MAX_VALUE, new float[]{0f, 0f}, new float[]{(float)Math.PI/2f, (float)Math.PI, 0f}, 0f, new Vector3f(UIConstants.HORIZ_RATIO*Constants.LEVEL_WIDTH/2f, 250f, UIConstants.VERT_RATIO*Constants.LEVEL_HEIGHT/2f), true, false);
             }
             else if("first-person".equals(a)) {
                 angle = new Angle("first-person", 0f, new float[]{0f, 0f}, new float[]{0.1f, 0f, 0f}, 0f, new Vector3f(0f,2.0f,-0.4f), false, true);
@@ -113,21 +109,27 @@ class CloseView extends CameraNode implements View {
         _trotx = trot[0];
         _troty = trot[1];
         _trotz = trot[2];
-        if(_v==-1||_angle.isAttached()!=_angles[_v].isAttached()) {
-            if(_angle.isAttached()) {
-                _root.detachChild(this);
-                getNthChild(_player,3).attachChild(this);
-                setLocalTranslation(getLocalTranslation().subtract(_player.getLocalTranslation()));
-                setLocalRotation(getLocalRotation().subtract(_player.getLocalRotation()));
-            }
-            else {
-                getNthChild(_player,3).detachChild(this);
-                _root.attachChild(this);
-                setLocalTranslation(getLocalTranslation().add(_player.getLocalTranslation()));
-                setLocalRotation(getLocalRotation().add(_player.getLocalRotation()));
+        if(_player!=null) {
+            if(_v==-1||_angle.isAttached()!=_angles[_v].isAttached()) {
+                if(_angle.isAttached()) {
+                    _root.detachChild(this);
+                    getNthChild(_player,3).attachChild(this);
+                    setLocalTranslation(getLocalTranslation().subtract(_player.getLocalTranslation()));
+                    setLocalRotation(getLocalRotation().subtract(_player.getLocalRotation()));
+                }
+                else {
+                    getNthChild(_player,3).detachChild(this);
+                    _root.attachChild(this);
+                    setLocalTranslation(getLocalTranslation().add(_player.getLocalTranslation()));
+                    setLocalRotation(getLocalRotation().add(_player.getLocalRotation()));
+                }
             }
         }
         _v = a;
+    }
+
+    private static Node getNthChild(Spatial n, int depth) {
+        return getNthChild((Node)n, depth);
     }
 
     private static Node getNthChild(Node n, int depth) {
@@ -152,11 +154,13 @@ class CloseView extends CameraNode implements View {
     public void activate() {
         _root.attachChild(this);
         setLocalTranslation(_camera.getLocation());
-        _position = _player.getLocalTranslation();
-        center(_player.getLocalTranslation());
+        if(_player!=null) {
+            _position = _player.getLocalTranslation();
+            center(_player.getLocalTranslation());
+        }
     }
 
-    public void setPlayer(Node player) {
+    public void setPlayer(Spatial player) {
         if(player==null) {
             return;
         }
@@ -164,16 +168,47 @@ class CloseView extends CameraNode implements View {
             getNthChild(_player,3).detachChild(this);
             getNthChild(player,3).attachChild(this);
         }
+        boolean newPlayer = _player == null;
         _player = player;
         _position = _player.getLocalTranslation();
         center(_position);
+        if(newPlayer) {
+            approach(0.5f);
+            approach(0.5f);
+            approach(0.5f);
+        }
     }
 
     public void deactivate() {
         _root.detachChild(this);
     }
 
-    public void updateWorldData(float dt) {
+    @Override public void updateLogicalState(float dt) {
+        if(_player!=null) {
+            approach(dt);
+            /*
+            Vector3f pos = getLocalTranslation();
+            if(_rotx!=_trotx||_roty!=_troty||_rotz!=_trotz) {
+                float rx = _rotx+(_trotx-_rotx)*dt;
+                float ry = _roty+(_troty-_roty)*dt;
+                float rz = _rotz+(_trotz-_rotz)*dt;
+                setLocalRotation(new Quaternion(new float[]{rx, ry, rz}));
+                _rotx = rx;
+                _roty = ry;
+                _rotz = rz;
+            }
+            _move.set(_target.x-pos.x, _target.y-pos.y, _target.z-pos.z);
+            _move.multLocal(1.5f*dt);
+            if(_move.length()>_speed) {
+                _move.normalizeLocal().multLocal(_speed);
+            }
+            pos.addLocal(_move);
+            */
+        }
+        super.updateLogicalState(dt);
+    }
+
+    private void approach(final float dt) {
         Vector3f pos = getLocalTranslation();
         if(_rotx!=_trotx||_roty!=_troty||_rotz!=_trotz) {
             float rx = _rotx+(_trotx-_rotx)*dt;
@@ -190,7 +225,6 @@ class CloseView extends CameraNode implements View {
             _move.normalizeLocal().multLocal(_speed);
         }
         pos.addLocal(_move);
-        super.updateWorldData(dt);
     }
 
     private static final Vector3f ZERO = new Vector3f(0,0,0);
@@ -208,14 +242,16 @@ class CloseView extends CameraNode implements View {
             }
             if(_target==null||pos.distance(getLocalTranslation())>_tolerance) {
                 _target = new Vector3f(pos);
-                updateGeometricState(0f, true);
+                //updateGeometricState(0f, true);
+                updateGeometricState();
             }
         }
         else {
             _target = ZERO.add(_angle.getOffset());
             //setLocalTranslation(_target);
             //setLocalRotation(new Quaternion(new float[]{0f,0f,0f}));
-            updateGeometricState(0f, true);
+            //updateGeometricState(0f, true);
+            updateGeometricState();
         }
     }
 

@@ -331,7 +331,7 @@ public class Brain implements java.io.Serializable, Cloneable {
             }
         }
         Daemon choice = max>=0?_daemons[max]:null;
-        System.err.println(b+" chose "+choice);
+        //System.err.println(b+" chose "+choice);
         return choice;
     }
 

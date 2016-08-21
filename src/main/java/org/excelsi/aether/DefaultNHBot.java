@@ -1629,30 +1629,36 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
             return false;
         }
 
-        public void perform() {
-            if(!getBot().canOccupy(getBot().getEnvironment().getMSpace())) {
+        @Deprecated public void perform() {
+            //throw new UnsupportedOperationException("no");
+            System.err.println("deprecated perform()");
+            perform(Actor.context());
+        }
+
+        public void perform(final Context c) {
+            if(!c.getActor().canOccupy(c.getActor().getEnvironment().getMSpace())) {
                 // such as if our environment was changed for the worse by hostile forces
                 return;
             }
             Direction d = getDirection();
-            MSpace m = getBot().getEnvironment().getMSpace().move(d);
+            MSpace m = c.getActor().getEnvironment().getMSpace().move(d);
             if(m==null) {
                 throw new ActionCancelledException();
             }
             boolean doSwap = false;
             NHBot occ = (NHBot) m.getOccupant();
             if(occ!=null) {
-                Threat threat = getBot().threat(occ);
-                if(getBot().isPlayer()&&threat!=Threat.kos&&!getBot().isBlind()) {
+                Threat threat = c.getActor().threat(occ);
+                if(c.getActor().isPlayer()&&threat!=Threat.kos&&!c.getActor().isBlind()) {
                     if(threat==Threat.familiar) {
                         doSwap = true;
                     }
                     else {
-                        if(!N.narrative().confirm(getBot(), "Really attack "+Grammar.noun(occ)+"?")) {
+                        if(!N.narrative().confirm(c.getActor(), "Really attack "+Grammar.noun(occ)+"?")) {
                             throw new ActionCancelledException();
                         }
                         else {
-                            getBot().setThreat(occ, Threat.kos);
+                            c.getActor().setThreat(occ, Threat.kos);
                         }
                     }
                 }
@@ -1661,38 +1667,38 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
                 // for example: a creature of the deep can
                 // attack an occupant on the shore, but
                 // can't move there
-                if(!getBot().canOccupy((NHSpace)m)) {
+                if(!c.getActor().canOccupy((NHSpace)m)) {
                     throw new ActionCancelledException();
                 }
             }
-            getBot().afflict(Affliction.Onset.move);
-            if(getBot().isConfused()) {
-                getBot().getEnvironment().move(Direction.random());
+            c.getActor().afflict(Affliction.Onset.move);
+            if(c.getActor().isConfused()) {
+                c.getActor().getEnvironment().move(Direction.random());
             }
             else {
                 if(_face) {
-                    getBot().getEnvironment().face(d);
+                    c.getActor().getEnvironment().face(d);
                 }
                 if(doSwap) {
-                    N.narrative().print(getBot(), Grammar.start(getBot(), "displace")+" "+Grammar.noun(occ)+".");
-                    getBot().getEnvironment().getMSpace().swapOccupant(occ.getEnvironment().getMSpace());
+                    N.narrative().print(c.getActor(), Grammar.start(c.getActor(), "displace")+" "+Grammar.noun(occ)+".");
+                    c.getActor().getEnvironment().getMSpace().swapOccupant(occ.getEnvironment().getMSpace());
                 }
                 else {
-                    getBot().getEnvironment().move(d);
+                    c.getActor().getEnvironment().move(d);
                 }
             }
             if(occ==null) {
                 // only if we really moved
-                if(getBot().isPlayer()) {
-                    if(getBot().getEnvironment().getMSpace().numItems()>0) {
-                        _pickup.setBot(getBot());
-                        _lookHere.setBot(getBot());
+                if(c.getActor().isPlayer()) {
+                    if(c.getActor().getEnvironment().getMSpace().numItems()>0) {
+                        _pickup.setBot(c.getActor());
+                        _lookHere.setBot(c.getActor());
                         try {
                             _pickup.perform();
                         }
                         catch(ActionCancelledException ignored) {
                         }
-                        if(getBot().getEnvironment().getMSpace().numItems()>0) {
+                        if(c.getActor().getEnvironment().getMSpace().numItems()>0) {
                             try {
                                 _lookHere.perform();
                             }

@@ -45,6 +45,7 @@ public class Patsy extends DefaultNHBot {
     private int _baseScore = 0;
     private String _selectionText;
     private String _death;
+    private transient InputSource _inputSource;
 
 
     public static boolean getBoolean(String p, boolean def) {
@@ -98,6 +99,10 @@ public class Patsy extends DefaultNHBot {
                 }
             }
         });
+    }
+
+    public void setInputSource(final InputSource input) {
+        _inputSource = input;
     }
 
     public void addFamiliar(NHBot b) {
@@ -329,6 +334,13 @@ public class Patsy extends DefaultNHBot {
     }
 
     public void act() {
+    }
+
+    public void act(final Context c) {
+        final GameAction a = _inputSource.nextAction(500);
+        if(a!=null) {
+            a.perform(c);
+        }
     }
 
     public String toString() {

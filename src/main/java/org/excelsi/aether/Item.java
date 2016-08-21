@@ -30,9 +30,10 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import org.excelsi.matrix.EnvironmentListener;
 import org.excelsi.matrix.Actor;
+import org.excelsi.matrix.Id;
 
 
-public abstract class Item implements java.io.Serializable, Material, Interceptor {
+public abstract class Item extends Id implements java.io.Serializable, Material, Interceptor {
     private static final long serialVersionUID = 1L;
     private static final String[] DEFAULT_DAMAGES = {"severely damaged ",
         "badly damaged ", "damaged ", "well-worn ", "worn "};
@@ -111,6 +112,10 @@ public abstract class Item implements java.io.Serializable, Material, Intercepto
             }
         }
         setName(iname.toString());
+    }
+
+    @Override public String getObjectType() {
+        return "item";
     }
 
     public String getName() {

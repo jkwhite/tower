@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language javascript?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.image.*?>
+
+<?import org.excelsi.aether.ui.jfx.*?>
+
+
+<StackPane xmlns:fx='http://javafx.com/fxml' fx:id='title_root' prefWidth="%screen_width" prefHeight="%screen_height">
+    <children>
+        <JfxSelector/>
+        <JfxMessages/>
+        <JfxWorld/>
+        <BorderPane prefWidth="200" prefHeight="200">
+            <bottom>
+                <VBox styleClass='status'>
+                    <children>
+                        <JfxStatus/>
+                    </children>
+                </VBox>
+            </bottom>
+        </BorderPane>
+    </children>
+</StackPane>

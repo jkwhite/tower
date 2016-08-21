@@ -20,6 +20,7 @@
 package org.excelsi.aether;
 
 
+@FunctionalInterface
 public interface ItemFilter extends java.io.Serializable {
     boolean accept(Item item, NHBot bot);
 }

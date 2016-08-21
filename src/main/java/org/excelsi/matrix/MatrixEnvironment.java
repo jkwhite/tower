@@ -256,7 +256,7 @@ public class MatrixEnvironment implements Environment {
         return _b.getListeners();
     }
 
-    protected MSpace getSpace() {
+    @Override public MSpace getSpace() {
         return _m;
     }
 }

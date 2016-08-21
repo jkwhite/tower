@@ -34,7 +34,7 @@ import java.awt.geom.Arc2D;
 import java.awt.geom.Rectangle2D;
 
 
-public final class Level extends Matrix {
+public final class Level extends Matrix implements Stage {
     private static final long serialVersionUID = 1L;
     protected List<Room> _rooms = new ArrayList<Room>();
     protected List _passageways = new ArrayList();
@@ -51,6 +51,18 @@ public final class Level extends Matrix {
     public Level(int m, int n) {
         super(m, n);
         addListener(_relayer);
+    }
+
+    @Override public String getObjectType() {
+        return "level";
+    }
+
+    @Override public int getOrdinal() {
+        return _floor;
+    }
+
+    @Override public Matrix getMatrix() {
+        return this;
     }
 
     public void setLight(float light) {
@@ -71,7 +83,7 @@ public final class Level extends Matrix {
         _name = name;
     }
 
-    public String getName() {
+    @Override public String getName() {
         return _name;
     }
 
@@ -95,7 +107,7 @@ public final class Level extends Matrix {
     // sea lions
     // giraffe
     // guinea pigs
-    public EventSource getEventSource() {
+    @Override public EventSource getEventSource() {
         return _relayer;
     }
 
@@ -420,6 +432,41 @@ fast:       for(int i=ro.getX1();i<ro.getX2();i++) {
                 for(ActTimer t:_timers) {
                     --t.timer;
                 }
+            }
+        }
+    }
+
+    @Override public void tick(final Context c) {
+        //tick();
+        NHBot first = null;
+        while(true) {
+            NHBot acting = _queue.next();
+            if(first!=null && first==acting) {
+                break;
+            }
+            if(acting.isPlayer()) {
+                acting.getEnvironment().unhide();
+                //break;
+            }
+            Actor.setCurrent(acting);
+            Actor.setContext(c);
+            c.setActor(acting);
+            acting.act(c);
+            c.setActor(null);
+            Actor.setCurrent(null);
+            Actor.setContext(null);
+            if(first==null) {
+                first = acting;
+            }
+        }
+        for(NHBot b:_queue.getBots()) {
+            Actor.setCurrent(b);
+            b.tick();
+            Actor.setCurrent(null);
+        }
+        for(MSpace m:spaces()) {
+            if(m!=null) {
+                m.update();
             }
         }
     }
