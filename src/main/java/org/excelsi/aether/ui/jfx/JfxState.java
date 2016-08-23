@@ -9,6 +9,7 @@ import javafx.scene.layout.Region;
 import javafx.fxml.FXMLLoader;
 
 import org.excelsi.aether.StateChangeEvent;
+import org.excelsi.aether.ui.Resources;
 import java.util.ResourceBundle;
 
 import org.lwjgl.opengl.Display;

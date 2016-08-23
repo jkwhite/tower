@@ -5,7 +5,7 @@ import org.excelsi.matrix.Matrix;
 import org.excelsi.matrix.Id;
 
 
-public class Skelevel extends Id implements Level {
+public class Skelevel extends Id implements Stage {
     private LevelRecipe _recipe;
     private LevelGenerator _gen;
     private Stage _level;

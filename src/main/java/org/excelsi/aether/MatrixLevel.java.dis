@@ -11,7 +11,7 @@ import org.excelsi.matrix.Actor;
 import org.excelsi.aether.NHBot;
 
 
-public class MatrixLevel extends Id implements Level, MatrixListener, MSpaceListener {
+public class MatrixLevel extends Id implements Stage, MatrixListener, MSpaceListener {
     private final String _name;
     private final int _ordinal;
     private final Matrix _m;

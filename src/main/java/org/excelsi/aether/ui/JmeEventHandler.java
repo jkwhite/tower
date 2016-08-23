@@ -25,7 +25,7 @@ import org.slf4j.Logger;
 
 
 public class JmeEventHandler implements EventBus.Handler {
-    private static final Logger LOG = LoggerFactory.getLogger(JfxNarrative.class);
+    private static final Logger LOG = LoggerFactory.getLogger(JmeEventHandler.class);
     private final Node _root;
     //private final Map<Object,Controller> _controllers = new HashMap<>();
     private final SceneContext _ctx;

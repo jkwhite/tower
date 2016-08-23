@@ -1,4 +1,4 @@
-package org.excelsi.aether.ui;
+package org.excelsi.aether.ui.jfx;
 
 
 import javafx.scene.Node;

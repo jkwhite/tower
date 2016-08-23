@@ -24,7 +24,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.scene.Spatial;
 
 
-interface View {
+public interface View {
     public static final String NODE_CAMERA = "camera";
 
     void activate();

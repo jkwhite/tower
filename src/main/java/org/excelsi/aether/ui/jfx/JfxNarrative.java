@@ -31,6 +31,8 @@ import org.excelsi.aether.SelectEvent;
 import org.excelsi.aether.MessageEvent;
 import org.excelsi.aether.KeyEvent;
 import org.excelsi.aether.PauseEvent;
+import org.excelsi.aether.ui.Hud;
+import org.excelsi.aether.ui.LogicEvent;
 
 
 public class JfxNarrative extends Group {
