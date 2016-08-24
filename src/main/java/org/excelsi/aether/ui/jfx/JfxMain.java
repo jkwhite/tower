@@ -209,7 +209,7 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
                     new Bulk(),
                     new BusInputSource()
                 )
-                .state(new ScriptedState("dawn", new Script(getClass().getClassLoader().getResource("dawn.groovy"))))
+                .state(new ScriptedState("dawn", new Script("script/dawn.groovy")))
             )
         );
         logic.start();
