@@ -18,4 +18,8 @@ public class ScriptedState implements State {
     @Override public void run(final Context c) {
         _script.run(c);
     }
+
+    @Override public String toString() {
+        return "ScriptedState::"+_name;
+    }
 }

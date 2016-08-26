@@ -92,4 +92,24 @@ if($c.n.confirm('Isomorphoze anisotropic apotropaganisms?'))
 else
     $c.state = new Quit()
 */
-$c.state = new World()
+//$c.state = new World()
+
+//def world = new ScriptedState('world.groovy')
+def title = new State() {
+    String getName() { "title" }
+
+    void run(Context c) {
+        c.n.title("")
+        c.n.choose(new SelectionMenu<Runnable>(
+            new MenuItem<Runnable>("n", "New game", {
+                //c.setState(new Prelude(Data.resource("prelude-text")));
+                c.setState(new World());
+            }),
+            new MenuItem<Runnable>("l", "Load game", null),
+            new MenuItem<Runnable>("h", "High scores", { c.setState(new HighScores()); }),
+            new MenuItem<Runnable>("q", "Quit", { c.setState(new Quit()); })
+        ))()
+    }
+}
+
+$c.state = title
