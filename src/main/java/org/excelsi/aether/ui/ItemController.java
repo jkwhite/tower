@@ -5,6 +5,7 @@ import org.excelsi.matrix.MSpace;
 import org.excelsi.matrix.MatrixMSpace;
 import org.excelsi.aether.AddEvent;
 import org.excelsi.aether.ChangeEvent;
+import org.excelsi.aether.RemoveEvent;
 import org.excelsi.aether.NHSpace;
 import org.excelsi.aether.Item;
 
@@ -14,8 +15,8 @@ import com.jme3.light.Light;
 import com.jme3.scene.Spatial;
 
 
-public class ItemController implements Controller<Item> {
-    @Override public void added(final SceneContext c, final AddEvent<Item> e) {
+public class ItemController implements Controller<NHSpace,Item> {
+    @Override public void added(final SceneContext c, final AddEvent<NHSpace,Item> e) {
         //final Spatial item = c.getNodeFactory().createNode(e.getAdded().getId(), e.getAdded());
         //final Spatial item = Spaces.createItem(c, e.getAdded());
         final NHSpace mms = (NHSpace) e.getSource();
@@ -26,9 +27,9 @@ public class ItemController implements Controller<Item> {
         sp.attachItem(c, e.getAdded());
     }
 
-    @Override public void removed(final SceneContext c, final Item l) {
+    @Override public void removed(final SceneContext c, final RemoveEvent<NHSpace,Item> l) {
     }
 
-    @Override public void changed(final SceneContext c, final ChangeEvent<Item> e) {
+    @Override public void changed(final SceneContext c, final ChangeEvent<NHSpace,Item> e) {
     }
 }

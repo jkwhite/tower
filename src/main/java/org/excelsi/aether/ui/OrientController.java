@@ -7,6 +7,7 @@ import org.excelsi.aether.NHBot;
 import org.excelsi.aether.ChangeEvent;
 import org.excelsi.aether.OrientEvent;
 import org.excelsi.aether.AddEvent;
+import org.excelsi.aether.RemoveEvent;
 import org.excelsi.matrix.Direction;
 
 import com.jme3.math.Vector3f;
@@ -15,14 +16,14 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
 
-public class OrientController implements Controller<Direction> {
-    @Override public void added(final SceneContext c, final AddEvent<Direction> b) {
+public class OrientController implements Controller<NHBot,Direction> {
+    @Override public void added(final SceneContext c, final AddEvent<NHBot,Direction> b) {
     }
 
-    @Override public void removed(final SceneContext c, final Direction b) {
+    @Override public void removed(final SceneContext c, final RemoveEvent<NHBot,Direction> b) {
     }
 
-    @Override public void changed(final SceneContext c, final ChangeEvent<Direction> e) {
+    @Override public void changed(final SceneContext c, final ChangeEvent<NHBot,Direction> e) {
         if(e instanceof OrientEvent) {
             final OrientEvent me = (OrientEvent) e;
             final NHBot b = (NHBot) me.getBot();

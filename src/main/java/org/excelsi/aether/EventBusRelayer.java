@@ -9,6 +9,7 @@ import org.excelsi.aether.NHSpace;
 import org.excelsi.matrix.Bot;
 import org.excelsi.matrix.Direction;
 import org.excelsi.matrix.MSpace;
+import org.excelsi.matrix.MSource;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -20,11 +21,15 @@ public class EventBusRelayer extends EverythingAdapter {
 
 
     @Override public void moved(MSpace source, MSpace from, MSpace to, Bot b) {
-        post(TOPIC_CHANGES, new MoveEvent(source, b, from, to));
+        post(TOPIC_CHANGES, new MoveEvent(source, (NHBot)b, (NHSpace)from, (NHSpace)to));
     }
 
     @Override public void faced(Bot b, Direction old, Direction d) {
-        post(TOPIC_CHANGES, new OrientEvent(b.getEnvironment().getSpace(), b, old, d));
+        post(TOPIC_CHANGES, new OrientEvent(b.getEnvironment().getSpace(), (NHBot)b, old, d));
+    }
+
+    @Override public void died(Bot b, MSource s) {
+        post(TOPIC_CHANGES, new BotAttributeChangeEvent<Boolean>(b.getEnvironment().getSpace(), b, "dead", false, true));
     }
 
     @Override public void itemAdded(Container space, Item item, int idx, boolean incremented) {

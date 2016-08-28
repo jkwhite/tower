@@ -45,6 +45,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Enumeration;
 import java.net.MalformedURLException;
+import org.yaml.snakeyaml.Yaml;
 
 
 public class Data {
@@ -112,6 +113,18 @@ public class Data {
         }
         catch(Exception e) {
             throw new IllegalArgumentException(e);
+        }
+    }
+
+    public static <E> E loadYaml(final String url) {
+        try(final InputStream is = Data.class.getResourceAsStream(url)) {
+            if(is==null) {
+                throw new IllegalArgumentException("no such resource '"+url+"'");
+            }
+            return (E) new Yaml().load(is);
+        }
+        catch(IOException e) {
+            throw new IllegalStateException("failed reading '"+url+"': "+e, e);
         }
     }
 

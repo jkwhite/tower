@@ -1,7 +1,7 @@
 package org.excelsi.aether.ui;
 
 
-public abstract class AbstractController<E> implements Controller<E> {
+public abstract class AbstractController<C,E> implements Controller<C,E> {
     private final E _e;
 
 

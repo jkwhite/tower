@@ -201,11 +201,13 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
         _jfxSubscription = EventBus.instance().subscribe("keys", UIConstants.QUEUE_JFX);
         _jmeSubscription = EventBus.instance().subscribe("changes", UIConstants.QUEUE_JME);
 
+        final Universe u = new Universe();
+        Universe.setUniverse(u);
         final Logic logic = new Logic(
             new Historian(
                 new Context(
                     new BlockingNarrative(EventBus.instance()),
-                    new Universe(),
+                    u,
                     new Bulk(),
                     new BusInputSource()
                 )

@@ -2,8 +2,11 @@ import org.excelsi.aether.*
 import org.excelsi.tower.*
 import org.excelsi.sketch.*
 
+$c.universe.colormap = Data.loadYaml('/data/colors.yaml')
 
-$c.universe.bots = [
+
+//$c.universe.bots = [
+foo = [
     new Patsy([
       common:'human',
       profession:'Traveler',
@@ -69,32 +72,28 @@ $c.universe.bots = [
     ])
 ]
 
+$c.universe.bots = Data.loadYaml('/bots.yaml')
 
-$c.bulk.addLevel(
+def l1 = 
     new ExpanseLevelGenerator().generate(
         new LevelRecipe()
         .name("The Lower Reaches")
+        .realm("The Lower Reaches")
         .ordinal(1)
         .width(80)
         .height(24)
         .random(Rand.om))
-)
+$c.bulk.addLevel(l1)
 for(i=0;i<20;i++) {
-    $c.bulk.findLevel(1).findRandomNormalEmptySpace().occupant = $c.universe.createBot('construction worker')
+    l1.findRandomNormalEmptySpace().occupant = $c.universe.createBot('construction worker')
 }
-$c.bulk.findLevel(1).findRandomNormalEmptySpace().add(new Apple())
-$c.bulk.findLevel(1).getMatrix().getSpace(0,0).add(new Apple())
+l1.findRandomNormalEmptySpace().add(new Apple())
+l1.getMatrix().getSpace(0,0).add(new Apple())
+$c.patsy = $c.universe.createBot({b -> 'Traveler'.equals(b.profession)})
 
-
-/*
-if($c.n.confirm('Isomorphoze anisotropic apotropaganisms?'))
-    $c.state = new Title()
-else
-    $c.state = new Quit()
-*/
 //$c.state = new World()
 
-//def world = new ScriptedState('world.groovy')
+//def world = new ScriptedState('world', 'world.groovy')
 def title = new State() {
     String getName() { "title" }
 
@@ -103,11 +102,11 @@ def title = new State() {
         c.n.choose(new SelectionMenu<Runnable>(
             new MenuItem<Runnable>("n", "New game", {
                 //c.setState(new Prelude(Data.resource("prelude-text")));
-                c.setState(new World());
+                c.state = new World()
             }),
             new MenuItem<Runnable>("l", "Load game", null),
-            new MenuItem<Runnable>("h", "High scores", { c.setState(new HighScores()); }),
-            new MenuItem<Runnable>("q", "Quit", { c.setState(new Quit()); })
+            new MenuItem<Runnable>("h", "High scores", { c.state = new HighScores() }),
+            new MenuItem<Runnable>("q", "Quit", { c.state = new Quit() })
         ))()
     }
 }

@@ -35,7 +35,7 @@ public class NHEnvironment extends MatrixEnvironment implements MatrixListener {
     private Set<NHSpace> _visible = new HashSet<NHSpace>();
     private Set<Bot> _visibleBots = new HashSet<Bot>();
     private Set<NHSpace> _known = new HashSet<NHSpace>();
-    private static Mechanics _mechanics;
+    private static Mechanics _mechanics = new QuantumMechanics();
 
 
     public static void setMechanics(Mechanics mechanics) {
@@ -423,7 +423,8 @@ public class NHEnvironment extends MatrixEnvironment implements MatrixListener {
     }
 
     public NHBot getPlayer() {
-        return getGame().getPlayer();
+        //return getGame().getPlayer();
+        return Actor.context().getPatsy();
     }
 
     private Game getGame() {

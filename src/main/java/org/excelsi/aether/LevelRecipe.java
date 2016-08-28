@@ -8,6 +8,7 @@ public class LevelRecipe {
     private int _w;
     private int _h;
     private String _name;
+    private String _realm;
     private int _ordinal;
     private Random _r;
 
@@ -49,6 +50,15 @@ public class LevelRecipe {
 
     public String getName() {
         return _name;
+    }
+
+    public LevelRecipe realm(String realm) {
+        _realm = realm;
+        return this;
+    }
+
+    public String getRealm() {
+        return _realm;
     }
 
     public LevelRecipe ordinal(int ordinal) {

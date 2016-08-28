@@ -331,13 +331,20 @@ public class Patsy extends DefaultNHBot {
         N.narrative().print(this, "You die...");
         //N.narrative().more();
         N.narrative().quit(cause, false);
+        Actor.context().n().message("You die.");
+        try {
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e) {
+        }
+        Actor.context().setState(new Quit());
     }
 
     public void act() {
     }
 
     public void act(final Context c) {
-        final GameAction a = _inputSource.nextAction(500);
+        final GameAction a = _inputSource.nextAction(50000);
         if(a!=null) {
             a.perform(c);
         }

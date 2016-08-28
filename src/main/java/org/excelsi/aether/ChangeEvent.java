@@ -1,14 +1,14 @@
 package org.excelsi.aether;
 
 
-public class ChangeEvent<E> extends Event {
+public class ChangeEvent<C,E> extends ContextualEvent<C> {
     private final String _type;
     private final E _old;
     private final E _new;
 
 
-    public ChangeEvent(Object source, String type, E oldValue, E newValue) {
-        super(source);
+    public ChangeEvent(Object source, String type, C ctx, E oldValue, E newValue) {
+        super(source, ctx);
         _type = type;
         _old = oldValue;
         _new = newValue;

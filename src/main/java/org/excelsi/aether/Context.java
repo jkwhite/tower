@@ -13,6 +13,7 @@ public final class Context {
     private State _state = new NullState();
     private InputSource _input;
     private NHBot _actor;
+    private Patsy _patsy;
 
 
     public Context(final NNarrative n, final Universe u, final Bulk b, final InputSource input) {
@@ -44,6 +45,16 @@ public final class Context {
 
     public InputSource getInputSource() {
         return _input;
+    }
+
+    public Patsy getPatsy() {
+        return _patsy;
+    }
+
+    public void setPatsy(final Patsy patsy) {
+        final Patsy old = _patsy;
+        _patsy = patsy;
+        EventBus.instance().post("keys", new ChangeEvent<Context,Patsy>(this, "player", this, old, _patsy));
     }
 
     public void setState(final State state) {

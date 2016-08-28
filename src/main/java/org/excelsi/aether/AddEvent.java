@@ -1,12 +1,12 @@
 package org.excelsi.aether;
 
 
-public abstract class AddEvent<E> extends Event {
+public abstract class AddEvent<C,E> extends ContextualEvent<C> {
     private final E _e;
 
 
-    public AddEvent(Object source, E e) {
-        super(source);
+    public AddEvent(Object source, C ctx, E e) {
+        super(source, ctx);
         _e = e;
     }
 

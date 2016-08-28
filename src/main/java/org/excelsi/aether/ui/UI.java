@@ -7,6 +7,7 @@ import java.util.Map;
 import org.excelsi.aether.Level;
 import org.excelsi.aether.MoveEvent;
 import org.excelsi.aether.OrientEvent;
+import org.excelsi.aether.BotAttributeChangeEvent;
 import static org.excelsi.aether.ui.ControllerFactory.constant;
 import com.jme3.asset.AssetManager;
 
@@ -26,7 +27,8 @@ public class UI {
                 "bot", new InstanceControllerFactory(
                     Maps.<Class,ControllerFactory>map(
                         MoveEvent.class, constant(new BotController()),
-                        OrientEvent.class, constant(new OrientController()))
+                        OrientEvent.class, constant(new OrientController()),
+                        BotAttributeChangeEvent.class, constant(new BotAttributeController()))
                 ),
                 "level", constant(new LevelController()),
                 "item", constant(new ItemController())

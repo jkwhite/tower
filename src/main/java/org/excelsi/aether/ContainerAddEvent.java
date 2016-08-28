@@ -7,13 +7,13 @@ import org.excelsi.aether.Item;
 import org.excelsi.aether.NHSpace;
 
 
-public class ContainerAddEvent extends AddEvent<Item> {
+public class ContainerAddEvent extends AddEvent<Container,Item> {
     private final int _idx;
     private final boolean _inc;
 
 
     public ContainerAddEvent(NHSpace source, Item i, int idx, boolean incremented) {
-        super(source, i);
+        super(source, source, i);
         _idx = idx;
         _inc = incremented;
     }

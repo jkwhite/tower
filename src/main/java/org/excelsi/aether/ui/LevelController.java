@@ -4,9 +4,11 @@ package org.excelsi.aether.ui;
 import org.excelsi.matrix.MSpace;
 import org.excelsi.aether.NHBot;
 import org.excelsi.matrix.MatrixMSpace;
+import org.excelsi.aether.Bulk;
 import org.excelsi.aether.Stage;
 import org.excelsi.aether.ChangeEvent;
 import org.excelsi.aether.AddEvent;
+import org.excelsi.aether.RemoveEvent;
 import org.excelsi.aether.NHSpace;
 import org.excelsi.aether.Item;
 
@@ -16,17 +18,17 @@ import com.jme3.light.Light;
 import com.jme3.scene.Spatial;
 
 
-public class LevelController implements Controller<Stage> {
+public class LevelController implements Controller<Bulk,Stage> {
     private static final String PREFIX = "level-";
 
 
-    @Override public void added(final SceneContext c, final AddEvent<Stage> l) {
+    @Override public void added(final SceneContext c, final AddEvent<Bulk,Stage> l) {
     }
 
-    @Override public void removed(final SceneContext c, final Stage l) {
+    @Override public void removed(final SceneContext c, final RemoveEvent<Bulk,Stage> l) {
     }
 
-    @Override public void changed(final SceneContext c, final ChangeEvent<Stage> e) {
+    @Override public void changed(final SceneContext c, final ChangeEvent<Bulk,Stage> e) {
         if(e.getFrom()!=null) {
             Node from = c.getNode(PREFIX+e.getFrom().getOrdinal());
             if(from!=null) {

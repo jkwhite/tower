@@ -1,20 +1,16 @@
 package org.excelsi.aether;
 
 
-import org.excelsi.matrix.MSpace;
-import org.excelsi.matrix.Bot;
+public class BotChangeEvent<E> extends ChangeEvent<NHBot,E> {
+    private final NHBot _b;
 
 
-public class BotChangeEvent<E> extends ChangeEvent<E> {
-    private final Bot _b;
-
-
-    public BotChangeEvent(Object source, Bot b, E from, E to) {
-        super(source, "bot", from, to);
+    public BotChangeEvent(Object source, NHBot b, E from, E to) {
+        super(source, "bot", b, from, to);
         _b = b;
     }
 
-    public Bot getBot() {
+    public NHBot getBot() {
         return _b;
     }
 }

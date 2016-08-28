@@ -1,25 +1,25 @@
 --- 
-- !org.excelsi.tower.TPatsy
+- !!org.excelsi.tower.TPatsy
   common: human
   profession: Traveler
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 5
   quickness: 5
   agility: 5
   constitution: 70
   maxHp: 3
   color: white
-  model: @
+  model: '@'
   selectionText: Summer took a turn cause you spent your wishes carelessly.
   hidden: true
   skills: 
     unarmed: 30
     thrown: 30
     detect: 10
-- !org.excelsi.tower.TPatsy
+- !!org.excelsi.tower.TPatsy
   common: human
   profession: Archeologist
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 40
   quickness: 50
   agility: 60
@@ -29,18 +29,18 @@
   empathy: 30
   maxHp: 15
   color: white
-  model: @
+  model: '@'
   pack: 
-    - !org.excelsi.tower.FoodRation {}
-    - !org.excelsi.tower.Pick_Axe {}
-    - !org.excelsi.tower.Lockpick
+    - !!org.excelsi.tower.FoodRation {}
+    - !!org.excelsi.tower.Pick_Axe {}
+    - !!org.excelsi.tower.Lockpick
       count: 20
   wearing: 
-    - !org.excelsi.tower.Fedora {}
-    - !org.excelsi.tower.LeatherJacket {}
-  wielded: !org.excelsi.tower.BullWhip
+    - !!org.excelsi.tower.Fedora {}
+    - !!org.excelsi.tower.LeatherJacket {}
+  wielded: !!org.excelsi.tower.BullWhip
     fragments:
-      - !org.excelsi.tower.Fine {}
+      - !!org.excelsi.tower.Fine {}
   selectionText: There are some archeology tools here.
   skills: 
     detect: 10
@@ -55,11 +55,11 @@
     lockpicking: 40
     unarmored: 20
   talents:
-    - !org.excelsi.tower.Autogem {}
-- !org.excelsi.tower.TPatsy
+    - !!org.excelsi.tower.Autogem {}
+- !!org.excelsi.tower.TPatsy
   common: human
   profession: Barbarian
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 80
   quickness: 30
   agility: 80
@@ -69,18 +69,18 @@
   empathy: 10
   maxHp: 20
   color: white
-  model: @
+  model: '@'
   pack: 
-    - !org.excelsi.tower.ShortSword {}
-    - !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.ShortSword {}
+    - !!org.excelsi.tower.Pill
       count: 2
       fragments: 
-        - !org.excelsi.tower.Frenzy {}
-    - !org.excelsi.tower.LegOfMutton {}
-    - !org.excelsi.tower.SharpeningStone {}
+        - !!org.excelsi.tower.Frenzy {}
+    - !!org.excelsi.tower.LegOfMutton {}
+    - !!org.excelsi.tower.SharpeningStone {}
   wearing: 
-    - !org.excelsi.tower.RingMail {}
-  wielded: !org.excelsi.tower.Battle_Axe {}
+    - !!org.excelsi.tower.RingMail {}
+  wielded: !!org.excelsi.tower.Battle_Axe {}
   selectionText: There is a heap of fighting gear here.
   skills: 
     one-handed edged: 20
@@ -93,10 +93,10 @@
     chain: 50
     shields: 20
     plate: 30
-- !org.excelsi.tower.TPatsy
+- !!org.excelsi.tower.TPatsy
   common: human
   profession: Ranger
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 30
   quickness: 60
   agility: 40
@@ -106,21 +106,21 @@
   empathy: 60
   maxHp: 20
   color: white
-  model: @
+  model: '@'
   afflictions: 
-    - !org.excelsi.tower.Autosearch {}
+    - !!org.excelsi.tower.Autosearch {}
   pack: 
-    - !org.excelsi.tower.FoodRation
+    - !!org.excelsi.tower.FoodRation
       count: 3
-    - !org.excelsi.tower.Dagger
+    - !!org.excelsi.tower.Dagger
       count: 2
-    - !org.excelsi.tower.ShortSword {}
+    - !!org.excelsi.tower.ShortSword {}
   wearing: 
-    - !org.excelsi.tower.LeatherBreastplate {}
-    - !org.excelsi.tower.WoolCloak {}
-    - !org.excelsi.tower.HikingBoots {}
-  wielded: !org.excelsi.tower.ShortBow {}
-  quivered: !org.excelsi.tower.Arrow
+    - !!org.excelsi.tower.LeatherBreastplate {}
+    - !!org.excelsi.tower.WoolCloak {}
+    - !!org.excelsi.tower.HikingBoots {}
+  wielded: !!org.excelsi.tower.ShortBow {}
+  quivered: !!org.excelsi.tower.Arrow
     count: 40
   selectionText: There are some survival tools here.
   skills: 
@@ -135,10 +135,10 @@
     shields: 10
     cloth: 20
     traps: 10
-- !org.excelsi.tower.TPatsy
+- !!org.excelsi.tower.TPatsy
   common: human
   profession: Tinkerer
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 20
   quickness: 50
   agility: 50
@@ -147,37 +147,37 @@
   presence: 20
   empathy: 50
   color: white
-  model: @
+  model: '@'
   maxHp: 10
   afflictions: 
-    - !org.excelsi.tower.Autotrap {}
+    - !!org.excelsi.tower.Autotrap {}
   pack: 
-    - !org.excelsi.tower.CandyBar
+    - !!org.excelsi.tower.CandyBar
       count: 3
-    - !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Pill
       count: 3
       fragments: 
-        - !org.excelsi.tower.Speed {}
-    - !org.excelsi.tower.Potion
+        - !!org.excelsi.tower.Speed {}
+    - !!org.excelsi.tower.Potion
       count: 2
       fragments: 
-        - !org.excelsi.tower.Healing {}
-    - !org.excelsi.tower.Battery
+        - !!org.excelsi.tower.Healing {}
+    - !!org.excelsi.tower.Battery
       count: 3
-    - !org.excelsi.tower.Wire
+    - !!org.excelsi.tower.Wire
       count: 12
-    - !org.excelsi.tower.Processor
+    - !!org.excelsi.tower.Processor
       count: 4
-    - !org.excelsi.tower.ScrapMetal
+    - !!org.excelsi.tower.ScrapMetal
       count: 2
-    - !org.excelsi.tower.Actuator
+    - !!org.excelsi.tower.Actuator
       count: 4
-    - !org.excelsi.tower.Sensor {}
+    - !!org.excelsi.tower.Sensor {}
   wearing: 
-    - !org.excelsi.tower.LeatherJacket {}
-    - !org.excelsi.tower.CombatHelmet {}
-  wielded: !org.excelsi.tower.DartGun {}
-  quivered: !org.excelsi.tower.Dart
+    - !!org.excelsi.tower.LeatherJacket {}
+    - !!org.excelsi.tower.CombatHelmet {}
+  wielded: !!org.excelsi.tower.DartGun {}
+  quivered: !!org.excelsi.tower.Dart
     count: 40
   selectionText: There is a jumble of odd contraptions here.
   skills: 
@@ -193,13 +193,13 @@
     unarmed: 30
     cloth: 30
   talents:
-    - !org.excelsi.tower.Engineering {}
+    - !!org.excelsi.tower.Engineering {}
   catalogue:
     - gridbug
-- !org.excelsi.tower.TPatsy
+- !!org.excelsi.tower.TPatsy
   common: human
   profession: Alchemist
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 20
   quickness: 40
   agility: 40
@@ -208,39 +208,39 @@
   presence: 70
   empathy: 60
   color: white
-  model: @
+  model: '@'
   maxHp: 7
   afflictions: 
-    - !org.excelsi.tower.Autosearch {}
+    - !!org.excelsi.tower.Autosearch {}
   pack: 
-    - !org.excelsi.tower.FoodRation {}
-    - !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.FoodRation {}
+    - !!org.excelsi.tower.Pill
       count: 3
       fragments:
-        - !org.excelsi.tower.Frenzy {}
-    - !org.excelsi.tower.Potion
+        - !!org.excelsi.tower.Frenzy {}
+    - !!org.excelsi.tower.Potion
       fragments: 
-        - !org.excelsi.tower.Speed {}
-    - !org.excelsi.tower.Potion
+        - !!org.excelsi.tower.Speed {}
+    - !!org.excelsi.tower.Potion
       count: 3
       fragments: 
-        - !org.excelsi.tower.Healing {}
-    - !org.excelsi.tower.Potion
+        - !!org.excelsi.tower.Healing {}
+    - !!org.excelsi.tower.Potion
       fragments: 
-        - !org.excelsi.tower.WaterInfliction {}
-    - !org.excelsi.tower.Potion
+        - !!org.excelsi.tower.WaterInfliction {}
+    - !!org.excelsi.tower.Potion
       count: 4
       fragments: 
-        - !org.excelsi.tower.Blindness {}
-    - !org.excelsi.tower.Potion
+        - !!org.excelsi.tower.Blindness {}
+    - !!org.excelsi.tower.Potion
       count: 2
       fragments: 
-        - !org.excelsi.tower.Confusion {}
-    - !org.excelsi.tower.ScrollOfSummoning
+        - !!org.excelsi.tower.Confusion {}
+    - !!org.excelsi.tower.ScrollOfSummoning
       count: 3
   wearing: 
-    - !org.excelsi.tower.Robe {}
-  wielded: !org.excelsi.tower.Dagger {}
+    - !!org.excelsi.tower.Robe {}
+  wielded: !!org.excelsi.tower.Dagger {}
   selectionText: There are a number of potions here.
   skills: 
     detect: 40
@@ -253,40 +253,40 @@
     wands: 50
     alchemy: 50
   talents:
-    - !org.excelsi.tower.Autopotion {}
-- !org.excelsi.tower.TPatsy
+    - !!org.excelsi.tower.Autopotion {}
+- !!org.excelsi.tower.TPatsy
   common: human
   profession: Priest
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 30
   quickness: 40
   agility: 50
   constitution: 70
   maxHp: 15
   color: white
-  model: @
+  model: '@'
   selectionText: There are some ritual items here.
-  wielded: !org.excelsi.tower.Spear
+  wielded: !!org.excelsi.tower.Spear
     status: blessed
   wearing: 
-    - !org.excelsi.tower.Robe {}
-    - !org.excelsi.tower.CrownOfThorns
+    - !!org.excelsi.tower.Robe {}
+    - !!org.excelsi.tower.CrownOfThorns
       status: cursed
-    - !org.excelsi.tower.StyrofoamBoots {}
+    - !!org.excelsi.tower.StyrofoamBoots {}
   pack:
-    - !org.excelsi.tower.SliceOfBread
+    - !!org.excelsi.tower.SliceOfBread
       count: 3
-    - !org.excelsi.tower.Egg
+    - !!org.excelsi.tower.Egg
       count: 3
-    - !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Potion
       status: blessed
       fragments:
-        - !org.excelsi.tower.Healing {}
+        - !!org.excelsi.tower.Healing {}
       count: 3
-    - !org.excelsi.tower.ScrollOfReanimation {}
-    - !org.excelsi.tower.BlankParchment
+    - !!org.excelsi.tower.ScrollOfReanimation {}
+    - !!org.excelsi.tower.BlankParchment
       count: 3
-    - !org.excelsi.tower.Sapphire {}
+    - !!org.excelsi.tower.Sapphire {}
   skills: 
     detect: 10
     cloth: 30
@@ -299,11 +299,11 @@
     scribing: 70
     pole-arms: 40
   talents:
-    - !org.excelsi.tower.Autostatus {}
-- !org.excelsi.tower.TPatsy
+    - !!org.excelsi.tower.Autostatus {}
+- !!org.excelsi.tower.TPatsy
   common: human
   profession: Farmer
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 80
   quickness: 30
   agility: 40
@@ -313,25 +313,25 @@
   empathy: 50
   maxHp: 30
   color: white
-  model: @
+  model: '@'
   pack: 
-    - !org.excelsi.tower.FoodRation
+    - !!org.excelsi.tower.FoodRation
       count: 3
-    - !org.excelsi.tower.Pitchfork {}
-    - !org.excelsi.tower.Hoe {}
-    - !org.excelsi.tower.Pick_Axe {}
-    - !org.excelsi.tower.Apple
+    - !!org.excelsi.tower.Pitchfork {}
+    - !!org.excelsi.tower.Hoe {}
+    - !!org.excelsi.tower.Pick_Axe {}
+    - !!org.excelsi.tower.Apple
       count: 3
-    - !org.excelsi.tower.Orange
+    - !!org.excelsi.tower.Orange
       count: 3
-    - !org.excelsi.tower.Bean
+    - !!org.excelsi.tower.Bean
       count: 9
-    - !org.excelsi.tower.Blackberry
+    - !!org.excelsi.tower.Blackberry
       count: 9
   wearing: 
-    - !org.excelsi.tower.PlaidShirt {}
-    - !org.excelsi.tower.StrawHat {}
-  wielded: !org.excelsi.tower.Scythe {}
+    - !!org.excelsi.tower.PlaidShirt {}
+    - !!org.excelsi.tower.StrawHat {}
+  wielded: !!org.excelsi.tower.Scythe {}
   selectionText: There are some instruments of farming here.
   skills: 
     light leather: 30
@@ -342,10 +342,10 @@
     unarmored: 50
     cloth: 50
     traps: 10
-- !org.excelsi.tower.TPatsy
+- !!org.excelsi.tower.TPatsy
   common: human
   profession: Creator
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   elements:
     - fire
   strength: 100
@@ -354,16 +354,16 @@
   constitution: 100
   maxHp: 800
   color: white
-  model: @
+  model: '@'
   debug: true
   selectionText: Something tells me this thing is only half-baked.
-  wielded: !org.excelsi.tower.LanceOfLonginus {}
+  wielded: !!org.excelsi.tower.LanceOfLonginus {}
   wearing: 
-    - !org.excelsi.tower.Robe {}
-    - !org.excelsi.tower.CrownOfThorns {}
-    - !org.excelsi.tower.StyrofoamBoots {}
+    - !!org.excelsi.tower.Robe {}
+    - !!org.excelsi.tower.CrownOfThorns {}
+    - !!org.excelsi.tower.StyrofoamBoots {}
   pack:
-    - !org.excelsi.tower.Cake
+    - !!org.excelsi.tower.Cake
       count: 3
   skills: 
     detect: 100
@@ -385,15 +385,15 @@
     shields: 100
     pole-arms: 100
   afflictions: 
-    - !org.excelsi.tower.Autosearch {}
-    - !org.excelsi.tower.Autotrap {}
+    - !!org.excelsi.tower.Autosearch {}
+    - !!org.excelsi.tower.Autotrap {}
   talents:
-    - !org.excelsi.tower.Autostatus {}
-- !org.excelsi.tower.TNPC
+    - !!org.excelsi.tower.Autostatus {}
+- !!org.excelsi.tower.TNPC
   common: leech
   gender: neuter
   model: l
-  form: !org.excelsi.tower.AquaticAlien
+  form: !!org.excelsi.tower.AquaticAlien
     power: 1
   size: small
   strength: 10
@@ -407,15 +407,15 @@
   aquatic: true
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: bat
   gender: neuter
-  form: !org.excelsi.tower.SmallFurryMammal {}
+  form: !!org.excelsi.tower.SmallFurryMammal {}
   size: small
   strength: 5
   quickness: 50
@@ -430,14 +430,14 @@
   minLevel: 2
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: cave bat
   gender: neuter
-  form: !org.excelsi.tower.SmallFurryMammal {}
+  form: !!org.excelsi.tower.SmallFurryMammal {}
   size: small
   strength: 25
   quickness: 80
@@ -452,15 +452,15 @@
   minLevel: 10
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: giant ant
   gender: neuter
-  form: !org.excelsi.tower.Insectoid
-    naturalWeapon: !org.excelsi.tower.Pincer
+  form: !!org.excelsi.tower.Insectoid
+    naturalWeapon: !!org.excelsi.tower.Pincer
       power: 9
   strength: 80
   quickness: 45
@@ -473,15 +473,15 @@
   minLevel: 6
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: quivering blob
   gender: neuter
-  form: !org.excelsi.tower.Slime {}
+  form: !!org.excelsi.tower.Slime {}
   strength: 50
   quickness: 5
   agility: 20
@@ -495,16 +495,16 @@
   rarity: 5
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: gelatinous blob
   gender: neuter
-  form: !org.excelsi.tower.Slime
-    naturalWeapon: !org.excelsi.tower.Touch
+  form: !!org.excelsi.tower.Slime
+    naturalWeapon: !!org.excelsi.tower.Touch
       power: 10
   strength: 10
   quickness: 1
@@ -518,15 +518,15 @@
   rarity: 50
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: acid blob
   gender: neuter
-  form: !org.excelsi.tower.Slime {}
+  form: !!org.excelsi.tower.Slime {}
   strength: 50
   quickness: 5
   agility: 20
@@ -539,15 +539,15 @@
   rarity: 20
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: xuun
   gender: neuter
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   size: small
   strength: 30
   quickness: 60
@@ -560,14 +560,14 @@
   sociality: pack
   ai: 
     daemons: 
-      - !org.excelsi.tower.AlertDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.tower.AlertDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: urki
   gender: neuter
-  form: !org.excelsi.tower.SmallFurryMammal {}
+  form: !!org.excelsi.tower.SmallFurryMammal {}
   size: small
   strength: 50
   quickness: 70
@@ -580,12 +580,12 @@
   sociality: pack
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+- !!org.excelsi.tower.TNPC
   common: morl
   gender: neuter
-  form: !org.excelsi.tower.Morl {}
+  form: !!org.excelsi.tower.Morl {}
   size: small
   strength: 50
   quickness: 5
@@ -597,14 +597,14 @@
   rarity: 20
   ai: 
     daemons: 
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: sligguth
   gender: neuter
-  form: !org.excelsi.tower.Morl {}
+  form: !!org.excelsi.tower.Morl {}
   strength: 50
   quickness: 40
   agility: 70
@@ -615,13 +615,13 @@
   rarity: 20
   ai:
     daemons:
-      - !org.excelsi.tower.SligguthDaemon {}
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.tower.SligguthDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+- !!org.excelsi.tower.TNPC
   common: mutant amoeba
   gender: neuter
-  form: !org.excelsi.tower.Slime {}
+  form: !!org.excelsi.tower.Slime {}
   strength: 50
   quickness: 5
   agility: 20
@@ -631,17 +631,17 @@
   maxHp: 50
   rarity: 1
   afflictions:
-    - !org.excelsi.tower.Propagate {}
+    - !!org.excelsi.tower.Propagate {}
   ai:
     daemons:
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: black reaver
   gender: neuter
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   size: large
   temperament: hostile
   strength: 200
@@ -649,30 +649,30 @@
   agility: 100
   constitution: 100
   maxHp: 999
-  model: @
+  model: '@'
   color: black
   maxLevel: 0
   minLevel: 0
   rarity: 1
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-  wielded: !org.excelsi.tower.Battle_Axe
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+  wielded: !!org.excelsi.tower.Battle_Axe
     fragments:
-      - !org.excelsi.tower.Eog {}
+      - !!org.excelsi.tower.Eog {}
   wearing:
-    - !org.excelsi.tower.BlackBreastplate {}
-    - !org.excelsi.tower.EbonyCloak {}
+    - !!org.excelsi.tower.BlackBreastplate {}
+    - !!org.excelsi.tower.EbonyCloak {}
   skills:
     two-handed edged: 100
     plate: 100
     unarmored: 100
     unarmed: 100
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: tiger
-  form: !org.excelsi.tower.Feline {}
+  form: !!org.excelsi.tower.Feline {}
   strength: 60
   quickness: 55
   agility: 50
@@ -685,19 +685,19 @@
   rarity: 70
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmored: 80
     unarmed: 80
     detect: 90
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: dragon
-  form: !org.excelsi.tower.Dragonkin
-    naturalWeapon: !org.excelsi.tower.Claw
+  form: !!org.excelsi.tower.Dragonkin
+    naturalWeapon: !!org.excelsi.tower.Claw
       power: 10
   size: huge
   strength: 90
@@ -712,23 +712,23 @@
   rarity: 20
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.tower.BreathDaemon
         type: fire
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   pack:
-    - !org.excelsi.tower.Dragonscale {}
+    - !!org.excelsi.tower.Dragonscale {}
   skills:
     unarmored: 80
     unarmed: 80
     detect: 90
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: wyvern
-  form: !org.excelsi.tower.Dragonkin
-    naturalWeapon: !org.excelsi.tower.Claw
+  form: !!org.excelsi.tower.Dragonkin
+    naturalWeapon: !!org.excelsi.tower.Claw
       power: 10
   size: medium
   airborn: true
@@ -744,23 +744,23 @@
   rarity: 80
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.tower.BreathDaemon
         type: lightning
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   pack:
-    - !org.excelsi.tower.Dragonscale {}
+    - !!org.excelsi.tower.Dragonscale {}
   skills:
     unarmored: 80
     unarmed: 80
     detect: 90
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: plasma drake
-  form: !org.excelsi.tower.Dragonkin
-    naturalWeapon: !org.excelsi.tower.Claw
+  form: !!org.excelsi.tower.Dragonkin
+    naturalWeapon: !!org.excelsi.tower.Claw
       power: 8
   size: medium
   airborn: true
@@ -776,22 +776,22 @@
   rarity: 80
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.tower.BreathDaemon
         type: plasma
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   pack:
-    - !org.excelsi.tower.Dragonscale {}
+    - !!org.excelsi.tower.Dragonscale {}
   skills:
     unarmored: 40
     unarmed: 40
     detect: 50
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: dreamtiger
-  form: !org.excelsi.tower.Feline {}
+  form: !!org.excelsi.tower.Feline {}
   strength: 60
   quickness: 85
   agility: 50
@@ -805,21 +805,21 @@
   loot: 3
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmored: 80
     unarmed: 80
     detect: 90
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: plasma blob
   gender: neuter
   elements:
     - plasma
-  form: !org.excelsi.tower.Slime {}
+  form: !!org.excelsi.tower.Slime {}
   strength: 90
   quickness: 5
   agility: 20
@@ -832,15 +832,15 @@
   rarity: 20
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: metroid
   gender: neuter
-  form: !org.excelsi.tower.Alien
+  form: !!org.excelsi.tower.Alien
     power: 10
   strength: 90
   quickness: 90
@@ -854,17 +854,17 @@
   airborn: true
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: nerve runner
   gender: neuter
   size: tiny
   sociality: pack
-  form: !org.excelsi.tower.Alien
+  form: !!org.excelsi.tower.Alien
     power: 3
   strength: 70
   quickness: 80
@@ -878,17 +878,17 @@
   rarity: 3
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+- !!org.excelsi.tower.TNPC
   common: troglodyte
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 90
   quickness: 30
   agility: 50
   constitution: 90
   maxHp: 80
-  model: @
+  model: '@'
   color: puke-green
   maxLevel: 69
   minLevel: 50
@@ -896,64 +896,64 @@
   rarity: 70
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 50
     unarmored: 50
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: seraphim
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   strength: 90
   quickness: 60
   agility: 50
   constitution: 50
   maxHp: 70
-  model: &
+  model: '&'
   color: white
   maxLevel: 100
   minLevel: 71
   loot: 0
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 50
     unarmored: 50
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: nephilim
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   size: large
   strength: 100
   quickness: 60
   agility: 90
   constitution: 50
   maxHp: 70
-  model: &
+  model: '&'
   color: dark-gray
   maxLevel: 100
   minLevel: 71
   loot: 0
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 50
     unarmored: 50
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: Adam
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   size: huge
   unique: true
   strength: 100
@@ -961,25 +961,25 @@
   agility: 90
   constitution: 50
   maxHp: 200
-  model: &
+  model: '&'
   color: dark-gray
   maxLevel: 1000
   minLevel: 78
   loot: 0
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 50
     unarmored: 50
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: storm demon
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   elements:
     - light
     - fire
@@ -990,29 +990,29 @@
   agility: 40
   constitution: 40
   maxHp: 30
-  model: &
+  model: '&'
   color: phthalo blue
   maxLevel: 902
   minLevel: 902
   airborn: true
   ai: 
     daemons: 
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.tower.BreathDaemon
         type: lightning
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-  wielded: !org.excelsi.tower.Broadsword
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+  wielded: !!org.excelsi.tower.Broadsword
     fragments:
-      - !org.excelsi.tower.Lightning
+      - !!org.excelsi.tower.Lightning
         uses: 9999
   skills:
     unarmed: 40
     unarmored: 50
     one-handed edged: 70
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: negation
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   size: tiny
   strength: 80
   quickness: 80
@@ -1026,17 +1026,17 @@
   airborn: true
   ai: 
     daemons: 
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.tower.BreathDaemon
         type: cold
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
   skills:
     unarmed: 80
     unarmored: 80
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: blight
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   size: large
   elements:
     - fire
@@ -1046,24 +1046,24 @@
   agility: 90
   constitution: 90
   maxHp: 90
-  model: &
+  model: '&'
   color: brown
   maxLevel: 9999
   minLevel: 904
   airborn: true
   ai: 
     daemons: 
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.tower.BreathDaemon
         type: acid
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
   skills:
     unarmed: 90
     unarmored: 90
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: monstrosity
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   size: huge
   elements:
     - light
@@ -1075,24 +1075,24 @@
   agility: 100
   constitution: 100
   maxHp: 100
-  model: &
+  model: '&'
   color: red
   maxLevel: 9999
   minLevel: 904
   airborn: true
   ai: 
     daemons: 
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.tower.BreathDaemon
         type: acid
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
   skills:
     unarmed: 100
     unarmored: 100
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: illusion
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   size: huge
   elements:
     - light
@@ -1104,24 +1104,24 @@
   agility: 150
   constitution: 150
   maxHp: 150
-  model: @
+  model: '@'
   color: white
   maxLevel: 9999
   minLevel: 910
   airborn: true
   ai: 
     daemons: 
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.tower.BreathDaemon
         type: fire
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
   skills:
     unarmed: 150
     unarmored: 150
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: panic
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   size: huge
   elements:
     - light
@@ -1130,24 +1130,24 @@
   agility: 350
   constitution: 350
   maxHp: 350
-  model: @
+  model: '@'
   color: white
   maxLevel: 9999
   minLevel: 915
   airborn: true
   ai: 
     daemons: 
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.tower.BreathDaemon
         type: cold
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
   skills:
     unarmed: 350
     unarmored: 350
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: psychosis
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   size: large
   elements:
     - light
@@ -1166,17 +1166,17 @@
   airborn: true
   ai: 
     daemons: 
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.tower.BreathDaemon
         type: lightning
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
   skills:
     unarmed: 900
     unarmored: 900
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: glitch
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   size: large
   elements:
     - light
@@ -1195,43 +1195,43 @@
   airborn: true
   rarity: 25
   afflictions:
-    - !org.excelsi.tower.Unstable {}
+    - !!org.excelsi.tower.Unstable {}
   ai: 
     daemons: 
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.tower.BreathDaemon
         type: lightning
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
   skills:
     unarmed: 90
     unarmored: 90
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: acid demon
   gender: neuter
-  form: !org.excelsi.tower.Demonoid
-    naturalWeapon: !org.excelsi.tower.Fist
+  form: !!org.excelsi.tower.Demonoid
+    naturalWeapon: !!org.excelsi.tower.Fist
       fragments:
-        - !org.excelsi.tower.Acid {}
+        - !!org.excelsi.tower.Acid {}
   strength: 100
   quickness: 60
   agility: 80
   constitution: 80
   maxHp: 80
-  model: &
+  model: '&'
   color: yellow
   maxLevel: 903
   minLevel: 903
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
   skills:
     unarmed: 70
     unarmored: 70
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: fire demon
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   elements:
     - fire
   strength: 40
@@ -1239,21 +1239,21 @@
   agility: 40
   constitution: 40
   maxHp: 20
-  model: &
+  model: '&'
   color: bright-red
   maxLevel: 0
   minLevel: 0
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
   skills:
     unarmed: 40
     unarmored: 50
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: balrog
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   size: huge
   elements:
     - fire
@@ -1263,18 +1263,18 @@
   constitution: 200
   intuition: 100
   maxHp: 400
-  model: &
+  model: '&'
   color: red
   maxLevel: 0
   minLevel: 0
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-  wielded: !org.excelsi.tower.BullWhip
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+  wielded: !!org.excelsi.tower.BullWhip
     fragments:
-      - !org.excelsi.tower.Fire
+      - !!org.excelsi.tower.Fire
         uses: 99999
   rarity: 5
   skills:
@@ -1282,10 +1282,10 @@
     unarmored: 100
     two-handed edged: 100
     one-handed edged: 100
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: ordainer
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   size: huge
   elements:
     - fire
@@ -1295,31 +1295,31 @@
   constitution: 100
   intuition: 100
   maxHp: 200
-  model: &
+  model: '&'
   color: dark-gray
   maxLevel: 900
   minLevel: 900
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.tower.OrdainerDaemon {}
-  wielded: !org.excelsi.tower.Claymore
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.tower.OrdainerDaemon {}
+  wielded: !!org.excelsi.tower.Claymore
     fragments:
-      - !org.excelsi.tower.Fire
+      - !!org.excelsi.tower.Fire
         uses: 99999
-      - !org.excelsi.tower.Eog {}
+      - !!org.excelsi.tower.Eog {}
   rarity: 30
   skills:
     unarmed: 100
     unarmored: 100
     two-handed edged: 100
     one-handed edged: 100
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: gogonaur
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   size: large
   elements:
     - fire
@@ -1328,18 +1328,18 @@
   agility: 80
   constitution: 80
   maxHp: 80
-  model: &
+  model: '&'
   color: bright-red
   maxLevel: 900
   minLevel: 900
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-  wielded: !org.excelsi.tower.Scimitar
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+  wielded: !!org.excelsi.tower.Scimitar
     fragments:
-      - !org.excelsi.tower.Fire
+      - !!org.excelsi.tower.Fire
         uses: 999
   skills:
     unarmed: 80
@@ -1347,10 +1347,10 @@
     two-handed edged: 80
     one-handed edged: 80
   rarity: 50
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: fire elemental
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   elements:
     - fire
   strength: 60
@@ -1364,15 +1364,15 @@
   minLevel: 900
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
   skills:
     unarmed: 60
     unarmored: 60
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: fire demon
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   elements:
     - fire
   strength: 40
@@ -1380,67 +1380,67 @@
   agility: 40
   constitution: 40
   maxHp: 20
-  model: &
+  model: '&'
   color: bright-red
   maxLevel: 900
   minLevel: 900
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
   skills:
     unarmed: 40
     unarmored: 40
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: water demon
   gender: neuter
-  form: !org.excelsi.tower.WaterDemonoid {}
+  form: !!org.excelsi.tower.WaterDemonoid {}
   strength: 40
   quickness: 40
   agility: 40
   constitution: 40
   maxHp: 20
-  model: &
+  model: '&'
   color: light-blue
   maxLevel: 76
   minLevel: 11
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
   skills:
     unarmed: 40
     unarmored: 40
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: woodwose
   gender: neuter
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 50
   quickness: 30
   agility: 50
   constitution: 100
   maxHp: 40
-  model: @
+  model: '@'
   color: brown
   maxLevel: 76
   minLevel: 30
   rarity: 30
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 60
     unarmored: 60
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: floating eye
   gender: neuter
-  form: !org.excelsi.tower.Eye {}
+  form: !!org.excelsi.tower.Eye {}
   strength: 20
   quickness: 5
   agility: 40
@@ -1454,17 +1454,17 @@
   rarity: 10
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     detect: 100
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: murg
   gender: neuter
-  form: !org.excelsi.tower.Insectoid {}
+  form: !!org.excelsi.tower.Insectoid {}
   strength: 30
   quickness: 50
   agility: 50
@@ -1475,20 +1475,20 @@
   rarity: 25
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.tower.BreathDaemon
         type: acid
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 45
     unarmored: 45
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: newt
   gender: neuter
-  form: !org.excelsi.tower.Reptile {}
+  form: !!org.excelsi.tower.Reptile {}
   size: small
   strength: 5
   quickness: 30
@@ -1502,18 +1502,18 @@
   rarity: 25
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 20
     unarmored: 20
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: alligator
   gender: neuter
-  form: !org.excelsi.tower.Reptile {}
+  form: !!org.excelsi.tower.Reptile {}
   size: large
   strength: 80
   quickness: 30
@@ -1527,18 +1527,18 @@
   rarity: 50
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 80
     unarmored: 80
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: animatronic snake
   gender: neuter
-  form: !org.excelsi.tower.Mech
-    naturalWeapon: !org.excelsi.tower.Bite {}
+  form: !!org.excelsi.tower.Mech
+    naturalWeapon: !!org.excelsi.tower.Bite {}
   size: small
   strength: 8
   quickness: 40
@@ -1552,23 +1552,23 @@
   slithering: true
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   pack:
-    - !org.excelsi.tower.Wire {}
-    - !org.excelsi.tower.Processor {}
-    - !org.excelsi.tower.ReptilianCorpse
+    - !!org.excelsi.tower.Wire {}
+    - !!org.excelsi.tower.Processor {}
+    - !!org.excelsi.tower.ReptilianCorpse
       name: snake corpse
   skills:
     unarmed: 20
     unarmored: 20
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: snake
   gender: neuter
-  form: !org.excelsi.tower.Reptile {}
+  form: !!org.excelsi.tower.Reptile {}
   size: small
   strength: 8
   quickness: 40
@@ -1582,23 +1582,23 @@
   slithering: true
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 20
     unarmored: 20
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: sea snake
   gender: neuter
   aquatic: true
-  form: !org.excelsi.tower.Reptile
-    naturalWeapon: !org.excelsi.tower.Bite
+  form: !!org.excelsi.tower.Reptile
+    naturalWeapon: !!org.excelsi.tower.Bite
       power: 10
       fragments:
-        - !org.excelsi.tower.Poisonous
+        - !!org.excelsi.tower.Poisonous
           type: circulatory
           source: sea snake venom
   size: medium
@@ -1614,18 +1614,18 @@
   slithering: true
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 20
     unarmored: 20
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: anaconda
   gender: neuter
-  form: !org.excelsi.tower.Reptile {}
+  form: !!org.excelsi.tower.Reptile {}
   strength: 35
   quickness: 80
   agility: 80
@@ -1639,23 +1639,23 @@
   rarity: 7
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 20
     unarmored: 20
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: pit viper
   gender: neuter
   size: small
-  form: !org.excelsi.tower.Reptile
-    naturalWeapon: !org.excelsi.tower.Bite
+  form: !!org.excelsi.tower.Reptile
+    naturalWeapon: !!org.excelsi.tower.Bite
       power: 10
       fragments:
-        - !org.excelsi.tower.Poisonous
+        - !!org.excelsi.tower.Poisonous
           type: nervous
           source: pit viper venom
   strength: 35
@@ -1672,21 +1672,21 @@
   rarity: 5
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 20
     unarmored: 20
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: vampire bat
   gender: neuter
-  form: !org.excelsi.tower.SmallFurryMammal
-    naturalWeapon: !org.excelsi.tower.Bite
+  form: !!org.excelsi.tower.SmallFurryMammal
+    naturalWeapon: !!org.excelsi.tower.Bite
       fragments:
-        - !org.excelsi.tower.LycanthropyInfliction
+        - !!org.excelsi.tower.LycanthropyInfliction
           beast: vampire bat
   size: small
   strength: 25
@@ -1702,22 +1702,22 @@
   airborn: true
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 20
     unarmored: 20
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: elven archer
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 40
   quickness: 50
   agility: 40
   constitution: 50
   maxHp: 14
-  model: @
+  model: '@'
   color: green
   nightvision: 8
   maxLevel: 20
@@ -1727,33 +1727,33 @@
     unarmed: 30
     cloth: 30
     heavy leather: 30
-  wielded: !org.excelsi.tower.ShortBow {}
+  wielded: !!org.excelsi.tower.ShortBow {}
   wearing:
-    - !org.excelsi.tower.LeatherBreastplate {}
+    - !!org.excelsi.tower.LeatherBreastplate {}
   pack:
-    - !org.excelsi.tower.Dagger {}
-    - !org.excelsi.tower.LembasWafer {}
-    - !org.excelsi.tower.Arrow
+    - !!org.excelsi.tower.Dagger {}
+    - !!org.excelsi.tower.LembasWafer {}
+    - !!org.excelsi.tower.Arrow
       count: 15
   ai: 
     daemons: 
-      - !org.excelsi.tower.MAttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.MissileDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.tower.MAttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.MissileDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+- !!org.excelsi.tower.TNPC
   common: elven warrior
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 40
   quickness: 50
   agility: 40
   constitution: 50
   maxHp: 14
-  model: @
+  model: '@'
   color: green
   nightvision: 8
   maxLevel: 10
@@ -1764,24 +1764,24 @@
     cloth: 30
     heavy leather: 30
     chain: 20
-  wielded: !org.excelsi.tower.Broadsword {}
+  wielded: !!org.excelsi.tower.Broadsword {}
   wearing:
-    - !org.excelsi.tower.LeatherBreastplate {}
+    - !!org.excelsi.tower.LeatherBreastplate {}
   pack:
-    - !org.excelsi.tower.LembasWafer {}
+    - !!org.excelsi.tower.LembasWafer {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+- !!org.excelsi.tower.TNPC
   common: uruk-hai
   gender: male
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 70
   quickness: 35
   agility: 50
@@ -1794,22 +1794,22 @@
   skills: 
     one-handed edged: 70
     chain: 40
-  wielded: !org.excelsi.tower.Scimitar {}
+  wielded: !!org.excelsi.tower.Scimitar {}
   wearing:
-    - !org.excelsi.tower.RingMail {}
+    - !!org.excelsi.tower.RingMail {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+- !!org.excelsi.tower.TNPC
   common: orcish peon
   gender: male
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 40
   quickness: 20
   agility: 50
@@ -1821,21 +1821,21 @@
   minLevel: 5
   skills: 
     one-handed edged: 50
-  wielded: !org.excelsi.tower.ShortSword {}
+  wielded: !!org.excelsi.tower.ShortSword {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+- !!org.excelsi.tower.TNPC
   common: orcish warrior
   gender: male
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 40
   quickness: 20
   agility: 50
@@ -1849,23 +1849,23 @@
     one-handed edged: 50
     shields: 50
     chain: 50
-  wielded: !org.excelsi.tower.ShortSword {}
+  wielded: !!org.excelsi.tower.ShortSword {}
   wearing:
-    - !org.excelsi.tower.Shield {}
-    - !org.excelsi.tower.RingMail {}
+    - !!org.excelsi.tower.Shield {}
+    - !!org.excelsi.tower.RingMail {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+- !!org.excelsi.tower.TNPC
   common: orcish warrior
   gender: male
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 40
   quickness: 20
   agility: 50
@@ -1880,24 +1880,24 @@
     chain: 30
     plate: 50
     shields: 50
-  wielded: !org.excelsi.tower.Scimitar {}
+  wielded: !!org.excelsi.tower.Scimitar {}
   wearing:
-    - !org.excelsi.tower.SpikedShield {}
-    - !org.excelsi.tower.RingMail {}
+    - !!org.excelsi.tower.SpikedShield {}
+    - !!org.excelsi.tower.RingMail {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+- !!org.excelsi.tower.TNPC
   common: imp
   gender: neuter
-  form: !org.excelsi.tower.Demonoid {}
+  form: !!org.excelsi.tower.Demonoid {}
   size: small
   strength: 20
   quickness: 50
@@ -1914,14 +1914,14 @@
     unarmored: 30
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+- !!org.excelsi.tower.TNPC
   common: goblin
   gender: male
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 20
   quickness: 30
   agility: 50
@@ -1933,23 +1933,23 @@
   minLevel: 1
   skills: 
     one-handed edged: 30
-  wielded: !org.excelsi.tower.Dagger
+  wielded: !!org.excelsi.tower.Dagger
     fragments:
-      - !org.excelsi.tower.Crude {}
+      - !!org.excelsi.tower.Crude {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+- !!org.excelsi.tower.TNPC
   common: goblin
   gender: male
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 20
   quickness: 30
   agility: 50
@@ -1962,23 +1962,23 @@
   skills: 
     one-handed edged: 30
     thrown: 20
-  wielded: !org.excelsi.tower.ShortSword {}
+  wielded: !!org.excelsi.tower.ShortSword {}
   pack:
-    - !org.excelsi.tower.SmallStone {}
+    - !!org.excelsi.tower.SmallStone {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.MissileDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.MissileDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+- !!org.excelsi.tower.TNPC
   common: goblin
   gender: male
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 20
   quickness: 30
   agility: 50
@@ -1990,20 +1990,20 @@
   minLevel: 1
   skills: 
     one-handed edged: 30
-  wielded: !org.excelsi.tower.ShortSword {}
+  wielded: !!org.excelsi.tower.ShortSword {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+- !!org.excelsi.tower.TNPC
   common: kobold
   gender: male
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 30
   quickness: 25
   agility: 40
@@ -2015,18 +2015,18 @@
   minLevel: 1
   skills: 
     one-handed edged: 30
-  wielded: !org.excelsi.tower.ShortSword {}
+  wielded: !!org.excelsi.tower.ShortSword {}
   rarity: 60
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+- !!org.excelsi.tower.TNPC
   common: gridbug
   gender: neuter
-  form: !org.excelsi.tower.Mech
-    naturalWeapon: !org.excelsi.tower.Zapper {}
+  form: !!org.excelsi.tower.Mech
+    naturalWeapon: !!org.excelsi.tower.Zapper {}
   strength: 20
   quickness: 40
   agility: 50
@@ -2040,23 +2040,23 @@
     unarmed: 30
   sociality: pack
   pack:
-    - !org.excelsi.tower.ScrapMetal
+    - !!org.excelsi.tower.ScrapMetal
       count: 2
-    - !org.excelsi.tower.Actuator
+    - !!org.excelsi.tower.Actuator
       count: 4
-    - !org.excelsi.tower.Wire
+    - !!org.excelsi.tower.Wire
       count: 1
-    - !org.excelsi.tower.Sensor {}
-    - !org.excelsi.tower.Processor {}
+    - !!org.excelsi.tower.Sensor {}
+    - !!org.excelsi.tower.Processor {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+- !!org.excelsi.tower.TNPC
   common: animatronic rat
   gender: neuter
-  form: !org.excelsi.tower.Mech
-    naturalWeapon: !org.excelsi.tower.Bite {}
+  form: !!org.excelsi.tower.Mech
+    naturalWeapon: !!org.excelsi.tower.Bite {}
   size: small
   strength: 20
   quickness: 30
@@ -2072,22 +2072,22 @@
   sociality: pack
   temperament: hungry
   pack:
-    - !org.excelsi.tower.Wire
+    - !!org.excelsi.tower.Wire
       count: 2
-    - !org.excelsi.tower.Processor {}
-    - !org.excelsi.tower.RodentCorpse
+    - !!org.excelsi.tower.Processor {}
+    - !!org.excelsi.tower.RodentCorpse
       name: rat corpse
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: rat
   gender: neuter
-  form: !org.excelsi.tower.Rodent {}
+  form: !!org.excelsi.tower.Rodent {}
   size: small
   strength: 20
   quickness: 30
@@ -2104,15 +2104,15 @@
   temperament: hungry
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: sewer rat
   gender: neuter
-  form: !org.excelsi.tower.Rodent {}
+  form: !!org.excelsi.tower.Rodent {}
   size: small
   strength: 30
   quickness: 30
@@ -2129,15 +2129,15 @@
   temperament: hungry
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: giant rat
   gender: neuter
-  form: !org.excelsi.tower.Rodent {}
+  form: !!org.excelsi.tower.Rodent {}
   size: large
   strength: 40
   quickness: 40
@@ -2154,15 +2154,15 @@
   temperament: hungry
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.FNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.FNPC
   common: kitten
   statGainRate: 10
-  form: !org.excelsi.tower.Feline {}
+  form: !!org.excelsi.tower.Feline {}
   size: small
   strength: 20
   quickness: 40
@@ -2180,19 +2180,19 @@
   temperament: friendly
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.tower.WanderSenseDaemon {}
-      - !org.excelsi.tower.FollowSenseDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.YarnDaemon {}
-      - !org.excelsi.tower.ComplainDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-      - !org.excelsi.tower.DropDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.tower.WanderSenseDaemon {}
+      - !!org.excelsi.tower.FollowSenseDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.YarnDaemon {}
+      - !!org.excelsi.tower.ComplainDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+      - !!org.excelsi.tower.DropDaemon {}
+- !!org.excelsi.tower.TNPC
   common: anthropomorphic cat
-  form: !org.excelsi.tower.Feline {}
+  form: !!org.excelsi.tower.Feline {}
   size: medium
   gender: male
   strength: 40
@@ -2210,22 +2210,22 @@
   temperament: hungry
   rarity: 1
   pack:
-    - !org.excelsi.tower.BucketOfPaint {}
+    - !!org.excelsi.tower.BucketOfPaint {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.YarnDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-      - !org.excelsi.tower.DropDaemon {}
-- !org.excelsi.tower.FNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.YarnDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+      - !!org.excelsi.tower.DropDaemon {}
+- !!org.excelsi.tower.FNPC
   common: little dog
   statGainRate: 10
-  form: !org.excelsi.tower.Canid {}
+  form: !!org.excelsi.tower.Canid {}
   size: small
   strength: 20
   quickness: 30
@@ -2243,20 +2243,20 @@
   temperament: friendly
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.tower.WanderSenseDaemon {}
-      - !org.excelsi.tower.FollowSenseDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.EatDaemon {}
-      - !org.excelsi.tower.ComplainDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-      - !org.excelsi.tower.DropDaemon {}
-- !org.excelsi.tower.FNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.tower.WanderSenseDaemon {}
+      - !!org.excelsi.tower.FollowSenseDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.EatDaemon {}
+      - !!org.excelsi.tower.ComplainDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+      - !!org.excelsi.tower.DropDaemon {}
+- !!org.excelsi.tower.FNPC
   statGainRate: 50
   common: guinea pig
-  form: !org.excelsi.tower.Rodent {}
+  form: !!org.excelsi.tower.Rodent {}
   size: small
   strength: 10
   quickness: 30
@@ -2274,26 +2274,26 @@
     unarmored: 50
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.tower.WanderSenseDaemon {}
-      - !org.excelsi.tower.FollowSenseDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.EatDaemon {}
-      - !org.excelsi.tower.ComplainDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-      - !org.excelsi.tower.DropDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.tower.WanderSenseDaemon {}
+      - !!org.excelsi.tower.FollowSenseDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.EatDaemon {}
+      - !!org.excelsi.tower.ComplainDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+      - !!org.excelsi.tower.DropDaemon {}
+- !!org.excelsi.tower.TNPC
   common: guard
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 70
   quickness: 60
   agility: 50
   constitution: 70
   reasoning: 100
   maxHp: 30
-  model: @
+  model: '@'
   color: tan
   minLevel: -1
   maxLevel: -1
@@ -2303,33 +2303,33 @@
     chain: 70
     plate: 50
   wearing:
-    - !org.excelsi.tower.SteelBreastplate {}
-    - !org.excelsi.tower.SteelHelm {}
-    - !org.excelsi.tower.IronBoots {}
-  wielded: !org.excelsi.tower.Broadsword {}
+    - !!org.excelsi.tower.SteelBreastplate {}
+    - !!org.excelsi.tower.SteelHelm {}
+    - !!org.excelsi.tower.IronBoots {}
+  wielded: !!org.excelsi.tower.Broadsword {}
   pack:
-    - !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Potion
       fragments:
-        - !org.excelsi.tower.Healing {}
+        - !!org.excelsi.tower.Healing {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon
         rooms: false
         frequency: 10
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.ConfiscateDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.ConfiscateDaemon {}
+- !!org.excelsi.tower.TNPC
   common: wizard of Tlon
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 30
   quickness: 60
   agility: 40
   constitution: 40
   maxHp: 20
-  model: @
+  model: '@'
   color: gray
   minLevel: 40
   maxLevel: 49
@@ -2338,33 +2338,33 @@
     one-handed edged: 30
     cloth: 40
   wearing:
-    - !org.excelsi.tower.Robe {}
-  wielded: !org.excelsi.tower.Dagger {}
+    - !!org.excelsi.tower.Robe {}
+  wielded: !!org.excelsi.tower.Dagger {}
   pack:
-    - !org.excelsi.tower.WandOfCold {}
-    - !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.WandOfCold {}
+    - !!org.excelsi.tower.Potion
       fragments:
-        - !org.excelsi.tower.Healing {}
+        - !!org.excelsi.tower.Healing {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon
         factor: 2
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.MissileDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.MissileDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+- !!org.excelsi.tower.TNPC
   common: metaphysician of Tlon
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 30
   quickness: 60
   agility: 40
   constitution: 40
   maxHp: 30
-  model: @
+  model: '@'
   color: gray
   minLevel: 40
   maxLevel: 49
@@ -2373,33 +2373,33 @@
     one-handed edged: 30
     cloth: 40
   wearing:
-    - !org.excelsi.tower.Robe {}
-  wielded: !org.excelsi.tower.Dagger {}
+    - !!org.excelsi.tower.Robe {}
+  wielded: !!org.excelsi.tower.Dagger {}
   pack:
-    - !org.excelsi.tower.WandOfPolymorph {}
-    - !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.WandOfPolymorph {}
+    - !!org.excelsi.tower.Potion
       fragments:
-        - !org.excelsi.tower.Healing {}
+        - !!org.excelsi.tower.Healing {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon
         factor: 2
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.MissileDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.MissileDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+- !!org.excelsi.tower.TNPC
   common: knight of Tlon
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 70
   quickness: 60
   agility: 50
   constitution: 70
   maxHp: 30
-  model: @
+  model: '@'
   color: black
   minLevel: 40
   maxLevel: 49
@@ -2409,30 +2409,30 @@
     chain: 70
     plate: 50
   wearing:
-    - !org.excelsi.tower.SteelBreastplate {}
-    - !org.excelsi.tower.SteelHelm {}
-    - !org.excelsi.tower.IronBoots {}
-  wielded: !org.excelsi.tower.Broadsword {}
+    - !!org.excelsi.tower.SteelBreastplate {}
+    - !!org.excelsi.tower.SteelHelm {}
+    - !!org.excelsi.tower.IronBoots {}
+  wielded: !!org.excelsi.tower.Broadsword {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+- !!org.excelsi.tower.TNPC
   common: knight of Cydonia
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   gender: male
   strength: 70
   quickness: 60
   agility: 50
   constitution: 70
   maxHp: 30
-  model: @
+  model: '@'
   color: brown
   minLevel: 40
   maxLevel: 49
@@ -2442,27 +2442,27 @@
     light leather: 70
   rarity: 5
   wearing:
-    - !org.excelsi.tower.LeatherJacket {}
-    - !org.excelsi.tower.TenGallonHat {}
-    - !org.excelsi.tower.CowboyBoots {}
-  wielded: !org.excelsi.tower.RayGun {}
+    - !!org.excelsi.tower.LeatherJacket {}
+    - !!org.excelsi.tower.TenGallonHat {}
+    - !!org.excelsi.tower.CowboyBoots {}
+  wielded: !!org.excelsi.tower.RayGun {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.tower.MissileDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.tower.MissileDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: Sheng Long
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   gender: male
   strength: 90
   quickness: 90
   agility: 90
   constitution: 90
   maxHp: 90
-  model: @
+  model: '@'
   color: white
   minLevel: 78
   maxLevel: 899
@@ -2472,32 +2472,32 @@
     unarmored: 100
   rarity: 1
   wearing:
-    - !org.excelsi.tower.Robe {}
-    - !org.excelsi.tower.SandalsOfHecate {}
+    - !!org.excelsi.tower.Robe {}
+    - !!org.excelsi.tower.SandalsOfHecate {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: Syndicate archer
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 50
   quickness: 60
   agility: 60
   constitution: 50
   maxHp: 25
-  model: @
+  model: '@'
   color: bright-blue
   minLevel: 22
   maxLevel: 25
   rarity: 70
   sociality: pack
   pack: 
-    - !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Pill
       fragments: 
-        - !org.excelsi.tower.Cyanide {}
+        - !!org.excelsi.tower.Cyanide {}
   skills: 
     one-handed edged: 50
     bows: 70
@@ -2505,42 +2505,42 @@
     heavy leather: 50
     unarmored: 20
   wearing:
-    - !org.excelsi.tower.LeatherBreastplate {}
-    - !org.excelsi.tower.CombatBoots {}
-  wielded: !org.excelsi.tower.Crossbow {}
+    - !!org.excelsi.tower.LeatherBreastplate {}
+    - !!org.excelsi.tower.CombatBoots {}
+  wielded: !!org.excelsi.tower.Crossbow {}
   pack:
-    - !org.excelsi.tower.Bolt
+    - !!org.excelsi.tower.Bolt
       count: 32
-    - !org.excelsi.tower.Dagger {}
+    - !!org.excelsi.tower.Dagger {}
   ai: 
     daemons: 
-      - !org.excelsi.tower.MAttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.MissileDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.tower.MAttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.MissileDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+- !!org.excelsi.tower.TNPC
   common: Federation archer
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 50
   quickness: 60
   agility: 60
   constitution: 50
   maxHp: 25
-  model: @
+  model: '@'
   color: bright-red
   minLevel: 20
   maxLevel: 25
   rarity: 70
   sociality: pack
   pack: 
-    - !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Pill
       fragments: 
-        - !org.excelsi.tower.Cyanide {}
+        - !!org.excelsi.tower.Cyanide {}
   skills: 
     one-handed edged: 50
     bows: 70
@@ -2548,78 +2548,78 @@
     heavy leather: 50
     unarmored: 20
   wearing:
-    - !org.excelsi.tower.LeatherBreastplate {}
-    - !org.excelsi.tower.CombatBoots {}
-  wielded: !org.excelsi.tower.Crossbow {}
+    - !!org.excelsi.tower.LeatherBreastplate {}
+    - !!org.excelsi.tower.CombatBoots {}
+  wielded: !!org.excelsi.tower.Crossbow {}
   pack:
-    - !org.excelsi.tower.Bolt
+    - !!org.excelsi.tower.Bolt
       count: 32
-    - !org.excelsi.tower.Dagger {}
+    - !!org.excelsi.tower.Dagger {}
   ai: 
     daemons: 
-      - !org.excelsi.tower.MAttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.MissileDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.tower.MAttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.MissileDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+- !!org.excelsi.tower.TNPC
   common: Federation soldier
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 70
   quickness: 60
   agility: 50
   constitution: 70
   maxHp: 30
-  model: @
+  model: '@'
   color: bright-red
   minLevel: 20
   maxLevel: 25
   sociality: pack
   pack: 
-    - !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Pill
       fragments: 
-        - !org.excelsi.tower.Cyanide {}
+        - !!org.excelsi.tower.Cyanide {}
   skills: 
     one-handed edged: 70
     cloth: 50
     heavy leather: 50
     unarmored: 20
   wearing:
-    - !org.excelsi.tower.RingMail {}
-    - !org.excelsi.tower.CombatBoots {}
-    - !org.excelsi.tower.SteelHelm {}
-  wielded: !org.excelsi.tower.Longsword {}
+    - !!org.excelsi.tower.RingMail {}
+    - !!org.excelsi.tower.CombatBoots {}
+    - !!org.excelsi.tower.SteelHelm {}
+  wielded: !!org.excelsi.tower.Longsword {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+- !!org.excelsi.tower.TNPC
   common: Federation infantry
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 70
   quickness: 60
   agility: 50
   constitution: 70
   maxHp: 30
-  model: @
+  model: '@'
   color: bright-red
   minLevel: 25
   maxLevel: 29
   sociality: pack
   pack: 
-    - !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Pill
       fragments: 
-        - !org.excelsi.tower.Cyanide {}
+        - !!org.excelsi.tower.Cyanide {}
   skills: 
     one-handed edged: 70
     cloth: 50
@@ -2627,38 +2627,38 @@
     guns: 70
     unarmored: 20
   wearing:
-    - !org.excelsi.tower.KevlarShirt {}
-    - !org.excelsi.tower.CombatBoots {}
-    - !org.excelsi.tower.CombatHelmet {}
-  wielded: !org.excelsi.tower.RayGun {}
+    - !!org.excelsi.tower.KevlarShirt {}
+    - !!org.excelsi.tower.CombatBoots {}
+    - !!org.excelsi.tower.CombatHelmet {}
+  wielded: !!org.excelsi.tower.RayGun {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.MissileDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.MissileDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+- !!org.excelsi.tower.TNPC
   common: Syndicate infantry
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 70
   quickness: 60
   agility: 50
   constitution: 70
   maxHp: 30
-  model: @
+  model: '@'
   color: bright-blue
   minLevel: 25
   maxLevel: 29
   sociality: pack
   pack: 
-    - !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Pill
       fragments: 
-        - !org.excelsi.tower.Cyanide {}
+        - !!org.excelsi.tower.Cyanide {}
   skills: 
     one-handed edged: 70
     cloth: 50
@@ -2666,24 +2666,24 @@
     guns: 70
     unarmored: 20
   wearing:
-    - !org.excelsi.tower.KevlarShirt {}
-    - !org.excelsi.tower.CombatBoots {}
-    - !org.excelsi.tower.CombatHelmet {}
-  wielded: !org.excelsi.tower.RayGun {}
+    - !!org.excelsi.tower.KevlarShirt {}
+    - !!org.excelsi.tower.CombatBoots {}
+    - !!org.excelsi.tower.CombatHelmet {}
+  wielded: !!org.excelsi.tower.RayGun {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.MissileDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.MissileDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+- !!org.excelsi.tower.TNPC
   common: penguin
-  form: !org.excelsi.tower.Avian {}
+  form: !!org.excelsi.tower.Avian {}
   gender: male
   size: small
   strength: 40
@@ -2697,31 +2697,31 @@
   maxLevel: 50
   rarity: 10
   pack: 
-    - !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Potion
       fragments: 
-        - !org.excelsi.tower.Whiskey {}
+        - !!org.excelsi.tower.Whiskey {}
   skills: 
     unarmed: 90
-  wielded: !org.excelsi.tower.BoxingGlove {}
+  wielded: !!org.excelsi.tower.BoxingGlove {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+- !!org.excelsi.tower.TNPC
   common: intangir
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   size: large
   strength: 100
   quickness: 80
   agility: 100
   constitution: 70
   maxHp: 90
-  model: @
+  model: '@'
   color: transparent
   minLevel: 78
   maxLevel: 899
@@ -2730,25 +2730,25 @@
     two-handed edged: 100
     plate: 100
   loot: 1
-  wielded: !org.excelsi.tower.Claymore {}
+  wielded: !!org.excelsi.tower.Claymore {}
   wearing:
-    - !org.excelsi.tower.SteelHelm {}
-    - !org.excelsi.tower.SteelBreastplate {}
+    - !!org.excelsi.tower.SteelHelm {}
+    - !!org.excelsi.tower.SteelBreastplate {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+- !!org.excelsi.tower.TNPC
   common: ghost
-  form: !org.excelsi.tower.Humanoid
-    naturalWeapon: !org.excelsi.tower.Absorb {}
+  form: !!org.excelsi.tower.Humanoid
+    naturalWeapon: !!org.excelsi.tower.Absorb {}
   size: huge
   strength: 100
   quickness: 90
   agility: 100
   constitution: 100
   maxHp: 200
-  model: @
+  model: '@'
   color: transparent
   minLevel: 78
   maxLevel: 899
@@ -2759,17 +2759,17 @@
   loot: 1
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+- !!org.excelsi.tower.TNPC
   common: invisigoth
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 70
   quickness: 50
   agility: 50
   constitution: 70
   maxHp: 50
-  model: @
+  model: '@'
   color: transparent
   minLevel: 20
   maxLevel: 29
@@ -2779,24 +2779,24 @@
     plate: 50
   sociality: pack
   loot: 2
-  wielded: !org.excelsi.tower.Claymore {}
+  wielded: !!org.excelsi.tower.Claymore {}
   wearing:
-    - !org.excelsi.tower.SteelBreastplate {}
+    - !!org.excelsi.tower.SteelBreastplate {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+- !!org.excelsi.tower.TNPC
   common: Number 51
   gender: male
-  form: !org.excelsi.tower.Humanoid
-    corpse: !org.excelsi.tower.No51Corpse {}
+  form: !!org.excelsi.tower.Humanoid
+    corpse: !!org.excelsi.tower.No51Corpse {}
   strength: 90
   quickness: 60
   agility: 90
   constitution: 90
   maxHp: 80
-  model: @
+  model: '@'
   color: yellow
   skills: 
     unarmed: 100
@@ -2804,14 +2804,14 @@
   unique: true
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+- !!org.excelsi.tower.TNPC
   common: Blue Cadet 3
   size: small
   gender: male
-  form: !org.excelsi.tower.Humanoid
-    corpse: !org.excelsi.tower.VariableCorpse
+  form: !!org.excelsi.tower.Humanoid
+    corpse: !!org.excelsi.tower.VariableCorpse
       color: blue
       findRate: 100
       size: 2
@@ -2820,24 +2820,24 @@
   agility: 80
   constitution: 80
   maxHp: 70
-  model: @
+  model: '@'
   color: blue
   pack:
-    - !org.excelsi.tower.WandOfCatastrophe {}
+    - !!org.excelsi.tower.WandOfCatastrophe {}
   skills: 
     one-handed edged: 80
     unarmored: 80
   unique: true
-  wielded: !org.excelsi.tower.Dagger {}
+  wielded: !!org.excelsi.tower.Dagger {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+- !!org.excelsi.tower.TNPC
   common: Roombor
   gender: neuter
-  form: !org.excelsi.tower.Mech
-    naturalWeapon: !org.excelsi.tower.Vacuum {}
+  form: !!org.excelsi.tower.Mech
+    naturalWeapon: !!org.excelsi.tower.Vacuum {}
   size: large
   strength: 70
   quickness: 30
@@ -2850,30 +2850,30 @@
     unarmed: 70
   unique: true
   pack:
-    - !org.excelsi.tower.ScrapMetal
+    - !!org.excelsi.tower.ScrapMetal
       count: 10
-    - !org.excelsi.tower.Actuator
+    - !!org.excelsi.tower.Actuator
       count: 5
-    - !org.excelsi.tower.Processor
+    - !!org.excelsi.tower.Processor
       count: 2
-    - !org.excelsi.tower.Wire
+    - !!org.excelsi.tower.Wire
       count: 10
-    - !org.excelsi.tower.Generator {}
-    - !org.excelsi.tower.Sensor {}
+    - !!org.excelsi.tower.Generator {}
+    - !!org.excelsi.tower.Sensor {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.RoomborDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.RoomborDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
   loot: 15 
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: human rogue
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 50
   quickness: 50
   agility: 50
@@ -2881,27 +2881,27 @@
   maxHp: 20
   maxLevel: 7
   minLevel: 3
-  model: @
+  model: '@'
   color: gray
   skills: 
     one-handed edged: 30
     unarmored: 30
-  wielded: !org.excelsi.tower.Dagger {}
+  wielded: !!org.excelsi.tower.Dagger {}
   loot: 2
   rarity: 30
   ai:
     daemons:
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+- !!org.excelsi.tower.TNPC
   common: human warrior
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 70
   quickness: 50
   agility: 60
@@ -2909,7 +2909,7 @@
   maxHp: 50
   maxLevel: 10
   minLevel: 5
-  model: @
+  model: '@'
   color: gray
   loot: 2
   rarity: 30
@@ -2917,20 +2917,20 @@
     one-handed edged: 50
     chain: 50
   wearing: 
-    - !org.excelsi.tower.RingMail {}
-  wielded: !org.excelsi.tower.Broadsword {}
+    - !!org.excelsi.tower.RingMail {}
+  wielded: !!org.excelsi.tower.Broadsword {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+- !!org.excelsi.tower.TNPC
   common: miner
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 70
   quickness: 40
   agility: 60
@@ -2938,7 +2938,7 @@
   maxHp: 40
   maxLevel: 29
   minLevel: 0
-  model: @
+  model: '@'
   color: gray
   loot: 2
   rarity: 20
@@ -2947,14 +2947,14 @@
     two-handed edged: 30
     unarmored: 50
   wearing: 
-    - !org.excelsi.tower.HardHat {}
-  wielded: !org.excelsi.tower.Pick_Axe {}
+    - !!org.excelsi.tower.HardHat {}
+  wielded: !!org.excelsi.tower.Pick_Axe {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.tower.DigDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-      - !org.excelsi.tower.ChatDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.tower.DigDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+      - !!org.excelsi.tower.ChatDaemon
         vocalizations:
             - 'Make good money!'
             - 'Five dollar a day!'
@@ -2962,15 +2962,15 @@
             - 'Gotta get down to the mine!'
             - 'Kept me up till four...'
             - "Can't win for losing..."
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   pack:
-    - !org.excelsi.tower.BottleOfGlue {}
-    - !org.excelsi.tower.Rock {}
-    - !org.excelsi.tower.SmallStone {}
-- !org.excelsi.tower.TNPC
+    - !!org.excelsi.tower.BottleOfGlue {}
+    - !!org.excelsi.tower.Rock {}
+    - !!org.excelsi.tower.SmallStone {}
+- !!org.excelsi.tower.TNPC
   common: construction worker
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 70
   quickness: 60
   agility: 60
@@ -2978,7 +2978,7 @@
   maxHp: 70
   maxLevel: 39
   minLevel: 0
-  model: @
+  model: '@'
   color: gray
   loot: 2
   rarity: 10
@@ -2987,30 +2987,30 @@
     two-handed edged: 50
     unarmored: 50
   wearing: 
-    - !org.excelsi.tower.HardHat {}
-  wielded: !org.excelsi.tower.Jackhammer {}
+    - !!org.excelsi.tower.HardHat {}
+  wielded: !!org.excelsi.tower.Jackhammer {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.tower.DigDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.HealDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.ChatDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.tower.DigDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.HealDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.ChatDaemon
         vocalizations:
             - 'Work, work...'
             - "That ain't workin'."
   pack:
-    - !org.excelsi.tower.BottleOfGlue {}
-    - !org.excelsi.tower.Rock {}
-    - !org.excelsi.tower.SmallStone {}
-    - !org.excelsi.tower.Pick_Axe {}
-- !org.excelsi.tower.TNPC
+    - !!org.excelsi.tower.BottleOfGlue {}
+    - !!org.excelsi.tower.Rock {}
+    - !!org.excelsi.tower.SmallStone {}
+    - !!org.excelsi.tower.Pick_Axe {}
+- !!org.excelsi.tower.TNPC
   common: animatronic jackal
   gender: neuter
-  form: !org.excelsi.tower.Mech
-    naturalWeapon: !org.excelsi.tower.Bite {}
+  form: !!org.excelsi.tower.Mech
+    naturalWeapon: !!org.excelsi.tower.Bite {}
   strength: 30
   quickness: 30
   agility: 30
@@ -3026,26 +3026,26 @@
     unarmed: 30
     unarmored: 10
   pack:
-    - !org.excelsi.tower.Wire {}
-    - !org.excelsi.tower.Processor {}
-    - !org.excelsi.tower.CanidCorpse
+    - !!org.excelsi.tower.Wire {}
+    - !!org.excelsi.tower.Processor {}
+    - !!org.excelsi.tower.CanidCorpse
       name: jackal corpse
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.EatDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.ChaserDaemon {}
-      - !org.excelsi.tower.ChallengerDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.EatDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.ChaserDaemon {}
+      - !!org.excelsi.tower.ChallengerDaemon {}
+- !!org.excelsi.tower.TNPC
   common: jackal
   gender: neuter
-  form: !org.excelsi.tower.Canid {}
+  form: !!org.excelsi.tower.Canid {}
   strength: 30
   quickness: 30
   agility: 30
@@ -3063,20 +3063,20 @@
     unarmored: 10
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.EatDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.ChaserDaemon {}
-      - !org.excelsi.tower.ChallengerDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.EatDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.ChaserDaemon {}
+      - !!org.excelsi.tower.ChallengerDaemon {}
+- !!org.excelsi.tower.TNPC
   common: wolf
   gender: neuter
-  form: !org.excelsi.tower.Canid {}
+  form: !!org.excelsi.tower.Canid {}
   strength: 40
   quickness: 30
   agility: 60
@@ -3093,19 +3093,19 @@
     unarmored: 10
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.EatDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.ChaserDaemon {}
-      - !org.excelsi.tower.ChallengerDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.EatDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.ChaserDaemon {}
+      - !!org.excelsi.tower.ChallengerDaemon {}
+- !!org.excelsi.tower.TNPC
   common: kraken
-  form: !org.excelsi.tower.Piscean {}
+  form: !!org.excelsi.tower.Piscean {}
   size: huge
   gender: neuter
   strength: 80
@@ -3126,14 +3126,14 @@
     unarmored: 10
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon
         factor: 2
-      - !org.excelsi.tower.InkDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.tower.InkDaemon {}
+- !!org.excelsi.tower.TNPC
   common: giant squid
-  form: !org.excelsi.tower.Piscean {}
+  form: !!org.excelsi.tower.Piscean {}
   gender: neuter
   size: large
   strength: 50
@@ -3152,18 +3152,18 @@
     unarmored: 10
   rarity: 40
   pack:
-    - !org.excelsi.tower.Calamari {}
+    - !!org.excelsi.tower.Calamari {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon
         factor: 4
-      - !org.excelsi.tower.InkDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.tower.InkDaemon {}
+- !!org.excelsi.tower.TNPC
   common: Namazu
   gender: male
-  form: !org.excelsi.tower.Piscean {}
+  form: !!org.excelsi.tower.Piscean {}
   size: huge
   strength: 200
   quickness: 40
@@ -3184,15 +3184,15 @@
     unarmored: 30
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon
         factor: 2
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: Dagon
   gender: male
-  form: !org.excelsi.tower.HalfPiscean {}
+  form: !!org.excelsi.tower.HalfPiscean {}
   size: huge
   strength: 90
   quickness: 50
@@ -3211,20 +3211,20 @@
     pole-arms: 50
     unarmed: 30
     unarmored: 30
-  wielded: !org.excelsi.tower.Trident
+  wielded: !!org.excelsi.tower.Trident
     fragments:
-      - !org.excelsi.tower.Superior {}
-      - !org.excelsi.tower.Mithril {}
+      - !!org.excelsi.tower.Superior {}
+      - !!org.excelsi.tower.Mithril {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: shark
   gender: neuter
-  form: !org.excelsi.tower.Piscean {}
+  form: !!org.excelsi.tower.Piscean {}
   strength: 60
   quickness: 60
   agility: 60
@@ -3242,14 +3242,14 @@
     unarmored: 30
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.EatDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.EatDaemon {}
+- !!org.excelsi.tower.TNPC
   common: fugu
   gender: neuter
-  form: !org.excelsi.tower.Fugu {}
+  form: !!org.excelsi.tower.Fugu {}
   size: small
   strength: 40
   quickness: 80
@@ -3268,14 +3268,14 @@
     unarmored: 10
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.EatDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.EatDaemon {}
+- !!org.excelsi.tower.TNPC
   common: pirahna
   gender: neuter
-  form: !org.excelsi.tower.Piscean {}
+  form: !!org.excelsi.tower.Piscean {}
   size: small
   strength: 40
   quickness: 80
@@ -3294,14 +3294,14 @@
     unarmored: 10
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.EatDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.EatDaemon {}
+- !!org.excelsi.tower.TNPC
   common: tuna
   gender: neuter
-  form: !org.excelsi.tower.Piscean {}
+  form: !!org.excelsi.tower.Piscean {}
   strength: 40
   quickness: 40
   agility: 60
@@ -3317,15 +3317,15 @@
     unarmed: 30
     unarmored: 10
   pack:
-    - !org.excelsi.tower.Sashimi {}
+    - !!org.excelsi.tower.Sashimi {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+- !!org.excelsi.tower.TNPC
   common: yellowtail
   gender: neuter
-  form: !org.excelsi.tower.Piscean {}
+  form: !!org.excelsi.tower.Piscean {}
   strength: 40
   quickness: 40
   agility: 60
@@ -3341,15 +3341,15 @@
     unarmed: 30
     unarmored: 10
   pack:
-    - !org.excelsi.tower.Sashimi {}
+    - !!org.excelsi.tower.Sashimi {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+- !!org.excelsi.tower.TNPC
   common: salmon
   gender: neuter
-  form: !org.excelsi.tower.Piscean {}
+  form: !!org.excelsi.tower.Piscean {}
   strength: 40
   quickness: 40
   agility: 60
@@ -3365,17 +3365,17 @@
     unarmed: 30
     unarmored: 10
   pack:
-    - !org.excelsi.tower.Sashimi {}
+    - !!org.excelsi.tower.Sashimi {}
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+- !!org.excelsi.tower.TNPC
   common: vulture
   sociality: pack
   temperament: hungry
   gender: neuter
-  form: !org.excelsi.tower.Avian {}
+  form: !!org.excelsi.tower.Avian {}
   size: medium
   strength: 40
   quickness: 50
@@ -3390,21 +3390,21 @@
   airborn: true
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon
         factor: 2
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 20
     unarmored: 20
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: carrion crow
   sociality: pack
   temperament: hungry
   gender: neuter
-  form: !org.excelsi.tower.Avian {}
+  form: !!org.excelsi.tower.Avian {}
   size: small
   strength: 20
   quickness: 90
@@ -3419,20 +3419,20 @@
   airborn: true
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon
         factor: 2
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
   skills:
     unarmed: 20
     unarmored: 20
-- !org.excelsi.tower.FNPC
+- !!org.excelsi.tower.FNPC
   common: giant panda
   gender: neuter
   statGainRate: 10
-  form: !org.excelsi.tower.Ursine {}
+  form: !!org.excelsi.tower.Ursine {}
   strength: 60
   quickness: 40
   agility: 40
@@ -3449,24 +3449,24 @@
     unarmored: 50
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.tower.WanderSenseDaemon {}
-      - !org.excelsi.tower.FollowSenseDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.EatDaemon {}
-      - !org.excelsi.tower.PickupDaemon {}
-      - !org.excelsi.tower.DropDaemon {}
-      - !org.excelsi.tower.ComplainDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.tower.WanderSenseDaemon {}
+      - !!org.excelsi.tower.FollowSenseDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.EatDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+      - !!org.excelsi.tower.DropDaemon {}
+      - !!org.excelsi.tower.ComplainDaemon {}
+- !!org.excelsi.tower.TNPC
   gender: male
   common: werewolf
-  form: !org.excelsi.tower.Canid
-    naturalWeapon: !org.excelsi.tower.Bite
+  form: !!org.excelsi.tower.Canid
+    naturalWeapon: !!org.excelsi.tower.Bite
       power: 10
       fragments:
-        - !org.excelsi.tower.LycanthropyInfliction
+        - !!org.excelsi.tower.LycanthropyInfliction
           beast: werewolf
   strength: 80
   quickness: 40
@@ -3484,21 +3484,21 @@
     unarmored: 50
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.tower.HowlDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.EatDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.ChaserDaemon {}
-      - !org.excelsi.tower.ChallengerDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.tower.HowlDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.EatDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.ChaserDaemon {}
+      - !!org.excelsi.tower.ChallengerDaemon {}
+- !!org.excelsi.tower.TNPC
   gender: neuter
   sociality: pack
   common: dingo
-  form: !org.excelsi.tower.Canid {}
+  form: !!org.excelsi.tower.Canid {}
   strength: 80
   quickness: 60
   agility: 60
@@ -3515,20 +3515,20 @@
     unarmored: 50
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.EatDaemon {}
-      - !org.excelsi.tower.DeferenceDaemon {}
-      - !org.excelsi.tower.ChaserDaemon {}
-      - !org.excelsi.tower.ChallengerDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.EatDaemon {}
+      - !!org.excelsi.tower.DeferenceDaemon {}
+      - !!org.excelsi.tower.ChaserDaemon {}
+      - !!org.excelsi.tower.ChallengerDaemon {}
+- !!org.excelsi.tower.TNPC
   gender: neuter
   common: homunculus
-  form: !org.excelsi.tower.Humanoid {}
+  form: !!org.excelsi.tower.Humanoid {}
   strength: 1
   quickness: 1
   agility: 1
@@ -3541,17 +3541,17 @@
   rarity: 1
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-      - !org.excelsi.tower.ConsumeDaemon {}
-      - !org.excelsi.tower.EatDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.tower.ConsumeDaemon {}
+      - !!org.excelsi.tower.EatDaemon {}
+- !!org.excelsi.tower.TNPC
   common: wisp
   gender: neuter
-  form: !org.excelsi.tower.Energon {}
+  form: !!org.excelsi.tower.Energon {}
   size: small
   strength: 5
   quickness: 95
@@ -3568,15 +3568,15 @@
     unarmored: 50
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.WanderDaemon {}
-      - !org.excelsi.aether.FollowDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.WanderDaemon {}
+      - !!org.excelsi.aether.FollowDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: scavengerbot
   gender: neuter
-  form: !org.excelsi.tower.Mech {}
+  form: !!org.excelsi.tower.Mech {}
   strength: 30
   quickness: 80
   agility: 50
@@ -3588,28 +3588,28 @@
   maxLevel: 29
   rarity: 50
   pack:
-    - !org.excelsi.tower.ScrapMetal
+    - !!org.excelsi.tower.ScrapMetal
       count: 3
-    - !org.excelsi.tower.Battery {}
-    - !org.excelsi.tower.Actuator
+    - !!org.excelsi.tower.Battery {}
+    - !!org.excelsi.tower.Actuator
       count: 4
-    - !org.excelsi.tower.OrganicMentalCore {}
-    - !org.excelsi.tower.Wire
+    - !!org.excelsi.tower.OrganicMentalCore {}
+    - !!org.excelsi.tower.Wire
       count: 8
-    - !org.excelsi.tower.Sensor
+    - !!org.excelsi.tower.Sensor
       count: 3
   ai: 
     daemons: 
-      - !org.excelsi.aether.WanderDaemon
+      - !!org.excelsi.aether.WanderDaemon
         oblivious: true
-      - !org.excelsi.tower.RoomborDaemon
+      - !!org.excelsi.tower.RoomborDaemon
         messages: false
         retain: false
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: guardbot
   gender: neuter
   size: small
-  form: !org.excelsi.tower.Mech {}
+  form: !!org.excelsi.tower.Mech {}
   strength: 50
   quickness: 1
   agility: 50
@@ -3621,25 +3621,25 @@
   maxLevel: 30
   rarity: 20
   pack:
-    - !org.excelsi.tower.ScrapMetal
+    - !!org.excelsi.tower.ScrapMetal
       count: 3
-    - !org.excelsi.tower.Battery {}
-    - !org.excelsi.tower.Laser {}
-    - !org.excelsi.tower.Actuator {}
-    - !org.excelsi.tower.Processor {}
-    - !org.excelsi.tower.Wire {}
-    - !org.excelsi.tower.Generator {}
-    - !org.excelsi.tower.Sensor {}
+    - !!org.excelsi.tower.Battery {}
+    - !!org.excelsi.tower.Laser {}
+    - !!org.excelsi.tower.Actuator {}
+    - !!org.excelsi.tower.Processor {}
+    - !!org.excelsi.tower.Wire {}
+    - !!org.excelsi.tower.Generator {}
+    - !!org.excelsi.tower.Sensor {}
   ai: 
     daemons: 
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.tower.BreathDaemon
         type: fire
         time: 2
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: sentrybot
   gender: neuter
   size: small
-  form: !org.excelsi.tower.Mech {}
+  form: !!org.excelsi.tower.Mech {}
   strength: 70
   quickness: 1
   agility: 50
@@ -3650,25 +3650,25 @@
   minLevel: 65
   maxLevel: 69
   pack:
-    - !org.excelsi.tower.ScrapMetal
+    - !!org.excelsi.tower.ScrapMetal
       count: 3
-    - !org.excelsi.tower.Battery {}
-    - !org.excelsi.tower.Laser {}
-    - !org.excelsi.tower.Actuator {}
-    - !org.excelsi.tower.Processor {}
-    - !org.excelsi.tower.Wire {}
-    - !org.excelsi.tower.Generator {}
-    - !org.excelsi.tower.Sensor {}
+    - !!org.excelsi.tower.Battery {}
+    - !!org.excelsi.tower.Laser {}
+    - !!org.excelsi.tower.Actuator {}
+    - !!org.excelsi.tower.Processor {}
+    - !!org.excelsi.tower.Wire {}
+    - !!org.excelsi.tower.Generator {}
+    - !!org.excelsi.tower.Sensor {}
   ai: 
     daemons: 
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.tower.BreathDaemon
         type: lightning
         time: 1
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: polybot
   gender: neuter
   size: small
-  form: !org.excelsi.tower.Mech {}
+  form: !!org.excelsi.tower.Mech {}
   strength: 70
   quickness: 1
   agility: 50
@@ -3679,42 +3679,42 @@
   minLevel: 78
   maxLevel: 899
   pack:
-    - !org.excelsi.tower.ScrapMetal
+    - !!org.excelsi.tower.ScrapMetal
       count: 3
-    - !org.excelsi.tower.Battery {}
-    - !org.excelsi.tower.Laser {}
-    - !org.excelsi.tower.Actuator {}
-    - !org.excelsi.tower.Processor {}
-    - !org.excelsi.tower.Wire {}
-    - !org.excelsi.tower.Generator {}
-    - !org.excelsi.tower.Sensor {}
-    - !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Battery {}
+    - !!org.excelsi.tower.Laser {}
+    - !!org.excelsi.tower.Actuator {}
+    - !!org.excelsi.tower.Processor {}
+    - !!org.excelsi.tower.Wire {}
+    - !!org.excelsi.tower.Generator {}
+    - !!org.excelsi.tower.Sensor {}
+    - !!org.excelsi.tower.Potion
       fragments:
-        - !org.excelsi.tower.Polymorph {}
+        - !!org.excelsi.tower.Polymorph {}
   ai: 
     daemons: 
-      - !org.excelsi.tower.BreathDaemon
-        infliction: !org.excelsi.tower.Polymorph {}
+      - !!org.excelsi.tower.BreathDaemon
+        infliction: !!org.excelsi.tower.Polymorph {}
         time: 2
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   name: Longinus
   common: human
   gender: male
   profession: Centurion
-  form: !org.excelsi.tower.Hologram {}
+  form: !!org.excelsi.tower.Hologram {}
   strength: 80
   quickness: 80
   agility: 80
   constitution: 70
   maxHp: 100
   color: white
-  model: @
-  wielded: !org.excelsi.tower.LanceOfLonginus
+  model: '@'
+  wielded: !!org.excelsi.tower.LanceOfLonginus
     status: cursed
   wearing: 
-    - !org.excelsi.tower.VisoredHelm {}
-    - !org.excelsi.tower.Robe {}
-    - !org.excelsi.tower.HasteningBoots {}
+    - !!org.excelsi.tower.VisoredHelm {}
+    - !!org.excelsi.tower.Robe {}
+    - !!org.excelsi.tower.HasteningBoots {}
   maxLevel: -1
   minLevel: -1
   unique: true
@@ -3726,15 +3726,15 @@
     unarmored: 100
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: corporate lawyer
-  form: !org.excelsi.tower.Hologram
-    naturalWeapon: !org.excelsi.tower.Fist
+  form: !!org.excelsi.tower.Hologram
+    naturalWeapon: !!org.excelsi.tower.Fist
       fragments:
-        - !org.excelsi.tower.Draining
+        - !!org.excelsi.tower.Draining
           item: org.excelsi.tower.Gold
   strength: 80
   quickness: 80
@@ -3742,9 +3742,9 @@
   constitution: 70
   maxHp: 100
   color: white
-  model: @
+  model: '@'
   wearing: 
-    - !org.excelsi.tower.Three_PieceSuit {}
+    - !!org.excelsi.tower.Three_PieceSuit {}
   maxLevel: -1
   minLevel: -1
   skills: 
@@ -3755,24 +3755,24 @@
     unarmored: 100
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: corporate farmer
   gender: male
-  form: !org.excelsi.tower.Hologram {}
+  form: !!org.excelsi.tower.Hologram {}
   strength: 80
   quickness: 80
   agility: 80
   constitution: 70
   maxHp: 100
   color: white
-  model: @
-  wielded: !org.excelsi.tower.Harvest {}
+  model: '@'
+  wielded: !!org.excelsi.tower.Harvest {}
   wearing: 
-    - !org.excelsi.tower.HardHat {}
-    - !org.excelsi.tower.Three_PieceSuit {}
+    - !!org.excelsi.tower.HardHat {}
+    - !!org.excelsi.tower.Three_PieceSuit {}
   maxLevel: -1
   minLevel: -1
   skills: 
@@ -3783,14 +3783,14 @@
     unarmored: 100
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: Monster
   gender: male
-  form: !org.excelsi.tower.Hologram
-    naturalWeapon: !org.excelsi.tower.Fist
+  form: !!org.excelsi.tower.Hologram
+    naturalWeapon: !!org.excelsi.tower.Fist
       power: 12
   strength: 120
   quickness: 30
@@ -3798,12 +3798,12 @@
   constitution: 120
   maxHp: 100
   color: puke-green
-  model: @
+  model: '@'
   wearing: 
-    - !org.excelsi.tower.Rags {}
+    - !!org.excelsi.tower.Rags {}
   pack:
-    - !org.excelsi.tower.HeartOfTheMonster {}
-    - !org.excelsi.tower.BrainInAJar {}
+    - !!org.excelsi.tower.HeartOfTheMonster {}
+    - !!org.excelsi.tower.BrainInAJar {}
   maxLevel: -1
   minLevel: -1
   skills: 
@@ -3811,15 +3811,15 @@
     unarmored: 100
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
-- !org.excelsi.tower.TNPC
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+- !!org.excelsi.tower.TNPC
   common: warmech
   gender: neuter
   size: huge
-  form: !org.excelsi.tower.Mech
-    naturalWeapon: !org.excelsi.tower.Claw
+  form: !!org.excelsi.tower.Mech
+    naturalWeapon: !!org.excelsi.tower.Claw
       power: 10
   elements:
     - light
@@ -3836,29 +3836,29 @@
   maxLevel: -1
   minLevel: -1
   pack:
-    - !org.excelsi.tower.ScrapMetal
+    - !!org.excelsi.tower.ScrapMetal
       count: 15
-    - !org.excelsi.tower.Generator
+    - !!org.excelsi.tower.Generator
       count: 2
-    - !org.excelsi.tower.Laser {}
-    - !org.excelsi.tower.Actuator
+    - !!org.excelsi.tower.Laser {}
+    - !!org.excelsi.tower.Actuator
       count: 8
-    - !org.excelsi.tower.OrganicMentalCore {}
-    - !org.excelsi.tower.Wire
+    - !!org.excelsi.tower.OrganicMentalCore {}
+    - !!org.excelsi.tower.Wire
       count: 20
   skills: 
     unarmed: 100
     unarmored: 100
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.tower.BreathDaemon
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.tower.BreathDaemon
         type: plasma
         time: 4
-- !org.excelsi.tower.TNPC
+- !!org.excelsi.tower.TNPC
   common: shopkeeper
   profession: shopkeeper
-  form: !org.excelsi.tower.Hologram {}
+  form: !!org.excelsi.tower.Hologram {}
   strength: 100
   quickness: 100
   agility: 100
@@ -3869,12 +3869,12 @@
   presence: 100
   maxHp: 100
   color: white
-  model: @
-  wielded: !org.excelsi.tower.Dagger {}
+  model: '@'
+  wielded: !!org.excelsi.tower.Dagger {}
   wearing: 
-    - !org.excelsi.tower.Robe {}
+    - !!org.excelsi.tower.Robe {}
   pack:
-    - !org.excelsi.tower.Gold
+    - !!org.excelsi.tower.Gold
       count: 700
   loot: 10
   maxLevel: -1
@@ -3887,7 +3887,7 @@
     unarmored: 100
   ai: 
     daemons: 
-      - !org.excelsi.aether.AttackDaemon {}
-      - !org.excelsi.tower.ShopkeeperDaemon {}
-      - !org.excelsi.aether.SurvivalDaemon {}
-      - !org.excelsi.aether.FleeDaemon {}
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.tower.ShopkeeperDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
