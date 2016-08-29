@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.excelsi.aether.Level;
+import org.excelsi.aether.AddEvent;
+import org.excelsi.aether.RemoveEvent;
 import org.excelsi.aether.MoveEvent;
 import org.excelsi.aether.OrientEvent;
 import org.excelsi.aether.BotAttributeChangeEvent;
@@ -26,6 +28,8 @@ public class UI {
             Maps.<String,ControllerFactory>map(
                 "bot", new InstanceControllerFactory(
                     Maps.<Class,ControllerFactory>map(
+                        AddEvent.class, constant(new BotController()),
+                        RemoveEvent.class, constant(new BotController()),
                         MoveEvent.class, constant(new BotController()),
                         OrientEvent.class, constant(new OrientController()),
                         BotAttributeChangeEvent.class, constant(new BotAttributeController()))

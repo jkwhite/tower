@@ -13,7 +13,7 @@ public class ContainerAddEvent extends AddEvent<Container,Item> {
 
 
     public ContainerAddEvent(NHSpace source, Item i, int idx, boolean incremented) {
-        super(source, source, i);
+        super(source, "container", source, i);
         _idx = idx;
         _inc = incremented;
     }

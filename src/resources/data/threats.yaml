@@ -1,0 +1,171 @@
+---
+none: 
+  -
+    - pirahna
+    - giant squid
+    - kraken
+    - salmon
+    - yellowtail
+    - fugu
+  -
+    - human
+    - shopkeeper
+    - guard
+    - miner
+    - construction worker
+  -
+    - jackal
+    - goblin
+  -
+    - morl
+    - '*'
+  - 
+    - floating eye
+    - '*'
+  -
+    - Creator
+    - '*'
+  -
+    - scavengerbot
+    - '*'
+  -
+    - carrion crow
+    - '*'
+  -
+    - vulture
+    - '*'
+kos: 
+  - 
+    - '*'
+    - '*'
+  - 
+    - human rogue
+    - human warrior
+    - elven warrior
+    - elven archer
+    - snake
+    - pit viper
+    - anaconda
+    - shark
+    - black reaver
+    - invisigoth
+    - sligguth
+    - tiger
+    - shopkeeper
+    - knight of Cydonia
+    - Longinus
+    - '*'
+  - 
+    - jackal
+    - rat
+  - 
+    - Federation infantry
+    - Syndicate infantry
+  - 
+    - Federation archer
+    - Syndicate archer
+  - 
+    - Federation soldier
+    - Syndicate soldier
+friendly: 
+  -
+    - little dog*
+    - guinea pig*
+    - kitten*
+    - animatronic rat*
+    - animatronic jackal*
+    - animatronic snake*
+    - giant panda*
+    - human*
+    - human warrior*
+    - human rogue*
+    - shopkeeper*
+    - construction worker*
+    - miner*
+  -
+    - urbanite*
+  -
+    - elven warrior*
+    - elven archer*
+  -
+    - vulture*
+    - carrion crow*
+  -
+    - nerve runnner*
+  -
+    - metroid*
+  -
+    - leech*
+  -
+    - wisp*
+  - 
+    - wolf*
+    - werewolf
+  -
+    - kobold*
+    - goblin*
+    - orc*
+    - uruk-hai*
+    - orcish peon*
+    - orcish warrior*
+  - 
+    - knight of Tlon*
+    - knight of Cydonia*
+    - wizard of Tlon*
+    - metaphysician of Tlon*
+  - 
+    - invisigoth*
+  - 
+    - Federation soldier*
+    - Federation archer*
+    - Federation infantry*
+  - 
+    - Syndicate soldier*
+    - Syndicate infantry*
+    - Syndicate archer*
+  - 
+    - jackal*
+  -
+    - dingo*
+  -
+    - gridbug*
+  -
+    - rat*
+    - sewer rat*
+  -
+    - dragon*
+    - wyvern*
+    - plasma drake*
+  -
+    - gogonaur*
+    - fire demon*
+    - ordainer
+  -
+    - guard*
+  -
+    - shark*
+  -
+    - pirahna*
+    - water elemental*
+    - water demon*
+  -
+    - tiger*
+    - dreamtiger*
+  -
+    - invisigoth*
+  -
+    - troglodyte*
+  -
+    - giant squid*
+    - kraken*
+    - salmon*
+    - yellowtail*
+    - fugu*
+    - water elemental*
+    - water demon*
+  -
+    - seraphim*
+    - nephilim*
+  -
+    - corporate farmer*
+    - corporate lawyer*

@@ -78,6 +78,9 @@ public class EventRelayer extends EverythingAdapter implements EventSource {
     }
 
     public void unoccupied(MSpace s, Bot b) {
+        for(NHSpaceListener l:_nhslisteners) {
+            l.unoccupied(s, b);
+        }
     }
 
     public void moved(MSpace source, MSpace from, MSpace to, Bot b) {
@@ -169,6 +172,9 @@ public class EventRelayer extends EverythingAdapter implements EventSource {
     }
 
     public void died(Bot b, MSource s) {
+        for(NHEnvironmentListener n:_nhelisteners) {
+            n.died(b, s);
+        }
     }
 
     public void collided(Bot active, Bot passive) {
