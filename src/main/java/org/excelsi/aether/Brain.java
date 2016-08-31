@@ -352,7 +352,7 @@ public class Brain implements java.io.Serializable, Cloneable {
     /**
      * Daemon represents one possible course of action.
      */
-    public static abstract class Daemon implements java.io.Serializable, Runnable {
+    public static abstract class Daemon implements java.io.Serializable, Performable {
         /** available input */
         public Input in;
         /** decision strength */
@@ -422,7 +422,7 @@ public class Brain implements java.io.Serializable, Cloneable {
          * Performs this daemon's action. This means this daemon was selected
          * as the bot's course of action.
          */
-        abstract public void run();
+        @Override abstract public void perform(Context c);
 
         /**
          * Extensions of Daemon may override this method to interact with

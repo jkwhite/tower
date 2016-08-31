@@ -52,12 +52,14 @@ public class FleeDaemon extends Daemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         if(in.important!=null) {
             ((NPC)in.b).withdraw(in.important);
             if(!_last) {
                 _last = true;
+                //NARRATIVE
                 N.narrative().print(in.b, Grammar.start(in.b, "flee")+"!");
+                c.n().print(in.b, Grammar.start(in.b, "flee")+"!");
             }
         }
     }

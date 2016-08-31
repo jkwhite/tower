@@ -27,7 +27,7 @@ import org.excelsi.aether.Context;
 public interface Bot extends Typed, java.io.Serializable {
     void setEnvironment(Environment e);
     Environment getEnvironment();
-    void act();
+    @Deprecated void act();
     void act(Context c);
     void addListener(EnvironmentListener listener);
     void removeListener(EnvironmentListener listener);

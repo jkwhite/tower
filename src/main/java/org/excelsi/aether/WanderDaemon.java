@@ -85,7 +85,7 @@ public class WanderDaemon extends Daemon {
         //System.err.println(in.b+" str: "+strength);
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         //System.err.println(in.b+" DEST: "+_dest+", travel="+_travel);
         if(_dest!=null) {
             approachDest();
@@ -105,7 +105,7 @@ public class WanderDaemon extends Daemon {
                     MSpace sp = in.b.getEnvironment().getMSpace().move(in.b.getEnvironment().getFacing());
                     if(sp!=null&&(in.b.isBlind()||!sp.isOccupied())) {
                         _move.setBot(in.b);
-                        _move.perform();
+                        _move.perform(c);
                     }
                     break;
                 }

@@ -66,7 +66,7 @@ public class SurvivalDaemon extends Daemon {
         strength=-1;
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
     }
 
     public Chemical getChemical() {

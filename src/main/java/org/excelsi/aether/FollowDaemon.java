@@ -51,7 +51,7 @@ public class FollowDaemon extends Daemon implements Filter {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         if(in.b.getEnvironment().getMSpace().distance(in.important.getEnvironment().getMSpace())>4) {
             ((NPC)in.b).approach(in.important, 6, false, this);
         }

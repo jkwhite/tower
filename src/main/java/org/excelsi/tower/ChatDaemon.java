@@ -66,7 +66,7 @@ public class ChatDaemon extends Daemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
     }
 
     public Chemical getChemical() {

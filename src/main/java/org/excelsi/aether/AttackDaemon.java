@@ -25,8 +25,10 @@ import static org.excelsi.aether.Brain.*;
 
 
 public class AttackDaemon extends Daemon {
-    private Chemical _fight;
-    private Chemical _basic;
+    private final Chemical _fight;
+    private final Chemical _basic;
+
+    protected NHBot _last = null;
 
 
     public void init(Map<String,Chemical> chems) {
@@ -38,7 +40,6 @@ public class AttackDaemon extends Daemon {
         return "fight=flight,basic";
     }
 
-    protected NHBot _last = null;
     public void poll() {
         if(in.attack==null) {
             if(in.important!=null) {
@@ -74,7 +75,7 @@ public class AttackDaemon extends Daemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         if(in.b.threat(_last)==Threat.kos) {
             ((NPC)in.b).approach(_last, 10);
         }

@@ -20,9 +20,8 @@
 package org.excelsi.aether;
 
 
-public interface GameAction extends java.io.Serializable {
-    void perform();
-    void perform(Context c);
+public interface GameAction extends Performable {
+    @Deprecated void perform();
     boolean isRepeat();
     boolean isRecordable();
     String getDescription();

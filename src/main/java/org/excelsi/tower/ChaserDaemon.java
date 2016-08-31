@@ -75,7 +75,7 @@ public class ChaserDaemon extends Daemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         if(_dest!=null) {
             if(_dest==in.b.getEnvironment().getMSpace()) {
                 /*

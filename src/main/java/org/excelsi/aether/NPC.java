@@ -151,12 +151,12 @@ public class NPC extends DefaultNHBot {
         return r!=null;
     }
 
-    @Override public void act(final Context c) {
-        act();
-    }
-
     private boolean _last = Rand.om.nextBoolean();
     @Override public void act() {
+        throw new IllegalStateException("deprecated act");
+    }
+
+    @Override public void act(final Context c) {
         if(isOccupied()) {
             return;
         }

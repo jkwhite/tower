@@ -48,6 +48,7 @@ public class ComplainDaemon extends Daemon {
             if(s.numItems()>0) {
                 for(Item i:s.getItem()) {
                     if(i.getStatus()==Status.cursed) {
+                        //NARRATIVE
                         N.narrative().print(in.b, Grammar.start(in.b, in.b.getForm().getComplain())+".");
                         if(!_flight.isActive()) {
                             _flight.activate();
@@ -64,6 +65,6 @@ public class ComplainDaemon extends Daemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
     }
 }

@@ -114,7 +114,7 @@ public class FamiliarDaemon extends Daemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         ((NPC)in.b).approach(_f, Integer.MAX_VALUE, false, null);
     }
 

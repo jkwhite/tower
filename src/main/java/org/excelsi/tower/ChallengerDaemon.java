@@ -72,7 +72,7 @@ public class ChallengerDaemon extends Daemon {
         }
     }
 
-    public void run() {
+    @Override public void run(final Context c) {
         ((NPC)in.b).approach(_c, 10);
     }
 
