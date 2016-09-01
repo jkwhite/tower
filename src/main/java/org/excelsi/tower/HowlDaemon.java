@@ -37,7 +37,7 @@ public class HowlDaemon extends Daemon {
         return "flight";
     }
 
-    public void poll() {
+    @Override public void poll(final Context c) {
         if(in.important!=null&&in.b.threat(in.important)==Threat.kos&&Time.now()>_last+8) {
             //System.err.println(BasicBot.this+" vs "+in.important);
             strength=11;
@@ -47,7 +47,7 @@ public class HowlDaemon extends Daemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         if(in.important!=null) {
             if(Canid.Howl.canActivate(in.b)) {
                 _last = Time.now();

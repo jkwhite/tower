@@ -98,7 +98,7 @@ public class FamiliarDaemon extends Daemon {
         return "basic";
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         _path = null;
         if(in.attack==null) {
             float dist = in.b.getEnvironment().getMSpace().distance(_f.getEnvironment().getMSpace());

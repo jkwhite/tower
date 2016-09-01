@@ -66,7 +66,7 @@ public class ChallengerDaemon extends Daemon {
         });
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         if(strength>-1) {
             strength--;
         }

@@ -40,7 +40,7 @@ public class AttackDaemon extends Daemon {
         return "fight=flight,basic";
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         if(in.attack==null) {
             if(in.important!=null) {
                 _last = in.important;

@@ -32,7 +32,7 @@ public class HealDaemon extends Daemon {
     private Chemical _nop = new Chemical("nop");
 
 
-    public void poll() {
+    public void poll(final Context c) {
         if(in.attack==null&&in.b.getHp()<in.b.getMaxHp()/2) {
             for(Item i:in.b.getInventory().getItem()) {
                 if((i instanceof Potion || i instanceof Pill) && i.hasFragment(Healing.class)) {
@@ -45,7 +45,7 @@ public class HealDaemon extends Daemon {
         strength = 0;
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         NHBotAction a;
         if(_com instanceof Pill) {
             a = new Consume((Pill)_com);

@@ -41,7 +41,7 @@ public class EatDaemon extends Daemon {
         return "hunger";
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         if(in.attack!=null&&in.attack.getWeapon().toItem() instanceof Comestible
             && Hunger.Degree.degreeFor(in.b.getHunger())!=Hunger.Degree.satiated) {
             strength = 1;
@@ -53,7 +53,7 @@ public class EatDaemon extends Daemon {
         }
     }
 
-    public void run() {
+    public void perform(final Context c) {
         Comestible com = (Comestible) in.attack.getWeapon().toItem();
         in.b.getInventory().add(com);
         Consume c = new Consume(com);

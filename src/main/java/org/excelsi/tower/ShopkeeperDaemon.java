@@ -31,7 +31,7 @@ public class ShopkeeperDaemon extends Daemon {
     private NHSpace _origin;
 
 
-    public void poll() {
+    public void poll(final Context c) {
         if(_origin==null) {
             _origin = in.b.getEnvironment().getMSpace();
         }
@@ -255,7 +255,7 @@ public class ShopkeeperDaemon extends Daemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         if(_move!=null) {
             ((NPC)in.b).approach(_move, 999);
         }

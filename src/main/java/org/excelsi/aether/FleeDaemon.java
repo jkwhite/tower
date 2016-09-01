@@ -36,7 +36,7 @@ public class FleeDaemon extends Daemon {
         return "flight";
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         if(in.important!=null) {
             if(in.b.threat(in.important)==Threat.kos) {
                 //System.err.println(BasicBot.this+" vs "+in.important);

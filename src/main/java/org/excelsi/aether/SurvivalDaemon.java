@@ -45,7 +45,7 @@ public class SurvivalDaemon extends Daemon {
         return "flight";
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         if(in.attack==null) {
             //if("debug".equals(in.b.getName())) {
                 //System.err.println("ACT: "+_act+", hp="+in.b.getHp()+"/"+in.b.getMaxHp()+", flight="+_flight.isActive());

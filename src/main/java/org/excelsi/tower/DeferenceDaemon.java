@@ -43,7 +43,7 @@ public class DeferenceDaemon extends Daemon {
         return "flight";
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         if(in.important!=null) {
             if(in.b.threat(in.important)==Threat.kos&&calc(in.b)<calc(in.important)/3) {
                 if(!_flight.isActive()&&Rand.om.nextBoolean()) {
@@ -72,11 +72,13 @@ public class DeferenceDaemon extends Daemon {
         return (b.getModifiedStrength()+b.getModifiedPresence())/2;
     }
 
-    public void run() {
+    public void perform(final Context c) {
         strength=0;
         if(!_last) {
             _last = true;
-            N.narrative().print(in.b, Grammar.start(in.b, "cower")+".");
+            //NARRATIVE
+            //N.narrative().print(in.b, Grammar.start(in.b, "cower")+".");
+            c.n().print(in.b, Grammar.start(in.b, "cower")+".");
         }
     }
 

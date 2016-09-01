@@ -75,7 +75,7 @@ public class WanderDaemon extends Daemon {
         return _travel;
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         if(in.important!=null&&(in.b.threat(in.important)!=Threat.kos)||(in.attack==null&&in.b.isBlind())) {
             strength = 1;
         }

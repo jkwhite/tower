@@ -42,7 +42,7 @@ public class DropDaemon extends Daemon {
         return _basic;
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         strength = -1;
         if(in.attack==null) {
             if(in.b.getInventory().numItems()>0&&Rand.d100(10)) {
@@ -51,7 +51,7 @@ public class DropDaemon extends Daemon {
         }
     }
 
-    public void run() {
+    public void perform(final Context c) {
         Item[] its = in.b.getInventory().getItem();
         DefaultNHBot.Drop d = new DefaultNHBot.Drop();
         d.setItem(its[Rand.om.nextInt(its.length)]);

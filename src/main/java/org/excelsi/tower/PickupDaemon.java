@@ -47,7 +47,7 @@ public class PickupDaemon extends Daemon {
         return 10;
     }
 
-    public void poll() {
+    @Override public void poll(final Context c) {
         strength = -1;
         _item = null;
         if(in.attack==null&&!in.b.isLevitating()&&!in.b.isAirborn()) {
@@ -75,7 +75,7 @@ public class PickupDaemon extends Daemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         NHSpace s = in.b.getEnvironment().getMSpace();
         if(s.contains(_item)) {
             DefaultNHBot.Pickup p = new DefaultNHBot.Pickup();

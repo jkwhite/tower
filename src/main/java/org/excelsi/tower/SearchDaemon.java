@@ -38,7 +38,7 @@ public abstract class SearchDaemon extends Daemon {
         _lookAround = period;
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         if(in.attack!=null) {
             strength = -1;
             return;
@@ -74,7 +74,7 @@ public abstract class SearchDaemon extends Daemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         if(_dest==in.b.getEnvironment().getMSpace()) {
             _com = null;
             checkSpace(_dest);

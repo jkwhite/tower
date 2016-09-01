@@ -69,7 +69,7 @@ public class ChaserDaemon extends Daemon {
         return _hunger;
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         if(strength>-1) {
             strength--;
         }

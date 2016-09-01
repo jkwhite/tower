@@ -41,7 +41,7 @@ public class FollowDaemon extends Daemon implements Filter {
         return true;
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         if(in.important!=null&&in.b.threat(in.important)==Threat.friendly) {
             //strength = 1;
             strength = Rand.om.nextInt(2);

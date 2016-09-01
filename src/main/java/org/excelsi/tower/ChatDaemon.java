@@ -56,7 +56,7 @@ public class ChatDaemon extends Daemon {
         _frequency = frequency;
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         strength = -1;
         if(in.important!=null&&(in.b.threat(in.important)!=Threat.kos)) {
             if(Rand.d100(_frequency)) {

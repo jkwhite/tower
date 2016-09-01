@@ -301,12 +301,13 @@ public class Brain implements java.io.Serializable, Cloneable {
      * Produces a course of action based on specified inputs. Either
      * <code>important</code> or <code>a</code> should be non-null.
      *
+     * @param c context
      * @param b bot for which to produce result
      * @param important most important bot in <code>b</code>'s vision, or null
      * @param a current attack against <code>b</code>, or null
      * @return next course of action
      */
-    public Runnable react(NHBot b, NHBot important, Attack a) {
+    public Performable react(Context c, NHBot b, NHBot important, Attack a) {
         if(b==null&&a==null) {
             throw new IllegalArgumentException("no bot and no attack");
         }
@@ -317,7 +318,7 @@ public class Brain implements java.io.Serializable, Cloneable {
             if(_in!=d.in) {
                 throw new IllegalStateException("wrong input");
             }
-            d.poll();
+            d.poll(c);
         }
         int max = -1;
         int ms = 0;
@@ -404,7 +405,7 @@ public class Brain implements java.io.Serializable, Cloneable {
          * leave any heavy operations for <code>run()</code> or only run them
          * periodically.
          */
-        abstract public void poll();
+        abstract public void poll(Context  c);
 
         /**
          * Gets the chemical that regulates this daemon's strength.

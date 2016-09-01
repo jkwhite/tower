@@ -41,7 +41,7 @@ public class ComplainDaemon extends Daemon {
         return _flight;
     }
 
-    public void poll() {
+    public void poll(final Context c) {
         strength = -1;
         if(in.attack==null) {
             NHSpace s = in.b.getEnvironment().getMSpace();
@@ -50,6 +50,7 @@ public class ComplainDaemon extends Daemon {
                     if(i.getStatus()==Status.cursed) {
                         //NARRATIVE
                         N.narrative().print(in.b, Grammar.start(in.b, in.b.getForm().getComplain())+".");
+                        c.n().print(in.b, Grammar.start(in.b, in.b.getForm().getComplain())+".");
                         if(!_flight.isActive()) {
                             _flight.activate();
                             _deactivate = 2;
