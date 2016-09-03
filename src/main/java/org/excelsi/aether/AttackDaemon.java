@@ -25,8 +25,8 @@ import static org.excelsi.aether.Brain.*;
 
 
 public class AttackDaemon extends Daemon {
-    private final Chemical _fight;
-    private final Chemical _basic;
+    private Chemical _fight;
+    private Chemical _basic;
 
     protected NHBot _last = null;
 

@@ -209,7 +209,7 @@ public abstract class Wand extends VariegatedItem implements WritingUtensil, Cha
             return false;
         }
 
-        public Runnable intercept(NHBot attacker, NHBot defender, Attack a) {
+        @Override public Performable intercept(NHBot attacker, NHBot defender, Attack a) {
             return null;
         }
 

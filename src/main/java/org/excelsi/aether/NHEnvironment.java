@@ -192,16 +192,16 @@ public class NHEnvironment extends MatrixEnvironment implements MatrixListener {
         return getGame().getFloor(floor);
     }
 
-    public Outcome[] project(NHBot defender, Attack a) {
+    public Outcome[] project(final NHBot defender, final Attack a) {
         return project(getMSpace().directionTo(defender.getEnvironment().getMSpace()), a);
     }
 
-    public Outcome[] project(Direction d, Attack a) {
+    public Outcome[] project(final Direction d, final Attack a) {
         return project(d, a, null);
     }
 
-    public Outcome[] project(Direction d, Attack a, Filter f) {
-        Outcome[] os = _mechanics.resolve(getBot(), d, a, f);
+    public Outcome[] project(final Direction d, final Attack a, final Filter f) {
+        Outcome[] os = _mechanics.resolve(Actor.context(), getBot(), d, a, f);
         for(Outcome o:os) {
             if(o.getResult()!=Outcome.Result.intercept) {
                 for(EnvironmentListener listener:getListeners()) {
@@ -230,7 +230,7 @@ public class NHEnvironment extends MatrixEnvironment implements MatrixListener {
             return;
         }
         final Armament arm = a;
-        Outcome[] os = _mechanics.resolve(getBot(), getFacing(), new Attack() {
+        Outcome[] os = _mechanics.resolve(Actor.context(), getBot(), getFacing(), new Attack() {
             public Source getSource() {
                 return new Source(getBot());
             }

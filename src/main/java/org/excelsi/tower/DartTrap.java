@@ -21,6 +21,7 @@ package org.excelsi.tower;
 
 
 import org.excelsi.aether.*;
+import org.excelsi.matrix.Actor;
 import org.excelsi.matrix.MSpace;
 import org.excelsi.matrix.Filter;
 
@@ -81,7 +82,7 @@ public class DartTrap extends Trap {
         else {
             N.narrative().print(b, "A little dart shoots out!");
         }
-        b.getEnvironment().getMechanics().resolve(new Inorganic("little dart"), _wall, _wall.directionTo(getSpace()),
+        b.getEnvironment().getMechanics().resolve(Actor.context(), new Inorganic("little dart"), _wall, _wall.directionTo(getSpace()),
             new Throw.MissileAttack(null, d), null);
     }
 

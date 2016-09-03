@@ -241,7 +241,7 @@ public class Solution extends Parasite implements Drinkable {
                         mog.setClassIdentified(true);
                         final Armament ar = arm;
                         // enjoy your fun
-                        NHEnvironment.getMechanics().resolve(new Inorganic("explosion of "+mog.getName()), owner(), Direction.north, new Attack() {
+                        NHEnvironment.getMechanics().resolve(Actor.context(), new Inorganic("explosion of "+mog.getName()), owner(), Direction.north, new Attack() {
                             public Source getSource() { return new Source("the explosion"); }
                             public NHBot getAttacker() { return null; }
                             public boolean isPhysical() { return true; }

@@ -41,7 +41,7 @@ public abstract class Material implements Fragment {
         return false;
     }
 
-    public Runnable intercept(NHBot attacker, NHBot defender, Attack a) {
+    @Override public Performable intercept(NHBot attacker, NHBot defender, Attack a) {
         return null;
     }
 

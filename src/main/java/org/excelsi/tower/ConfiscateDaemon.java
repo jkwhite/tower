@@ -27,8 +27,8 @@ import java.util.Comparator;
 
 
 public class ConfiscateDaemon extends PickupDaemon {
-    public void run() {
-        super.run();
+    @Override public void perform(final Context c) {
+        super.perform(c);
         if(getItem()!=null) {
             if(in.b.getInventory().contains(getItem())) {
                 in.b.getInventory().destroy(getItem());

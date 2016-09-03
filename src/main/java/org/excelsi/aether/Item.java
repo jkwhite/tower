@@ -729,7 +729,8 @@ public abstract class Item extends Id implements java.io.Serializable, Material,
         return false;
     }
 
-    public Runnable intercept(final NHBot attacker, final NHBot defender, Attack a) {
+    public Performable intercept(final NHBot attacker, final NHBot defender, Attack a) {
+        // NEXT: performable -> runnable
         if(_fragments!=null) {
             for(int i=0;i<_fragments.size();i++) {
                 if(_fragments.get(i).intercepts(a)) {

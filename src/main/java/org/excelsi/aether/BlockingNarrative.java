@@ -21,6 +21,10 @@ public class BlockingNarrative implements NNarrative {
         _e.post("keys", new MessageEvent(this, MessageEvent.Type.ephemeral, m));
     }
 
+    @Override public void print(NHBot source, String m) {
+        _e.post("keys", new MessageEvent(this, MessageEvent.Type.ephemeral, m));
+    }
+
     @Override public boolean confirm(String m) {
         return _e.await("keys", new QueryEvent(this, QueryEvent.Type.bool, m)).<Boolean>getAnswer();
     }

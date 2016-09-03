@@ -71,7 +71,8 @@ public class MirrorShield extends Shield implements Interceptor, Createable {
         return a instanceof BoltAttack;
     }
 
-    public Runnable intercept(final NHBot attacker, final NHBot defender, Attack a) {
+    @Override public Performable intercept(final NHBot attacker, final NHBot defender, Attack a) {
+        /*
         N.narrative().print(defender, Grammar.first(Grammar.possessive(defender, this))+" reflects "+new Source("the bolt")+"!");
         final BoltAttack reflect = new BoltAttack(a.getWeapon(), defender, a.getSource());
         final Direction d = defender.getEnvironment().getMSpace().directionTo(attacker.getEnvironment().getMSpace());
@@ -79,6 +80,13 @@ public class MirrorShield extends Shield implements Interceptor, Createable {
             public void run() {
                 defender.getEnvironment().project(d, reflect);
             }
+        };
+        */
+        return (c)->{
+            c.n().print(defender, Grammar.first(Grammar.possessive(defender, this))+" reflects "+new Source("the bolt")+"!");
+            final BoltAttack reflect = new BoltAttack(a.getWeapon(), defender, a.getSource());
+            final Direction d = defender.getEnvironment().getMSpace().directionTo(attacker.getEnvironment().getMSpace());
+            defender.getEnvironment().project(d, reflect);
         };
     }
 }

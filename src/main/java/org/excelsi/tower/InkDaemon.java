@@ -26,7 +26,7 @@ import org.excelsi.matrix.Direction;
 
 
 public class InkDaemon extends FleeDaemon {
-    public void run() {
+    @Override public void perform(final Context c) {
         if(in.important!=null) {
             if(!last()) {
                 MSpace o = in.important.getEnvironment().getMSpace();
@@ -39,7 +39,7 @@ public class InkDaemon extends FleeDaemon {
                     }
                 }
             }
-            super.run();
+            super.perform(c);
         }
     }
 }

@@ -60,8 +60,8 @@ public class BreathDaemon extends AttackDaemon {
         return _time;
     }
 
-    public void poll() {
-        super.poll();
+    public void poll(final Context c) {
+        super.poll(c);
         if(strength>=0&&in.important!=null) {
             MSpace f = in.b.getEnvironment().getMSpace();
             MSpace t = in.important.getEnvironment().getMSpace();
@@ -92,7 +92,7 @@ public class BreathDaemon extends AttackDaemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         Attack a = null;
 
         if(_t!=null) {

@@ -74,7 +74,7 @@ public class Shrine extends Floor {
             }
             final Armament ar = arm;
             // enjoy your fun
-            NHEnvironment.getMechanics().resolve(new Inorganic("exploding "+_enshrined.getName()), this, Direction.north, new Attack() {
+            NHEnvironment.getMechanics().resolve(Actor.context(), new Inorganic("exploding "+_enshrined.getName()), this, Direction.north, new Attack() {
                 public Source getSource() { return new Source("the "+_enshrined.getName()+" explosion"); }
                 public NHBot getAttacker() { return b; }
                 public boolean isPhysical() { return true; }

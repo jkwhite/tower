@@ -37,5 +37,5 @@ public interface Fragment extends java.io.Serializable {
     Item getOwner();
     void apply(Fragment f);
     boolean intercepts(Attack a);
-    Runnable intercept(NHBot attacker, NHBot defender, Attack a);
+    Performable intercept(NHBot attacker, NHBot defender, Attack a);
 }

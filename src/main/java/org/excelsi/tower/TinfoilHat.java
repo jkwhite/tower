@@ -47,14 +47,22 @@ public class TinfoilHat extends ClothHelmet implements Createable, Deterrent, In
         return a instanceof BoltAttack;
     }
 
-    public Runnable intercept(final NHBot attacker, final NHBot defender, Attack a) {
+    public Performable intercept(final NHBot attacker, final NHBot defender, Attack a) {
+        /*
         N.narrative().print(defender, Grammar.first(Grammar.possessive(defender, this))+" reflects "+new Source("the bolt")+"!");
         final BoltAttack reflect = new BoltAttack(a.getWeapon(), defender, new Source(a.getSource().toString()));
         final Direction d = defender.getEnvironment().getMSpace().directionTo(attacker.getEnvironment().getMSpace());
-        return new Runnable() {
-            public void run() {
+        return new Performable() {
+            public void perform(final Context c) {
                 defender.getEnvironment().project(d, reflect);
             }
+        };
+        */
+        return (c)-> {
+            c.n().print(defender, Grammar.first(Grammar.possessive(defender, this))+" reflects "+new Source("the bolt")+"!");
+            final BoltAttack reflect = new BoltAttack(a.getWeapon(), defender, new Source(a.getSource().toString()));
+            final Direction d = defender.getEnvironment().getMSpace().directionTo(attacker.getEnvironment().getMSpace());
+            defender.getEnvironment().project(d, reflect);
         };
     }
 

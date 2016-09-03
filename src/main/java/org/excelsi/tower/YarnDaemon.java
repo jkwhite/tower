@@ -29,8 +29,8 @@ public class YarnDaemon extends EatDaemon {
     private NHBot _last;
 
 
-    public void poll() {
-        super.poll();
+    @Override public void poll(final Context c) {
+        super.poll(c);
         if(strength==-1) {
             if(in.attack!=null&&in.attack.getWeapon().toItem() instanceof BallOfYarn) {
                 strength = 1;
@@ -42,16 +42,18 @@ public class YarnDaemon extends EatDaemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         if(_last==null) {
-            super.run();
+            super.perform(c);
         }
         else {
             BallOfYarn com = (BallOfYarn) in.attack.getWeapon().toItem();
             in.b.getInventory().add(com);
             Entranced e = new Entranced(in.b, com);
             in.b.start(e);
-            N.narrative().print(in.b, Grammar.start(in.b, "play")+" with "+Grammar.noun(com)+".");
+            //NARRATIVE
+            //N.narrative().print(in.b, Grammar.start(in.b, "play")+" with "+Grammar.noun(com)+".");
+            c.n().print(in.b, Grammar.start(in.b, "play")+" with "+Grammar.noun(com)+".");
             if(_last!=null&&in.b.threat(_last)!=Threat.kos) {
                 in.b.setThreat(_last, Threat.friendly);
                 ((NPC)in.b).setFamiliar(_last);

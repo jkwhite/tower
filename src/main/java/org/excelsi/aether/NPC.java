@@ -142,11 +142,11 @@ public class NPC extends DefaultNHBot {
         }
     }
 
-    public boolean intercept(Attack a) {
-        Runnable r = getAi().react(this, null, a);
+    public boolean intercept(final Context c, final Attack a) {
+        Performable r = getAi().react(c, this, null, a);
         //System.err.println("*** "+this+" INTERCEPTING WITH "+r);
         if(r!=null) {
-            r.run();
+            r.perform(c);
         }
         return r!=null;
     }
@@ -188,9 +188,9 @@ public class NPC extends DefaultNHBot {
             important = null;
         }
 
-        Runnable r = _ai.react(this, important, null);
+        Performable r = _ai.react(c, this, important, null);
         if(r!=null) {
-            r.run();
+            r.perform(c);
         }
     }
 

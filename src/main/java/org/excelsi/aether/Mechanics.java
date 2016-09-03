@@ -25,8 +25,8 @@ import org.excelsi.matrix.Filter;
 
 
 public interface Mechanics {
-    Outcome[] resolve(NHBot attacker, Direction dir, Attack a, Filter f);
-    Outcome[] resolve(NHBot attacker, NHSpace origin, Direction dir, Attack a, Filter f);
+    Outcome[] resolve(Context c, NHBot attacker, Direction dir, Attack a, Filter f);
+    Outcome[] resolve(Context c, NHBot attacker, NHSpace origin, Direction dir, Attack a, Filter f);
     void addMechanicsListener(MechanicsListener listener);
     void removeMechanicsListener(MechanicsListener listener);
 }

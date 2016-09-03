@@ -33,8 +33,8 @@ public class MissileDaemon extends AttackDaemon {
     public void MissileDaemon() {
     }
 
-    public void poll() {
-        super.poll();
+    @Override public void poll(final Context c) {
+        super.poll(c);
         _m = null;
         if(strength>=0&&in.important!=null) {
             MSpace f = in.b.getEnvironment().getMSpace();
@@ -85,7 +85,7 @@ public class MissileDaemon extends AttackDaemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         if(in.important!=null&&_m!=null) {
             in.b.getEnvironment().face(in.important);
             Direction d = in.b.getEnvironment().getMSpace().directionTo(in.important.getEnvironment().getMSpace());
@@ -100,7 +100,7 @@ public class MissileDaemon extends AttackDaemon {
                 a = new Throw(_m, d);
             }
             a.setBot(in.b);
-            a.perform();
+            a.perform(c);
         }
     }
 }

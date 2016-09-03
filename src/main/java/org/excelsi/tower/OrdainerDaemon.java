@@ -32,8 +32,8 @@ public class OrdainerDaemon extends AttackDaemon {
     public void OrdainerDaemon() {
     }
 
-    public void poll() {
-        super.poll();
+    @Override public void poll(final Context c) {
+        super.poll(c);
         if(_last==-1) {
             _last = Time.now();
         }
@@ -54,12 +54,14 @@ public class OrdainerDaemon extends AttackDaemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         if(in.important!=null&&!in.important.isDead()) {
             _last = Time.now();
             in.b.getEnvironment().face(in.important);
             if(Rand.d100(in.b.getIntuition()-in.important.getIntuition())) {
-                N.narrative().print(in.b, Grammar.start(in.b, "tear")+" "+Grammar.possessive(in.important)+" soul from "+Grammar.possessiveIndirect(in.important)+" body.");
+                //NARRATIVE
+                //N.narrative().print(in.b, Grammar.start(in.b, "tear")+" "+Grammar.possessive(in.important)+" soul from "+Grammar.possessiveIndirect(in.important)+" body.");
+                c.n().print(in.b, Grammar.start(in.b, "tear")+" "+Grammar.possessive(in.important)+" soul from "+Grammar.possessiveIndirect(in.important)+" body.");
                 in.important.die("Absolved by "+Grammar.nonspecific(in.b));
             }
         }

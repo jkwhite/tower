@@ -269,7 +269,7 @@ public interface NHBot extends Bot, Scoreable, Cloneable {
      * @param a attack against this bot
      * @return <code>true</code> if attack was intercepted
      */
-    boolean intercept(Attack a);
+    boolean intercept(Context c, Attack a);
 
     /**
      * Tests if this bot can occupy a space. This method can be used

@@ -22,5 +22,5 @@ package org.excelsi.aether;
 
 public interface Interceptor {
     boolean intercepts(Attack a);
-    Runnable intercept(final NHBot attacker, final NHBot defender, Attack a);
+    Performable intercept(final NHBot attacker, final NHBot defender, Attack a);
 }

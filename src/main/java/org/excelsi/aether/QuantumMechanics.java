@@ -54,7 +54,7 @@ public class QuantumMechanics implements Mechanics {
     }
 
     // NO STAT GAIN
-    public Outcome resolve(NHBot attacker, NHBot attackee, Attack a) {
+    public Outcome resolve(Context c, NHBot attacker, NHBot attackee, Attack a) {
         QOutcome outcome = new QOutcome();
         outcome.setAttacker(attacker);
         outcome.setDefender(attackee);
@@ -63,7 +63,7 @@ public class QuantumMechanics implements Mechanics {
             System.err.println(attacker+" "+Grammar.toBe(attacker)+" attacking "+attackee);
             System.err.println("base skill="+attacker.getSkill(a.getWeapon()));
         }
-        if(attackee.intercept(a)) {
+        if(attackee.intercept(c, a)) {
             outcome.setResult(Outcome.Result.intercept);
             return outcome;
         }
@@ -107,7 +107,7 @@ public class QuantumMechanics implements Mechanics {
                 arm = attackee.getForm().getNaturalArmor();
             }
             if(arm instanceof Interceptor && ((Interceptor)arm).intercepts(a)) {
-                Runnable r = ((Interceptor)arm).intercept(attacker, attackee, a);
+                Performable r = ((Interceptor)arm).intercept(attacker, attackee, a);
                 outcome.setResult(Outcome.Result.intercept);
                 outcome.setCorollary(r);
                 if(SHOW_MECH) {
@@ -130,12 +130,12 @@ public class QuantumMechanics implements Mechanics {
     }
 
     // STAT GAIN
-    public Outcome[] resolve(NHBot attacker, Direction d, Attack a, Filter filter) {
-        return resolve(attacker, attacker.getEnvironment().getMSpace(), d, a, filter);
+    public Outcome[] resolve(Context c, NHBot attacker, Direction d, Attack a, Filter filter) {
+        return resolve(c, attacker, attacker.getEnvironment().getMSpace(), d, a, filter);
     }
 
     // STAT GAIN
-    public Outcome[] resolve(NHBot attacker, NHSpace origin, Direction d, Attack a, Filter filter) {
+    public Outcome[] resolve(Context c, NHBot attacker, NHSpace origin, Direction d, Attack a, Filter filter) {
         if(a.getType()==Attack.Type.ball) {
             final NHSpace start = origin;
             Set<NHSpace> affected = new HashSet<NHSpace>(Math.max(200, a.getRadius()*a.getRadius()));
@@ -173,10 +173,10 @@ public class QuantumMechanics implements Mechanics {
             attackStarted(a, attacker, null, sort);
             List<Outcome> outcomes = new ArrayList<Outcome>(defenders.size());
             for(NHBot def:defenders) {
-                Outcome o = resolve(attacker, def, a);
+                Outcome o = resolve(c, attacker, def, a);
                 attackEnded(a, attacker, def, o);
                 if(o.getCorollary()!=null) {
-                    o.getCorollary().run();
+                    o.getCorollary().perform(c);
                 }
                 outcomes.add(o);
             }
@@ -203,7 +203,7 @@ public class QuantumMechanics implements Mechanics {
                 }
             }
             //Outcome[] results = resolve(attacker, d, a, attacker.getEnvironment().getMSpace(), distance);
-            Outcome[] results = resolve(attacker, d, a, origin, distance);
+            Outcome[] results = resolve(c, attacker, d, a, origin, distance);
             skillUp(attacker, a.getWeapon());
             statGain(results);
             return results;
@@ -211,7 +211,7 @@ public class QuantumMechanics implements Mechanics {
     }
 
     // NO STAT GAIN
-    public Outcome[] resolve(NHBot attacker, Direction d, Attack a, final NHSpace start, int distance) {
+    public Outcome[] resolve(final Context c, NHBot attacker, Direction d, Attack a, final NHSpace start, int distance) {
         List<NHSpace> spaces = new ArrayList<NHSpace>();
         NHSpace dest = start;
         boolean cont = d!=null;
@@ -242,7 +242,7 @@ public class QuantumMechanics implements Mechanics {
             if(dest.getOccupant()!=attacker||a.affectsAttacker()) {
                 // attack
                 attackStarted(a, attacker, dest.getOccupant(), path);
-                outcome = (QOutcome) resolve(attacker, dest.getOccupant(), a);
+                outcome = (QOutcome) resolve(c, attacker, dest.getOccupant(), a);
                 if(outcome.getCorollary()!=null) {
                     cont = false;
                 }
@@ -279,7 +279,7 @@ public class QuantumMechanics implements Mechanics {
         outcome.setPath(path);
         Outcome[] outcomes;
         if(distance>0&&cont&&a.getType()==Attack.Type.bolt) {
-            Outcome[] adds = resolve(attacker, d, a, dest, distance);
+            Outcome[] adds = resolve(c, attacker, d, a, dest, distance);
             Outcome[] total = new Outcome[adds.length+1];
             total[0] = outcome;
             System.arraycopy(adds, 0, total, 1, adds.length);
@@ -290,7 +290,7 @@ public class QuantumMechanics implements Mechanics {
         }
         attackEnded(a, attacker, outcome.getDefender(), outcome);
         if(outcome.getCorollary()!=null) {
-            outcome.getCorollary().run();
+            outcome.getCorollary().perform(c);
         }
         skillUp(attacker, a.getWeapon());
         statGain(outcomes);
@@ -629,7 +629,7 @@ public class QuantumMechanics implements Mechanics {
         private NHBot _defender;
         private Result _r;
         private NHSpace[] _path;
-        private Runnable _corollary;
+        private Performable _corollary;
         private boolean _blocked;
 
 
@@ -700,11 +700,11 @@ public class QuantumMechanics implements Mechanics {
             _path = path;
         }
 
-        public void setCorollary(Runnable r) {
+        public void setCorollary(Performable r) {
             _corollary = r;
         }
 
-        public Runnable getCorollary() {
+        public Performable getCorollary() {
             return _corollary;
         }
     }

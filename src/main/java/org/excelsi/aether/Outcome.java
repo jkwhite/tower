@@ -31,5 +31,5 @@ public interface Outcome {
     NHSpace getStartSpace();
     NHSpace[] getPath();
     boolean isBlocked();
-    Runnable getCorollary();
+    Performable getCorollary();
 }

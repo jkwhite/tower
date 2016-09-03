@@ -30,8 +30,8 @@ public class ImplantDaemon extends AttackDaemon {
     private static final int PERIOD = 20;
 
 
-    public void poll() {
-        super.poll();
+    @Override public void poll(final Context c) {
+        super.poll(c);
         if(_last==-1) {
             _last = Time.now();
         }
@@ -46,19 +46,21 @@ public class ImplantDaemon extends AttackDaemon {
         }
     }
 
-    public void run() {
+    @Override public void perform(final Context c) {
         if(Time.now()>_last+PERIOD) {
             if(in.important!=null&&!in.important.isDead()) {
                 _last = Time.now();
                 in.b.getEnvironment().face(in.important);
                 if(Rand.d100(in.b.getIntuition()-in.important.getIntuition())) {
-                    N.narrative().print(in.b, Grammar.start(in.b, "tear")+" "+Grammar.possessive(in.important)+" soul from "+Grammar.possessive(in.important)+" body.");
+                    //NARRATIVE
+                    //N.narrative().print(in.b, Grammar.start(in.b, "tear")+" "+Grammar.possessive(in.important)+" soul from "+Grammar.possessive(in.important)+" body.");
+                    c.n().print(in.b, Grammar.start(in.b, "tear")+" "+Grammar.possessive(in.important)+" soul from "+Grammar.possessive(in.important)+" body.");
                     in.important.die("Soul destroyed by "+Grammar.nonspecific(in.b));
                 }
             }
         }
         else {
-            super.run();
+            super.perform(c);
         }
     }
 }

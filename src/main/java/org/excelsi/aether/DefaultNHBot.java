@@ -219,7 +219,7 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
         }
     }
 
-    public boolean intercept(Attack a) {
+    @Override public boolean intercept(final Context c, final Attack a) {
         return false;
     }
 

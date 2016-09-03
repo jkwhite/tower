@@ -26,7 +26,7 @@ import org.excelsi.aether.*;
 
 
 public class MAttackDaemon extends AttackDaemon {
-    public void run() {
+    @Override public void perform(final Context c) {
         if(in.b.threat(_last)==Threat.kos) {
             if(in.b.getEnvironment().getMSpace().isAdjacentTo(_last.getEnvironment().getMSpace())) {
                 Armament a = (Armament) in.b.getWielded();
@@ -41,7 +41,7 @@ public class MAttackDaemon extends AttackDaemon {
                     }
                 }
             }
-            super.run();
+            super.perform(c);
         }
     }
 }

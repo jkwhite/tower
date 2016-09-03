@@ -56,9 +56,9 @@ public class EatDaemon extends Daemon {
     public void perform(final Context c) {
         Comestible com = (Comestible) in.attack.getWeapon().toItem();
         in.b.getInventory().add(com);
-        Consume c = new Consume(com);
-        c.setBot(in.b);
-        c.perform();
+        Consume eat = new Consume(com);
+        eat.setBot(in.b);
+        eat.perform(c);
         if(_last!=null&&in.b.threat(_last)!=Threat.kos) {
             in.b.setThreat(_last, Threat.friendly);
             ((NPC)in.b).setFamiliar(_last);

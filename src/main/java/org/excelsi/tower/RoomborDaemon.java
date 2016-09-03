@@ -58,11 +58,13 @@ public class RoomborDaemon extends SearchDaemon {
         return "basic";
     }
 
-    public void poll() {
+    @Override public void poll(final Context c) {
         if(_messages&&Rand.d100(10)) {
-            N.narrative().print(in.b, in.b+" hungers!");
+            //NARRATIVE
+            //N.narrative().print(in.b, in.b+" hungers!");
+            c.n().print(in.b, in.b+" hungers!");
         }
-        super.poll();
+        super.poll(c);
     }
 
     protected boolean accept(Item i) {

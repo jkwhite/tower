@@ -66,13 +66,13 @@ public class ChallengerDaemon extends Daemon {
         });
     }
 
-    public void poll(final Context c) {
+    @Override public void poll(final Context c) {
         if(strength>-1) {
             strength--;
         }
     }
 
-    @Override public void run(final Context c) {
+    @Override public void perform(final Context c) {
         ((NPC)in.b).approach(_c, 10);
     }
 
