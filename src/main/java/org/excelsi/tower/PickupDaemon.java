@@ -81,7 +81,7 @@ public class PickupDaemon extends Daemon {
             DefaultNHBot.Pickup p = new DefaultNHBot.Pickup();
             p.setItem(_item);
             p.setBot(in.b);
-            p.perform();
+            p.perform(c);
         }
     }
 

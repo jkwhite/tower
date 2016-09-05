@@ -7,9 +7,9 @@ import org.excelsi.aether.NHBot;
 
 
 public final class Context {
-    private final NNarrative _n;
     private final Universe _u;
     private final Bulk _b;
+    private NNarrative _n;
     private State _state = new NullState();
     private InputSource _input;
     private NHBot _actor;
@@ -47,16 +47,6 @@ public final class Context {
         return _input;
     }
 
-    public Patsy getPatsy() {
-        return _patsy;
-    }
-
-    public void setPatsy(final Patsy patsy) {
-        final Patsy old = _patsy;
-        _patsy = patsy;
-        EventBus.instance().post("keys", new ChangeEvent<Context,Patsy>(this, "player", this, old, _patsy));
-    }
-
     public void setState(final State state) {
         final State oldValue = _state;
         _state = state;
@@ -79,5 +69,30 @@ public final class Context {
 
     public NHBot getActor() {
         return _actor;
+    }
+
+    public void setPov(final Patsy pov) {
+        pov(pov);
+    }
+
+    public Patsy getPov() {
+        return _patsy;
+    }
+
+    public Context pov(final Patsy pov) {
+        // TODO: push/pop dynamic scope?
+        _n = new FilteringNarrative(pov, _n);
+        setPatsy(pov);
+        return this;
+    }
+
+    private Patsy getPatsy() {
+        return _patsy;
+    }
+
+    private void setPatsy(final Patsy patsy) {
+        final Patsy old = _patsy;
+        _patsy = patsy;
+        EventBus.instance().post("keys", new ChangeEvent<Context,Patsy>(this, "player", this, old, _patsy));
     }
 }

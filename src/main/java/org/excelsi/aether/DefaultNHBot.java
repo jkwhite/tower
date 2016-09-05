@@ -632,6 +632,10 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
         return false;
     }
 
+    public boolean isHuman() {
+        return false;
+    }
+
     public void setDead(boolean dead) {
         _dead = dead;
     }
@@ -1694,7 +1698,7 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
                         _pickup.setBot(c.getActor());
                         _lookHere.setBot(c.getActor());
                         try {
-                            _pickup.perform();
+                            _pickup.perform(c);
                         }
                         catch(ActionCancelledException ignored) {
                         }
@@ -1755,12 +1759,16 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
         }
 
         public void perform() {
+            throw new UnsupportedOperationException();
+        }
+
+        public void perform(final Context c) {
             try {
-                internalPerform();
+                internalPerform(c);
             }
             catch(IllegalArgumentException e) {
                 if(getBot().isPlayer()) {
-                    N.narrative().printf(getBot(), "You're out of space.");
+                    c.n().printf(getBot(), "You're out of space.");
                 }
             }
         }
@@ -1769,13 +1777,13 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
             return "Pick up";
         }
 
-        private void internalPerform() {
+        private void internalPerform(final Context c) {
             NHSpace space = (NHSpace) ((MatrixEnvironment)getBot().getEnvironment()).getMSpace();
             int s = space.numItems();
             if(getBot().isLevitating()) {
                 if(!_auto) {
                     if(getBot().isPlayer()) {
-                        N.narrative().print(getBot(), Grammar.start(getBot())+" cannot reach the ground.");
+                        c.n().print(getBot(), Grammar.start(getBot())+" cannot reach the ground.");
                     }
                 }
                 return;
@@ -1800,7 +1808,7 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
                         if(p.isAutopickup()&&api!=null) {
                             for(Item i:space.getItem()) {
                                 if(api.indexOf(i.getModel())>=0) {
-                                    transfer(space, i, first);
+                                    transfer(c, space, i, first);
                                     first = false;
                                 }
                             }
@@ -1810,20 +1818,20 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
                 else {
                     if(!space.pickup(getBot())) {
                         if(_item!=null) {
-                            transfer(space, _item, true);
+                            transfer(c, space, _item, true);
                         }
                         else if(space.numItems()==1) {
-                            transfer(space, space.firstItem(), true);
+                            transfer(c, space, space.firstItem(), true);
                         }
                         else {
                             if(s==0) {
-                                N.narrative().print(getBot(), "There is nothing here to pick up.");
+                                c.n().print(getBot(), "There is nothing here to pick up.");
                             }
                             else {
                                 boolean first = true;
                                 space.getLoot().sort();
                                 for(Item it:N.narrative().choose(getBot(), space)) {
-                                    transfer(space, it, first);
+                                    transfer(c, space, it, first);
                                     first = false;
                                 }
                             }
@@ -1834,13 +1842,13 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
             _item = null;
         }
 
-        private void transfer(NHSpace space, Item it, boolean first) {
+        private void transfer(final Context c, NHSpace space, Item it, boolean first) {
             if(it.getModifiedPackedWeight()>getBot().getModifiedConstitution()) {
                 if(getBot().isPlayer()) {
-                    N.narrative().printf(getBot(), "%n is too heavy to lift!", it);
+                    c.n().printf(getBot(), "%n is too heavy to lift!", it);
                 }
                 else {
-                    N.narrative().printf(getBot(), "%n can't lift %n!", getBot(), it);
+                    c.n().printf(getBot(), "%n can't lift %n!", getBot(), it);
                 }
                 return;
             }
@@ -1853,14 +1861,14 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
                     //N.narrative().clear();
                 //}
                 if(it.getStackType()!=Item.StackType.singular) {
-                    N.narrative().print(getBot(), it /*Grammar.key(getBot().getInventory(), it)*/);
+                    c.n().print(getBot(), it /*Grammar.key(getBot().getInventory(), it)*/);
                 }
                 else {
                     N.narrative().print(getBot(), it.getName()+".");
                 }
             }
             else {
-                N.narrative().print(getBot(), Grammar.start(getBot(), "pick")+" up "+Grammar.nonspecific(it)+".");
+                c.n().print(getBot(), Grammar.start(getBot(), "pick")+" up "+Grammar.nonspecific(it)+".");
             }
         }
     }

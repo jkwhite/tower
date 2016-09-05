@@ -269,6 +269,10 @@ public class Patsy extends DefaultNHBot {
         return true;
     }
 
+    public boolean isHuman() {
+        return true;
+    }
+
     public int score() {
         int score = super.score() + _baseScore;
         if(getLevel()!=null) {

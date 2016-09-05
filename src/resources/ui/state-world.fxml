@@ -24,9 +24,21 @@
         <JfxWorld/>
         <BorderPane prefWidth="200" prefHeight="200">
             <bottom>
+            <!--
                 <VBox styleClass='status'>
                     <children>
                         <JfxStatus/>
+                    </children>
+                </VBox>
+                -->
+                <VBox styleClass='status'>
+                    <children>
+                        <HBox styleClass='status-items' spacing='20'>
+                            <children>
+                                <JfxStatus/>
+                                <JfxPatsy/>
+                            </children>
+                        </HBox>
                     </children>
                 </VBox>
             </bottom>

@@ -44,6 +44,13 @@ public interface NHBot extends Bot, Scoreable, Cloneable {
     boolean isPlayer();
 
     /**
+     * Tests if this bot is controlled by a human.
+     *
+     * @return <code>true</code> if this bot is human-controlled
+     */
+    boolean isHuman();
+
+    /**
      * Gets this bot's name.
      *
      * @return name

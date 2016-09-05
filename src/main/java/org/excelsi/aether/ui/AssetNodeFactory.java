@@ -51,7 +51,7 @@ public abstract class AssetNodeFactory<E extends Typed> extends Enloggened imple
         });
         Material mat = assets().loadMaterial("/material/m_gray.j3m");
         n.setMaterial(mat);
-        log().debug("loaded spatial "+n);
+        //log().debug("loaded spatial "+n);
         switch(display) {
             case scatter:
                 Node sc = new Node();

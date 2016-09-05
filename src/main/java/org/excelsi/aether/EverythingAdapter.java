@@ -24,7 +24,7 @@ import java.util.List;
 import org.excelsi.matrix.*;
 
 
-public class EverythingAdapter implements NHEnvironmentListener, ContainerListener, MatrixListener, NHSpaceListener, OverlayListener {
+public class EverythingAdapter implements NHEnvironmentListener, ContainerListener, MatrixListener, NHSpaceListener, OverlayListener, MechanicsListener {
     public void overlayMoved(Overlay o, NHSpace from, NHSpace to) {
     }
 

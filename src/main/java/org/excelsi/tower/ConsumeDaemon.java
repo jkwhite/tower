@@ -65,10 +65,10 @@ public class ConsumeDaemon extends SearchDaemon {
         return s;
     }
 
-    protected void perform(Item i) {
-        Consume c = new Consume(i);
-        c.setBot(in.b);
-        c.perform();
+    protected void perform(final Context c, Item i) {
+        Consume eat = new Consume(i);
+        eat.setBot(in.b);
+        eat.perform(c);
     }
 
     public Chemical getChemical() {

@@ -14,11 +14,20 @@ import org.excelsi.matrix.MSource;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import static org.excelsi.aether.Events.TOPIC_CHANGES;
+import static org.excelsi.aether.Events.TOPIC_MECHANICS;
 
 
 public class EventBusRelayer extends EverythingAdapter {
     private static final Logger LOG = LoggerFactory.getLogger(EventBusRelayer.class);
 
+
+    @Override public void attackStarted(Mechanics m, Attack attack, NHBot attacker, NHBot defender, NHSpace[] path) {
+        post(TOPIC_MECHANICS, new MechanicsEvent(m, attack, attacker, defender, path));
+    }
+
+    @Override public void attackEnded(Mechanics m, Attack attack, NHBot attacker, NHBot defender, Outcome outcome) {
+        post(TOPIC_MECHANICS, new MechanicsEvent(m, attack, attacker, defender, outcome));
+    }
 
     @Override public void moved(MSpace source, MSpace from, MSpace to, Bot b) {
         post(TOPIC_CHANGES, new MoveEvent(source, (NHBot)b, (NHSpace)from, (NHSpace)to));

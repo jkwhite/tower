@@ -26,9 +26,10 @@ public class World implements State {
         c.n().title("The Lower Reaches");
         // move player creation to dawn script
         //_player = (Patsy) c.getUniverse().createBot((b)->{return "Traveler".equals(b.getProfession());});
-        _player = c.getPatsy();
+        _player = c.getPov();
         _player.setInputSource(c.getInputSource());
         Grammar.setPov(_player);
+        EventBus.instance().post("keys", new BotAttributeChangeEvent<String>(this, _player, "created", "", ""));
 
         setLevel(c, c.getBulk().findLevel(1));
         while(c.getState()==this) {
@@ -57,5 +58,6 @@ public class World implements State {
         s.addContainerListener(_relay);
         s.addNHSpaceListener(_relay);
         s.addNHEnvironmentListener(_relay);
+        NHEnvironment.getMechanics().addMechanicsListener(_relay);
     }
 }

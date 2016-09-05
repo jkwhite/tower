@@ -424,7 +424,7 @@ public class NHEnvironment extends MatrixEnvironment implements MatrixListener {
 
     public NHBot getPlayer() {
         //return getGame().getPlayer();
-        return Actor.context().getPatsy();
+        return Actor.context().getPov();
     }
 
     private Game getGame() {

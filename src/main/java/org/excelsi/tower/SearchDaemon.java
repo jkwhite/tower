@@ -79,7 +79,7 @@ public abstract class SearchDaemon extends Daemon {
             _com = null;
             checkSpace(_dest);
             if(_com!=null) {
-                perform(_com);
+                perform(c, _com);
             }
             _dest = null;
             _lookAround = 0;
@@ -96,6 +96,6 @@ public abstract class SearchDaemon extends Daemon {
 
     protected abstract int strengthFor(Item i);
 
-    protected abstract void perform(Item i);
+    protected abstract void perform(Context c, Item i);
 }
 

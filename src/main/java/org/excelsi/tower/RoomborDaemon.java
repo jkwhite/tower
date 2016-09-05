@@ -76,16 +76,16 @@ public class RoomborDaemon extends SearchDaemon {
     }
 
     private DefaultNHBot.Pickup _p = new DefaultNHBot.Pickup();
-    protected void perform(Item i) {
+    protected void perform(final Context c, final Item i) {
         if(_retain) {
             _p.setBot(in.b);
             _p.setItem(i);
-            _p.perform();
+            _p.perform(c);
         }
         else {
             in.b.getEnvironment().getMSpace().destroy(i);
         }
-        N.narrative().print(in.b, Grammar.start(in.b, "consume")+" "+Grammar.noun(i)+".");
+        c.n().print(in.b, Grammar.start(in.b, "consume")+" "+Grammar.noun(i)+".");
     }
 
     public Chemical getChemical() {

@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.Parent;
 import javafx.scene.Group;
 
+import org.excelsi.aether.BotAttributeChangeEvent;
 import org.excelsi.aether.ChangeEvent;
 import org.excelsi.aether.Stage;
 

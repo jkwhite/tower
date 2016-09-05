@@ -5,7 +5,8 @@ public interface NNarrative {
     void pause();
     void title(String m);
     void message(String m);
-    void print(NHBot source, String m);
+    void printf(NHBot source, String message, Object... args);
+    void print(NHBot source, Object m);
     boolean confirm(String m);
     void poster(String m);
     //void act(Menu<E> m);

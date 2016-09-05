@@ -53,9 +53,17 @@ public class JmeEventHandler implements EventBus.Handler {
         else if(e instanceof AddEvent) {
             add((AddEvent)e);
         }
+        else if(e instanceof MechanicsEvent) {
+            mechanics((MechanicsEvent)e);
+        }
         else if(e instanceof ActionEvent) {
             uiAction((ActionEvent)e);
         }
+    }
+
+    private void mechanics(final MechanicsEvent e) {
+        Controller c = _cfactory.createController(e);
+        c.changed(_ctx, e);
     }
 
     private void change(final ChangeEvent e) {

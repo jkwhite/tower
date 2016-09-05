@@ -32,25 +32,15 @@ import com.jme3x.jfx.FXMLHud;
 import com.jme3x.jfx.window.FXMLWindow;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.HBox;
 import javafx.scene.Node;
-import javafx.scene.layout.VBox;
-import javafx.scene.control.Label;
-import javafx.scene.text.Font;
-import javafx.scene.paint.Color;
-import javafx.scene.Group;
 import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.SubScene;
 import javafx.scene.SceneAntialiasing;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javafx.scene.text.FontSmoothingType;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.effect.Effect;
-import javafx.scene.effect.Glow;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
@@ -67,6 +57,7 @@ import org.excelsi.aether.ScriptedState;
 import org.excelsi.aether.BlockingNarrative;
 import org.excelsi.aether.Logic;
 import org.excelsi.aether.KeyEvent;
+import org.excelsi.aether.Events;
 import org.excelsi.aether.BusInputSource;
 import org.excelsi.aether.Universe;
 import org.excelsi.aether.Bulk;
@@ -98,7 +89,8 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
     }
 
     public JfxMain() {
-        super(new FlyCamAppState(), new AudioListenerState(), new DebugKeysAppState(), new StatsAppState());
+        //super(new FlyCamAppState(), new AudioListenerState(), new DebugKeysAppState(), new StatsAppState());
+        super(new FlyCamAppState(), new AudioListenerState(), new DebugKeysAppState());
     }
 
     public void simpleInitApp() {
@@ -200,6 +192,7 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
         EventBus.instance().subscribe(UIConstants.QUEUE_JME, UIConstants.QUEUE_JME);
         _jfxSubscription = EventBus.instance().subscribe("keys", UIConstants.QUEUE_JFX);
         _jmeSubscription = EventBus.instance().subscribe("changes", UIConstants.QUEUE_JME);
+        EventBus.instance().subscribe(Events.TOPIC_MECHANICS, UIConstants.QUEUE_JME);
 
         final Universe u = new Universe();
         Universe.setUniverse(u);
