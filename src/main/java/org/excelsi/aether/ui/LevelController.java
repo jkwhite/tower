@@ -18,17 +18,17 @@ import com.jme3.light.Light;
 import com.jme3.scene.Spatial;
 
 
-public class LevelController implements Controller<Bulk,Stage> {
+public class LevelController extends ChangeController<Bulk,Stage> {
     private static final String PREFIX = "level-";
 
 
-    @Override public void added(final SceneContext c, final AddEvent<Bulk,Stage> l) {
+    @Override protected void added(final SceneContext c, final AddEvent<Bulk,Stage> l) {
     }
 
-    @Override public void removed(final SceneContext c, final RemoveEvent<Bulk,Stage> l) {
+    @Override protected void removed(final SceneContext c, final RemoveEvent<Bulk,Stage> l) {
     }
 
-    @Override public void changed(final SceneContext c, final ChangeEvent<Bulk,Stage> e) {
+    @Override protected void changed(final SceneContext c, final ChangeEvent<Bulk,Stage> e) {
         if(e.getFrom()!=null) {
             Node from = c.getNode(PREFIX+e.getFrom().getOrdinal());
             if(from!=null) {
@@ -66,9 +66,10 @@ public class LevelController implements Controller<Bulk,Stage> {
         }
         final Item[] items = space.getItem();
         if(items!=null) {
-            for(Item it:items) {
+            //for(Item it:items) {
+            for(int i=0;i<items.length;i++) {
                 //Spaces.attachItem(ms, Spaces.createItem(c, it));
-                ms.attachItem(c, it);
+                ms.attachItem(c, items[i], i, false);
             }
         }
         return ms;

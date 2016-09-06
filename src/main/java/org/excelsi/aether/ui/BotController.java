@@ -16,14 +16,14 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
 
-public class BotController implements Controller<NHBot,NHSpace> {
-    @Override public void added(final SceneContext c, final AddEvent<NHBot,NHSpace> b) {
+public class BotController extends ChangeController<NHBot,NHSpace> {
+    @Override protected void added(final SceneContext c, final AddEvent<NHBot,NHSpace> b) {
     }
 
-    @Override public void removed(final SceneContext c, final RemoveEvent<NHBot,NHSpace> b) {
+    @Override protected void removed(final SceneContext c, final RemoveEvent<NHBot,NHSpace> b) {
     }
 
-    @Override public void changed(final SceneContext c, final ChangeEvent<NHBot,NHSpace> e) {
+    @Override protected void changed(final SceneContext c, final ChangeEvent<NHBot,NHSpace> e) {
         if(e instanceof MoveEvent) {
             final MoveEvent me = (MoveEvent) e;
             final NHBot b = (NHBot) me.getBot();

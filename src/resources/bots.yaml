@@ -3606,6 +3606,36 @@
         messages: false
         retain: false
 - !!org.excelsi.tower.TNPC
+  common: fabricatorbot
+  gender: neuter
+  form: !!org.excelsi.tower.Mech {}
+  strength: 30
+  quickness: 80
+  agility: 50
+  constitution: 120
+  maxHp: 40
+  model: M
+  color: brown
+  minLevel: 20
+  maxLevel: 29
+  rarity: 1
+  pack:
+    - !!org.excelsi.tower.ScrapMetal
+      count: 3
+    - !!org.excelsi.tower.Battery {}
+    - !!org.excelsi.tower.Actuator
+      count: 4
+    - !!org.excelsi.tower.OrganicMentalCore {}
+    - !!org.excelsi.tower.Wire
+      count: 8
+    - !!org.excelsi.tower.Sensor
+      count: 3
+  ai: 
+    daemons: 
+      - !!org.excelsi.aether.WanderDaemon
+        oblivious: true
+      - !!org.excelsi.tower.GenerateDaemon {}
+- !!org.excelsi.tower.TNPC
   common: guardbot
   gender: neuter
   size: small

@@ -7,7 +7,7 @@ import org.excelsi.aether.Item;
 import org.excelsi.aether.NHSpace;
 
 
-public class ContainerAddEvent extends AddEvent<Container,Item> {
+public class ContainerAddEvent extends AddEvent<NHSpace,Item> {
     private final int _idx;
     private final boolean _inc;
 

@@ -16,9 +16,6 @@ public class TypeControllerFactory extends Enloggened implements ControllerFacto
 
     @Override public Controller createController(final Event e) {
         final ControllerFactory cf = _cfs.get(e.getType());
-        if(cf==null) {
-            log().error("unhandled event type: "+e);
-        }
-        return cf.createController(e);
+        return cf!=null?cf.createController(e):null;
     }
 }

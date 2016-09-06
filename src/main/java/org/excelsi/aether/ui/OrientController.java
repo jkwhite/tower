@@ -16,14 +16,14 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
 
-public class OrientController implements Controller<NHBot,Direction> {
-    @Override public void added(final SceneContext c, final AddEvent<NHBot,Direction> b) {
+public class OrientController extends ChangeController<NHBot,Direction> {
+    @Override protected void added(final SceneContext c, final AddEvent<NHBot,Direction> b) {
     }
 
-    @Override public void removed(final SceneContext c, final RemoveEvent<NHBot,Direction> b) {
+    @Override protected void removed(final SceneContext c, final RemoveEvent<NHBot,Direction> b) {
     }
 
-    @Override public void changed(final SceneContext c, final ChangeEvent<NHBot,Direction> e) {
+    @Override protected void changed(final SceneContext c, final ChangeEvent<NHBot,Direction> e) {
         if(e instanceof OrientEvent) {
             final OrientEvent me = (OrientEvent) e;
             final NHBot b = (NHBot) me.getBot();

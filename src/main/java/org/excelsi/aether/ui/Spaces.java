@@ -74,7 +74,7 @@ public class Spaces {
                 return "pipe";
             default:
                 if(Character.isUpperCase(c.charAt(0))) {
-                    return "_"+c;
+                    return "_"+c.toLowerCase();
                 }
                 else {
                     return c;

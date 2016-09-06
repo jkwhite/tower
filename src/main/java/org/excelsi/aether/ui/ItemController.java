@@ -5,31 +5,35 @@ import org.excelsi.matrix.MSpace;
 import org.excelsi.matrix.MatrixMSpace;
 import org.excelsi.aether.AddEvent;
 import org.excelsi.aether.ChangeEvent;
+import org.excelsi.aether.ContainerAddEvent;
 import org.excelsi.aether.RemoveEvent;
 import org.excelsi.aether.NHSpace;
 import org.excelsi.aether.Item;
 
+import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import com.jme3.scene.LightNode;
 import com.jme3.light.Light;
 import com.jme3.scene.Spatial;
 
 
-public class ItemController implements Controller<NHSpace,Item> {
-    @Override public void added(final SceneContext c, final AddEvent<NHSpace,Item> e) {
-        //final Spatial item = c.getNodeFactory().createNode(e.getAdded().getId(), e.getAdded());
-        //final Spatial item = Spaces.createItem(c, e.getAdded());
+public class ItemController extends ChangeController<NHSpace,Item> {
+    @Override protected void added(final SceneContext c, final AddEvent<NHSpace,Item> e) {
+        ContainerAddEvent ce = (ContainerAddEvent) e;
         final NHSpace mms = (NHSpace) e.getSource();
-        //Spaces.translate(mms, item);
         final SpaceNode sp = (SpaceNode) c.getNode(mms.getId());
-        //sp.attachChild(item);
-        //Spaces.attachItem(sp, item);
-        sp.attachItem(c, e.getAdded());
+        if(sp!=null) {
+            sp.attachItem(c, e.getAdded(), ce.getIndex(), ce.getIncremented());
+        }
     }
 
-    @Override public void removed(final SceneContext c, final RemoveEvent<NHSpace,Item> l) {
+    @Override protected void removed(final SceneContext c, final RemoveEvent<NHSpace,Item> l) {
+        final SpaceNode sp = (SpaceNode) c.getNode(l.getContext().getId());
+        if(sp!=null) {
+            sp.detachItem(c, l.getRemoved());
+        }
     }
 
-    @Override public void changed(final SceneContext c, final ChangeEvent<NHSpace,Item> e) {
+    @Override protected void changed(final SceneContext c, final ChangeEvent<NHSpace,Item> e) {
     }
 }

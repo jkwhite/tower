@@ -10,6 +10,7 @@ import org.excelsi.aether.ChangeEvent;
 import org.excelsi.aether.ActionEvent;
 import org.excelsi.aether.Level;
 import org.excelsi.aether.AddEvent;
+import org.excelsi.aether.MechanicsEvent;
 
 import com.jme3.material.Material;
 import com.jme3.scene.Geometry;
@@ -24,7 +25,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 
-public class JmeEventHandler implements EventBus.Handler {
+public class JmeEventHandler extends Enloggened implements EventBus.Handler {
     private static final Logger LOG = LoggerFactory.getLogger(JmeEventHandler.class);
     private final Node _root;
     //private final Map<Object,Controller> _controllers = new HashMap<>();
@@ -47,6 +48,19 @@ public class JmeEventHandler implements EventBus.Handler {
 
     @Override public void handleEvent(final Event e) {
         LOG.debug("jme got event: {}", e);
+        if(e instanceof ActionEvent) {
+            uiAction((ActionEvent)e);
+        }
+        else {
+            final Controller c = _cfactory.createController(e);
+            if(c!=null) {
+                c.handle(_ctx, e);
+            }
+            else {
+                log().error("unhandled event type: "+e);
+            }
+        }
+        /*
         if(e instanceof ChangeEvent) {
             change((ChangeEvent)e);
         }
@@ -59,8 +73,10 @@ public class JmeEventHandler implements EventBus.Handler {
         else if(e instanceof ActionEvent) {
             uiAction((ActionEvent)e);
         }
+        */
     }
 
+    /*
     private void mechanics(final MechanicsEvent e) {
         Controller c = _cfactory.createController(e);
         c.changed(_ctx, e);
@@ -75,6 +91,7 @@ public class JmeEventHandler implements EventBus.Handler {
         Controller c = _cfactory.createController(e);
         c.added(_ctx, e);
     }
+    */
 
     private void uiAction(final ActionEvent e) {
         final UIAction a = (UIAction) e.getAction();

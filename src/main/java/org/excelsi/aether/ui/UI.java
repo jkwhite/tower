@@ -20,6 +20,7 @@ public class UI {
         nfs.put("level", new LevelNodeFactory());
         nfs.put("space", new SpaceNodeFactory(assets));
         nfs.put("bot", new BotNodeFactory(assets));
+        nfs.put("item", new ItemNodeFactory(assets));
         return new CompositeNodeFactory(nfs, new PlaceholderNodeFactory(assets));
     }
 
