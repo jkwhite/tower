@@ -72,6 +72,8 @@ foo = [
     ])
 ]
 
+$c.universe.items = Data.loadYaml('/items.yaml')
+$c.universe.finds = Data.loadYaml('/data/finds.yaml')
 $c.universe.bots = Data.loadYaml('/bots.yaml')
 $c.universe.threats = Data.loadYaml('/data/threats.yaml')
 

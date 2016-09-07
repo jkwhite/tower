@@ -7,7 +7,7 @@ import org.excelsi.aether.ChangeEvent;
 import org.excelsi.aether.RemoveEvent;
 
 
-public abstract class ChangeController<C,E> implements Controller {
+public abstract class ChangeController<C,E> extends Enloggened implements Controller {
     @Override public final void handle(final SceneContext c, final Event e) {
         if(e instanceof ChangeEvent) {
             changed(c, (ChangeEvent)e);

@@ -1,0 +1,13 @@
+---
+  comestible: 20
+  gem: 10
+  wand: 3
+  armor: 10
+  weapon: 10
+  book: 3
+  potion: 20
+  tool: 12
+  pill: 5
+  -gold: 10
+  scroll: 12
+  junk: 5

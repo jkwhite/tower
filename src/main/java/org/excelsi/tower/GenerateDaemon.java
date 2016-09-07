@@ -57,7 +57,7 @@ public class GenerateDaemon extends Daemon {
         Item it = c.getUniverse().createItem((i,b)->{ return true; });
         System.err.println("****** ITEM: "+it);
         if(it==null) {
-            it = new Apple();
+            it = new AngelArm();
         }
         in.b.getEnvironment().getMSpace().add(it, in.b);
     }

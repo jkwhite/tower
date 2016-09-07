@@ -54,6 +54,7 @@ public class LevelController extends ChangeController<Bulk,Stage> {
         final SpaceNode ms = (SpaceNode) c.getNodeFactory().createNode(mms.getId(), mms);
         Spaces.translate(mms, ms);
         lev.attachChild(ms);
+        c.addNode(ms);
         final NHBot b = (NHBot) mms.getOccupant();
         if(b!=null) {
             final Spatial bot = c.getNodeFactory().createNode(b.getId(), mms.getOccupant());

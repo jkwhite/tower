@@ -31,6 +31,14 @@ public class Spaces {
     }
 
     public static String format(final String c) {
+        StringBuilder b = new StringBuilder();
+        for(int i=0;i<c.length();i++) {
+            b.append(internalFormat(""+c.charAt(i)));
+        }
+        return b.toString();
+    }
+
+    private static String internalFormat(final String c) {
         switch(c) {
             case "@":
                 return "atsign";

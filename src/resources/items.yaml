@@ -1,313 +1,313 @@
 ---
-- !org.excelsi.tower.Potion {}
-- !org.excelsi.tower.Pill {}
-- !org.excelsi.tower.IllegibleScroll {}
-- !org.excelsi.tower.BlankParchment {}
-- !org.excelsi.tower.ScrollOfIdentify {}
-- !org.excelsi.tower.ScrollOfMapping {}
-- !org.excelsi.tower.ScrollOfSummoning {}
-- !org.excelsi.tower.ScrollOfReanimation {}
-- !org.excelsi.tower.ScrollOfEnchantWeapon {}
-- !org.excelsi.tower.ScrollOfFrost {}
-- !org.excelsi.tower.ScrollOfPurifying {}
-- !org.excelsi.tower.ScrollOfRegeneration {}
-- !org.excelsi.tower.ScrollOfTunneling {}
-- !org.excelsi.tower.ScrollOfVacuumMetastabilityDisaster {}
-- !org.excelsi.tower.WandOfDigging {}
-- !org.excelsi.tower.WandOfWishing {}
-- !org.excelsi.tower.WandOfFire {}
-- !org.excelsi.tower.WandOfCold {}
-- !org.excelsi.tower.WandOfLightning {}
-- !org.excelsi.tower.WandOfCatastrophe {}
-- !org.excelsi.tower.WandOfCreation {}
-- !org.excelsi.tower.WandOfPolymorph {}
-- !org.excelsi.tower.ExpensiveCamera {}
-- !org.excelsi.tower.LaminatingKit {}
-- !org.excelsi.tower.ReinforcingKit {}
-- !org.excelsi.tower.BallOfYarn {}
-- !org.excelsi.tower.BottleOfGlue {}
-- !org.excelsi.tower.PieceOfChalk {}
-- !org.excelsi.tower.Magic8_Ball {}
-- !org.excelsi.tower.Pick_Axe {}
-- !org.excelsi.tower.Jackhammer {}
-- !org.excelsi.tower.Hoe {}
-- !org.excelsi.tower.Pitchfork {}
-- !org.excelsi.tower.Scythe {}
-- !org.excelsi.tower.Harvest {}
-- !org.excelsi.tower.Battery {}
-- !org.excelsi.tower.Blindfold {}
-- !org.excelsi.tower.SkeletonKey {}
-- !org.excelsi.tower.Lockpick {}
-- !org.excelsi.tower.Torch {}
-- !org.excelsi.tower.Candle {}
-- !org.excelsi.tower.Lamp {}
-- !org.excelsi.tower.Flashlight {}
-- !org.excelsi.tower.NuclearBomb {}
-- !org.excelsi.tower.Actuator {}
-- !org.excelsi.tower.Board {}
-- !org.excelsi.tower.BrainInAJar {}
-- !org.excelsi.tower.CanOfShoePolish {}
-- !org.excelsi.tower.Condenser {}
-- !org.excelsi.tower.Flashbulb {}
-- !org.excelsi.tower.Generator {}
-- !org.excelsi.tower.IonThruster {}
-- !org.excelsi.tower.Lens {}
-- !org.excelsi.tower.Laser {}
-- !org.excelsi.tower.LeptonAmplifier {}
-- !org.excelsi.tower.LightBulb {}
-- !org.excelsi.tower.Magnet {}
-- !org.excelsi.tower.Nail {}
-- !org.excelsi.tower.Nozzle {}
-- !org.excelsi.tower.OrganicMentalCore {}
-- !org.excelsi.tower.PieceOfPlastic {}
-- !org.excelsi.tower.Processor {}
-- !org.excelsi.tower.RollOfTape {}
-- !org.excelsi.tower.ScrapMetal {}
-- !org.excelsi.tower.Sensor {}
-- !org.excelsi.tower.Spring {}
-- !org.excelsi.tower.SteelTube {}
-- !org.excelsi.tower.Tinfoil {}
-- !org.excelsi.tower.Wire {}
-- !org.excelsi.tower.Dagger {}
-- !org.excelsi.tower.Kris {}
-- !org.excelsi.tower.Stiletto {}
-- !org.excelsi.tower.Broadsword {}
-- !org.excelsi.tower.Katana {}
-- !org.excelsi.tower.Cutlass {}
-- !org.excelsi.tower.Battle_Axe {}
-- !org.excelsi.tower.ShortSword {}
-- !org.excelsi.tower.Longsword {}
-- !org.excelsi.tower.Saber {}
-- !org.excelsi.tower.BullWhip {}
-- !org.excelsi.tower.Spear {}
-- !org.excelsi.tower.Trident {}
-- !org.excelsi.tower.Halberd {}
-- !org.excelsi.tower.LanceOfLonginus {}
-- !org.excelsi.tower.Arrow {}
-- !org.excelsi.tower.Bolt {}
-- !org.excelsi.tower.Dart {}
-- !org.excelsi.tower.PlayingCard {}
-- !org.excelsi.tower.ShortBow {}
-- !org.excelsi.tower.LongBow {}
-- !org.excelsi.tower.Crossbow {}
-- !org.excelsi.tower.Autocrossbow {}
-- !org.excelsi.tower.HeavyCrossbow {}
-- !org.excelsi.tower.WarHammer {}
-- !org.excelsi.tower.RocketHammer {}
-- !org.excelsi.tower.Briefcase {}
-- !org.excelsi.tower.Club {}
-- !org.excelsi.tower.Mace {}
-- !org.excelsi.tower.Morningstar {}
-- !org.excelsi.tower.WarMattock {}
-- !org.excelsi.tower.Maul {}
-- !org.excelsi.tower.No_dachi {}
-- !org.excelsi.tower.Claymore {}
-- !org.excelsi.tower.Scimitar {}
-- !org.excelsi.tower.Greatsword {}
-- !org.excelsi.tower.Sling {}
-- !org.excelsi.tower.RayGun {}
-- !org.excelsi.tower.LaserRifle {}
-- !org.excelsi.tower.AngelArm {}
-- !org.excelsi.tower.LastArmament {}
-- !org.excelsi.tower.Rock {}
-- !org.excelsi.tower.SmallStone {}
-- !org.excelsi.tower.SharpeningStone {}
-- !org.excelsi.tower.LeatherJacket {}
-- !org.excelsi.tower.Robe {}
-- !org.excelsi.tower.Rags {}
-- !org.excelsi.tower.Three_PieceSuit {}
-- !org.excelsi.tower.PlaidShirt {}
-- !org.excelsi.tower.LeatherBreastplate {}
-- !org.excelsi.tower.SteelBreastplate {}
-- !org.excelsi.tower.RingMail {}
-- !org.excelsi.tower.SplintMail {}
-- !org.excelsi.tower.Dragonscale {}
-- !org.excelsi.tower.BlackBreastplate {}
-- !org.excelsi.tower.WoolCloak {}
-- !org.excelsi.tower.Fur_LinedCloak {}
-- !org.excelsi.tower.CloakOfShadows {}
-- !org.excelsi.tower.EbonyCloak {}
-- !org.excelsi.tower.CloakOfInvisibility {}
-- !org.excelsi.tower.Fedora {}
-- !org.excelsi.tower.TenGallonHat {}
-- !org.excelsi.tower.StrawHat {}
-- !org.excelsi.tower.CrownOfThorns {}
-- !org.excelsi.tower.IronHelm {}
-- !org.excelsi.tower.TinfoilHat {}
-- !org.excelsi.tower.SteelHelm {}
-- !org.excelsi.tower.VisoredHelm {}
-- !org.excelsi.tower.HornedHelm {}
-- !org.excelsi.tower.HelmOfConnection {}
-- !org.excelsi.tower.CombatHelmet {}
-- !org.excelsi.tower.HardHat {}
-- !org.excelsi.tower.HawaiianShirt {}
-- !org.excelsi.tower.Buckler {}
-- !org.excelsi.tower.Shield {}
-#- !org.excelsi.tower.IronShield {}
-#- !org.excelsi.tower.WoodenShield {}
-- !org.excelsi.tower.SpikedShield {}
-- !org.excelsi.tower.WallShield {}
-#- !org.excelsi.tower.ForceShield {}
-#- !org.excelsi.tower.MirrorShield {}
-- !org.excelsi.tower.SwampBoots {}
-- !org.excelsi.tower.Snowshoes {}
-- !org.excelsi.tower.IronBoots {}
-- !org.excelsi.tower.CombatBoots {}
-- !org.excelsi.tower.StyrofoamBoots {}
-- !org.excelsi.tower.SandalsOfHecate {}
-- !org.excelsi.tower.HasteningBoots {}
-- !org.excelsi.tower.HikingBoots {}
-- !org.excelsi.tower.CementBoots {}
-- !org.excelsi.tower.CowboyBoots {}
-- !org.excelsi.tower.FoodRation {}
-- !org.excelsi.tower.TripeRation {}
-- !org.excelsi.tower.Sashimi {}
-- !org.excelsi.tower.LembasWafer {}
-- !org.excelsi.tower.CandyBar {}
-- !org.excelsi.tower.LegOfMutton {}
-- !org.excelsi.tower.SliceOfBread {}
-- !org.excelsi.tower.Toast {}
-- !org.excelsi.tower.Bean {}
-- !org.excelsi.tower.Blackberry {}
-- !org.excelsi.tower.MagicBean {}
-- !org.excelsi.tower.Apple {}
-- !org.excelsi.tower.Orange {}
-- !org.excelsi.tower.Tomato {}
-- !org.excelsi.tower.Potato {}
-- !org.excelsi.tower.Egg {}
-- !org.excelsi.tower.Pancake {}
-- !org.excelsi.tower.Pineapple {}
-- !org.excelsi.tower.BowlOfRamen {}
-- !org.excelsi.tower.Cake {}
-- !org.excelsi.tower.MoonPie {}
-- !org.excelsi.tower.BookOfSands {}
-- !org.excelsi.tower.BetaReticulansForBeginners {}
-- !org.excelsi.tower.BowyeryForBlockheads {}
-- !org.excelsi.tower.ElementalWandsForTheExceedinglyWitless {}
-- !org.excelsi.tower.FailedCreations {}
-- !org.excelsi.tower.LaserWeaponsForLuddites {}
-- !org.excelsi.tower.MinovskyPhysicsForMorons {}
-- !org.excelsi.tower.PhotographyForPhilistines {}
-- !org.excelsi.tower.TheAlchemistsWand {}
-- !org.excelsi.tower.Shield_MakingForTheSimple_Minded {}
-- !org.excelsi.tower.TheBodyMechanic {}
-- !org.excelsi.tower.AlmanackAqueous {}
-- !org.excelsi.tower.VariaObscura {}
-- !org.excelsi.tower.DiskOfOdin {}
-- !org.excelsi.tower.Gold {}
-- !org.excelsi.tower.Amethyst {}
-- !org.excelsi.tower.Diamond {}
-- !org.excelsi.tower.Tigerseye {}
-- !org.excelsi.tower.Ruby {}
-- !org.excelsi.tower.Opal {}
-- !org.excelsi.tower.Topaz {}
-- !org.excelsi.tower.Sapphire {}
-- !org.excelsi.tower.Pearl {}
-- !org.excelsi.tower.Emerald {}
-- !org.excelsi.tower.Aquamarine {}
-- !org.excelsi.tower.CubicZirconium {}
-- !org.excelsi.tower.WorthlessPieceOfPurpleGlass {}
-- !org.excelsi.tower.WorthlessPieceOfClearGlass {}
-- !org.excelsi.tower.WorthlessPieceOfRedGlass {}
-- !org.excelsi.tower.WorthlessPieceOfWhiteGlass {}
-- !org.excelsi.tower.WorthlessPieceOfYellowGlass {}
-- !org.excelsi.tower.WorthlessPieceOfBlueGlass {}
-- !org.excelsi.tower.WorthlessPieceOfGreenGlass {}
-- !org.excelsi.tower.WorthlessPieceOfAquamarineGlass {}
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.Potion {}
+- !!org.excelsi.tower.Pill {}
+- !!org.excelsi.tower.IllegibleScroll {}
+- !!org.excelsi.tower.BlankParchment {}
+- !!org.excelsi.tower.ScrollOfIdentify {}
+- !!org.excelsi.tower.ScrollOfMapping {}
+- !!org.excelsi.tower.ScrollOfSummoning {}
+- !!org.excelsi.tower.ScrollOfReanimation {}
+- !!org.excelsi.tower.ScrollOfEnchantWeapon {}
+- !!org.excelsi.tower.ScrollOfFrost {}
+- !!org.excelsi.tower.ScrollOfPurifying {}
+- !!org.excelsi.tower.ScrollOfRegeneration {}
+- !!org.excelsi.tower.ScrollOfTunneling {}
+- !!org.excelsi.tower.ScrollOfVacuumMetastabilityDisaster {}
+- !!org.excelsi.tower.WandOfDigging {}
+- !!org.excelsi.tower.WandOfWishing {}
+- !!org.excelsi.tower.WandOfFire {}
+- !!org.excelsi.tower.WandOfCold {}
+- !!org.excelsi.tower.WandOfLightning {}
+- !!org.excelsi.tower.WandOfCatastrophe {}
+- !!org.excelsi.tower.WandOfCreation {}
+- !!org.excelsi.tower.WandOfPolymorph {}
+- !!org.excelsi.tower.ExpensiveCamera {}
+- !!org.excelsi.tower.LaminatingKit {}
+- !!org.excelsi.tower.ReinforcingKit {}
+- !!org.excelsi.tower.BallOfYarn {}
+- !!org.excelsi.tower.BottleOfGlue {}
+- !!org.excelsi.tower.PieceOfChalk {}
+- !!org.excelsi.tower.Magic8_Ball {}
+- !!org.excelsi.tower.Pick_Axe {}
+- !!org.excelsi.tower.Jackhammer {}
+- !!org.excelsi.tower.Hoe {}
+- !!org.excelsi.tower.Pitchfork {}
+- !!org.excelsi.tower.Scythe {}
+- !!org.excelsi.tower.Harvest {}
+- !!org.excelsi.tower.Battery {}
+- !!org.excelsi.tower.Blindfold {}
+- !!org.excelsi.tower.SkeletonKey {}
+- !!org.excelsi.tower.Lockpick {}
+- !!org.excelsi.tower.Torch {}
+- !!org.excelsi.tower.Candle {}
+- !!org.excelsi.tower.Lamp {}
+- !!org.excelsi.tower.Flashlight {}
+- !!org.excelsi.tower.NuclearBomb {}
+- !!org.excelsi.tower.Actuator {}
+- !!org.excelsi.tower.Board {}
+- !!org.excelsi.tower.BrainInAJar {}
+- !!org.excelsi.tower.CanOfShoePolish {}
+- !!org.excelsi.tower.Condenser {}
+- !!org.excelsi.tower.Flashbulb {}
+- !!org.excelsi.tower.Generator {}
+- !!org.excelsi.tower.IonThruster {}
+- !!org.excelsi.tower.Lens {}
+- !!org.excelsi.tower.Laser {}
+- !!org.excelsi.tower.LeptonAmplifier {}
+- !!org.excelsi.tower.LightBulb {}
+- !!org.excelsi.tower.Magnet {}
+- !!org.excelsi.tower.Nail {}
+- !!org.excelsi.tower.Nozzle {}
+- !!org.excelsi.tower.OrganicMentalCore {}
+- !!org.excelsi.tower.PieceOfPlastic {}
+- !!org.excelsi.tower.Processor {}
+- !!org.excelsi.tower.RollOfTape {}
+- !!org.excelsi.tower.ScrapMetal {}
+- !!org.excelsi.tower.Sensor {}
+- !!org.excelsi.tower.Spring {}
+- !!org.excelsi.tower.SteelTube {}
+- !!org.excelsi.tower.Tinfoil {}
+- !!org.excelsi.tower.Wire {}
+- !!org.excelsi.tower.Dagger {}
+- !!org.excelsi.tower.Kris {}
+- !!org.excelsi.tower.Stiletto {}
+- !!org.excelsi.tower.Broadsword {}
+- !!org.excelsi.tower.Katana {}
+- !!org.excelsi.tower.Cutlass {}
+- !!org.excelsi.tower.Battle_Axe {}
+- !!org.excelsi.tower.ShortSword {}
+- !!org.excelsi.tower.Longsword {}
+- !!org.excelsi.tower.Saber {}
+- !!org.excelsi.tower.BullWhip {}
+- !!org.excelsi.tower.Spear {}
+- !!org.excelsi.tower.Trident {}
+- !!org.excelsi.tower.Halberd {}
+- !!org.excelsi.tower.LanceOfLonginus {}
+- !!org.excelsi.tower.Arrow {}
+- !!org.excelsi.tower.Bolt {}
+- !!org.excelsi.tower.Dart {}
+- !!org.excelsi.tower.PlayingCard {}
+- !!org.excelsi.tower.ShortBow {}
+- !!org.excelsi.tower.LongBow {}
+- !!org.excelsi.tower.Crossbow {}
+- !!org.excelsi.tower.Autocrossbow {}
+- !!org.excelsi.tower.HeavyCrossbow {}
+- !!org.excelsi.tower.WarHammer {}
+- !!org.excelsi.tower.RocketHammer {}
+- !!org.excelsi.tower.Briefcase {}
+- !!org.excelsi.tower.Club {}
+- !!org.excelsi.tower.Mace {}
+- !!org.excelsi.tower.Morningstar {}
+- !!org.excelsi.tower.WarMattock {}
+- !!org.excelsi.tower.Maul {}
+- !!org.excelsi.tower.No_dachi {}
+- !!org.excelsi.tower.Claymore {}
+- !!org.excelsi.tower.Scimitar {}
+- !!org.excelsi.tower.Greatsword {}
+- !!org.excelsi.tower.Sling {}
+- !!org.excelsi.tower.RayGun {}
+- !!org.excelsi.tower.LaserRifle {}
+- !!org.excelsi.tower.AngelArm {}
+- !!org.excelsi.tower.LastArmament {}
+- !!org.excelsi.tower.Rock {}
+- !!org.excelsi.tower.SmallStone {}
+- !!org.excelsi.tower.SharpeningStone {}
+- !!org.excelsi.tower.LeatherJacket {}
+- !!org.excelsi.tower.Robe {}
+- !!org.excelsi.tower.Rags {}
+- !!org.excelsi.tower.Three_PieceSuit {}
+- !!org.excelsi.tower.PlaidShirt {}
+- !!org.excelsi.tower.LeatherBreastplate {}
+- !!org.excelsi.tower.SteelBreastplate {}
+- !!org.excelsi.tower.RingMail {}
+- !!org.excelsi.tower.SplintMail {}
+- !!org.excelsi.tower.Dragonscale {}
+- !!org.excelsi.tower.BlackBreastplate {}
+- !!org.excelsi.tower.WoolCloak {}
+- !!org.excelsi.tower.Fur_LinedCloak {}
+- !!org.excelsi.tower.CloakOfShadows {}
+- !!org.excelsi.tower.EbonyCloak {}
+- !!org.excelsi.tower.CloakOfInvisibility {}
+- !!org.excelsi.tower.Fedora {}
+- !!org.excelsi.tower.TenGallonHat {}
+- !!org.excelsi.tower.StrawHat {}
+- !!org.excelsi.tower.CrownOfThorns {}
+- !!org.excelsi.tower.IronHelm {}
+- !!org.excelsi.tower.TinfoilHat {}
+- !!org.excelsi.tower.SteelHelm {}
+- !!org.excelsi.tower.VisoredHelm {}
+- !!org.excelsi.tower.HornedHelm {}
+- !!org.excelsi.tower.HelmOfConnection {}
+- !!org.excelsi.tower.CombatHelmet {}
+- !!org.excelsi.tower.HardHat {}
+- !!org.excelsi.tower.HawaiianShirt {}
+- !!org.excelsi.tower.Buckler {}
+- !!org.excelsi.tower.Shield {}
+#- !!org.excelsi.tower.IronShield {}
+#- !!org.excelsi.tower.WoodenShield {}
+- !!org.excelsi.tower.SpikedShield {}
+- !!org.excelsi.tower.WallShield {}
+#- !!org.excelsi.tower.ForceShield {}
+#- !!org.excelsi.tower.MirrorShield {}
+- !!org.excelsi.tower.SwampBoots {}
+- !!org.excelsi.tower.Snowshoes {}
+- !!org.excelsi.tower.IronBoots {}
+- !!org.excelsi.tower.CombatBoots {}
+- !!org.excelsi.tower.StyrofoamBoots {}
+- !!org.excelsi.tower.SandalsOfHecate {}
+- !!org.excelsi.tower.HasteningBoots {}
+- !!org.excelsi.tower.HikingBoots {}
+- !!org.excelsi.tower.CementBoots {}
+- !!org.excelsi.tower.CowboyBoots {}
+- !!org.excelsi.tower.FoodRation {}
+- !!org.excelsi.tower.TripeRation {}
+- !!org.excelsi.tower.Sashimi {}
+- !!org.excelsi.tower.LembasWafer {}
+- !!org.excelsi.tower.CandyBar {}
+- !!org.excelsi.tower.LegOfMutton {}
+- !!org.excelsi.tower.SliceOfBread {}
+- !!org.excelsi.tower.Toast {}
+- !!org.excelsi.tower.Bean {}
+- !!org.excelsi.tower.Blackberry {}
+- !!org.excelsi.tower.MagicBean {}
+- !!org.excelsi.tower.Apple {}
+- !!org.excelsi.tower.Orange {}
+- !!org.excelsi.tower.Tomato {}
+- !!org.excelsi.tower.Potato {}
+- !!org.excelsi.tower.Egg {}
+- !!org.excelsi.tower.Pancake {}
+- !!org.excelsi.tower.Pineapple {}
+- !!org.excelsi.tower.BowlOfRamen {}
+- !!org.excelsi.tower.Cake {}
+- !!org.excelsi.tower.MoonPie {}
+- !!org.excelsi.tower.BookOfSands {}
+- !!org.excelsi.tower.BetaReticulansForBeginners {}
+- !!org.excelsi.tower.BowyeryForBlockheads {}
+- !!org.excelsi.tower.ElementalWandsForTheExceedinglyWitless {}
+- !!org.excelsi.tower.FailedCreations {}
+- !!org.excelsi.tower.LaserWeaponsForLuddites {}
+- !!org.excelsi.tower.MinovskyPhysicsForMorons {}
+- !!org.excelsi.tower.PhotographyForPhilistines {}
+- !!org.excelsi.tower.TheAlchemistsWand {}
+- !!org.excelsi.tower.Shield_MakingForTheSimple_Minded {}
+- !!org.excelsi.tower.TheBodyMechanic {}
+- !!org.excelsi.tower.AlmanackAqueous {}
+- !!org.excelsi.tower.VariaObscura {}
+- !!org.excelsi.tower.DiskOfOdin {}
+- !!org.excelsi.tower.Gold {}
+- !!org.excelsi.tower.Amethyst {}
+- !!org.excelsi.tower.Diamond {}
+- !!org.excelsi.tower.Tigerseye {}
+- !!org.excelsi.tower.Ruby {}
+- !!org.excelsi.tower.Opal {}
+- !!org.excelsi.tower.Topaz {}
+- !!org.excelsi.tower.Sapphire {}
+- !!org.excelsi.tower.Pearl {}
+- !!org.excelsi.tower.Emerald {}
+- !!org.excelsi.tower.Aquamarine {}
+- !!org.excelsi.tower.CubicZirconium {}
+- !!org.excelsi.tower.WorthlessPieceOfPurpleGlass {}
+- !!org.excelsi.tower.WorthlessPieceOfClearGlass {}
+- !!org.excelsi.tower.WorthlessPieceOfRedGlass {}
+- !!org.excelsi.tower.WorthlessPieceOfWhiteGlass {}
+- !!org.excelsi.tower.WorthlessPieceOfYellowGlass {}
+- !!org.excelsi.tower.WorthlessPieceOfBlueGlass {}
+- !!org.excelsi.tower.WorthlessPieceOfGreenGlass {}
+- !!org.excelsi.tower.WorthlessPieceOfAquamarineGlass {}
+- !!org.excelsi.tower.BucketOfPaint
   paint: red
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: green
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: blue
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: yellow
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: brown
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: purple
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: gray
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: turquoise
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: white
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: black
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: maroon
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: aquamarine
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: cyan
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: silver
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: pink
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: orange
-- !org.excelsi.tower.BucketOfPaint
+- !!org.excelsi.tower.BucketOfPaint
   paint: sepia
-- !org.excelsi.tower.Pill
+- !!org.excelsi.tower.Pill
   fragments:
-    - !org.excelsi.tower.Strength {}
-- !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Strength {}
+- !!org.excelsi.tower.Pill
   fragments:
-    - !org.excelsi.tower.Agility {}
-- !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Agility {}
+- !!org.excelsi.tower.Pill
   fragments:
-    - !org.excelsi.tower.Concussion {}
-- !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Concussion {}
+- !!org.excelsi.tower.Pill
   fragments:
-    - !org.excelsi.tower.Frenzy {}
-- !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Frenzy {}
+- !!org.excelsi.tower.Pill
   fragments:
-    - !org.excelsi.tower.Rewiring {}
-- !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Rewiring {}
+- !!org.excelsi.tower.Pill
   fragments:
-    - !org.excelsi.tower.Cyanide {}
-- !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Cyanide {}
+- !!org.excelsi.tower.Pill
   fragments:
-    - !org.excelsi.tower.Poison {}
-- !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Poison {}
+- !!org.excelsi.tower.Pill
   fragments:
-    - !org.excelsi.tower.Weakness {}
-- !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Weakness {}
+- !!org.excelsi.tower.Pill
   fragments:
-    - !org.excelsi.tower.Maximizing {}
-- !org.excelsi.tower.Pill
+    - !!org.excelsi.tower.Maximizing {}
+- !!org.excelsi.tower.Pill
   fragments:
-    - !org.excelsi.tower.Minimizing {}
-- !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Minimizing {}
+- !!org.excelsi.tower.Potion
   fragments:
-    - !org.excelsi.tower.Healing {}
-- !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Healing {}
+- !!org.excelsi.tower.Potion
   fragments:
-    - !org.excelsi.tower.Confusion {}
-- !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Confusion {}
+- !!org.excelsi.tower.Potion
   fragments:
-    - !org.excelsi.tower.Polymorph {}
-- !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Polymorph {}
+- !!org.excelsi.tower.Potion
   fragments:
-    - !org.excelsi.tower.Levitation {}
-- !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Levitation {}
+- !!org.excelsi.tower.Potion
   fragments:
-    - !org.excelsi.tower.Tunneling {}
-- !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Tunneling {}
+- !!org.excelsi.tower.Potion
   fragments:
-    - !org.excelsi.tower.Speed {}
-- !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Speed {}
+- !!org.excelsi.tower.Potion
   fragments:
-    - !org.excelsi.tower.Sloth {}
-- !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Sloth {}
+- !!org.excelsi.tower.Potion
   fragments:
-    - !org.excelsi.tower.Poison {}
-- !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Poison {}
+- !!org.excelsi.tower.Potion
   fragments:
-    - !org.excelsi.tower.WaterInfliction {}
-- !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.WaterInfliction {}
+- !!org.excelsi.tower.Potion
   fragments:
-    - !org.excelsi.tower.Blindness {}
-- !org.excelsi.tower.Potion
+    - !!org.excelsi.tower.Blindness {}
+- !!org.excelsi.tower.Potion
   fragments:
-    - !org.excelsi.tower.Invisibility {}
+    - !!org.excelsi.tower.Invisibility {}
