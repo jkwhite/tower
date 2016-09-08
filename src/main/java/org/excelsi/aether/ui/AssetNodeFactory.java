@@ -49,8 +49,17 @@ public abstract class AssetNodeFactory<E extends Typed> extends Enloggened imple
                 }
             }
         });
-        Material mat = assets().loadMaterial("/material/m_gray.j3m");
-        n.setMaterial(mat);
+        //Material mat = assets().loadMaterial("/material/m_gray.j3m");
+        final String material = String.format("/material/%s.j3m", Materials.format(color));
+        try {
+            Material mat = assets().loadMaterial(material);
+            n.setMaterial(mat);
+        }
+        catch(Exception e) {
+            log().warn("failed loading '"+material+"': "+e, e);
+            Material mat = assets().loadMaterial("/material/gray.j3m");
+            n.setMaterial(mat);
+        }
         //log().debug("loaded spatial "+n);
         switch(display) {
             case scatter:

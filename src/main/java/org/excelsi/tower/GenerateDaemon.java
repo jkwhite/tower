@@ -55,7 +55,6 @@ public class GenerateDaemon extends Daemon {
 
     @Override public void perform(final Context c) {
         Item it = c.getUniverse().createItem((i,b)->{ return true; });
-        System.err.println("****** ITEM: "+it);
         if(it==null) {
             it = new AngelArm();
         }

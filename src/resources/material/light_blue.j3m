@@ -1,0 +1,9 @@
+Material gray architecture : Common/MatDefs/Light/Lighting.j3md {
+     MaterialParameters {
+         Shininess: 32.0
+         UseMaterialColors : true
+         Ambient  : 0.0 0.0 0.0 1.0
+         Diffuse  : 0.5 0.5 1.0 1.0
+         Specular : 1.0 1.0 1.0 1.0
+     }
+}

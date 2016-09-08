@@ -3615,7 +3615,7 @@
   constitution: 120
   maxHp: 40
   model: M
-  color: brown
+  color: light-blue
   minLevel: 20
   maxLevel: 29
   rarity: 1
@@ -3634,7 +3634,11 @@
     daemons: 
       - !!org.excelsi.aether.WanderDaemon
         oblivious: true
+        rooms: false
+        travel: 50
       - !!org.excelsi.tower.GenerateDaemon {}
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
 - !!org.excelsi.tower.TNPC
   common: guardbot
   gender: neuter
