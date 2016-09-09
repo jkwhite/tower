@@ -28,6 +28,9 @@ public class BotController extends ChangeController<NHBot,NHSpace> {
             final MoveEvent me = (MoveEvent) e;
             final NHBot b = (NHBot) me.getBot();
             final Spatial s = c.getSpatial(me.getBot().getId());
+            if(s==null) {
+                throw new IllegalArgumentException("move for unknown bot "+me.getBot().getId());
+            }
             Animations.move(s, s.getLocalTranslation(), Spaces.translation(me.getBot().getEnvironment().getSpace()));
             if(b.isPlayer()) {
                 updateView(c, me.getBot().getEnvironment().getSpace());

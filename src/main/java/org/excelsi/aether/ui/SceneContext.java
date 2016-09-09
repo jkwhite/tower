@@ -50,4 +50,8 @@ public final class SceneContext {
         }
         _objects.put(name, node);
     }
+
+    public boolean containsNode(final String name) {
+        return _objects.containsKey(name);
+    }
 }

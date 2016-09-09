@@ -27,6 +27,6 @@ public class ChangeEvent<C,E> extends ContextualEvent<C> {
     }
 
     @Override public String toString() {
-        return getClass().getSimpleName().toLowerCase()+"::"+_type+"::{from:"+_old+", to:"+_new+"}";
+        return getClass().getSimpleName().toLowerCase()+"::"+_type+"::{ctx:"+getContext()+", from:"+_old+", to:"+_new+"}";
     }
 }

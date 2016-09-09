@@ -5,6 +5,7 @@ import org.excelsi.matrix.MSpace;
 import org.excelsi.aether.NHBot;
 import org.excelsi.matrix.MatrixMSpace;
 import org.excelsi.aether.Bulk;
+import org.excelsi.aether.Level;
 import org.excelsi.aether.Stage;
 import org.excelsi.aether.ChangeEvent;
 import org.excelsi.aether.AddEvent;
@@ -46,6 +47,22 @@ public class LevelController extends ChangeController<Bulk,Stage> {
                     createSpace(c, lev, mms);
                 }
             }
+            for(NHBot b:((Level)e.getTo()).bots()) {
+                addBot(c, lev, b);
+            }
+        }
+    }
+
+    private void addBot(final SceneContext c, final Node lev, final NHBot b) {
+        if(!c.containsNode(b.getId())) {
+            final Spatial bot = c.getNodeFactory().createNode(b.getId(), b);
+            final MatrixMSpace mms = (MatrixMSpace) b.getEnvironment().getMSpace();
+            Spaces.translate(mms, bot);
+            c.addNode(bot);
+            lev.attachChild(bot);
+            if(b.isPlayer()) {
+                attachPatsy(lev, c, bot);
+            }
         }
     }
 
@@ -55,16 +72,12 @@ public class LevelController extends ChangeController<Bulk,Stage> {
         Spaces.translate(mms, ms);
         lev.attachChild(ms);
         c.addNode(ms);
+        /*
         final NHBot b = (NHBot) mms.getOccupant();
         if(b!=null) {
-            final Spatial bot = c.getNodeFactory().createNode(b.getId(), mms.getOccupant());
-            Spaces.translate(mms, bot);
-            lev.attachChild(bot);
-            c.addNode(bot);
-            if(b.isPlayer()) {
-                attachPatsy(lev, c, bot);
-            }
+            addBot(c, lev, b);
         }
+        */
         final Item[] items = space.getItem();
         if(items!=null) {
             //for(Item it:items) {
