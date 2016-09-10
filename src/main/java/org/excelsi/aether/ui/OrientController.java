@@ -29,7 +29,6 @@ public class OrientController extends ChangeController<NHBot,Direction> {
             final NHBot b = (NHBot) me.getBot();
             final Spatial s = c.getSpatial(me.getBot().getId());
             if(s!=null) {
-                System.err.println("************** "+e);
                 final int rot = rotFor(e.getTo());
                 s.setLocalRotation(new Quaternion(new float[]{0f, UIConstants.ROTATIONS[rot], 0f}));
             }

@@ -67,7 +67,7 @@ public abstract class AssetNodeFactory<E extends Typed> extends Enloggened imple
                 for(int i=0;i<4;i++) {
                     final Spatial cl = n.clone();
                     cl.setLocalScale(0.5f);
-                    cl.setLocalTranslation(UIConstants.HORIZ_RATIO*Rand.om.nextFloat(), 0f, UIConstants.VERT_RATIO*Rand.om.nextFloat());
+                    cl.setLocalTranslation(0.5f*UIConstants.HORIZ_RATIO*Rand.om.nextFloat(), 0f, 0.5f*UIConstants.VERT_RATIO*Rand.om.nextFloat());
                     sc.attachChild(cl);
                 }
                 return sc;

@@ -37,9 +37,12 @@ public class BotNodeFactory extends AssetNodeFactory<NHBot> {
         try {
             final Spatial n = loadModel(s.getModel(), s.getColor(), Display.single);
             n.setLocalRotation(new Quaternion(new float[]{FastMath.PI/2f, 0f, 0f}));
-            n.setLocalScale(2.0f);
+            n.setLocalScale(3.0f);
             // duplicate center after scale/rot
-            Nodes.center(n);
+            Nodes.centerAbove(n);
+
+            final Node localMove = new Node("localMove");
+            localMove.attachChild(n);
 
             final PointLight light = new PointLight();
             light.setColor(ColorRGBA.Red);
@@ -49,7 +52,7 @@ public class BotNodeFactory extends AssetNodeFactory<NHBot> {
 
             final LittenNode parent = new LittenNode(name);
             parent.attachChild(ln);
-            parent.attachChild(n);
+            parent.attachChild(localMove);
             parent.addChildLight(light);
 
             return parent;

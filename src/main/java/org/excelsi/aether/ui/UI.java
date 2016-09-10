@@ -36,6 +36,7 @@ public class UI {
                         BotAttributeChangeEvent.class, constant(new BotAttributeController()))
                 ),
                 "level", constant(new LevelController()),
+                "mechanics", constant(new MechanicsController()),
                 "item", constant(new ItemController())
             )
         );
