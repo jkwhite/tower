@@ -87,7 +87,7 @@ def l1 =
         .height(24)
         .random(Rand.om))
 $c.bulk.addLevel(l1)
-for(i=0;i<20;i++) {
+for(i=0;i<10;i++) {
     //l1.findRandomNormalEmptySpace().occupant = $c.universe.createBot('miner')
     l1.findRandomNormalEmptySpace().occupant = $c.universe.createBot('fabricatorbot')
     l1.findRandomNormalEmptySpace().occupant = $c.universe.createBot('scavengerbot')

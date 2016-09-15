@@ -20,7 +20,6 @@ import com.jme3.scene.Spatial;
 public class ItemController extends ChangeController<NHSpace,Item> {
     @Override protected void added(final SceneContext c, final AddEvent<NHSpace,Item> e) {
         ContainerAddEvent ce = (ContainerAddEvent) e;
-        log().info("handling "+ce);
         final NHSpace mms = (NHSpace) e.getSource();
         final SpaceNode sp = (SpaceNode) c.getNode(mms.getId());
         if(sp!=null) {
@@ -35,6 +34,9 @@ public class ItemController extends ChangeController<NHSpace,Item> {
         final SpaceNode sp = (SpaceNode) c.getNode(l.getContext().getId());
         if(sp!=null) {
             sp.detachItem(c, l.getRemoved());
+        }
+        else {
+            log().warn("no space for "+l.getContext());
         }
     }
 

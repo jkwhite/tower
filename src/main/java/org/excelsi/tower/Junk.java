@@ -25,7 +25,7 @@ import org.excelsi.aether.*;
 
 public abstract class Junk extends Item {
     public final String getModel() {
-        return "&i";
+        return "i&";
     }
 
     public final String getCategory() {

@@ -1,0 +1,9 @@
+Material transparent x: Common/MatDefs/Light/Lighting.j3md {
+             MaterialParameters {
+                 Shininess: 32.00
+                 UseMaterialColors : true
+                 Ambient  : 0.0 0.0 0.0 1.0
+                 Diffuse  : 0.30 0.30 0.30 0.10
+                 Specular : 1.0 1.0 1.0 1.0
+             }
+        }

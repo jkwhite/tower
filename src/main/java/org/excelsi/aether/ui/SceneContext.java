@@ -7,6 +7,7 @@ import java.util.Map;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.renderer.Camera;
+import org.excelsi.matrix.Id;
 
 
 public final class SceneContext {
@@ -39,8 +40,16 @@ public final class SceneContext {
         return (T) _objects.get(name);
     }
 
+    public <T extends Node> T getNode(final Id id) {
+        return (T) _objects.get(id.getId());
+    }
+
     public Spatial getSpatial(final String name) {
         return _objects.get(name);
+    }
+
+    public Spatial getSpatial(final Id id) {
+        return _objects.get(id.getId());
     }
 
     public void addNode(final Spatial node) {

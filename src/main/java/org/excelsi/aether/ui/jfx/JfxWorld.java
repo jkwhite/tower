@@ -29,6 +29,7 @@ import org.excelsi.aether.EventBus;
 import org.excelsi.aether.AbstractAction;
 import org.excelsi.aether.Context;
 import org.excelsi.aether.Quit;
+import org.excelsi.aether.DefaultNHBot;
 import org.excelsi.aether.ui.View;
 import org.excelsi.aether.ui.SceneContext;
 import org.excelsi.aether.ui.UIAction;
@@ -53,6 +54,8 @@ public class JfxWorld extends HudNode {
         _actions.put(new Keymap("u"), new Patsy.Northeast());
         _actions.put(new Keymap("b"), new Patsy.Southwest());
         _actions.put(new Keymap("n"), new Patsy.Southeast());
+
+        _actions.put(new Keymap(","), new DefaultNHBot.Pickup());
 
         _actions.put(new Keymap("="), new ZoomInAction());
         _actions.put(new Keymap("-"), new ZoomOutAction());

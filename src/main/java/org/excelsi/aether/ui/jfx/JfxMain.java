@@ -66,6 +66,7 @@ import org.excelsi.aether.ui.UIConstants;
 import org.excelsi.aether.ui.Resources;
 import org.excelsi.aether.ui.UI;
 import org.excelsi.aether.ui.JmeEventHandler;
+import org.excelsi.aether.ui.SceneContext;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.LoggerFactory;
@@ -79,6 +80,7 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
     private String _jfxSubscription;
     private String _jmeSubscription;
     private GuiManager _guiManager;
+    private SceneContext _ctx;
 
 
     public static void main(String[] args){
@@ -179,7 +181,7 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
     @Override public void handleEvent(final Event e) {
         Scene scene = _guiManager.getRootGroup().getScene();
         //scene.getRoot().fireEvent(new LogicEvent(e));
-        _guiManager.getRootGroup().getChildren().get(0).fireEvent(new LogicEvent(e));
+        _guiManager.getRootGroup().getChildren().get(0).fireEvent(new LogicEvent(_ctx, e));
     }
 
     private void initState() {
@@ -188,7 +190,8 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
                 EventBus.instance().consume(_jfxSubscription, JfxMain.this);
             }
         };
-        _jmeEvents = new JmeEventHandler(getCamera(), assetManager, UI.controllerFactory(), UI.nodeFactory(assetManager), rootNode);
+        _ctx = new SceneContext(getCamera(), rootNode, UI.nodeFactory(assetManager));
+        _jmeEvents = new JmeEventHandler(getCamera(), assetManager, UI.controllerFactory(), UI.nodeFactory(assetManager), rootNode, _ctx);
         EventBus.instance().subscribe(UIConstants.QUEUE_JME, UIConstants.QUEUE_JME);
         _jfxSubscription = EventBus.instance().subscribe("keys", UIConstants.QUEUE_JFX);
         _jmeSubscription = EventBus.instance().subscribe("changes", UIConstants.QUEUE_JME);

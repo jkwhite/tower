@@ -12,8 +12,11 @@ import javafx.animation.SequentialTransition;
 import javafx.util.Duration;
 import javafx.scene.text.Text;
 import javafx.scene.layout.BorderPane;
+import com.jme3.math.Vector3f;
 
+import org.excelsi.matrix.Id;
 import org.excelsi.aether.MessageEvent;
+import org.excelsi.aether.NHBot;
 
 
 public class JfxMessages extends HudNode {
@@ -33,6 +36,13 @@ public class JfxMessages extends HudNode {
                 t.getStyleClass().add("message");
                 t.getStyleClass().add(e.getMessageType().toString());
                 getChildren().add(t);
+                if(e.getSource() instanceof NHBot) {
+                    Vector3f wp = le.ctx().getSpatial((Id)e.getSource()).getWorldTranslation();
+                    Vector3f sp = le.ctx().getCamera().getScreenCoordinates(wp);
+                    System.err.println("setting screen coords: "+sp);
+                    t.setTranslateX(sp.x);
+                    t.setTranslateY(sp.y);
+                }
                 final SequentialTransition st = new SequentialTransition();
                 switch(e.getMessageType()) {
                     case ephemeral:

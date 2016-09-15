@@ -19,14 +19,11 @@ public class SpaceNode extends Node {
 
     public void attachItem(final SceneContext c, final Item item, final int idx, final boolean incremented) {
         final Spatial s = Spaces.createItem(c, item);
-        //Spaces.attachItem(this, s);
         s.setLocalTranslation(new Vector3f(0f, 0.2f*idx, 0f));
         attachChild(s);
     }
 
     public void detachItem(final SceneContext c, final Item item) {
-        final Spatial s = Spaces.createItem(c, item);
-        //Spaces.attachItem(this, s);
         detachChildNamed(item.getId());
     }
 }

@@ -35,12 +35,12 @@ public class JmeEventHandler extends Enloggened implements EventBus.Handler {
     private final AssetManager _assets;
 
 
-    public JmeEventHandler(final Camera camera, final AssetManager assets, final ControllerFactory cfactory, final NodeFactory nfactory, final Node root) {
+    public JmeEventHandler(final Camera camera, final AssetManager assets, final ControllerFactory cfactory, final NodeFactory nfactory, final Node root, final SceneContext ctx) {
         _assets = assets;
         _cfactory = cfactory;
         _nfactory = nfactory;
         _root = root;
-        _ctx = new SceneContext(camera, _root, _nfactory);
+        _ctx = ctx;
         final CloseView v = new CloseView("camera", _root, null, camera);
         v.activate();
         _ctx.addNode(v);

@@ -49,12 +49,29 @@ public class EventBusRelayer extends EverythingAdapter {
         post(TOPIC_CHANGES, new RemoveEvent<NHSpace,NHBot>(b.getEnvironment().getSpace(), "bot", (NHSpace)s, (NHBot)b));
     }
 
+    @Override public void itemDropped(Container space, Item item, int idx, boolean incremented) {
+        post(TOPIC_CHANGES, new ContainerAddEvent((NHSpace)space, item, idx, incremented, ContainerAddEvent.Type.dropped));
+    }
+
     @Override public void itemAdded(Container space, Item item, int idx, boolean incremented) {
-        post(TOPIC_CHANGES, new ContainerAddEvent((NHSpace)space, item, idx, incremented));
+        post(TOPIC_CHANGES, new ContainerAddEvent((NHSpace)space, item, idx, incremented, ContainerAddEvent.Type.added));
     }
 
     @Override public void itemAdded(Container space, Item item, int idx, boolean incremented, NHBot adder, NHSpace origin) {
-        post(TOPIC_CHANGES, new ContainerAddEvent((NHSpace)space, item, idx, incremented));
+        post(TOPIC_CHANGES, new ContainerAddEvent((NHSpace)space, item, idx, incremented, ContainerAddEvent.Type.added));
+    }
+
+    @Override public void itemTaken(Container space, Item item, int idx) {
+        post(TOPIC_CHANGES, new ContainerRemoveEvent((NHSpace)space, item, idx, false, ContainerRemoveEvent.Type.taken));
+    }
+
+    @Override public void itemDestroyed(Container space, Item item, int idx) {
+        post(TOPIC_CHANGES, new ContainerRemoveEvent((NHSpace)space, item, idx, false, ContainerRemoveEvent.Type.destroyed));
+    }
+
+    @Override public void itemsDestroyed(Container container, Item[] items) {
+        //post(TOPIC_CHANGES, new ContainerRemoveEvent((NHSpace)space, item, idx, false, ContainerRemoveEvent.Type.destroyed));
+        throw new UnsupportedOperationException();
     }
 
     private static void post(final String topic, final Event e) {

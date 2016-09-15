@@ -33,12 +33,10 @@ public class ItemNodeFactory extends AssetNodeFactory<Item> {
 
     @Override public Spatial createNode(final String name, final Item i) {
         try {
-            //final String model = String.format("/%s_%d_%d.blend", Spaces.format(s.getModel()), 6, 0);
-            //final String model = "/Mesh2.mesh.xml";
-            final Spatial n = loadModel(i.getModel(), "gray", Display.single);
+            final Spatial n = loadModel(i.getModel(), i.getColor(), Display.single);
             n.setLocalScale(2.0f);
             Nodes.center(n);
-            final Node item = new Node();
+            final Node item = new Node(name);
             item.attachChild(n);
             return item;
         }

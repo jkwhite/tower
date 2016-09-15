@@ -58,7 +58,7 @@ public class FleeDaemon extends Daemon {
             if(!_last) {
                 _last = true;
                 //NARRATIVE
-                N.narrative().print(in.b, Grammar.start(in.b, "flee")+"!");
+                //N.narrative().print(in.b, Grammar.start(in.b, "flee")+"!");
                 c.n().print(in.b, Grammar.start(in.b, "flee")+"!");
             }
         }

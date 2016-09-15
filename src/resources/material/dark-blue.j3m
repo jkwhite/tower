@@ -1,0 +1,9 @@
+Material dark-blue x: Common/MatDefs/Light/Lighting.j3md {
+             MaterialParameters {
+                 Shininess: 32.00
+                 UseMaterialColors : true
+                 Ambient  : 0.0 0.0 0.0 1.0
+                 Diffuse  : 0.00 0.00 0.30 1.00
+                 Specular : 1.0 1.0 1.0 1.0
+             }
+        }

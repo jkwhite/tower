@@ -13,11 +13,15 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.image.*?>
+<?import java.net.URL?>
 
 <?import org.excelsi.aether.ui.jfx.*?>
 
 
 <BorderPane xmlns:fx='http://javafx.com/fxml' fx:id='title_root' prefWidth="%screen_width" prefHeight="%screen_height">
+    <stylesheets>
+        <URL value='@hud-title.css'/>
+    </stylesheets>
     <center>
         <HBox alignment='TOP_CENTER'>
         <VBox spacing='20' alignment='TOP_CENTER'>

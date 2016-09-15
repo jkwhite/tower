@@ -8,14 +8,17 @@ import org.excelsi.aether.NHSpace;
 
 
 public class ContainerAddEvent extends AddEvent<NHSpace,Item> {
+    public enum Type { dropped, added };
     private final int _idx;
     private final boolean _inc;
+    private final Type _type;
 
 
-    public ContainerAddEvent(NHSpace source, Item i, int idx, boolean incremented) {
+    public ContainerAddEvent(NHSpace source, Item i, int idx, boolean incremented, Type type) {
         super(source, "container", source, i);
         _idx = idx;
         _inc = incremented;
+        _type = type;
     }
 
     @Override public String getType() {
@@ -28,5 +31,9 @@ public class ContainerAddEvent extends AddEvent<NHSpace,Item> {
 
     public boolean getIncremented() {
         return _inc;
+    }
+
+    public Type getAddType() {
+        return _type;
     }
 }
