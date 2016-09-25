@@ -44,6 +44,7 @@ public class Universe implements BotFactory, ItemFactory, java.io.Serializable {
     private Map<String,String> _charmap;
     private Map<String,String> _keymap;
     private Map<String,String> _actionmap;
+    private Map<String,Action> _actions;
     private Map<String,Map<String,String>> _overlaykeys = new HashMap<String,Map<String,String>>();
     private List<Mixin> _mixins = new ArrayList<Mixin>();
     private List<Item> _items = new ArrayList<Item>(1024);
@@ -396,6 +397,14 @@ public class Universe implements BotFactory, ItemFactory, java.io.Serializable {
             }
         }
         return null;
+    }
+
+    public void setActions(Map<String,Action> actions) {
+        _actions = actions;
+    }
+
+    public Map<String,Action> getActions() {
+        return _actions;
     }
 
     public void setActionmap(Map<String,String> actionmap) {

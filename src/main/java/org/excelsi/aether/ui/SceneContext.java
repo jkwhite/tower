@@ -8,20 +8,27 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.renderer.Camera;
 import org.excelsi.matrix.Id;
+import org.excelsi.aether.Context;
 
 
 public final class SceneContext {
     private final NodeFactory _nfactory;
     private final Map<String,Spatial> _objects = new HashMap<>();
     private final Node _root;
+    private final Context _ctx;
     private final Camera _camera;
 
 
-    public SceneContext(final Camera camera, final Node root, final NodeFactory nfactory) {
+    public SceneContext(final Context ctx, final Camera camera, final Node root, final NodeFactory nfactory) {
+        _ctx = ctx;
         _camera = camera;
         _nfactory = nfactory;
         addNode(root);
         _root = root;
+    }
+
+    public Context ctx() {
+        return _ctx;
     }
 
     public Node getRoot() {

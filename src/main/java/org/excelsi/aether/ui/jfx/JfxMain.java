@@ -3,7 +3,7 @@ package org.excelsi.aether.ui.jfx;
 
 import java.util.function.Function;
 
-import com.jme3.app.SimpleApplication;
+import com.jme3.app.LegacyApplication;
 import com.jme3.app.StatsAppState;
 import com.jme3.app.FlyCamAppState;
 import com.jme3.audio.AudioListenerState;
@@ -18,6 +18,7 @@ import com.jme3.math.Vector2f;
 import com.jme3.math.Vector4f;
 import com.jme3.input.event.MouseButtonEvent;
 import com.jme3.math.ColorRGBA;
+import com.jme3.input.InputManager;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.event.JoyAxisEvent;
 import com.jme3.input.event.JoyButtonEvent;
@@ -25,6 +26,15 @@ import com.jme3.input.event.KeyInputEvent;
 import com.jme3.input.event.MouseButtonEvent;
 import com.jme3.input.event.MouseMotionEvent;
 import com.jme3.input.event.TouchEvent;
+import com.jme3.input.KeyNames;
+import com.jme3.renderer.queue.RenderQueue.Bucket;
+import com.jme3.scene.Spatial.CullHint;
+import com.jme3.profile.AppStep;
+import com.jme3.font.BitmapFont;
+import com.jme3.font.BitmapText;
+import com.jme3.system.AppSettings;
+import com.jme3.system.JmeSystem;
+import com.jme3.renderer.RenderManager;
 
 import com.jme3x.jfx.GuiManager;
 import com.jme3x.jfx.cursor.proton.ProtonCursorProvider;
@@ -73,7 +83,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 
-public class JfxMain extends SimpleApplication implements EventBus.Handler {
+public class JfxMain extends LegacyApplication implements EventBus.Handler {
     private static final Logger LOG = LoggerFactory.getLogger(JfxMain.class);
     private Runnable _events;
     private EventBus.Handler _jmeEvents;
@@ -81,6 +91,12 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
     private String _jmeSubscription;
     private GuiManager _guiManager;
     private SceneContext _ctx;
+
+    private com.jme3.scene.Node rootNode = new com.jme3.scene.Node("Root Node");
+    private com.jme3.scene.Node guiNode = new com.jme3.scene.Node("Gui Node");
+    protected BitmapText fpsText;
+    protected BitmapFont guiFont;
+    private boolean showSettings = true;
 
 
     public static void main(String[] args){
@@ -95,7 +111,88 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
         super(new FlyCamAppState(), new AudioListenerState(), new DebugKeysAppState());
     }
 
+    @Override
+    public void start() {
+        // set some default settings in-case
+        // settings dialog is not shown
+        boolean loadSettings = false;
+        if (settings == null) {
+            setSettings(new AppSettings(true));
+            loadSettings = true;
+        }
+
+        // show settings dialog
+        if (showSettings) {
+            if (!JmeSystem.showSettingsDialog(settings, loadSettings)) {
+                return;
+            }
+        }
+        //re-setting settings they can have been merged from the registry.
+        setSettings(settings);
+        super.start();
+    }
+
+    @Override
+    public void initialize() {
+        super.initialize();
+
+        // Several things rely on having this
+        guiFont = loadGuiFont();
+
+        guiNode.setQueueBucket(Bucket.Gui);
+        guiNode.setCullHint(CullHint.Never);
+        viewPort.attachScene(rootNode);
+        guiViewPort.attachScene(guiNode);
+
+        if (inputManager != null) {
+
+            // We have to special-case the FlyCamAppState because too
+            // many SimpleApplication subclasses expect it to exist in
+            // simpleInit().  But at least it only gets initialized if
+            // the app state is added.
+            /*
+            if (stateManager.getState(FlyCamAppState.class) != null) {
+                flyCam = new FlyByCamera(cam);
+                flyCam.setMoveSpeed(1f); // odd to set this here but it did it before
+                stateManager.getState(FlyCamAppState.class).setCamera( flyCam );
+            }
+
+            if (context.getType() == Type.Display) {
+                inputManager.addMapping(INPUT_MAPPING_EXIT, new KeyTrigger(KeyInput.KEY_ESCAPE));
+            }
+
+            if (stateManager.getState(StatsAppState.class) != null) {
+                inputManager.addMapping(INPUT_MAPPING_HIDE_STATS, new KeyTrigger(KeyInput.KEY_F5));
+                inputManager.addListener(actionListener, INPUT_MAPPING_HIDE_STATS);
+            }
+
+            inputManager.addListener(actionListener, INPUT_MAPPING_EXIT);
+            */
+        }
+
+        if (stateManager.getState(StatsAppState.class) != null) {
+            // Some of the tests rely on having access to fpsText
+            // for quick display.  Maybe a different way would be better.
+            stateManager.getState(StatsAppState.class).setFont(guiFont);
+            fpsText = stateManager.getState(StatsAppState.class).getFpsText();
+        }
+
+        // call user code
+        simpleInitApp();
+    }
+
+    /**
+     *  Creates the font that will be set to the guiFont field
+     *  and subsequently set as the font for the stats text.
+     */
+    protected BitmapFont loadGuiFont() {
+        return assetManager.loadFont("Interface/Fonts/Default.fnt");
+    }
+
     public void simpleInitApp() {
+        if(inputManager==null) {
+            return;
+        }
         assetManager.registerLocator("/", ClasspathLocator.class);
 
         final GuiManager guiManager = new GuiManager(this.guiNode, this.assetManager, this, true, new ProtonCursorProvider(this, this.assetManager, this.inputManager));
@@ -121,9 +218,11 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
                     }
                     _lastRepeat = repeat;
                 }
-                LOG.debug(System.nanoTime()+" "+String.format("key char %s for code %d, repeating %s, string %s", e.getKeyChar(), e.getKeyCode(), e.isRepeating(), e.toString()));
+                LOG.info(System.nanoTime()+" "+String.format("key char %s for code %d, repeating %s, string %s", e.getKeyChar(), e.getKeyCode(), e.isRepeating(), e.toString())+": "+new KeyNames().getName(e.getKeyCode()));
                 boolean meta = e.getKeyCode()==219;
                 if(e.isPressed() && !meta) {
+                    char c = e.getKeyChar();
+
                     final KeyEvent ke = new KeyEvent(this, e.getKeyChar()+"");
                     EventBus.instance().post("keys", ke);
                 }
@@ -145,7 +244,7 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
             e.printStackTrace();
         }
 
-        flyCam.setEnabled(false);
+        //flyCam.setEnabled(false);
         inputManager.setCursorVisible(true);
         mouseInput.setCursorVisible(true);
         _guiManager = guiManager;
@@ -168,8 +267,45 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
         });
     }
 
-    @Override public void simpleUpdate(final float tpf) {
-        super.simpleUpdate(tpf);
+    @Override
+    public void update() {
+        if (prof!=null) prof.appStep(AppStep.BeginFrame);
+
+        super.update(); // makes sure to execute AppTasks
+        if (speed == 0 || paused) {
+            return;
+        }
+
+        float tpf = timer.getTimePerFrame() * speed;
+
+        // update states
+        if (prof!=null) prof.appStep(AppStep.StateManagerUpdate);
+        stateManager.update(tpf);
+
+        // simple update and root node
+        simpleUpdate(tpf);
+
+        if (prof!=null) prof.appStep(AppStep.SpatialUpdate);
+        rootNode.updateLogicalState(tpf);
+        guiNode.updateLogicalState(tpf);
+
+        rootNode.updateGeometricState();
+        guiNode.updateGeometricState();
+
+        // render states
+        if (prof!=null) prof.appStep(AppStep.StateManagerRender);
+        stateManager.render(renderManager);
+
+        if (prof!=null) prof.appStep(AppStep.RenderFrame);
+        renderManager.render(tpf, context.isRenderable());
+        simpleRender(renderManager);
+        stateManager.postRender();
+
+        if (prof!=null) prof.appStep(AppStep.EndFrame);
+    }
+
+    public void simpleUpdate(final float tpf) {
+        //super.simpleUpdate(tpf);
         if(_jfxSubscription!=null && EventBus.instance().hasEvents(_jfxSubscription)) {
             Platform.runLater(_events);
         }
@@ -190,26 +326,40 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
                 EventBus.instance().consume(_jfxSubscription, JfxMain.this);
             }
         };
-        _ctx = new SceneContext(getCamera(), rootNode, UI.nodeFactory(assetManager));
+        final Universe u = new Universe();
+        Universe.setUniverse(u);
+        final Context ctx = new Context(
+            new BlockingNarrative(EventBus.instance()),
+            u,
+            new Bulk(),
+            new BusInputSource()
+        ).state(new ScriptedState("dawn", new Script("script/dawn.groovy")));
+
+        _ctx = new SceneContext(ctx, getCamera(), rootNode, UI.nodeFactory(assetManager));
         _jmeEvents = new JmeEventHandler(getCamera(), assetManager, UI.controllerFactory(), UI.nodeFactory(assetManager), rootNode, _ctx);
         EventBus.instance().subscribe(UIConstants.QUEUE_JME, UIConstants.QUEUE_JME);
         _jfxSubscription = EventBus.instance().subscribe("keys", UIConstants.QUEUE_JFX);
         _jmeSubscription = EventBus.instance().subscribe("changes", UIConstants.QUEUE_JME);
         EventBus.instance().subscribe(Events.TOPIC_MECHANICS, UIConstants.QUEUE_JME);
 
-        final Universe u = new Universe();
-        Universe.setUniverse(u);
         final Logic logic = new Logic(
-            new Historian(
-                new Context(
-                    new BlockingNarrative(EventBus.instance()),
-                    u,
-                    new Bulk(),
-                    new BusInputSource()
-                )
-                .state(new ScriptedState("dawn", new Script("script/dawn.groovy")))
-            )
+            new Historian(ctx)
         );
         logic.start();
+    }
+
+    public void setDisplayFps(boolean show) {
+        if (stateManager.getState(StatsAppState.class) != null) {
+            stateManager.getState(StatsAppState.class).setDisplayFps(show);
+        }
+    }
+
+    public void setDisplayStatView(boolean show) {
+        if (stateManager.getState(StatsAppState.class) != null) {
+            stateManager.getState(StatsAppState.class).setDisplayStatView(show);
+        }
+    }
+
+    public void simpleRender(RenderManager rm) {
     }
 }

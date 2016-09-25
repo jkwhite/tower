@@ -39,6 +39,9 @@ public abstract class DefaultNHBotAction implements NHBotAction {
         return _bot;
     }
 
+    @Override public void perform() {
+    }
+
     @Override public void perform(final Context c) {
         perform();
     }

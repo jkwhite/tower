@@ -18,19 +18,20 @@
 <JfxNarrative>
     <children>
         <JfxTitle prefWidth='%screen_width' prefHeight='22' styleClass='title' transition='slideInoutNorth'/>
+        <!--
+        <StackPane>
+            <children>
+                <JfxState transition='fadeOut'/>
+            </children>
+        </StackPane>
+        -->
         <BorderPane>
             <top>
             </top>
             <center>
                 <JfxState transition='fadeOut'/>
             </center>
-            <!-- bottom needs to be defined with non-empty element
-                 otherwise JfxState will not render due to the
-                 sheer magnificence and solid maturity of javafx -->
             <bottom><Label text=' '/></bottom>
         </BorderPane>
-        <!--
-        <JfxMessages/>
-        -->
     </children>
 </JfxNarrative>

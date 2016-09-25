@@ -86,7 +86,7 @@ public class NullNHSpace extends NullMatrixMSpace implements NHSpace {
         return false;
     }
 
-    public boolean look(NHBot b, boolean nothing, boolean lootOnly) {
+    @Override public boolean look(Context c, boolean nothing, boolean lootOnly) {
         return false;
     }
 

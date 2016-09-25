@@ -4,78 +4,12 @@ import org.excelsi.sketch.*
 
 $c.universe.colormap = Data.loadYaml('/data/colors.yaml')
 
-
-//$c.universe.bots = [
-foo = [
-    new Patsy([
-      common:'human',
-      profession:'Traveler',
-      //form: !org.excelsi.tower.Humanoid {},
-      strength: 5,
-      quickness: 5,
-      agility: 5,
-      constitution: 70,
-      maxHp: 3,
-      color: 'white',
-      model: '@',
-      selectionText: 'Summer took a turn cause you spent your wishes carelessly.',
-      hidden: true,
-      skills: [
-        'unarmed': 30,
-        'thrown': 30,
-        'detect': 10
-      ]
-    ]),
-    new NPC([
-      common: 'construction worker',
-      //form: !org.excelsi.tower.Humanoid {}
-      strength: 70,
-      quickness: 60,
-      agility: 60,
-      constitution: 90,
-      maxHp: 70,
-      maxLevel: 39,
-      minLevel: 0,
-      model: '@',
-      color: 'gray',
-      loot: 2,
-      rarity: 10,
-      skills: [
-        'one-handed edged': 50,
-        'two-handed edged': 50,
-        'unarmored': 50
-      ],
-      /*
-      wearing: 
-        - !org.excelsi.tower.HardHat {}
-      wielded: !org.excelsi.tower.Jackhammer {}
-      */
-      ai: new Brain([new SurvivalDaemon(), new FleeDaemon(), new WanderDaemon()])
-      /*
-        daemons: 
-          //- !org.excelsi.aether.AttackDaemon {}
-          //- !org.excelsi.tower.DigDaemon {}
-          - !org.excelsi.aether.SurvivalDaemon {}
-          - !org.excelsi.aether.FleeDaemon {}
-          //- !org.excelsi.tower.HealDaemon {}
-          //- !org.excelsi.tower.DeferenceDaemon {}
-          //- !org.excelsi.tower.ChatDaemon
-            vocalizations:
-                - 'Work, work...'
-                - "That ain't workin'."
-      pack:
-        - !org.excelsi.tower.BottleOfGlue {}
-        - !org.excelsi.tower.Rock {}
-        - !org.excelsi.tower.SmallStone {}
-        - !org.excelsi.tower.Pick_Axe {}
-        */
-    ])
-]
-
 $c.universe.items = Data.loadYaml('/items.yaml')
 $c.universe.finds = Data.loadYaml('/data/finds.yaml')
 $c.universe.bots = Data.loadYaml('/bots.yaml')
 $c.universe.threats = Data.loadYaml('/data/threats.yaml')
+$c.universe.actions = Data.loadYaml('/data/actions.yaml')
+$c.universe.keymap = Data.loadYaml('/data/keys.yaml')
 
 def l1 = 
     new ExpanseLevelGenerator().generate(

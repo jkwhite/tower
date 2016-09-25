@@ -53,6 +53,10 @@ public class World implements State {
         connect(_level.getEventSource());
     }
 
+    public Stage getLevel() {
+        return _level;
+    }
+
     private void connect(final EventSource s) {
         s.addMatrixListener(_relay);
         s.addContainerListener(_relay);

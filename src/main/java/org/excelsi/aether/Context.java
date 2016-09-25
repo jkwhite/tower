@@ -71,6 +71,10 @@ public final class Context {
         return _actor;
     }
 
+    public NHBot actor() {
+        return getActor();
+    }
+
     public void setPov(final Patsy pov) {
         pov(pov);
     }

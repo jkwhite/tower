@@ -58,7 +58,7 @@ public interface NHSpace extends MSpace, Container, Material {
     Overlay getOverlay();
     void moveOverlay(NHSpace other);
     //boolean look(NHBot b);
-    boolean look(NHBot b, boolean nothing, boolean lootOnly);
+    boolean look(Context c, boolean nothing, boolean lootOnly);
     boolean isAutopickup();
     boolean pickup(NHBot b);
     void bloom(Transform t, int radius);

@@ -29,8 +29,10 @@
     -fx-font: normal normal 12pt "Palatino";
     -fx-background-image: url('/ui/parchment-small2.jpg');
     -fx-text-fill: #000;
+    /*
     -fx-text-alignment: center;
     -fx-alignment: center;
+    */
 }
 
 .status {

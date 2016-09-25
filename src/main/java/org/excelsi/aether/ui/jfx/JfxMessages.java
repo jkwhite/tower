@@ -35,14 +35,17 @@ public class JfxMessages extends HudNode {
                 }
                 t.getStyleClass().add("message");
                 t.getStyleClass().add(e.getMessageType().toString());
-                getChildren().add(t);
                 if(e.getSource() instanceof NHBot) {
                     Vector3f wp = le.ctx().getSpatial((Id)e.getSource()).getWorldTranslation();
                     Vector3f sp = le.ctx().getCamera().getScreenCoordinates(wp);
-                    System.err.println("setting screen coords: "+sp);
-                    t.setTranslateX(sp.x);
-                    t.setTranslateY(sp.y);
+                    final int w = le.ctx().getCamera().getWidth();
+                    final int h = le.ctx().getCamera().getHeight();
+                    t.setTranslateX(sp.x-50);
+                    t.setTranslateY(h-40-sp.y);
+                    //System.err.println("W****: "+((Label)t).getPrefWidth());
+                    //System.err.println("setting screen coords: "+sp+" from "+wp+" for "+e.getSource()+" message: "+e.getMessage()+"; jfxx="+t.getTranslateX()+", jfxy="+t.getTranslateY()+"; jfxlx="+t.getLayoutX()+", jfxly="+t.getLayoutY());
                 }
+                getChildren().add(t);
                 final SequentialTransition st = new SequentialTransition();
                 switch(e.getMessageType()) {
                     case ephemeral:

@@ -29,6 +29,12 @@ public class FilteringNarrative implements NNarrative {
         }
     }
 
+    @Override public void print(NHSpace source, Object m) {
+        if(_pov.getEnvironment().getVisible().contains(source)) {
+            _delegate.print(source, m);
+        }
+    }
+
     @Override public void printf(NHBot source, String message, Object... args) {
         if(_pov.getEnvironment().getVisibleBots().contains(source)) {
             _delegate.printf(source, message, args);
@@ -41,6 +47,16 @@ public class FilteringNarrative implements NNarrative {
         }
         else {
             throw new UnsupportedOperationException();
+        }
+    }
+
+    @Override public boolean confirm(final NHBot source, String m) {
+        if(source.isHuman()) {
+            return _delegate.confirm(m);
+        }
+        else {
+            //throw new UnsupportedOperationException();
+            return true;
         }
     }
 

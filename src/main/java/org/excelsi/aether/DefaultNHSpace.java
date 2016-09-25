@@ -288,9 +288,9 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
     public void destroy() {
     }
 
-    private boolean look(NHBot b) {
-        return look(b, true);
-    }
+    //private boolean look(NHBot b) {
+        //return look(b, true);
+    //}
 
     /**
      * Looks at this space.
@@ -298,9 +298,9 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
      * @param b bot who is looking
      * @param nothing whether or not to print a message even if nothing is here
      */
-    private boolean look(NHBot b, boolean nothing) {
-        return look(b, nothing, false);
-    }
+    //private boolean look(NHBot b, boolean nothing) {
+        //return look(b, nothing, false);
+    //}
 
     /**
      * Looks at this space.
@@ -309,8 +309,9 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
      * @param nothing whether or not to print a message even if nothing is here
      * @param lootOnly whether or not to ignore structures, parasites, etc
      */
-    public boolean look(NHBot b, boolean nothing, boolean lootOnly) {
+    @Override public boolean look(final Context c, boolean nothing, boolean lootOnly) {
         boolean saw = false;
+        final NHBot b = c.getActor();
         if(!lootOnly) {
             if(_parasites!=null) {
                 for(Parasite p:_parasites) {
@@ -320,10 +321,12 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
             if(getOccupant()!=null&&!getOccupant().isPlayer()) {
                 saw = true;
                 if(getOccupant().isUnique()||getOccupant().getName()!=null) {
-                    N.narrative().print(this, "You see "+Grammar.nonspecific(getOccupant())+" here.");
+                    //N.narrative().print(this, "You see "+Grammar.nonspecific(getOccupant())+" here.");
+                    c.n().print(this, "You see "+Grammar.nonspecific(getOccupant())+" here.");
                 }
                 else {
-                    N.narrative().print(this, "There is "+Grammar.nonspecific(getOccupant())+" here.");
+                    //N.narrative().print(this, "There is "+Grammar.nonspecific(getOccupant())+" here.");
+                    c.n().print(this, "There is "+Grammar.nonspecific(getOccupant())+" here.");
                 }
                 //if(numItems()>0) {
                     //N.narrative().more();
@@ -335,7 +338,8 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
         if(size==0) {
             if(!saw&&nothing) {
                 if(OLD_NARRATIVE) {
-                    N.narrative().print(this, "You see nothing here.");
+                    //N.narrative().print(this, "You see nothing here.");
+                    c.n().print(this, "You see nothing here.");
                 }
             }
         }
@@ -385,10 +389,13 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
                 sb.append(" here.");
             }
             if(OLD_NARRATIVE&&sb.length()<80) {
-                N.narrative().print(this, sb.toString());
+                //N.narrative().print(this, sb.toString());
+                c.n().print(this, sb.toString());
             }
             else {
-                N.narrative().showLoot(s);
+                //N.narrative().showLoot(s);
+                //NEXT
+                //c.n().showLoot(s);
             }
         }
         return saw;

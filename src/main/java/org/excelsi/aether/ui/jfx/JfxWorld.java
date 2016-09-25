@@ -38,10 +38,11 @@ import org.excelsi.aether.ui.Keymap;
 
 public class JfxWorld extends HudNode {
     private static final Logger LOG = LoggerFactory.getLogger(JfxWorld.class);
-    private final Map<Keymap,Action> _actions;
+    //private final Map<Keymap,Action> _actions;
 
 
     public JfxWorld() {
+        /*
         _actions = new HashMap<>();
         _actions.put(new Keymap("t"), new DebugAction());
         _actions.put(new Keymap("q"), new QuitAction());
@@ -56,23 +57,31 @@ public class JfxWorld extends HudNode {
         _actions.put(new Keymap("n"), new Patsy.Southeast());
 
         _actions.put(new Keymap(","), new DefaultNHBot.Pickup());
+        _actions.put(new Keymap(":"), new DefaultNHBot.LookHere());
 
         _actions.put(new Keymap("="), new ZoomInAction());
         _actions.put(new Keymap("-"), new ZoomOutAction());
         _actions.put(new Keymap("0"), new SceneDumpAction());
         LOG.debug("actionmap: "+_actions);
+        */
         addLogicHandler((le)->{
             if(le.e() instanceof KeyEvent) {
-                if(onKey((KeyEvent)le.e())) {
+                if(onKey(le.ctx(), (KeyEvent)le.e())) {
                     le.consume();
                 }
             }
         });
     }
 
-    private boolean onKey(final KeyEvent e) {
+    private boolean onKey(final SceneContext c, final KeyEvent e) {
         final Keymap m = new Keymap(e.key());
-        final Action a = _actions.get(m);
+        //final Action a = _actions.get(m);
+        final String aname = c.ctx().getUniverse().getKeymap().get(e.key());
+        LOG.info("found action name: '"+aname+"'");
+        if(aname==null) {
+            return false;
+        }
+        final Action a = c.ctx().getUniverse().getActions().get(aname);
         LOG.debug("found action: "+a+" for key: "+e);
         if(a!=null) {
             if(a instanceof UIAction) {
@@ -84,32 +93,6 @@ public class JfxWorld extends HudNode {
             return true;
         }
         return false;
-    }
-
-    private static class ZoomInAction extends UIAction {
-        @Override public void perform() {
-        }
-
-        @Override public void perform(final Context c) {
-        }
-
-        @Override public void perform(final SceneContext c) {
-            final View v = (View) c.getNode(View.NODE_CAMERA);
-            v.zoomIn();
-        }
-    }
-
-    private static class ZoomOutAction extends UIAction {
-        @Override public void perform() {
-        }
-
-        @Override public void perform(final Context c) {
-        }
-
-        @Override public void perform(final SceneContext c) {
-            final View v = (View) c.getNode(View.NODE_CAMERA);
-            v.zoomOut();
-        }
     }
 
     private static class SceneDumpAction extends UIAction {

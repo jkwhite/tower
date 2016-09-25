@@ -1704,7 +1704,7 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
                         }
                         if(c.getActor().getEnvironment().getMSpace().numItems()>0) {
                             try {
-                                _lookHere.perform();
+                                _lookHere.perform(c);
                             }
                             catch(ActionCancelledException ignored) {
                             }
@@ -1892,9 +1892,9 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
             return _lootOnly;
         }
 
-        public void perform() {
+        @Override public void perform(final Context c) {
             N.narrative().showLoot(null);
-            getBot().getEnvironment().getMSpace().look(getBot(), false, _lootOnly);
+            c.getActor().getEnvironment().getMSpace().look(c, false, _lootOnly);
             throw new ActionCancelledException();
         }
 

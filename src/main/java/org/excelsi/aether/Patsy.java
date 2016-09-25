@@ -552,8 +552,9 @@ public class Patsy extends DefaultNHBot {
             return "Describe objects in the surrounding area.";
         }
 
-        public void perform() {
-            N.narrative().look(getBot(), getBot().getEnvironment().getMSpace());
+        @Override public void perform(final Context c) {
+            //NEXT
+            //c.n().look(getBot(), getBot().getEnvironment().getMSpace());
         }
     }
 
@@ -576,22 +577,24 @@ public class Patsy extends DefaultNHBot {
             return "Abandon the game.";
         }
 
-        public void perform() {
-            N.narrative().clear();
-            if(N.narrative().confirm(getBot(), "Really quit?")) {
-                String disp = ((Patsy)getBot()).getLevel().getDisplayedFloor();
+        @Override public void perform(final Context c) {
+            //N.narrative().clear();
+            if(c.n().confirm(c.actor(), "Really quit?")) {
+                String disp = ((World)c.getState()).getLevel().getDisplayedFloor();
                 if(disp.equals("??")) {
                     disp = "";
                 }
                 else {
                     disp = " on level "+disp;
                 }
-                String part = ((Patsy)getBot()).getLevel().getName();
+                String part = ((World)c.getState()).getLevel().getName();
                 if(part.startsWith("The ")) {
                     part = Character.toLowerCase(part.charAt(0))+part.substring(1);
                 }
                 //N.narrative().quit("Quit in "+part+disp+".", false);
-                N.narrative().quit("Gave up.", false);
+                //NEXT
+                //N.narrative().quit("Gave up.", false);
+                c.state(new Quit());
             }
             else {
                 throw new ActionCancelledException();
@@ -664,7 +667,7 @@ public class Patsy extends DefaultNHBot {
             }
         }
 
-        public void perform() {
+        @Override public void perform(final Context c) {
             NHSpace s = getBot().getEnvironment().getMSpace();
             Climbable cl = null;
             if(s instanceof Climbable) {
@@ -690,7 +693,7 @@ public class Patsy extends DefaultNHBot {
                     LookHere lh = new LookHere();
                     lh.setLootOnly(true);
                     lh.setBot(getBot());
-                    lh.perform();
+                    lh.perform(c);
                 }
                 else {
                     N.narrative().print(getBot(), "You are already at the top of this "+cl.getName()+".");

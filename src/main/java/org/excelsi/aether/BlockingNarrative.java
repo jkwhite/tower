@@ -28,12 +28,20 @@ public class BlockingNarrative implements NNarrative {
         _e.post(TOPIC_UI, new MessageEvent(source, MessageEvent.Type.ephemeral, m.toString()));
     }
 
+    @Override public void print(NHSpace source, Object m) {
+        _e.post(TOPIC_UI, new MessageEvent(source, MessageEvent.Type.ephemeral, m.toString()));
+    }
+
     @Override public void printf(NHBot source, String message, Object... args) {
         // NEXT: implement POV based on old narrative
     }
 
     @Override public boolean confirm(String m) {
         return _e.await(TOPIC_UI, new QueryEvent(this, QueryEvent.Type.bool, m)).<Boolean>getAnswer();
+    }
+
+    @Override public boolean confirm(final NHBot source, String m) {
+        return _e.await(TOPIC_UI, new QueryEvent(source, QueryEvent.Type.bool, m)).<Boolean>getAnswer();
     }
 
     @Override public void poster(String m) {

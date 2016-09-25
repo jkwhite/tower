@@ -20,7 +20,11 @@
 <StackPane xmlns:fx='http://javafx.com/fxml' fx:id='title_root' prefWidth="%screen_width" prefHeight="%screen_height">
     <children>
         <JfxSelector/>
+        <Pane>
+            <children>
         <JfxMessages/>
+            </children>
+        </Pane>
         <JfxWorld/>
         <BorderPane prefWidth="200" prefHeight="200">
             <bottom>
