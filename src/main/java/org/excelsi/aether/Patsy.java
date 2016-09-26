@@ -611,8 +611,8 @@ public class Patsy extends DefaultNHBot {
             return true;
         }
 
-        public void perform() {
-            N.narrative().showInventory();
+        @Override public void perform(final Context c) {
+            c.n().show(c.actor(), c.actor().getInventory(), DisplayHints.n().keyed().modal());
             throw new ActionCancelledException();
         }
 

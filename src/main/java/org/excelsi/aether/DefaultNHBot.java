@@ -909,6 +909,11 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
         return _inventory.isEquipped(item);
     }
 
+    @Override public boolean holds(Container c) {
+        //TODO: bags
+        return _inventory==c;
+    }
+
     public void setPack(Item[] pack) {
         clearModifier();
         _inventory.add(pack);
@@ -1711,7 +1716,8 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
                         }
                     }
                     else {
-                        N.narrative().showLoot(null);
+                        //N.narrative().showLoot(null);
+                        c.n().show(c.actor(), null);
                     }
                 }
             }
@@ -1893,8 +1899,10 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
         }
 
         @Override public void perform(final Context c) {
-            N.narrative().showLoot(null);
-            c.getActor().getEnvironment().getMSpace().look(c, false, _lootOnly);
+            //N.narrative().showLoot(null);
+            c.n().show(c.actor(), null);
+            c.n().show(c.actor(), c.actor().getEnvironment().getMSpace());
+            c.actor().getEnvironment().getMSpace().look(c, false, _lootOnly);
             throw new ActionCancelledException();
         }
 

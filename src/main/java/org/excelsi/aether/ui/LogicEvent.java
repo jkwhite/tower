@@ -18,12 +18,12 @@ public final class LogicEvent extends javafx.event.Event {
         _e = e;
     }
 
-    public Event e() {
-        return _e;
+    public <E extends Event> E e() {
+        return (E) _e;
     }
 
-    public Event getE() {
-        return e();
+    public <E extends Event> E getE() {
+        return (E) e();
     }
 
     public SceneContext ctx() {

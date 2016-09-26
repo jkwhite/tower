@@ -18,13 +18,12 @@
 <JfxNarrative>
     <children>
         <JfxTitle prefWidth='%screen_width' prefHeight='22' styleClass='title' transition='slideInoutNorth'/>
-        <!--
-        <StackPane>
+        <Pane prefWidth="%screen_width" prefHeight="%screen_height">
             <children>
                 <JfxState transition='fadeOut'/>
             </children>
-        </StackPane>
-        -->
+        </Pane>
+        <!--
         <BorderPane>
             <top>
             </top>
@@ -33,5 +32,6 @@
             </center>
             <bottom><Label text=' '/></bottom>
         </BorderPane>
+        -->
     </children>
 </JfxNarrative>

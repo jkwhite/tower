@@ -28,7 +28,7 @@ for(i=0;i<10;i++) {
 }
 l1.findRandomNormalEmptySpace().add(new Apple())
 l1.getMatrix().getSpace(0,0).add(new Apple())
-$c.pov = $c.universe.createBot({b -> 'Traveler'.equals(b.profession)})
+$c.pov = $c.universe.createBot({b -> 'Archeologist'.equals(b.profession)})
 
 //$c.state = new World()
 

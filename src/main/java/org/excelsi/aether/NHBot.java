@@ -213,6 +213,7 @@ public interface NHBot extends Bot, Scoreable, Cloneable {
 
     Inventory getInventory();
     boolean isEquipped(Item i);
+    boolean holds(Container c);
     void setPack(Item[] items);
     Item[] getPack();
     boolean isPacked(Item i);

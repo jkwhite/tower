@@ -72,4 +72,12 @@ public class FilteringNarrative implements NNarrative {
             throw new UnsupportedOperationException();
         }
     }
+
+    @Override public void show(NHBot source, Object shown) {
+        _delegate.show(source, shown);
+    }
+
+    @Override public void show(NHBot source, Object shown, DisplayHints hints) {
+        _delegate.show(source, shown, hints);
+    }
 }

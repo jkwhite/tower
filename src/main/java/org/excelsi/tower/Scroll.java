@@ -31,12 +31,31 @@ public abstract class Scroll extends VariegatedItem implements Combustible, Lami
 
 
     static {
-        variegate("scroll", new String[]{"LORE MIP SUM", "BLOT", "CIRRUS URSA",
-            "UL ANBA TOR", "UN RUNAM", "HRONIR", "READ ME", "OVED WENGA MUIRTTY",
-            "AWD POK", "OLAPOLYOKE", "THEGNON PSIWIG", "ESTROM YANDEL THOTH WELF",
-            "RENLILULEKH", "GAWINATHET THIME CHRONOSTAY", "DRETH MATAMOIL",
-            "VLEDU FLESHISH IFF", "ANANG ANDI", "GHALIN SPIRSAPE", "WONSLID ESWOLM",
-            "WANGUIRUS GAMERAM", "IRIOMOTEYAMANEKO", "OYAM FLOR", "ECH ACHREB SOLDEG"});
+        variegate("scroll", new String[]{
+            "LORE MIP SUM",
+            "BLOT",
+            "CIRRUS URSA",
+            "UL ANBA TOR",
+            "UN RUNAM",
+            "HRONIR",
+            "READ ME",
+            "OVED WENGA MUIRTTY",
+            "AWD POK",
+            "OLAPOLYOKE",
+            "THEGNON PSIWIG",
+            "ESTROM YANDEL THOTH WELF",
+            "RENLILULEKH",
+            "GAWINATHET THIME CHRONOSTAY",
+            "DRETH MATAMOIL",
+            "VLEDU FLESHISH IFF",
+            "ANANG ANDI",
+            "GHALIN SPIRSAPE",
+            "WONSLID ESWOLM",
+            "WANGUIRUS GAMERAM",
+            "IRIOMOTEYAMANEKO",
+            "OYAM FLOR",
+            "ECH ACHREB SOLDEG"
+        });
         Extended.addCommand("scribe", new Scribe());
     }
 

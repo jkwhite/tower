@@ -20,7 +20,10 @@
 package org.excelsi.aether;
 
 
-public abstract class AbstractGameAction implements GameAction {
+public abstract class AbstractGameAction implements GameAction, Action {
+    @Override public void perform() {
+    }
+
     @Override public void perform(final Context c) {
         perform();
     }

@@ -33,6 +33,8 @@ import java.util.ArrayList;
 
 class CloseView extends CameraNode implements View {
     private static final float ZOOM_FACTOR = 0.8f;
+    private static final float ZOOM_MIN = 0.5f;
+    private static final float ZOOM_MAX = 1.25f;
     private Vector3f _target;
     private Vector3f _move = new Vector3f(0, 0, 0);
     private Node _root;
@@ -259,15 +261,21 @@ class CloseView extends CameraNode implements View {
     }
 
     public void zoomIn() {
-        _zoom *= ZOOM_FACTOR;
-        _tolerance *= ZOOM_FACTOR;
-        center(_position);
+        if(_zoom>ZOOM_MIN) {
+            _zoom *= ZOOM_FACTOR;
+            _tolerance *= ZOOM_FACTOR;
+            center(_position);
+        }
+        System.err.println("ZOOM: "+_zoom);
     }
 
     public void zoomOut() {
-        _zoom /= ZOOM_FACTOR;
-        _tolerance /= ZOOM_FACTOR;
-        center(_position);
+        if(_zoom<ZOOM_MAX) {
+            _zoom /= ZOOM_FACTOR;
+            _tolerance /= ZOOM_FACTOR;
+            center(_position);
+        }
+        System.err.println("ZOOM: "+_zoom);
     }
 
     static final class Angle {

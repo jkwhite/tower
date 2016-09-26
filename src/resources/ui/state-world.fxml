@@ -17,24 +17,63 @@
 <?import org.excelsi.aether.ui.jfx.*?>
 
 
+<Pane xmlns:fx='http://javafx.com/fxml' fx:id='title_root' prefWidth="%screen_width" prefHeight="%screen_height" maxWidth="%screen_width" maxHeight="%screen_height" minWidth="%screen_width" minHeight="%screen_height">
+    <children>
+        <JfxSelector/>
+        <JfxMessages/>
+        <AnchorPane prefWidth="%screen_width" prefHeight="%screen_height">
+        <Pane AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <BorderPane prefWidth="%screen_width">
+                    <right>
+                        <VBox>
+                            <children>
+                                <JfxInfo transition='slideInNorth'/>
+                            </children>
+                        </VBox>
+                    </right>
+                </BorderPane>
+            </children>
+        </Pane>
+        <JfxWorld AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+        <BorderPane AnchorPane.bottomAnchor='0.0' AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <bottom>
+                <VBox styleClass='status'>
+                    <children>
+                        <HBox styleClass='status-items' spacing='20'>
+                            <children>
+                                <JfxStatus/>
+                                <JfxPatsy/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </bottom>
+        </BorderPane>
+        </AnchorPane>
+    </children>
+</Pane>
+<!--
 <StackPane xmlns:fx='http://javafx.com/fxml' fx:id='title_root' prefWidth="%screen_width" prefHeight="%screen_height">
     <children>
         <JfxSelector/>
         <Pane>
             <children>
-        <JfxMessages/>
+                <BorderPane prefWidth="%screen_width">
+                    <right>
+                        <VBox>
+                            <children>
+                                <JfxInfo transition='slideInNorth'/>
+                            </children>
+                        </VBox>
+                    </right>
+                </BorderPane>
+                <JfxMessages/>
             </children>
         </Pane>
         <JfxWorld/>
         <BorderPane prefWidth="200" prefHeight="200">
             <bottom>
-            <!--
-                <VBox styleClass='status'>
-                    <children>
-                        <JfxStatus/>
-                    </children>
-                </VBox>
-                -->
                 <VBox styleClass='status'>
                     <children>
                         <HBox styleClass='status-items' spacing='20'>
@@ -49,3 +88,4 @@
         </BorderPane>
     </children>
 </StackPane>
+-->

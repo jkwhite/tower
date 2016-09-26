@@ -30,11 +30,27 @@ public final class Transitions {
             case "fadeOut":
                 fadeOut(n, h);
                 break;
+            case "slideInNorth":
+                slideInNorth(n, h);
+                break;
             case "slideInoutNorth":
             default:
                 slideInoutNorth(n, h);
                 break;
         }
+    }
+
+    public static void slideInNorth(final Region n, final EventHandler<ActionEvent> h) {
+        double amt = n.getPrefHeight();
+        if(amt<=0) {
+            amt = 100d;
+        }
+        n.setTranslateY(-amt);
+        final TranslateTransition in = new TranslateTransition(Duration.millis(1000), n);
+        in.setByY(amt);
+        in.setInterpolator(Interpolator.EASE_IN);
+        in.setOnFinished(h);
+        in.play();
     }
 
     public static void slideInoutNorth(final Region n, final EventHandler<ActionEvent> h) {

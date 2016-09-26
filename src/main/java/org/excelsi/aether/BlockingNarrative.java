@@ -51,4 +51,17 @@ public class BlockingNarrative implements NNarrative {
     @Override public <E> E choose(SelectionMenu<E> m) {
         return _e.await(TOPIC_UI, new SelectEvent<E>(this, m)).getMenu().getChoice().item();
     }
+
+    @Override public void show(NHBot source, Object shown) {
+        _e.post(TOPIC_UI, new InfoEvent(source, shown));
+    }
+
+    @Override public void show(NHBot source, Object shown, DisplayHints hints) {
+        if(hints.isModal()) {
+            _e.await(TOPIC_UI, new InfoEvent(source, shown, hints));
+        }
+        else {
+            _e.post(TOPIC_UI, new InfoEvent(source, shown, hints));
+        }
+    }
 }

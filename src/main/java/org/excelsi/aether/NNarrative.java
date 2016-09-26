@@ -13,4 +13,6 @@ public interface NNarrative {
     void poster(String m);
     //void act(Menu<E> m);
     <E> E choose(SelectionMenu<E> m);
+    void show(NHBot source, Object shown);
+    void show(NHBot source, Object shown, DisplayHints hints);
 }

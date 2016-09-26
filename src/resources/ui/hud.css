@@ -56,6 +56,12 @@
     -fx-background-image: url('/ui/parchment-small2.jpg');
 }
 
+.inventory {
+    -fx-padding: 5px;
+    -fx-font: normal normal 12pt "Palatino";
+    -fx-background-image: url('/ui/parchment-small2.jpg');
+}
+
 .message {
     -fx-font: normal normal 12pt "Palatino";
     -fx-text-fill: #000;

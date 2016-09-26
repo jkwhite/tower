@@ -53,4 +53,14 @@ public abstract class HudRegion extends Region implements Hud {
             onFinished.handle(null);
         }
     }
+
+    protected final void addModalHandler(final Object notify) {
+        addLogicHandler((le)->{
+            le.consume();
+            ((Group)getParent()).getChildren().remove(this);
+            synchronized(notify) {
+                notify.notify();
+            }
+        });
+    }
 }
