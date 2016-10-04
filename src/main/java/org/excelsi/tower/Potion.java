@@ -244,15 +244,15 @@ public class Potion extends Inflicter implements Combustible, Freezable, Reinfor
             return b.getEnvironment().getMSpace() instanceof Surface;
         }
 
-        protected void act() {
-            Direction d = N.narrative().direct(getBot(), "Where?");
-            NHSpace s = (NHSpace) getBot().getEnvironment().getMSpace().move(d);
+        @Override protected void act(final Context c) {
+            Direction d = c.n().direct(c.actor(), "Where?");
+            NHSpace s = (NHSpace) c.actor().getEnvironment().getMSpace().move(d);
             Potion p = (Potion) getItem();
             setItem(null);
-            p = (Potion) getBot().getInventory().split(p);
+            p = (Potion) c.actor().getInventory().split(p);
             if(s instanceof Surface) {
-                ((Surface)s).pour(getBot(), p);
-                getBot().getInventory().add(p);
+                ((Surface)s).pour(c.actor(), p);
+                c.actor().getInventory().add(p);
             }
             else {
                 if(s.isTransparent()) {
@@ -268,7 +268,7 @@ public class Potion extends Inflicter implements Combustible, Freezable, Reinfor
                     if(sol==null) {
                         sol = new Solution("gray");
                     }
-                    N.narrative().print(getBot(), Grammar.start(getBot(), "pour")+" out the "+Grammar.specific(p)+".");
+                    N.narrative().print(c.actor(), Grammar.start(c.actor(), "pour")+" out the "+Grammar.specific(p)+".");
                     ArrayList<Infliction> toRemove = new ArrayList<Infliction>();
                     for(int idx=0;idx<p.getCount();idx++) {
                         for(Infliction inf:p.getInflictions()) {
@@ -287,12 +287,12 @@ public class Potion extends Inflicter implements Combustible, Freezable, Reinfor
                     if(!found) {
                         s.addParasite(sol);
                     }
-                    getBot().getInventory().add(p);
+                    c.actor().getInventory().add(p);
                 }
                 else {
-                    N.narrative().print(getBot(), "That would prove difficult.");
+                    c.n().print(c.actor(), "That would prove difficult.");
                     // because it was split out above
-                    getBot().getInventory().add(p);
+                    c.actor().getInventory().add(p);
                     throw new ActionCancelledException();
                 }
             }

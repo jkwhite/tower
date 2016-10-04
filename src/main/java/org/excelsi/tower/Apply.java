@@ -45,25 +45,25 @@ public class Apply extends ItemAction implements SpaceAction {
         return false;
     }
 
-    protected void act() {
-        ((Useable)getItem()).use(getBot());
+    @Override protected void act(final Context c) {
+        ((Useable)getItem()).use(c.actor());
     }
 
-    protected boolean useSpace() {
-        if(getBot().getEnvironment()!=null) {
-            NHSpace s = getBot().getEnvironment().getMSpace();
+    @Override protected boolean useSpace(final Context c) {
+        if(c.actor().getEnvironment()!=null) {
+            NHSpace s = c.actor().getEnvironment().getMSpace();
             if(s instanceof Device) {
                 Device d = (Device) s;
-                if(N.narrative().confirm(getBot(), "There is "+Grammar.nonspecific(d.getName())+" here. Use it?")) {
-                    d.use(getBot());
+                if(c.n().confirm(c.actor(), "There is "+Grammar.nonspecific(d.getName())+" here. Use it?")) {
+                    d.use(c.actor());
                     return true;
                 }
             }
             for(Parasite p:s.getParasites()) {
                 if(p instanceof Device) {
                     Device d = (Device) p;
-                    if(N.narrative().confirm(getBot(), "There is "+Grammar.nonspecific(d.getName())+" here. Use it?")) {
-                        d.use(getBot());
+                    if(c.n().confirm(c.actor(), "There is "+Grammar.nonspecific(d.getName())+" here. Use it?")) {
+                        d.use(c.actor());
                         return true;
                     }
                 }

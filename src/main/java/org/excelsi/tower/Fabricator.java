@@ -53,10 +53,10 @@ public class Fabricator extends Floor implements Device {
         return "light-blue";
     }
 
-    public boolean look(NHBot b, boolean nothing, boolean lootOnly) {
-        boolean ret = super.look(b, nothing, lootOnly);
+    public boolean look(final Context c, boolean nothing, boolean lootOnly) {
+        boolean ret = super.look(c, nothing, lootOnly);
         if(!lootOnly) {
-            N.narrative().print(this, "There is a fabricator here.");
+            c.n().print(this, "There is a fabricator here.");
             return true;
         }
         return ret;

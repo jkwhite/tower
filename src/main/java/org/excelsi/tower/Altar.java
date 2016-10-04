@@ -43,10 +43,10 @@ public class Altar extends Floor {
         return -4;
     }
 
-    public boolean look(NHBot b, boolean nothing, boolean lootOnly) {
-        boolean ret = super.look(b, nothing, lootOnly);
+    @Override public boolean look(final Context c, boolean nothing, boolean lootOnly) {
+        boolean ret = super.look(c, nothing, lootOnly);
         if(!lootOnly) {
-            N.narrative().print(this, "There is an altar here.");
+            c.n().print(this, "There is an altar here.");
             return true;
         }
         return ret;

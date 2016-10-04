@@ -109,14 +109,14 @@ public class Shrine extends Floor {
         replace(new Floor());
     }
 
-    public boolean look(NHBot b, boolean nothing, boolean lootOnly) {
-        boolean ret = super.look(b, nothing, lootOnly);
+    public boolean look(final Context c, boolean nothing, boolean lootOnly) {
+        boolean ret = super.look(c, nothing, lootOnly);
         if(!lootOnly) {
             if(_enshrined==null) {
-                N.narrative().print(this, "There is a shrine here.");
+                c.n().print(this, "There is a shrine here.");
             }
             else {
-                N.narrative().print(this, "There is a shrine here, containing "+Grammar.nonspecific(_enshrined)+".");
+                c.n().print(this, "There is a shrine here, containing "+Grammar.nonspecific(_enshrined)+".");
             }
             return true;
         }

@@ -1973,30 +1973,30 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
             return b.getInventory().numItems()>0;
         }
 
-        protected void act() {
+        @Override protected void act(final Context c) {
             Item chosen = getItem();
-            if(getBot().isEquipped(chosen)) {
+            if(c.actor().isEquipped(chosen)) {
                 String verb = "wear";
-                if(getBot().getWielded()==chosen) {
+                if(c.actor().getWielded()==chosen) {
                     verb = "wield";
                 }
                 // "verbing that" sounds somehow bad.
-                if(getBot().isPlayer()) {
-                    N.narrative().print(getBot(), "You're currently "+verb+"ing that.");
+                if(c.actor().isPlayer()) {
+                    c.n().print(c.actor(), "You're currently "+verb+"ing that.");
                     // TODO: do not re-add
                     // re-add because drop ctor instructs ItemAction to remove item on choose
-                    getBot().getInventory().add(chosen);
+                    c.actor().getInventory().add(chosen);
                 }
                 throw new ActionCancelledException();
             }
-            NHSpace s = (NHSpace) ((MatrixEnvironment)getBot().getEnvironment()).getMSpace();
-            N.narrative().print(getBot(), Grammar.start(getBot(), "drop")+" "+Grammar.nonspecific(chosen)+".");
-            if(s.add(chosen, getBot())>=0) {
+            NHSpace s = (NHSpace) ((MatrixEnvironment)c.actor().getEnvironment()).getMSpace();
+            c.n().print(c.actor(), Grammar.start(c.actor(), "drop")+" "+Grammar.nonspecific(chosen)+".");
+            if(s.add(chosen, c.actor())>=0) {
                 //getBot().getInventory().remove(getItem());
             }
             else {
                 // did not drop for some reason
-                getBot().getInventory().add(chosen);
+                c.actor().getInventory().add(chosen);
             }
         }
     }

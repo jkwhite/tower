@@ -1,6 +1,9 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Direction;
+
+
 public class FilteringNarrative implements NNarrative {
     private final NHBot _pov;
     private final NNarrative _delegate;
@@ -79,5 +82,9 @@ public class FilteringNarrative implements NNarrative {
 
     @Override public void show(NHBot source, Object shown, DisplayHints hints) {
         _delegate.show(source, shown, hints);
+    }
+
+    @Override public Direction direct(NHBot b, String msg) {
+        throw new UnsupportedOperationException();
     }
 }

@@ -74,25 +74,29 @@ public abstract class ItemAction extends DefaultNHBotAction {
     /**
      * Prompts for item and performs action if bot is human, otherwise performs action.
      */
-    public final void perform() {
-        if(getBot().isDead()) {
-            throw new IllegalStateException(getBot()+" is dead");
+    @Override public final void perform(final Context c) {
+        if(c.actor().isDead()) {
+            throw new IllegalStateException(c.actor()+" is dead");
         }
-        if(!useSpace()) {
-            if(_prompt&&getBot().isPlayer()&&getItem()==null) {
-                setItem(N.narrative().choose(getBot(), new ItemConstraints(getBot().getInventory(), _verb, _filter, _acceptNull), _remove));
+        // NEXT
+        if(!useSpace(c) || !useSpace()) {
+            if(_prompt&&c.actor().isPlayer()&&getItem()==null) {
+                //setItem(c.n().choose(c.actor(), new ItemConstraints(c.actor().getInventory(), _verb, _filter, _acceptNull), _remove));
+                setItem(c.n().choose(/*c.actor(),*/ Menus.asMenu(new ItemConstraints(c.actor().getInventory(), _verb, _filter, _acceptNull), c.actor()) /*, _remove*/));
             }
             else {
                 if(_remove) {
-                    getBot().getInventory().remove(getItem());
+                    c.actor().getInventory().remove(getItem());
                 }
             }
             try {
+                // NEXT
                 act();
+                act(c);
                 if(this instanceof InstantaneousAction) {
-                    for(EnvironmentListener el:getBot().getListeners()) {
+                    for(EnvironmentListener el:c.actor().getListeners()) {
                         if(el instanceof NHEnvironmentListener) {
-                            ((NHEnvironmentListener)el).actionPerformed(getBot(), (InstantaneousAction) this);
+                            ((NHEnvironmentListener)el).actionPerformed(c.actor(), (InstantaneousAction) this);
                         }
                     }
                 }
@@ -136,7 +140,11 @@ public abstract class ItemAction extends DefaultNHBotAction {
     /** 
      * Performs action.
      */
-    abstract protected void act();
+    protected void act(Context c) {
+    }
+
+    protected void act() {
+    }
 
     /**
      * Some actions may optionally operate on the current space instead of
@@ -145,6 +153,10 @@ public abstract class ItemAction extends DefaultNHBotAction {
      *
      * @return <code>true</code> if some action on the space was taken
      */
+    protected boolean useSpace(Context c) {
+        return false;
+    }
+
     protected boolean useSpace() {
         return false;
     }

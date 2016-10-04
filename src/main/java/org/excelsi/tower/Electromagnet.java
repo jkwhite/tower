@@ -86,10 +86,10 @@ public class Electromagnet extends Floor {
         return -4;
     }
 
-    public boolean look(NHBot b, boolean nothing, boolean lootOnly) {
-        boolean ret = super.look(b, nothing, lootOnly);
+    public boolean look(final Context c, boolean nothing, boolean lootOnly) {
+        boolean ret = super.look(c, nothing, lootOnly);
         if(!lootOnly) {
-            N.narrative().print(b, "There is an electromagnetic coil here, covered in dust.");
+            c.n().print(c.actor(), "There is an electromagnetic coil here, covered in dust.");
             return true;
         }
         return ret;

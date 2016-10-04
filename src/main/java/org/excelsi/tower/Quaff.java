@@ -53,6 +53,7 @@ public class Quaff extends ItemAction implements InstantaneousAction, SpaceActio
         return false;
     }
 
+    // NEXT: add context
     protected void act() {
         N.narrative().print(getBot(), Grammar.start(getBot())+" "+Grammar.conjugate(getBot(), getVerb())+" "+
             Grammar.singular(getItem())+".");
@@ -62,22 +63,22 @@ public class Quaff extends ItemAction implements InstantaneousAction, SpaceActio
         getItem().invoke(getBot());
     }
 
-    protected boolean useSpace() {
-        if(getBot().getEnvironment()!=null) {
-            NHSpace s = getBot().getEnvironment().getMSpace();
+    @Override protected boolean useSpace(final Context c) {
+        if(c.actor().getEnvironment()!=null) {
+            NHSpace s = c.actor().getEnvironment().getMSpace();
             for(Parasite p:s.getParasites()) {
                 if(p instanceof Drinkable) {
                     Drinkable d = (Drinkable) p;
-                    if(N.narrative().confirm(getBot(), "Drink from the "+d.getName()+"?")) {
-                        d.drink(getBot());
+                    if(c.n().confirm(c.actor(), "Drink from the "+d.getName()+"?")) {
+                        d.drink(c.actor());
                         return true;
                     }
                 }
             }
             if(s instanceof Drinkable) {
                 Drinkable d = (Drinkable) s;
-                if(N.narrative().confirm(getBot(), "Drink from the "+d.getName()+"?")) {
-                    d.drink(getBot());
+                if(c.n().confirm(c.actor(), "Drink from the "+d.getName()+"?")) {
+                    d.drink(c.actor());
                     return true;
                 }
             }

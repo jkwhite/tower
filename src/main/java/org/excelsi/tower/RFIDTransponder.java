@@ -110,10 +110,10 @@ public class RFIDTransponder extends Floor {
         }
     }
 
-    public boolean look(NHBot b, boolean nothing, boolean lootOnly) {
-        boolean ret = super.look(b, nothing, lootOnly);
+    public boolean look(final Context c, boolean nothing, boolean lootOnly) {
+        boolean ret = super.look(c, nothing, lootOnly);
         if(!lootOnly) {
-            N.narrative().print(b, "There is an RF transponder here.");
+            c.n().print(c.actor(), "There is an RF transponder here.");
             return true;
         }
         return ret;

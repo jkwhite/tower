@@ -21,6 +21,7 @@ package org.excelsi.tower;
 
 
 import org.excelsi.aether.*;
+import org.excelsi.matrix.Actor;
 
 
 /**
@@ -53,28 +54,28 @@ public class Consume extends ItemAction implements SpaceAction {
         return i instanceof Comestible || i instanceof Pill;
     }
 
-    public void act() {
+    @Override public void act(final Context c) {
         boolean onGround = false;
         Item chosen = getItem();
-        Container container = getBot().getInventory();
+        Container container = c.actor().getInventory();
         if(chosen==null) {
-            Item[] here = getBot().getEnvironment().getMSpace().getItem();
+            Item[] here = c.actor().getEnvironment().getMSpace().getItem();
             for(int i=0;i<here.length;i++) {
                 if(here[i] instanceof Comestible) {
-                    if(getBot().isLevitating()) {
-                        N.narrative().print(getBot(), "There is "+Grammar.singular(here[i])+" here, but you cannot reach the ground.");
+                    if(c.actor().isLevitating()) {
+                        c.n().print(c.actor(), "There is "+Grammar.singular(here[i])+" here, but you cannot reach the ground.");
                         break;
                     }
-                    else if(N.narrative().confirm(getBot(), "There is "+Grammar.singular(here[i])+" here. Do you want to eat it?")) {
+                    else if(c.n().confirm(c.actor(), "There is "+Grammar.singular(here[i])+" here. Do you want to eat it?")) {
                         chosen = here[i];
-                        container = getBot().getEnvironment().getMSpace();
+                        container = c.actor().getEnvironment().getMSpace();
                         onGround = true;
                         break;
                     }
                 }
             }
             if(chosen==null) {
-                chosen = N.narrative().choose(getBot(), new ItemConstraints(getBot().getInventory(), "eat", new ItemFilter() {
+                chosen = c.n().choose(c.actor(), new ItemConstraints(c.actor().getInventory(), "eat", new ItemFilter() {
                     public boolean accept(Item i, NHBot bot) {
                         return i instanceof Comestible || i instanceof Pill;
                     }
@@ -82,13 +83,13 @@ public class Consume extends ItemAction implements SpaceAction {
             }
         }
         else {
-            onGround = !getBot().getInventory().contains(chosen);
-            if(!getBot().getInventory().contains(chosen)) {
-                container = getBot().getEnvironment().getMSpace();
+            onGround = !c.actor().getInventory().contains(chosen);
+            if(!c.actor().getInventory().contains(chosen)) {
+                container = c.actor().getEnvironment().getMSpace();
             }
 
-            if(onGround&&getBot().isLevitating()) {
-                N.narrative().print(getBot(), "There is "+Grammar.singular(chosen)+" here, but "+Grammar.noun(getBot())+" cannot reach the ground.");
+            if(onGround&&c.actor().isLevitating()) {
+                c.n().print(c.actor(), "There is "+Grammar.singular(chosen)+" here, but "+Grammar.noun(c.actor())+" cannot reach the ground.");
                 return;
                 //TODO: should it count or not?
                 //since only NPCs will go through this code path, seems like it
@@ -98,13 +99,13 @@ public class Consume extends ItemAction implements SpaceAction {
         }
         if(chosen instanceof Comestible) {
             final Comestible comestible = (Comestible) chosen;
-            getBot().start(new Consuming(comestible, container));
+            c.actor().start(new Consuming(comestible, container));
         }
         else {
-            N.narrative().printfm(getBot(), Grammar.start(getBot(), "swallow")+" "+Grammar.singular(chosen)+".");
+            c.n().printfm(c.actor(), Grammar.start(c.actor(), "swallow")+" "+Grammar.singular(chosen)+".");
             chosen.setClassIdentified(true);
-            getBot().getInventory().consume(chosen);
-            chosen.invoke(getBot());
+            c.actor().getInventory().consume(chosen);
+            chosen.invoke(c.actor());
         }
     }
 
@@ -200,7 +201,7 @@ public class Consume extends ItemAction implements SpaceAction {
             _c = c;
             _container = container;
             if(_c.getModifiedNutrition()>RATE) {
-                N.narrative().print(getBot(), Grammar.start(getBot(), "start")+" eating the "+c.getShortName()+".");
+                Actor.context().n().print(getBot(), Grammar.start(getBot(), "start")+" eating the "+c.getShortName()+".");
             }
         }
 

@@ -2,6 +2,7 @@ package org.excelsi.aether;
 
 
 import static org.excelsi.aether.Events.TOPIC_UI;
+import org.excelsi.matrix.Direction;
 
 
 public class BlockingNarrative implements NNarrative {
@@ -63,5 +64,9 @@ public class BlockingNarrative implements NNarrative {
         else {
             _e.post(TOPIC_UI, new InfoEvent(source, shown, hints));
         }
+    }
+
+    @Override public Direction direct(NHBot b, String msg) {
+        throw new UnsupportedOperationException();
     }
 }

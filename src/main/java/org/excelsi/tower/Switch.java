@@ -61,10 +61,10 @@ public class Switch extends Floor implements Device {
         return "white";
     }
 
-    public boolean look(NHBot b, boolean nothing, boolean lootOnly) {
-        boolean ret = super.look(b, nothing, lootOnly);
+    public boolean look(final Context c, boolean nothing, boolean lootOnly) {
+        boolean ret = super.look(c, nothing, lootOnly);
         if(!lootOnly) {
-            N.narrative().print(b, "There is a "+_adj+" switch here, labeled '"+_label+"'.");
+            c.n().print(c.actor(), "There is a "+_adj+" switch here, labeled '"+_label+"'.");
             return true;
         }
         return ret;

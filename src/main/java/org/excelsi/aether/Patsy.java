@@ -349,6 +349,9 @@ public class Patsy extends DefaultNHBot {
 
     public void act(final Context c) {
         final GameAction a = _inputSource.nextAction(500);
+        if(a instanceof NHBotAction) {
+            ((NHBotAction)a).setBot(this);
+        }
         if(a!=null) {
             a.perform(c);
         }

@@ -126,11 +126,11 @@ public class Basin extends Floor implements Immersion, Drinkable, Surface {
         return _solution.getAmount()==0;
     }
 
-    public boolean look(NHBot b, boolean nothing, boolean lootOnly) {
-        boolean ret = super.look(b, nothing, lootOnly);
+    @Override public boolean look(final Context c, boolean nothing, boolean lootOnly) {
+        boolean ret = super.look(c, nothing, lootOnly);
         if(!lootOnly) {
             if(_solution.getAmount()==0) {
-                N.narrative().print(this, "There is an empty basin here.");
+                c.n().print(this, "There is an empty basin here.");
             }
             else {
                 String ing = _solution.describe();
@@ -138,7 +138,7 @@ public class Basin extends Floor implements Immersion, Drinkable, Surface {
                 if(_solution.getAmount()<MAX) {
                     half = "partially ";
                 }
-                N.narrative().print(this, "There is a basin here, "+half+"filled with "+ing+".");
+                c.n().print(this, "There is a basin here, "+half+"filled with "+ing+".");
             }
             return true;
         }

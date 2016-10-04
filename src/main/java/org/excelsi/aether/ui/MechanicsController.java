@@ -21,7 +21,12 @@ public class MechanicsController extends Enloggened implements Controller {
     private void attackStarted(final SceneContext c, final MechanicsEvent e) {
         System.err.println("starting attack: "+e);
         final Node n = c.getNode(e.getAttacker().getId());
-        final Spatial s = n.getChild("localMove");
-        Animations.lunge(s, new Vector3f(0f,0f,UIConstants.SCALE*0.7f), 0.25f);
+        if(n!=null) {
+            final Spatial s = n.getChild("localMove");
+            Animations.lunge(s, new Vector3f(0f,0f,UIConstants.SCALE*0.7f), 0.25f);
+        }
+        else {
+            log().error("no ui for "+e.getAttacker()+" "+e.getAttacker().getId());
+        }
     }
 }

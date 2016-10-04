@@ -319,13 +319,13 @@ public class Tower extends Game implements GameListener {
                     return arr.size()==1;
                 }
 
-                public boolean look(NHBot bot, boolean nothing, boolean lootOnly) {
+                public boolean look(final Context c, boolean nothing, boolean lootOnly) {
                     if(isAutopickup()) {
                         N.narrative().print(this, ((Patsy)chosen).getSelectionText());
                         return true;
                     }
                     else {
-                        return super.look(bot, nothing, lootOnly);
+                        return super.look(c, nothing, lootOnly);
                     }
                 }
             });
