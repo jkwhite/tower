@@ -45,8 +45,10 @@ $c.pov.inventory.add(new Book() {
                 .ordinal(999)
                 .width(40)
                 .height(12)
-                .random(Rand.om))
+                .random(Rand.om)
+                .spaces(Spaces.modulator({ s -> s.color = 'black' }))
             )
+        )
         Context.c().n().print(b, "Another time, another space")
     }
 })

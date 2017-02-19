@@ -11,9 +11,19 @@ public class LevelRecipe {
     private String _realm;
     private int _ordinal;
     private Random _r;
+    private SpaceFactory _spaces = Spaces.identity();
 
 
     public LevelRecipe() {
+    }
+
+    public LevelRecipe spaces(SpaceFactory spaces) {
+        _spaces = spaces;
+        return this;
+    }
+
+    public SpaceFactory getSpaces() {
+        return _spaces;
     }
 
     public LevelRecipe random(Random r) {

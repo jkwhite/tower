@@ -35,7 +35,7 @@ public class SpaceNodeFactory extends AssetNodeFactory<NHSpace> {
         try {
             //final String model = String.format("/%s_%d_%d.blend", Spaces.format(s.getModel()), 6, 0);
             //final String model = "/Mesh2.mesh.xml";
-            final Spatial n = loadModel(s.getModel(), "gray", Display.scatter);
+            final Spatial n = loadModel(s.getModel(), s.getColor(), Display.scatter);
             n.setLocalScale(3.0f);
             Nodes.centerBelow(n);
             final SpaceNode sp = new SpaceNode(s);

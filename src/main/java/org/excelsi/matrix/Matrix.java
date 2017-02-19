@@ -110,7 +110,8 @@ public class Matrix extends MapEnvirons implements java.io.Serializable, MSpaceL
     @Override public void moved(MSpace source, MSpace from, MSpace to, Bot occupant) {
     }
 
-    public void setSpace(MatrixMSpace m, int i, int j) {
+    public void setSpace(MSpace ms, int i, int j) {
+        final MatrixMSpace m = (MatrixMSpace) ms;
         //System.err.println("SETTING SPACE: "+m);
         Bot oldocc = null;
         boolean readd = false;

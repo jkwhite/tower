@@ -9,20 +9,18 @@ import org.excelsi.aether.Level;
 
 
 public class ExpanseLevelGenerator implements StageGenerator {
-    @Override public Stage generate(final LevelRecipe recipe) {
-        //final Matrix m = new Matrix(recipe.getWidth(), recipe.getHeight());
-        final Level m = new Level(recipe.getWidth(), recipe.getHeight());
-        for(int i=0;i<recipe.getWidth();i++) {
-            for(int j=0;j<recipe.getHeight();j++) {
-                if(true||recipe.getRandom().nextBoolean()) {
+    @Override public Stage generate(final LevelRecipe r) {
+        final Level m = new Level(r.getWidth(), r.getHeight());
+        for(int i=0;i<r.getWidth();i++) {
+            for(int j=0;j<r.getHeight();j++) {
+                if(true||r.getRandom().nextBoolean()) {
                     //MatrixMSpace ms = new NullMatrixMSpace();
-                    m.setSpace(new Ground(), i, j);
+                    m.setSpace(r.getSpaces().create(Ground.class), i, j);
                 }
             }
         }
-        //return new MatrixLevel(recipe.getName(), recipe.getOrdinal(), m);
-        m.setName(recipe.getName());
-        m.setFloor(recipe.getOrdinal());
+        m.setName(r.getName());
+        m.setFloor(r.getOrdinal());
         return m;
     }
 }
