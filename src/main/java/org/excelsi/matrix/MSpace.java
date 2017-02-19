@@ -61,4 +61,5 @@ public interface MSpace extends Typed, java.io.Serializable {
     MSpace[][] paths(MSpace to, boolean cardinal, int count, Filter filter, float sanity, Affinity a);
     void update();
     Environs getEnvirons();
+    Typed getContainer();
 }

@@ -27,13 +27,16 @@ public class World implements State {
         // move player creation to dawn script
         //_player = (Patsy) c.getUniverse().createBot((b)->{return "Traveler".equals(b.getProfession());});
         _player = c.getPov();
+        _player.getInventory().setKeyed(true);
         _player.setInputSource(c.getInputSource());
         Grammar.setPov(_player);
         EventBus.instance().post("keys", new BotAttributeChangeEvent<String>(this, _player, "created", "", ""));
 
         setLevel(c, c.getBulk().findLevel(1));
+        connectOnce();
         while(c.getState()==this) {
             try {
+                System.err.println("tick: "+_level);
                 _level.tick(c);
             }
             catch(ActionCancelledException e) {
@@ -42,6 +45,7 @@ public class World implements State {
                 e.printStackTrace();
             }
         }
+        System.err.println("***************************** DONE **********************");
     }
 
     public void setLevel(final Context c, final Stage level) {
@@ -50,6 +54,9 @@ public class World implements State {
         _level = level;
         EventBus.instance().post("changes", new ChangeEvent<Bulk,Stage>(this, "level", c.getBulk(), old, _level));
         EventBus.instance().post("keys", new ChangeEvent<Bulk,Stage>(this, "level", c.getBulk(), old, _level));
+        if(old!=null) {
+            disconnect(old.getEventSource());
+        }
         connect(_level.getEventSource());
     }
 
@@ -57,11 +64,21 @@ public class World implements State {
         return _level;
     }
 
+    private void connectOnce() {
+        NHEnvironment.getMechanics().addMechanicsListener(_relay);
+    }
+
     private void connect(final EventSource s) {
         s.addMatrixListener(_relay);
         s.addContainerListener(_relay);
         s.addNHSpaceListener(_relay);
         s.addNHEnvironmentListener(_relay);
-        NHEnvironment.getMechanics().addMechanicsListener(_relay);
+    }
+
+    private void disconnect(final EventSource s) {
+        s.removeMatrixListener(_relay);
+        s.removeContainerListener(_relay);
+        s.removeNHSpaceListener(_relay);
+        s.removeNHEnvironmentListener(_relay);
     }
 }

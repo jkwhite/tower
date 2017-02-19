@@ -53,8 +53,6 @@ public class JfxContainer extends HudRegion {
             v.getChildren().add(line);
             key.setLength(0);
             text.setLength(0);
-            //Label it = new Label(i.toString());
-            //v.getChildren().add(it);
         }
         v.getStyleClass().add("inventory");
         getChildren().add(v);

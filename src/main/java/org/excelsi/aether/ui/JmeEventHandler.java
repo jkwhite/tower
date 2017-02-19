@@ -43,7 +43,7 @@ public class JmeEventHandler extends Enloggened implements EventBus.Handler {
         _ctx = ctx;
         final CloseView v = new CloseView("camera", _root, null, camera);
         v.activate();
-        _ctx.addNode(v);
+        _ctx.setCameraNode(v);
     }
 
     @Override public void handleEvent(final Event e) {

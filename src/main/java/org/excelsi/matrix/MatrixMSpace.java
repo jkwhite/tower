@@ -527,6 +527,10 @@ public abstract class MatrixMSpace extends Id implements MSpace, Cloneable {
         return _m;
     }
 
+    @Override public Typed getContainer() {
+        return _m;
+    }
+
     public MSpace[] spaces() {
         return _m.spaces();
     }

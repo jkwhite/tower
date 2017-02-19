@@ -47,7 +47,7 @@ public abstract class InvokeAction extends ItemAction {
 
     protected void act() {
         if(_narrate) {
-            N.narrative().print(getBot(), Grammar.start(getBot())+" "+Grammar.conjugate(getBot(), getVerb())+" "+
+            Context.c().n().print(getBot(), Grammar.start(getBot())+" "+Grammar.conjugate(getBot(), getVerb())+" "+
                 Grammar.singular(getItem())+".");
         }
         if(getBot().isPlayer()) {

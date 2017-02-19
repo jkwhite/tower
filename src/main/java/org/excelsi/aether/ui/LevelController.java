@@ -20,9 +20,6 @@ import com.jme3.scene.Spatial;
 
 
 public class LevelController extends ChangeController<Bulk,Stage> {
-    private static final String PREFIX = "level-";
-
-
     @Override protected void added(final SceneContext c, final AddEvent<Bulk,Stage> l) {
     }
 
@@ -31,13 +28,15 @@ public class LevelController extends ChangeController<Bulk,Stage> {
 
     @Override protected void changed(final SceneContext c, final ChangeEvent<Bulk,Stage> e) {
         if(e.getFrom()!=null) {
-            Node from = c.getNode(PREFIX+e.getFrom().getOrdinal());
+            Node from = c.getNode(e.getFrom().getId());
             if(from!=null) {
                 Nodes.detachFromParent(from);
             }
+            //c.removeSpatial(e.getFrom());
+            c.removeAll();
         }
         if(e.getTo()!=null) {
-            final Node lev = (Node) c.getNodeFactory().createNode(PREFIX+e.getTo().getOrdinal(), e.getTo());
+            final Node lev = (Node) c.getNodeFactory().createNode(e.getTo().getId(), e.getTo());
             c.getRoot().attachChild(lev);
             c.addNode(lev);
 
@@ -54,6 +53,8 @@ public class LevelController extends ChangeController<Bulk,Stage> {
     }
 
     private void addBot(final SceneContext c, final Node lev, final NHBot b) {
+        Bots.attachBot(c, lev, b);
+        /*
         if(!c.containsNode(b.getId())) {
             final Spatial bot = c.getNodeFactory().createNode(b.getId(), b);
             final MatrixMSpace mms = (MatrixMSpace) b.getEnvironment().getMSpace();
@@ -64,6 +65,7 @@ public class LevelController extends ChangeController<Bulk,Stage> {
                 attachPatsy(lev, c, bot);
             }
         }
+        */
     }
 
     private Spatial createSpace(final SceneContext c, final Node lev, final MatrixMSpace mms) {
@@ -89,6 +91,7 @@ public class LevelController extends ChangeController<Bulk,Stage> {
         return ms;
     }
 
+        /*
     private void attachPatsy(final Node parent, final SceneContext c, final Spatial patsy) {
         c.<CloseView>getNode(View.NODE_CAMERA).setPlayer(patsy);
         if(patsy instanceof Litten) {
@@ -99,4 +102,5 @@ public class LevelController extends ChangeController<Bulk,Stage> {
             //parent.addLight(((LightNode)patsy).getLight());;
         }
     }
+    */
 }

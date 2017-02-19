@@ -1,12 +1,16 @@
 package org.excelsi.aether;
 
 
+import java.util.Stack;
+
 import org.excelsi.aether.Universe;
 import org.excelsi.aether.InputSource;
 import org.excelsi.aether.NHBot;
 
 
 public final class Context {
+    private static final Stack<Context> POV = new Stack<Context>();
+
     private final Universe _u;
     private final Bulk _b;
     private NNarrative _n;
@@ -15,6 +19,19 @@ public final class Context {
     private NHBot _actor;
     private Patsy _patsy;
 
+
+    public static Context push(final Context c) {
+        POV.push(c);
+        return c;
+    }
+
+    public static Context pop() {
+        return POV.pop();
+    }
+
+    public static Context c() {
+        return POV.peek();
+    }
 
     public Context(final NNarrative n, final Universe u, final Bulk b, final InputSource input) {
         _n = n;
@@ -59,7 +76,7 @@ public final class Context {
     }
 
     public Context inputSource(final InputSource input) {
-        _input= input;
+        _input = input;
         return this;
     }
 
@@ -84,10 +101,12 @@ public final class Context {
     }
 
     public Context pov(final Patsy pov) {
-        // TODO: push/pop dynamic scope?
         _n = new FilteringNarrative(pov, _n);
         setPatsy(pov);
-        return this;
+        // TODO: push/pop dynamic scope?
+        // yes?
+        push(this);
+        return c();
     }
 
     private Patsy getPatsy() {

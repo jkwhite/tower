@@ -46,7 +46,7 @@ public class Read extends InvokeAction {
 
     protected void act() {
         if(getBot().isBlind()) {
-            N.narrative().print(getBot(), Grammar.start(getBot())+" can't see anything.");
+            Context.c().n().print(getBot(), Grammar.start(getBot())+" can't see anything.");
             throw new ActionCancelledException();
         }
         else {

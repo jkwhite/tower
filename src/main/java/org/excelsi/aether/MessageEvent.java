@@ -5,11 +5,11 @@ public class MessageEvent extends Event {
     public enum Type { ephemeral, permanent };
 
 
-    private final String _m;
+    private final Object _m;
     private final Type _t;
 
 
-    public MessageEvent(Object source, Type t, String m) {
+    public MessageEvent(Object source, Type t, Object m) {
         super(source);
         _t = t;
         _m = m;
@@ -19,7 +19,7 @@ public class MessageEvent extends Event {
         return "message";
     }
 
-    public String getMessage() {
+    public Object getMessage() {
         return _m;
     }
 

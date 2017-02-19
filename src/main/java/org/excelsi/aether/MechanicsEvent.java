@@ -64,7 +64,7 @@ public class MechanicsEvent extends ContextualEvent<Mechanics> {
         return _outcome;
     }
 
-    @Override toString() {
-        return "mechanics::{attacker:"+_attacker+", defender:"+_defender+", attack:"+_attack+"}";
+    @Override public String toString() {
+        return "mechanics::{attacker:"+_attacker+", defender:"+_defender+", attack:"+_a+"}";
     }
 }

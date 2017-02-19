@@ -2,8 +2,10 @@ package org.excelsi.aether.ui;
 
 
 import org.excelsi.aether.Item;
+import org.excelsi.aether.NHBot;
 import org.excelsi.matrix.MSpace;
 import org.excelsi.matrix.MatrixMSpace;
+import org.excelsi.matrix.Typed;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.math.Vector3f;
@@ -28,6 +30,11 @@ public class Spaces {
 
     public static final void attachItem(final Spatial space, final Spatial item) {
         ((Node)space).attachChild(item);
+    }
+
+    public static Node findLevel(final SceneContext c, final NHBot b) {
+        final Typed t = b.getEnvironment().getSpace().getContainer();
+        return c.getNode(t.getId());
     }
 
     public static String format(final String c) {

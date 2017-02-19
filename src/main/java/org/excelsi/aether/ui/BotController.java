@@ -18,9 +18,23 @@ import com.jme3.scene.Spatial;
 
 public class BotController extends ChangeController<NHBot,NHSpace> {
     @Override protected void added(final SceneContext c, final AddEvent<NHBot,NHSpace> b) {
+        final Node lev = Spaces.findLevel(c, b.getContext());
+        if(lev!=null) {
+            Bots.attachBot(c, lev, b.getContext());
+        }
+        else {
+            log().warn("no level for "+b);
+        }
     }
 
     @Override protected void removed(final SceneContext c, final RemoveEvent<NHBot,NHSpace> b) {
+        final Node lev = Spaces.findLevel(c, b.getContext());
+        if(lev!=null) {
+            Bots.detachBot(c, lev, b.getContext());
+        }
+        else {
+            log().warn("no level for "+b);
+        }
     }
 
     @Override protected void changed(final SceneContext c, final ChangeEvent<NHBot,NHSpace> e) {
@@ -39,6 +53,6 @@ public class BotController extends ChangeController<NHBot,NHSpace> {
     }
 
     private void updateView(final SceneContext c, final MSpace m) {
-        c.<CloseView>getNode(View.NODE_CAMERA).center(Spaces.translation(m));
+        c.<CloseView>getCameraNode().center(Spaces.translation(m));
     }
 }

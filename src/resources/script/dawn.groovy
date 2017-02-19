@@ -29,6 +29,32 @@ for(i=0;i<10;i++) {
 l1.findRandomNormalEmptySpace().add(new Apple())
 l1.getMatrix().getSpace(0,0).add(new Apple())
 $c.pov = $c.universe.createBot({b -> 'Archeologist'.equals(b.profession)})
+$c.pov.name = System.getProperty("user.name")
+$c.pov.inventory.add(new ScrollOfSummoning())
+$c.pov.inventory.add(new Book() {
+    String getName() { "book entitled 'The Lava Gatherers'" }
+
+    void invoke(NHBot b) {
+        //System.err.println("********** RUN*********");
+        //Thread.dumpStack();
+        $c.state.setLevel(Context.c(), 
+            new ExpanseLevelGenerator().generate(
+                new LevelRecipe()
+                .name("The Lava Gatherers")
+                .realm("The Lava Gatherers")
+                .ordinal(999)
+                .width(40)
+                .height(12)
+                .random(Rand.om))
+            )
+        Context.c().n().print(b, "Another time, another space")
+    }
+})
+$c.pov.inventory.add(new Book() {
+    String getName() { "book entitled 'The Lower Reaches'" }
+
+    void invoke(NHBot b) { $c.state.setLevel($c, $c.bulk.findLevel(1)) }
+})
 
 //$c.state = new World()
 
@@ -40,7 +66,7 @@ def title = new State() {
         c.n.title("")
         c.n.choose(new SelectionMenu<Runnable>(
             new MenuItem<Runnable>("n", "New game", {
-                //c.setState(new Prelude(Data.resource("prelude-text")));
+                //c.state = new Prelude(Data.resource("/script/prelude-text"))
                 c.state = new World()
             }),
             new MenuItem<Runnable>("l", "Load game", null),

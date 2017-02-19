@@ -7,7 +7,8 @@ import java.util.Map;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.renderer.Camera;
-import org.excelsi.matrix.Id;
+import com.jme3.scene.CameraNode;
+import org.excelsi.matrix.Typed;
 import org.excelsi.aether.Context;
 
 
@@ -17,6 +18,7 @@ public final class SceneContext {
     private final Node _root;
     private final Context _ctx;
     private final Camera _camera;
+    private CameraNode _cameraNode;
 
 
     public SceneContext(final Context ctx, final Camera camera, final Node root, final NodeFactory nfactory) {
@@ -47,7 +49,7 @@ public final class SceneContext {
         return (T) _objects.get(name);
     }
 
-    public <T extends Node> T getNode(final Id id) {
+    public <T extends Node> T getNode(final Typed id) {
         return (T) _objects.get(id.getId());
     }
 
@@ -55,7 +57,7 @@ public final class SceneContext {
         return _objects.get(name);
     }
 
-    public Spatial getSpatial(final Id id) {
+    public Spatial getSpatial(final Typed id) {
         return _objects.get(id.getId());
     }
 
@@ -67,7 +69,24 @@ public final class SceneContext {
         _objects.put(name, node);
     }
 
+    public void setCameraNode(final CameraNode n) {
+        _cameraNode = n;
+    }
+
+    public <T extends CameraNode> T getCameraNode() {
+        return (T) _cameraNode;
+    }
+
     public boolean containsNode(final String name) {
         return _objects.containsKey(name);
+    }
+
+    public void removeSpatial(final Typed id) {
+        _objects.remove(id.getId());
+    }
+
+    public void removeAll() {
+        _objects.clear();
+        addNode(_root);
     }
 }

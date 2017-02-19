@@ -42,11 +42,21 @@ public class EventBusRelayer extends EverythingAdapter {
     }
 
     @Override public void occupied(MSpace s, Bot b) {
-        post(TOPIC_CHANGES, new AddEvent<NHSpace,NHBot>(b.getEnvironment().getSpace(), "bot", (NHSpace)s, (NHBot)b));
+        post(TOPIC_CHANGES, new AddEvent<NHBot,NHSpace>(
+            (NHBot)b,
+            "bot",
+            (NHBot)b,
+            (NHSpace)s
+        ));
     }
 
     @Override public void unoccupied(MSpace s, Bot b) {
-        post(TOPIC_CHANGES, new RemoveEvent<NHSpace,NHBot>(b.getEnvironment().getSpace(), "bot", (NHSpace)s, (NHBot)b));
+        post(TOPIC_CHANGES, new RemoveEvent<NHBot,NHSpace>(
+            (NHBot)b,
+            "bot",
+            (NHBot)b,
+            (NHSpace)s
+        ));
     }
 
     @Override public void itemDropped(Container space, Item item, int idx, boolean incremented) {

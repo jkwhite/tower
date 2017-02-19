@@ -13,10 +13,12 @@ import javafx.util.Duration;
 import javafx.scene.text.Text;
 import javafx.scene.layout.BorderPane;
 import com.jme3.math.Vector3f;
+import com.jme3.scene.Spatial;
 
 import org.excelsi.matrix.Id;
 import org.excelsi.aether.MessageEvent;
 import org.excelsi.aether.NHBot;
+import org.excelsi.aether.Item;
 
 
 public class JfxMessages extends HudNode {
@@ -25,25 +27,34 @@ public class JfxMessages extends HudNode {
             if(le.e() instanceof MessageEvent) {
                 final MessageEvent e = (MessageEvent) le.e();
                 final Node t;
-                if(e.getMessage().length()<80) {
-                    t = new Label(e.getMessage().trim());
+                if(e.getMessage() instanceof Item) {
+                    t = new Label(e.getMessage().toString());
                 }
                 else {
-                    BorderPane bt = new BorderPane();
-                    bt.setCenter(new Text(e.getMessage().trim()));
-                    t = bt;
+                    final String msg = e.getMessage().toString();
+                    if(msg.length()<80) {
+                        t = new Label(msg.trim());
+                    }
+                    else {
+                        BorderPane bt = new BorderPane();
+                        bt.setCenter(new Text(msg.trim()));
+                        t = bt;
+                    }
                 }
                 t.getStyleClass().add("message");
                 t.getStyleClass().add(e.getMessageType().toString());
                 if(e.getSource() instanceof NHBot) {
-                    Vector3f wp = le.ctx().getSpatial((Id)e.getSource()).getWorldTranslation();
-                    Vector3f sp = le.ctx().getCamera().getScreenCoordinates(wp);
-                    final int w = le.ctx().getCamera().getWidth();
-                    final int h = le.ctx().getCamera().getHeight();
-                    t.setTranslateX(sp.x-50);
-                    t.setTranslateY(h-40-sp.y);
-                    //System.err.println("W****: "+((Label)t).getPrefWidth());
-                    //System.err.println("setting screen coords: "+sp+" from "+wp+" for "+e.getSource()+" message: "+e.getMessage()+"; jfxx="+t.getTranslateX()+", jfxy="+t.getTranslateY()+"; jfxlx="+t.getLayoutX()+", jfxly="+t.getLayoutY());
+                    final Spatial src = le.ctx().getSpatial((Id)e.getSource());
+                    if(src!=null) {
+                        Vector3f wp = src.getWorldTranslation();
+                        Vector3f sp = le.ctx().getCamera().getScreenCoordinates(wp);
+                        final int w = le.ctx().getCamera().getWidth();
+                        final int h = le.ctx().getCamera().getHeight();
+                        t.setTranslateX(sp.x-50);
+                        t.setTranslateY(h-40-sp.y);
+                        //System.err.println("W****: "+((Label)t).getPrefWidth());
+                        //System.err.println("setting screen coords: "+sp+" from "+wp+" for "+e.getSource()+" message: "+e.getMessage()+"; jfxx="+t.getTranslateX()+", jfxy="+t.getTranslateY()+"; jfxlx="+t.getLayoutX()+", jfxly="+t.getLayoutY());
+                      }
                 }
                 getChildren().add(t);
                 final SequentialTransition st = new SequentialTransition();

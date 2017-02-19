@@ -420,6 +420,9 @@ fast:       for(int i=ro.getX1();i<ro.getX2();i++) {
         }
 
         public NHBot next() {
+            if(_timers.isEmpty()) {
+                return null;
+            }
             NHBot next = null;
             for(;;) {
                 for(ActTimer t:_timers) {
@@ -441,6 +444,10 @@ fast:       for(int i=ro.getX1();i<ro.getX2();i++) {
         NHBot first = null;
         while(true) {
             NHBot acting = _queue.next();
+            if(acting==null) {
+                // no bots
+                return;
+            }
             if(first!=null && first==acting) {
                 break;
             }
