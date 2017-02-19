@@ -38,7 +38,7 @@ $c.pov.inventory.add(new Book() {
         //System.err.println("********** RUN*********");
         //Thread.dumpStack();
         $c.state.setLevel(Context.c(), 
-            new ExpanseLevelGenerator().generate(
+            new BasicStageGenerator(Spacemaker.ca([40,12,100], 42, 0.6f, 'hi-i-u-ko', [null, null, Ground, null, Ground, null, null])).generate(
                 new LevelRecipe()
                 .name("The Lava Gatherers")
                 .realm("The Lava Gatherers")
@@ -47,6 +47,7 @@ $c.pov.inventory.add(new Book() {
                 .height(12)
                 .random(Rand.om)
                 .spaces(Spaces.modulator({ s -> s.color = 'black' }))
+                .mixin(new Items($c.universe, 10, ItemFilter.named('lava rock')))
             )
         )
         Context.c().n().print(b, "Another time, another space")

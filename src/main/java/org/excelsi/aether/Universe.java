@@ -159,7 +159,7 @@ public class Universe implements BotFactory, ItemFactory, java.io.Serializable {
         _catOccurs.put(category, rate);
     }
 
-    public String randomCategory() {
+    @Override public String randomCategory() {
         if(_cats==null) {
             if(_catOccurs==null) {
                 throw new IllegalStateException("no finds specified");

@@ -110,6 +110,7 @@
 - !!org.excelsi.tower.AngelArm {}
 - !!org.excelsi.tower.LastArmament {}
 - !!org.excelsi.tower.Rock {}
+- !!org.excelsi.tower.LavaRock {}
 - !!org.excelsi.tower.SmallStone {}
 - !!org.excelsi.tower.SharpeningStone {}
 - !!org.excelsi.tower.LeatherJacket {}

@@ -8,18 +8,19 @@ import org.excelsi.aether.Ground;
 import org.excelsi.aether.Level;
 
 
-public class ExpanseLevelGenerator implements StageGenerator {
+public class BasicStageGenerator implements StageGenerator {
+    private final Spacemaker _sm;
+
+
+    public BasicStageGenerator(final Spacemaker sm) {
+        _sm = sm;
+    }
+
     @Override public Stage generate(final LevelRecipe r) {
         final Level m = new Level(r.getWidth(), r.getHeight());
         m.setName(r.getName());
         m.setFloor(r.getOrdinal());
-        for(int i=0;i<r.getWidth();i++) {
-            for(int j=0;j<r.getHeight();j++) {
-                if(true||r.getRandom().nextBoolean()) {
-                    m.setSpace(r.getSpaces().create(Ground.class), i, j);
-                }
-            }
-        }
+        _sm.build(r, m);
         for(Mixin a:r.getMixins()) {
             a.mix(m);
         }

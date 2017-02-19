@@ -2,6 +2,9 @@ package org.excelsi.aether;
 
 
 import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 public class LevelRecipe {
@@ -12,9 +15,22 @@ public class LevelRecipe {
     private int _ordinal;
     private Random _r;
     private SpaceFactory _spaces = Spaces.identity();
+    private List<Mixin<Level>> _mixins;
 
 
     public LevelRecipe() {
+    }
+
+    public LevelRecipe mixin(Mixin<Level> m) {
+        if(_mixins==null) {
+            _mixins = new ArrayList<>();
+        }
+        _mixins.add(m);
+        return this;
+    }
+
+    public List<Mixin<Level>> getMixins() {
+        return _mixins==null?Collections.<Mixin<Level>>emptyList():_mixins;
     }
 
     public LevelRecipe spaces(SpaceFactory spaces) {

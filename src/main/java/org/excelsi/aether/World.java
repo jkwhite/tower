@@ -2,6 +2,7 @@ package org.excelsi.aether;
 
 
 import java.util.Random;
+import org.excelsi.matrix.MSpace;
 import org.excelsi.aether.ActionCancelledException;
 import org.excelsi.aether.Grammar;
 import org.excelsi.aether.Patsy;
@@ -49,7 +50,11 @@ public class World implements State {
     }
 
     public void setLevel(final Context c, final Stage level) {
-        level.getMatrix().getSpace(level.getMatrix().width()/2,level.getMatrix().height()/2).setOccupant(_player);
+        MSpace m = level.getMatrix().getSpace(level.getMatrix().width()/2,level.getMatrix().height()/2);
+        if(m==null) {
+            m = ((Level)level).findRandomEmptySpace();
+        }
+        m.setOccupant(_player);
         final Stage old = _level;
         _level = level;
         EventBus.instance().post("changes", new ChangeEvent<Bulk,Stage>(this, "level", c.getBulk(), old, _level));

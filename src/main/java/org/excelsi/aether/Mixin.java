@@ -20,7 +20,7 @@
 package org.excelsi.aether;
 
 
-public interface Mixin extends java.io.Serializable {
+public interface Mixin<E> extends java.io.Serializable {
     public boolean match(Class c);
-    public void mix(Object o);
+    public void mix(E o);
 }

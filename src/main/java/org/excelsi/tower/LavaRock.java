@@ -17,22 +17,20 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
-package org.excelsi.aether;
+package org.excelsi.tower;
 
 
-@FunctionalInterface
-public interface ItemFilter extends java.io.Serializable {
-    boolean accept(Item item, NHBot bot);
+import org.excelsi.aether.*;
 
-    public static ItemFilter named(final String name) {
-        return (i,b)->{ return name.equals(i.getName()); };
+
+public class LavaRock extends Rock {
+    public LavaRock() {
+        setClassIdentified(true);
     }
 
-    public static ItemFilter cat(final String category) {
-        return (i,b)->{ return category.equals(i.getCategory()); };
-    }
+    public String getName() { return "lava rock"; }
 
-    public static ItemFilter randomCategory(final ItemFactory f) {
-        return (i,b)->{ return f.randomCategory().equals(i.getCategory()); };
-    }
+    public String getColor() { return "black"; }
+
+    public float getWeight() { return 0.2f; }
 }

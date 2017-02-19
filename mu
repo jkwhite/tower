@@ -8,6 +8,7 @@ type:
 uses:
     - models/couriernew
     - audio/default
+    - nausicaa-1.0.jar
     - jme-3.2-*.jar
     - guava-12.0.jar
     #- groovy-all-2.1.9.jar

@@ -23,4 +23,5 @@ package org.excelsi.aether;
 public interface ItemFactory extends java.io.Serializable {
     Item createItem(ItemFilter f);
     Item createItem(ItemFilter f, boolean useFindRate);
+    String randomCategory();
 }
