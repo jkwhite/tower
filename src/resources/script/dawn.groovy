@@ -38,16 +38,21 @@ $c.pov.inventory.add(new Book() {
         //System.err.println("********** RUN*********");
         //Thread.dumpStack();
         $c.state.setLevel(Context.c(), 
-            new BasicStageGenerator(Spacemaker.ca([40,12,100], 42, 0.6f, 'hi-i-u-ko', [null, null, Ground, null, Ground, null, null])).generate(
+            new BasicStageGenerator(
+                Spacemaker.ca([160,160,150], 6, Rand.om.nextInt(), 0.6f, 'hi-i-u-ko',
+                    Spacemaker.mapIndex([null, Ground, Ground, Ground, Ground, Ground]),
+                    Spacemaker.mapColor(['black', 'dark-gray', 'gray', 'blue', 'black', 'purple'])
+                )).generate(
                 new LevelRecipe()
                 .name("The Lava Gatherers")
                 .realm("The Lava Gatherers")
                 .ordinal(999)
-                .width(40)
-                .height(12)
+                .width(160)
+                .height(160)
                 .random(Rand.om)
                 .spaces(Spaces.modulator({ s -> s.color = 'black' }))
-                .mixin(new Items($c.universe, 10, ItemFilter.named('lava rock')))
+                .mixin(new Items($c.universe, 50, ItemFilter.named('lava rock')))
+                .mixin(new Bots(BotFactory.exact('lava gatherer')))
             )
         )
         Context.c().n().print(b, "Another time, another space")

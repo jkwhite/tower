@@ -141,6 +141,7 @@
 - !!org.excelsi.tower.HelmOfConnection {}
 - !!org.excelsi.tower.CombatHelmet {}
 - !!org.excelsi.tower.HardHat {}
+- !!org.excelsi.tower.Turban {}
 - !!org.excelsi.tower.HawaiianShirt {}
 - !!org.excelsi.tower.Buckler {}
 - !!org.excelsi.tower.Shield {}

@@ -13,6 +13,7 @@ none:
     - guard
     - miner
     - construction worker
+    - lava gatherer
   -
     - jackal
     - goblin
@@ -85,6 +86,7 @@ friendly:
     - shopkeeper*
     - construction worker*
     - miner*
+    - lava gatherer*
   -
     - urbanite*
   -

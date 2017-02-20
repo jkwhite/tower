@@ -20,23 +20,28 @@
 package org.excelsi.aether;
 
 
-public interface BotFactory extends java.io.Serializable {
-    NHBot createBot(Constraints c);
-    NHBot createBot(String common);
-    public Patsy[] getPlayable();
-    public NHBot[] getNPCs();
-    public NHBot[] getBots();
+import org.excelsi.matrix.*;
 
-    @FunctionalInterface
-    interface Constraints extends java.io.Serializable {
-        boolean accept(NHBot b);
+
+public class Bots implements Mixin<Level> {
+    private final BotFactory.Constraints _c;
+
+
+    public Bots() {
+        this(BotFactory.any());
     }
 
-    public static Constraints any() {
-        return (b)->{ return true; };
+    public Bots(BotFactory.Constraints c) {
+        _c = c;
     }
 
-    public static Constraints exact(String common) {
-        return (b)->{ return common.equals(b.getCommon()); };
+    public boolean match(Class c) {
+        return c==Level.class;
+    }
+
+    public void mix(Level level) {
+        final BotMixin m = new BotMixin(_c);
+        m.setOffset(10);
+        m.mix(level);
     }
 }

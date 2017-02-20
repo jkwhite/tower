@@ -61,7 +61,7 @@ public class ChatDaemon extends Daemon {
         if(in.important!=null&&(in.b.threat(in.important)!=Threat.kos)) {
             if(Rand.d100(_frequency)) {
                 String v = _vocals[Rand.om.nextInt(_vocals.length)];
-                N.narrative().print(in.b, "\""+v+"\"");
+                c.n().print(in.b, "\""+v+"\"");
             }
         }
     }

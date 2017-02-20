@@ -88,7 +88,7 @@ public class SpaceNodeFactory extends AssetNodeFactory<NHSpace> {
         catch(Exception e) {
             e.printStackTrace();
         }
-        return new Node("blot");
+        return new SpaceNode(s);
     }
 
     private static Spatial generateLod(final Geometry g) {

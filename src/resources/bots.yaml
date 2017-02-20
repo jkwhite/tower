@@ -2969,6 +2969,41 @@
     - !!org.excelsi.tower.Rock {}
     - !!org.excelsi.tower.SmallStone {}
 - !!org.excelsi.tower.TNPC
+  common: 'lava gatherer'
+  form: !!org.excelsi.tower.Humanoid {}
+  strength: 70
+  quickness: 40
+  agility: 60
+  constitution: 50
+  maxHp: 40
+  maxLevel: 29
+  minLevel: 0
+  model: '@'
+  color: gray
+  loot: 2
+  rarity: 20
+  skills: 
+    one-handed edged: 20
+    two-handed edged: 30
+    unarmored: 50
+  wearing: 
+    - !!org.excelsi.tower.Robe {}
+    - !!org.excelsi.tower.Turban {}
+  wielded: !!org.excelsi.tower.Pick_Axe {}
+  ai: 
+    daemons: 
+      - !!org.excelsi.aether.AttackDaemon {}
+      - !!org.excelsi.tower.DigDaemon {}
+      - !!org.excelsi.tower.PickupDaemon {}
+      - !!org.excelsi.tower.ChatDaemon
+        vocalizations:
+            - 'The nights are cold in Oriab...'
+            - 'Better not climb too high on Ngranek.'
+      - !!org.excelsi.aether.SurvivalDaemon {}
+      - !!org.excelsi.aether.FleeDaemon {}
+  pack:
+    - !!org.excelsi.tower.LavaRock {}
+- !!org.excelsi.tower.TNPC
   common: construction worker
   form: !!org.excelsi.tower.Humanoid {}
   strength: 70

@@ -27,9 +27,14 @@ import java.util.List;
 
 public class BotMixin implements Mixin {
     private static float _coefficient = 1f;
+    private BotFactory.Constraints _c;
     private int _offset = 0;
     private boolean _wandering = true;
 
+
+    public BotMixin(BotFactory.Constraints c) {
+        _c = c;
+    }
 
     public BotMixin() {
         this(0);
@@ -116,11 +121,18 @@ public class BotMixin implements Mixin {
 
     protected int addBot(final Level level, boolean anywhere) {
         int count = 0;
-        BotFactory.Constraints c = new BotFactory.Constraints() {
-            public boolean accept(NHBot b) {
-                return !b.isUnique()&&!b.isPlayer()&&level.getFloor()>=b.getMinLevel()&&level.getFloor()<=b.getMaxLevel();
-            }
-        };
+        BotFactory.Constraints c;
+        if(_c==null) {
+            c = new BotFactory.Constraints() {
+                public boolean accept(NHBot b) {
+                    return !b.isUnique()&&!b.isPlayer()&&level.getFloor()>=b.getMinLevel()&&level.getFloor()<=b.getMaxLevel();
+                }
+            };
+        }
+        else {
+            c = _c;
+        }
+
         final NHBot b = Universe.getUniverse().createBot(c);
         mixBot(b);
         MSpace ms = spaceFor(level, b, anywhere); //level.findEmptierSpace();

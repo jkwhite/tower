@@ -17,26 +17,36 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
-package org.excelsi.aether;
+package org.excelsi.tower;
 
 
-public interface BotFactory extends java.io.Serializable {
-    NHBot createBot(Constraints c);
-    NHBot createBot(String common);
-    public Patsy[] getPlayable();
-    public NHBot[] getNPCs();
-    public NHBot[] getBots();
+import org.excelsi.aether.*;
 
-    @FunctionalInterface
-    interface Constraints extends java.io.Serializable {
-        boolean accept(NHBot b);
+
+public class Turban extends LightLeatherHelmet {
+    public float getLevelWeight() { return 0.2f; }
+
+    public String getColor() {
+        return "white";
     }
 
-    public static Constraints any() {
-        return (b)->{ return true; };
+    public float getSize() {
+        return 1;
     }
 
-    public static Constraints exact(String common) {
-        return (b)->{ return common.equals(b.getCommon()); };
+    public float getWeight() {
+        return 0.4f;
+    }
+
+    public int getRate() {
+        return 60;
+    }
+
+    public int getPower() {
+        return 2;
+    }
+
+    public int getFindRate() {
+        return 1;
     }
 }
