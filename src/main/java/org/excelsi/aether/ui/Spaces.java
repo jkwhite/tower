@@ -3,6 +3,7 @@ package org.excelsi.aether.ui;
 
 import org.excelsi.aether.Item;
 import org.excelsi.aether.NHBot;
+import org.excelsi.aether.NHSpace;
 import org.excelsi.matrix.MSpace;
 import org.excelsi.matrix.MatrixMSpace;
 import org.excelsi.matrix.Typed;
@@ -12,7 +13,21 @@ import com.jme3.math.Vector3f;
 
 
 public class Spaces {
-    public static final Spatial createItem(final SceneContext c, final Item item) {
+    public static Spatial createSpace(final SceneContext c, final Node lev, final NHSpace space) {
+        final SpaceNode ms = (SpaceNode) c.getNodeFactory().createNode(space.getId(), space);
+        Spaces.translate(space, ms);
+        lev.attachChild(ms);
+        c.addNode(ms);
+        final Item[] items = space.getItem();
+        if(items!=null) {
+            for(int i=0;i<items.length;i++) {
+                ms.attachItem(c, items[i], i, false);
+            }
+        }
+        return ms;
+    }
+
+    public static Spatial createItem(final SceneContext c, final Item item) {
         final Spatial s = c.getNodeFactory().createNode(item.getId(), item);
         return s;
     }

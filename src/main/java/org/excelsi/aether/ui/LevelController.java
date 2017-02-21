@@ -69,38 +69,20 @@ public class LevelController extends ChangeController<Bulk,Stage> {
     }
 
     private Spatial createSpace(final SceneContext c, final Node lev, final MatrixMSpace mms) {
+        return Spaces.createSpace(c, lev, (NHSpace) mms);
+        /*
         final NHSpace space = (NHSpace) mms;
         final SpaceNode ms = (SpaceNode) c.getNodeFactory().createNode(mms.getId(), mms);
         Spaces.translate(mms, ms);
         lev.attachChild(ms);
         c.addNode(ms);
-        /*
-        final NHBot b = (NHBot) mms.getOccupant();
-        if(b!=null) {
-            addBot(c, lev, b);
-        }
-        */
         final Item[] items = space.getItem();
         if(items!=null) {
-            //for(Item it:items) {
             for(int i=0;i<items.length;i++) {
-                //Spaces.attachItem(ms, Spaces.createItem(c, it));
                 ms.attachItem(c, items[i], i, false);
             }
         }
         return ms;
+        */
     }
-
-        /*
-    private void attachPatsy(final Node parent, final SceneContext c, final Spatial patsy) {
-        c.<CloseView>getNode(View.NODE_CAMERA).setPlayer(patsy);
-        if(patsy instanceof Litten) {
-            for(final Light light:((Litten)patsy).getAllLights()) {
-                System.err.println("****************  ADDING LIGHT: "+light);
-                parent.addLight(light);
-            }
-            //parent.addLight(((LightNode)patsy).getLight());;
-        }
-    }
-    */
 }

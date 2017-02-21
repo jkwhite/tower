@@ -85,6 +85,6 @@ public class FilteringNarrative implements NNarrative {
     }
 
     @Override public Direction direct(NHBot b, String msg) {
-        throw new UnsupportedOperationException();
+        return _delegate.direct(b, msg);
     }
 }

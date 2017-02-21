@@ -35,6 +35,8 @@ public class BlockingNarrative implements NNarrative {
 
     @Override public void printf(NHBot source, String message, Object... args) {
         // NEXT: implement POV based on old narrative
+        final String msg = Grammar.format(source, message, args);
+        _e.post(TOPIC_UI, new MessageEvent(source, MessageEvent.Type.ephemeral, msg));
     }
 
     @Override public boolean confirm(String m) {
@@ -67,6 +69,6 @@ public class BlockingNarrative implements NNarrative {
     }
 
     @Override public Direction direct(NHBot b, String msg) {
-        throw new UnsupportedOperationException();
+        return _e.await(TOPIC_UI, new QueryEvent(b, QueryEvent.Type.direction, msg)).<Direction>getAnswer();
     }
 }

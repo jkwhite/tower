@@ -105,27 +105,27 @@ public class Pick_Axe extends Tool implements Armament {
                 b.setWielded(this);
             }
             catch(EquipFailedException e) {
-                N.narrative().print(b, e.getMessage());
+                Context.c().n().print(b, e.getMessage());
                 throw new ActionCancelledException();
             }
-            N.narrative().print(b, Grammar.start(b, "wield")+" "+Grammar.nonspecific(this)+".");
+            Context.c().n().print(b, Grammar.start(b, "wield")+" "+Grammar.nonspecific(this)+".");
         }
-        Direction d = N.narrative().direct(b, "Which direction do you want to dig?");
+        Direction d = Context.c().n().direct(b, "Which direction do you want to dig?");
         dig(b, d);
     }
 
     public void dig(NHBot b, Direction d) {
         if(b.isAirborn()||b.isLevitating()) {
-            N.narrative().print(b, Grammar.start(b)+" can't get any leverage.");
+            Context.c().n().print(b, Grammar.start(b)+" can't get any leverage.");
             return;
         }
         if(d==Direction.up) {
-            N.narrative().print(b, "That is generally not recommended.");
+            Context.c().n().print(b, "That is generally not recommended.");
             throw new ActionCancelledException();
         }
         else if(d==Direction.down) {
             DiggingAction da = new DiggingAction(b, d, getDiggingRate(), this);
-            N.narrative().print(b, Grammar.start(b, "start")+" digging.");
+            Context.c().n().print(b, Grammar.start(b, "start")+" digging.");
             b.start(da);
         }
         else {
@@ -139,7 +139,7 @@ public class Pick_Axe extends Tool implements Armament {
                         ss.setCount(stones);
                         s.add(ss);
                         s.remove(i);
-                        N.narrative().print(b, Grammar.start(b, "break")+" up some rocks.");
+                        Context.c().n().print(b, Grammar.start(b, "break")+" up some rocks.");
                         return;
                     }
                 }

@@ -2,7 +2,7 @@ package org.excelsi.aether;
 
 
 public class QueryEvent extends Event {
-    public enum Type { bool };
+    public enum Type { bool, direction };
 
 
     private final String _m;

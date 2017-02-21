@@ -1410,7 +1410,7 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
                 add(quivered);
             }
             if(msg!=null) {
-                N.narrative().print(DefaultNHBot.this, msg);
+                Context.c().n().print(DefaultNHBot.this, msg);
             }
         }
 
@@ -1497,7 +1497,7 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
                     if(_weapon.getStatus()==Status.cursed) {
                         _weapon.setStatusIdentified(true);
                         //N.narrative().print(DefaultNHBot.this, Grammar.first(Grammar.noun(_weapon))+" welds itself to "+Grammar.possessive(DefaultNHBot.this)+" hand!");
-                        N.narrative().printf(DefaultNHBot.this, "%n welds itself to %p hand!", _weapon, DefaultNHBot.this);
+                        Context.c().n().printf(DefaultNHBot.this, "%n welds itself to %p hand!", _weapon, DefaultNHBot.this);
                     }
                 }
                 catch(EquipFailedException e) {
@@ -1551,7 +1551,7 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
             assertForm();
             _form.equip(item);
             if(msg!=null) {
-                N.narrative().print(DefaultNHBot.this, msg);
+                Context.c().n().print(DefaultNHBot.this, msg);
             }
             if(getEnvironment()!=null) {
                 for(EnvironmentListener l:getEnvironment().getListeners()) {

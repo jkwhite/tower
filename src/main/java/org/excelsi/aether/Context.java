@@ -14,10 +14,15 @@ public final class Context {
     private final Universe _u;
     private final Bulk _b;
     private NNarrative _n;
-    private State _state = new NullState();
     private InputSource _input;
     private NHBot _actor;
     private Patsy _patsy;
+    private State _state = new NullState();
+
+
+    static {
+        push(new Context());
+    }
 
 
     public static Context push(final Context c) {
@@ -38,6 +43,12 @@ public final class Context {
         _u = u;
         _b = b;
         _input = input;
+    }
+
+    private Context() {
+        _n = new EmptyNarrative();
+        _u = null;
+        _b = null;
     }
 
     public NNarrative n() {

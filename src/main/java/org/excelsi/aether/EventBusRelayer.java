@@ -8,6 +8,7 @@ import org.excelsi.aether.NHBot;
 import org.excelsi.aether.NHSpace;
 import org.excelsi.matrix.Bot;
 import org.excelsi.matrix.Direction;
+import org.excelsi.matrix.Matrix;
 import org.excelsi.matrix.MSpace;
 import org.excelsi.matrix.MSource;
 
@@ -20,6 +21,24 @@ import static org.excelsi.aether.Events.TOPIC_MECHANICS;
 public class EventBusRelayer extends EverythingAdapter {
     private static final Logger LOG = LoggerFactory.getLogger(EventBusRelayer.class);
 
+
+    @Override public void spacesRemoved(Matrix m, MSpace[] spaces, Bot b) {
+        post(TOPIC_CHANGES, new RemoveEvent<Level,NHSpace>(
+            (Level)m,
+            "space",
+            (Level)m,
+            (NHSpace)spaces[0]
+        ));
+    }
+
+    @Override public void spacesAdded(Matrix m, MSpace[] spaces, Bot b) {
+        post(TOPIC_CHANGES, new AddEvent<Level,NHSpace>(
+            (Level)m,
+            "space",
+            (Level)m,
+            (NHSpace)spaces[0]
+        ));
+    }
 
     @Override public void attackStarted(Mechanics m, Attack attack, NHBot attacker, NHBot defender, NHSpace[] path) {
         post(TOPIC_MECHANICS, new MechanicsEvent(m, attack, attacker, defender, path));

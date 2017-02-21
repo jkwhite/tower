@@ -18,9 +18,12 @@ import javafx.geometry.Pos;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
+import org.excelsi.aether.Action;
+import org.excelsi.aether.Director;
 import org.excelsi.aether.Event;
 import org.excelsi.aether.QueryEvent;
 import org.excelsi.aether.KeyEvent;
+import org.excelsi.aether.ui.UI;
 
 
 public class JfxQuery extends HudRegion {
@@ -30,17 +33,40 @@ public class JfxQuery extends HudRegion {
             le.consume();
             final Event ke = le.e();
             if(ke instanceof KeyEvent) {
-                switch(((KeyEvent)ke).key()) {
-                    case "y":
-                        choose(e, true);
+                switch(e.getQueryType()) {
+                    case bool:
+                        switch(((KeyEvent)ke).key()) {
+                            case "y":
+                                choose(e, true);
+                                break;
+                            case "n":
+                                choose(e, false);
+                                break;
+                        }
                         break;
-                    case "n":
-                        choose(e, false);
+                    case direction:
+                        final Action a = UI.findAction(le);
+                        if(a instanceof Director) {
+                            choose(e, ((Director)a).getDirection());
+                        }
                         break;
+                    default:
+                        throw new IllegalStateException();
                 }
             }
         });
-        final Label msg = new Label(e.getMessage()+" (y/n)");
+        final String m;
+        switch(e.getQueryType()) {
+            case bool:
+                m = e.getMessage()+" (y/n)";
+                break;
+            case direction:
+                m = e.getMessage();
+                break;
+            default:
+                throw new IllegalStateException();
+        }
+        final Label msg = new Label(m);
         final Centered c = new Centered(msg, "query");
         //msg.setAlignment(Pos.CENTER);
         getChildren().add(c);

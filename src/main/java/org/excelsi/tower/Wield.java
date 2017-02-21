@@ -48,7 +48,7 @@ public class Wield extends ItemAction {
                 Grammar.startToBe(getBot())+" empty-handed.");
         }
         catch(EquipFailedException e) {
-            N.narrative().print(getBot(), e.getMessage());
+            Context.c().n().print(getBot(), e.getMessage());
             throw new ActionCancelledException();
         }
     }
