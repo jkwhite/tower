@@ -50,9 +50,23 @@ $c.pov.inventory.add(new Book() {
                 .width(160)
                 .height(160)
                 .random(Rand.om)
-                .spaces(Spaces.modulator({ s -> s.color = 'black' }))
+                .spaces(Spaces.modulator({ s ->
+                    s.color = 'black';
+                    if(s instanceof Blank) {
+                        s.breakupAction = { m ->
+                            m2 = m.replace(new Ground())
+                            m2.color = 'black'
+                            if(Rand.d100(50)) {
+                                r = $c.universe.createItem(ItemFilter.named('lava rock'))
+                                r.count = Rand.om.nextInt(5)+1
+                                m2.add(r)
+                            }
+                            true
+                        }
+                    }
+                }))
                 .mixin(new Items($c.universe, 50, ItemFilter.named('lava rock')))
-                .mixin(new Bots(BotFactory.exact('lava gatherer')))
+                //.mixin(new Bots(BotFactory.exact('lava gatherer')))
             )
         )
         Context.c().n().print(b, "Another time, another space")

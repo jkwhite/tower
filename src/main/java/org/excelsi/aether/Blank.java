@@ -23,9 +23,10 @@ package org.excelsi.aether;
 import org.excelsi.matrix.*;
 
 
-public class Blank extends DefaultNHSpace {
+public class Blank extends DefaultNHSpace implements Breakable {
     private static final long serialVersionUID = 1L;
     private boolean _replaceable;
+    private NHSpaceMutator _breakupAction;
 
 
     public Blank() {
@@ -46,7 +47,7 @@ public class Blank extends DefaultNHSpace {
     }
 
     public String getModel() {
-        return " ";
+        return "";
     }
 
     public String getColor() {
@@ -59,5 +60,22 @@ public class Blank extends DefaultNHSpace {
 
     public boolean isTransparent() {
         return false;
+    }
+
+    @Override public boolean breakup() {
+        if(_breakupAction!=null) {
+            return _breakupAction.mutate(this);
+        }
+        else {
+            return false;
+        }
+    }
+
+    public void setBreakupAction(NHSpaceMutator m) {
+        _breakupAction = m;
+    }
+
+    public NHSpaceMutator getBreakupAction() {
+        return _breakupAction;
     }
 }

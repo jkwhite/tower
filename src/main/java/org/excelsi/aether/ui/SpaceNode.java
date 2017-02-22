@@ -18,12 +18,24 @@ public class SpaceNode extends Node {
     }
 
     public void attachItem(final SceneContext c, final Item item, final int idx, final boolean incremented) {
+        if(getChild(item.getId())!=null) {
+            System.err.println("WARN: pruned duplicate child for "+item+" on "+_space+": idx="+idx+", inc="+incremented);
+            return;
+        }
         final Spatial s = Spaces.createItem(c, item);
         s.setLocalTranslation(new Vector3f(0f, 0.2f*idx, 0f));
         attachChild(s);
     }
 
     public void detachItem(final SceneContext c, final Item item) {
-        detachChildNamed(item.getId());
+        System.err.println("initial children: "+getChildren());
+        final int idx = detachChildNamed(item.getId());
+        if(idx==-1) {
+            System.err.println("no such child "+item+" for "+_space);
+        }
+        else {
+            System.err.println("removed child "+item+" for "+_space+" at "+idx);
+        }
+        System.err.println("remaining children: "+getChildren());
     }
 }

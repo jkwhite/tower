@@ -36,4 +36,8 @@ public class ContainerRemoveEvent extends RemoveEvent<NHSpace,Item> {
     public Type getRemovalType() {
         return _type;
     }
+
+    @Override public String toString() {
+        return "ContainerRemoveEvent::{context:"+getContext()+", removed:"+getRemoved()+", idx:"+_idx+", inc:"+_inc+", type:"+_type+"}";
+    }
 }

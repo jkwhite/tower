@@ -46,11 +46,12 @@ public interface Spacemaker {
                 for(int j=0;j<r.getHeight();j++) {
                     final int idx = p.getCell(i,j);
                     Class<? extends NHSpace> type = smap.apply(idx);
-                    if(type!=null) {
-                        final NHSpace sp = r.getSpaces().create(type);
-                        modulator.accept(idx, sp);
-                        l.setSpace(sp, i, j);
+                    if(type==null) {
+                        type = Blank.class;
                     }
+                    final NHSpace sp = r.getSpaces().create(type);
+                    modulator.accept(idx, sp);
+                    l.setSpace(sp, i, j);
                 }
             }
         };

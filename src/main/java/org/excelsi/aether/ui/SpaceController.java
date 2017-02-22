@@ -29,7 +29,14 @@ public class SpaceController extends ChangeController<Level,NHSpace> {
         }
     }
 
-    @Override protected void removed(final SceneContext c, final RemoveEvent<Level,NHSpace> l) {
+    @Override protected void removed(final SceneContext c, final RemoveEvent<Level,NHSpace> e) {
+        final Node sp = c.getNode(e.getRemoved());
+        if(sp!=null) {
+            Nodes.detachFromParent(sp);
+        }
+        else {
+            log().warn("no space for "+e.getRemoved());
+        }
     }
 
     @Override protected void changed(final SceneContext c, final ChangeEvent<Level,NHSpace> e) {

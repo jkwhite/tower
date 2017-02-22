@@ -218,7 +218,7 @@ public class JfxMain extends LegacyApplication implements EventBus.Handler {
                     }
                     _lastRepeat = repeat;
                 }
-                LOG.info(System.nanoTime()+" "+String.format("key char %s for code %d, repeating %s, string %s", e.getKeyChar(), e.getKeyCode(), e.isRepeating(), e.toString())+": "+new KeyNames().getName(e.getKeyCode()));
+                //LOG.info(System.nanoTime()+" "+String.format("key char %s for code %d, repeating %s, string %s", e.getKeyChar(), e.getKeyCode(), e.isRepeating(), e.toString())+": "+new KeyNames().getName(e.getKeyCode()));
                 boolean meta = e.getKeyCode()==219;
                 if(e.isPressed() && !meta) {
                     char c = e.getKeyChar();

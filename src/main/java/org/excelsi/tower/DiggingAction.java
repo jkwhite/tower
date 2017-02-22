@@ -63,11 +63,11 @@ public class DiggingAction implements ProgressiveAction {
 
     public boolean iterate() {
         if(_s!=null&&!_s.isReplaceable()) {
-            N.narrative().print(_b, "This wall is too hard to dig into.");
+            Context.c().n().print(_b, "This wall is too hard to dig into.");
             return false;
         }
         if(_d!=null&&(_b.getEnvironment().getLevel()==0||_b.getEnvironment().getLevel()>899)) {
-            N.narrative().print(_b, "This floor is too hard to dig into.");
+            Context.c().n().print(_b, "This floor is too hard to dig into.");
             return false;
         }
         if(--_remaining>0) {
@@ -75,17 +75,23 @@ public class DiggingAction implements ProgressiveAction {
         }
         else {
             if(_s!=null) {
-                NHSpace g = (NHSpace) _s.replace(_b.getEnvironment().getMSpace() instanceof Pit?new Pit():new Ground());
-                //N.narrative().print(_b, Grammar.start(_b, "succeed")+" in cutting away some rock.");
-                if(Rand.d100(50)) {
-                    Rock r = new Rock();
-                    r.setCount(Rand.om.nextInt(5)+1);
-                    g.add(r);
+                boolean broken = false;
+                if(_s instanceof Breakable) {
+                    broken = ((Breakable)_s).breakup();
                 }
-                if(Rand.d100(20)) {
-                    SmallStone s = new SmallStone();
-                    s.setCount(Rand.om.nextInt(7)+1);
-                    g.add(s);
+                if(!broken) {
+                    NHSpace g = (NHSpace) _s.replace(_b.getEnvironment().getMSpace() instanceof Pit?new Pit():new Ground());
+                    //N.narrative().print(_b, Grammar.start(_b, "succeed")+" in cutting away some rock.");
+                    if(Rand.d100(50)) {
+                        Rock r = new Rock();
+                        r.setCount(Rand.om.nextInt(5)+1);
+                        g.add(r);
+                    }
+                    if(Rand.d100(20)) {
+                        SmallStone s = new SmallStone();
+                        s.setCount(Rand.om.nextInt(7)+1);
+                        g.add(s);
+                    }
                 }
             }
             else {
@@ -111,7 +117,7 @@ public class DiggingAction implements ProgressiveAction {
     }
 
     public void interrupted() {
-        N.narrative().print(_b, Grammar.start(_b, "stop")+ " digging.");
+        Context.c().n().print(_b, Grammar.start(_b, "stop")+ " digging.");
     }
 
     public String getExcuse() {

@@ -37,7 +37,7 @@ public class World implements State {
         connectOnce();
         while(c.getState()==this) {
             try {
-                System.err.println("tick: "+_level);
+                //System.err.println("tick: "+_level);
                 _level.tick(c);
             }
             catch(ActionCancelledException e) {
@@ -51,7 +51,7 @@ public class World implements State {
 
     public void setLevel(final Context c, final Stage level) {
         MSpace m = level.getMatrix().getSpace(level.getMatrix().width()/2,level.getMatrix().height()/2);
-        if(m==null) {
+        if(m==null||!m.isWalkable()) {
             m = ((Level)level).findRandomEmptySpace();
         }
         m.setOccupant(_player);

@@ -32,61 +32,18 @@ public class SpaceNodeFactory extends AssetNodeFactory<NHSpace> {
     }
 
     @Override public Spatial createNode(final String name, final NHSpace s) {
-        try {
-            //final String model = String.format("/%s_%d_%d.blend", Spaces.format(s.getModel()), 6, 0);
-            //final String model = "/Mesh2.mesh.xml";
-            final Spatial n = loadModel(s.getModel(), s.getColor(), Display.scatter);
-            n.setLocalScale(3.0f);
-            Nodes.centerBelow(n);
-            final SpaceNode sp = new SpaceNode(s);
-            sp.attachChild(n);
-            return sp;
-            /*
-            final String model = String.format("/%s.lod.mesh.xml", Spaces.format(s.getModel()));
-            final Spatial n = assets().loadModel(model);
-            n.breadthFirstTraversal(new SceneGraphVisitor() {
-                @Override public void visit(final Spatial child) {
-                    //System.err.println("child: "+child+", class: "+child.getClass());
-                    if(child instanceof Geometry) {
-                        final Geometry g = (Geometry) child;
-                        final LodControl c = new LodControl();
-                        g.addControl(c);
-                        //g.setLodLevel(5);
-                        final Mesh m = g.getMesh();
-                        System.err.println("lod: "+m.getNumLodLevels());
-                    }
-                }
-            });
-            if(true) {
-                Material mat = assets().loadMaterial("/m_gray.j3m");
-                n.setMaterial(mat);
+        if(!"".equals(s.getModel())) {
+            try {
+                final Spatial n = loadModel(s.getModel(), s.getColor(), Display.scatter);
+                n.setLocalScale(3.0f);
+                Nodes.centerBelow(n);
                 final SpaceNode sp = new SpaceNode(s);
-                for(int i=0;i<4;i++) {
-                    final Spatial cl = n.clone();
-                    cl.setLocalScale(0.5f);
-                    cl.setLocalTranslation(UIConstants.HORIZ_RATIO*Rand.om.nextFloat(), 0f, UIConstants.VERT_RATIO*Rand.om.nextFloat());
-                    sp.attachChild(cl);
-                }
+                sp.attachChild(n);
                 return sp;
             }
-            else {
-                //final Spatial n = assets().loadModel("/box1.blend");
-                n.setLocalScale(2.0f);
-                LOG.debug("loaded spatial "+n);
-                //Material mat = new Material(assets(), "Common/MatDefs/Misc/Unshaded.j3md");
-                Material mat = new Material(assets(), "Common/MatDefs/Light/Lighting.j3md");
-                mat.setFloat("Shininess", 32f);
-                mat.setBoolean("UseMaterialColors", true);
-                mat.setColor("Ambient",  ColorRGBA.Black);
-                mat.setColor("Diffuse",  ColorRGBA.Gray);
-                mat.setColor("Specular", ColorRGBA.White);
-                n.setMaterial(mat);
-                return n;
+            catch(Exception e) {
+                e.printStackTrace();
             }
-            */
-        }
-        catch(Exception e) {
-            e.printStackTrace();
         }
         return new SpaceNode(s);
     }

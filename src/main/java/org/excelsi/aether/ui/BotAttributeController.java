@@ -25,6 +25,7 @@ public class BotAttributeController extends ChangeController {
         // TODO: move dead to bot space controller?
         final BotAttributeChangeEvent be = (BotAttributeChangeEvent) e;
         final Spatial bot = c.getSpatial(be.getBot().getId());
+        log().info(be.getBot()+" attr="+be.getAttribute()+" from="+be.getFrom()+" to="+be.getTo());
         switch(be.getAttribute()) {
             case "dead":
                 Nodes.detachFromParent(bot);
