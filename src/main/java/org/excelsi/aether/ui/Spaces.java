@@ -34,12 +34,14 @@ public class Spaces {
 
     public static final Vector3f translation(final MSpace ms) {
         final MatrixMSpace mms = (MatrixMSpace) ms;
-        return new Vector3f(UIConstants.HORIZ_RATIO*mms.getI(), 0.0f, UIConstants.VERT_RATIO*mms.getJ());
+        return new Vector3f(UIConstants.HORIZ_RATIO*mms.getI(), UIConstants.HEIGHT_RATIO*((NHSpace)ms).getAltitude(), UIConstants.VERT_RATIO*mms.getJ());
     }
 
     public static final Spatial translate(final MSpace ms, final Spatial s) {
         final MatrixMSpace mms = (MatrixMSpace) ms;
-        s.setLocalTranslation(UIConstants.HORIZ_RATIO*mms.getI(), 0.0f, UIConstants.VERT_RATIO*mms.getJ());
+        //s.setLocalTranslation(UIConstants.HORIZ_RATIO*mms.getI(), 0.0f, UIConstants.VERT_RATIO*mms.getJ());
+        s.setLocalTranslation(UIConstants.HORIZ_RATIO*mms.getI(), UIConstants.HEIGHT_RATIO*((NHSpace)ms).getAltitude(), UIConstants.VERT_RATIO*mms.getJ());
+        //System.err.println("alt: "+((NHSpace)ms).getAltitude());
         return s;
     }
 
