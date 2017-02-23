@@ -34,7 +34,7 @@ import java.util.ArrayList;
 class CloseView extends CameraNode implements View {
     private static final float ZOOM_FACTOR = 0.8f;
     private static final float ZOOM_MIN = 0.5f;
-    private static final float ZOOM_MAX = 1.25f;
+    private static final float ZOOM_MAX = 2.25f;
     private Vector3f _target;
     private Vector3f _move = new Vector3f(0, 0, 0);
     private Node _root;

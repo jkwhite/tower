@@ -41,7 +41,7 @@ public class Spaces {
         final MatrixMSpace mms = (MatrixMSpace) ms;
         //s.setLocalTranslation(UIConstants.HORIZ_RATIO*mms.getI(), 0.0f, UIConstants.VERT_RATIO*mms.getJ());
         s.setLocalTranslation(UIConstants.HORIZ_RATIO*mms.getI(), UIConstants.HEIGHT_RATIO*((NHSpace)ms).getAltitude(), UIConstants.VERT_RATIO*mms.getJ());
-        //System.err.println("alt: "+((NHSpace)ms).getAltitude());
+        if(((NHSpace)ms).getAltitude()!=0) System.err.println("alt: "+((NHSpace)ms).getAltitude());
         return s;
     }
 

@@ -30,6 +30,42 @@ public class Heightmap implements Mixin<Level> {
 
     public void mix(Level level) {
         final float[][] depths = new float[level.width()][level.height()];
+        //mixBasin(level, depths);
+        mixHills(level, depths, -2f);
+        for(int i=0;i<level.width();i++) {
+            for(int j=0;j<level.height();j++) {
+                NHSpace s = level.getSpace(i,j);
+                if(s!=null) {
+                    // algorithm will usually result in terrain
+                    // above alt 0, so lower by 10 as a heuristic
+                    int alt = -(int)depths[i][j];
+                    s.setAltitude(alt);
+                }
+            }
+        }
+    }
+
+    private void mixHills(final Level level, final float[][] depths, final float coef) {
+        final int tot = Rand.om.nextInt(20)+3;
+        for(int i=0;i<tot;i++) {
+            final int cx = Rand.om.nextInt(level.width());
+            final int cy = Rand.om.nextInt(level.height());
+            final int rad = Rand.om.nextInt(15)+5;
+            for(int q=0;q<level.width();q++) {
+                for(int w=0;w<level.height();w++) {
+                    float dist = Math.abs((float)Math.hypot(Math.abs(cx-q), Math.abs(2*(cy-w))));
+                    float adj = rad-dist > 0 ? rad-dist : 0;
+                    if(adj>0) {
+                        adj *= coef;
+                        //System.err.println("adj: "+adj);
+                    }
+                    depths[q][w] += adj;
+                }
+            }
+        }
+    }
+
+    private void mixBasin(Level level, float[][] depths) {
         final int tot = Rand.om.nextInt(10)+3;
         for(int i=0;i<tot;i++) {
             final int cx = Rand.om.nextInt(level.width());
@@ -42,17 +78,6 @@ public class Heightmap implements Mixin<Level> {
                         adj *= 2f;
                     }
                     depths[q][w] += adj;
-                }
-            }
-        }
-        for(int i=0;i<level.width();i++) {
-            for(int j=0;j<level.height();j++) {
-                NHSpace s = level.getSpace(i,j);
-                if(s!=null) {
-                    // algorithm will usually result in terrain
-                    // above alt 0, so lower by 10 as a heuristic
-                    int alt = -(int)depths[i][j];
-                    s.setAltitude(alt);
                 }
             }
         }
