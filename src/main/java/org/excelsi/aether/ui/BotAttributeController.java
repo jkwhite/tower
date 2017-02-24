@@ -4,6 +4,7 @@ package org.excelsi.aether.ui;
 import org.excelsi.matrix.MSpace;
 import org.excelsi.matrix.MatrixMSpace;
 import org.excelsi.aether.NHBot;
+import org.excelsi.aether.Item;
 import org.excelsi.aether.ChangeEvent;
 import org.excelsi.aether.BotAttributeChangeEvent;
 import org.excelsi.aether.AddEvent;
@@ -31,7 +32,13 @@ public class BotAttributeController extends ChangeController {
                 Nodes.detachFromParent(bot);
                 break;
             case "wielded":
-                BotNodeFactory.wield((SlotNode)bot.getChild("ornaments"), (NHBot)be.getBot(), c);
+                Bots.wield((SlotNode)bot.getChild("ornaments"), (NHBot)be.getBot(), c);
+                break;
+            case "worn":
+                Bots.wear((SlotNode)bot.getChild("ornaments"), (NHBot)be.getBot(), (Item)be.getTo(), c);
+                break;
+            case "tookOff":
+                Bots.takeOff((SlotNode)bot.getChild("ornaments"), (NHBot)be.getBot(), (Item)be.getTo(), c);
                 break;
         }
     }

@@ -67,7 +67,7 @@ $c.pov.inventory.add(new Book() {
                 }))
                 .mixin(new Items($c.universe, 50, ItemFilter.named('lava rock')))
                 .mixin(new Heightmap())
-                //.mixin(new Bots(BotFactory.exact('lava gatherer')))
+                .mixin(new Bots(BotFactory.exact('lava gatherer')))
             )
         )
         Context.c().n().print(b, "Another time, another space")
