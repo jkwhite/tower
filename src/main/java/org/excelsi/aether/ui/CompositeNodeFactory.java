@@ -18,16 +18,16 @@ public class CompositeNodeFactory implements NodeFactory<Typed> {
         _fallback = fallback;
     }
 
-    @Override public Spatial createNode(final String name, final Typed s) {
+    @Override public Spatial createNode(final String name, final Typed s, final SceneContext sc) {
         if(s==null) {
-            return _fallback.createNode(name, s);
+            return _fallback.createNode(name, s, sc);
         }
         final NodeFactory nf = _nfs.get(s.getObjectType());
         if(nf!=null) {
-            return nf.createNode(name, s);
+            return nf.createNode(name, s, sc);
         }
         else {
-            return _fallback.createNode(name, s);
+            return _fallback.createNode(name, s, sc);
         }
     }
 }

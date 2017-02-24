@@ -77,7 +77,7 @@ public class JfxWorld extends HudNode {
         final Keymap m = new Keymap(e.key());
         //final Action a = _actions.get(m);
         final String aname = c.ctx().getUniverse().getKeymap().get(e.key());
-        LOG.info("found action name: '"+aname+"'");
+        //LOG.info("found action name: '"+aname+"'");
         if(aname==null) {
             return false;
         }

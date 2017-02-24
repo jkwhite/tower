@@ -6,5 +6,5 @@ import org.excelsi.matrix.Typed;
 
 
 public interface NodeFactory<E extends Typed> {
-    Spatial createNode(String name, E s);
+    Spatial createNode(String name, E s, SceneContext c);
 }

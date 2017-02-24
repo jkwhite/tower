@@ -31,7 +31,7 @@ public class SpaceNodeFactory extends AssetNodeFactory<NHSpace> {
         super(assets);
     }
 
-    @Override public Spatial createNode(final String name, final NHSpace s) {
+    @Override public Spatial createNode(final String name, final NHSpace s, final SceneContext sc) {
         if(!"".equals(s.getModel())) {
             try {
                 final Spatial n = loadModel(s.getModel(), s.getColor(), Display.scatter);

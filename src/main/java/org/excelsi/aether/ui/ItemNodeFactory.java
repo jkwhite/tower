@@ -31,7 +31,7 @@ public class ItemNodeFactory extends AssetNodeFactory<Item> {
         super(assets);
     }
 
-    @Override public Spatial createNode(final String name, final Item i) {
+    @Override public Spatial createNode(final String name, final Item i, final SceneContext c) {
         try {
             final Spatial n = loadModel(i.getModel(), i.getColor(), Display.single);
             n.setLocalScale(2.0f);

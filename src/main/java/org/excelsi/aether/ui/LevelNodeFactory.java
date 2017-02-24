@@ -17,7 +17,7 @@ import org.excelsi.aether.Stage;
 
 
 public class LevelNodeFactory implements NodeFactory<Stage> {
-    @Override public Spatial createNode(final String name, final Stage s) {
+    @Override public Spatial createNode(final String name, final Stage s, final SceneContext c) {
         //return new Node(name);
         final DirectionalLight light = new DirectionalLight(new Vector3f(0, -1, 0));
         light.setColor(ColorRGBA.White);

@@ -36,7 +36,7 @@ public class LevelController extends ChangeController<Bulk,Stage> {
             c.removeAll();
         }
         if(e.getTo()!=null) {
-            final Node lev = (Node) c.getNodeFactory().createNode(e.getTo().getId(), e.getTo());
+            final Node lev = (Node) c.getNodeFactory().createNode(e.getTo().getId(), e.getTo(), c);
             c.getRoot().attachChild(lev);
             c.addNode(lev);
 
@@ -54,35 +54,9 @@ public class LevelController extends ChangeController<Bulk,Stage> {
 
     private void addBot(final SceneContext c, final Node lev, final NHBot b) {
         Bots.attachBot(c, lev, b);
-        /*
-        if(!c.containsNode(b.getId())) {
-            final Spatial bot = c.getNodeFactory().createNode(b.getId(), b);
-            final MatrixMSpace mms = (MatrixMSpace) b.getEnvironment().getMSpace();
-            Spaces.translate(mms, bot);
-            c.addNode(bot);
-            lev.attachChild(bot);
-            if(b.isPlayer()) {
-                attachPatsy(lev, c, bot);
-            }
-        }
-        */
     }
 
     private Spatial createSpace(final SceneContext c, final Node lev, final MatrixMSpace mms) {
         return Spaces.createSpace(c, lev, (NHSpace) mms);
-        /*
-        final NHSpace space = (NHSpace) mms;
-        final SpaceNode ms = (SpaceNode) c.getNodeFactory().createNode(mms.getId(), mms);
-        Spaces.translate(mms, ms);
-        lev.attachChild(ms);
-        c.addNode(ms);
-        final Item[] items = space.getItem();
-        if(items!=null) {
-            for(int i=0;i<items.length;i++) {
-                ms.attachItem(c, items[i], i, false);
-            }
-        }
-        return ms;
-        */
     }
 }

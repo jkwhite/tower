@@ -27,7 +27,7 @@ public class PlaceholderNodeFactory implements NodeFactory {
         _font = _assets.loadFont("Interface/Fonts/Default.fnt");
     }
 
-    @Override public Spatial createNode(final String name, final Typed s) {
+    @Override public Spatial createNode(final String name, final Typed s, final SceneContext c) {
         //Box n = new Box(Vector3f.ZERO, 0.5, 0.5, 0.5);
         //Geometry g = new Geometry("n", n);
         //Material mat = new Material(_assets, "Common/MatDefs/Misc/Unshaded.j3md");

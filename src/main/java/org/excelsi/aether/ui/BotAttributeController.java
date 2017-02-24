@@ -24,11 +24,15 @@ public class BotAttributeController extends ChangeController {
     @Override protected void changed(final SceneContext c, final ChangeEvent e) {
         // TODO: move dead to bot space controller?
         final BotAttributeChangeEvent be = (BotAttributeChangeEvent) e;
-        final Spatial bot = c.getSpatial(be.getBot().getId());
+        final Node bot = c.getNode(be.getBot().getId());
         log().info(be.getBot()+" attr="+be.getAttribute()+" from="+be.getFrom()+" to="+be.getTo());
         switch(be.getAttribute()) {
             case "dead":
                 Nodes.detachFromParent(bot);
+                break;
+            case "wielded":
+                BotNodeFactory.wield((SlotNode)bot.getChild("ornaments"), (NHBot)be.getBot(), c);
+                break;
         }
     }
 }

@@ -205,6 +205,10 @@ public class EventRelayer extends EverythingAdapter implements EventSource {
     }
 
     public void attributeChanged(Bot b, String attribute, Object newValue) {
+        //UNSTABLE
+        for(NHEnvironmentListener n:_nhelisteners) {
+            n.attributeChanged(b, attribute, newValue);
+        }
     }
 
     public void attackStarted(Mechanics m, Attack attack, NHBot attacker, NHBot defender, NHSpace[] path) {

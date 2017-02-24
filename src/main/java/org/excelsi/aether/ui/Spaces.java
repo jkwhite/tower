@@ -14,7 +14,7 @@ import com.jme3.math.Vector3f;
 
 public class Spaces {
     public static Spatial createSpace(final SceneContext c, final Node lev, final NHSpace space) {
-        final SpaceNode ms = (SpaceNode) c.getNodeFactory().createNode(space.getId(), space);
+        final SpaceNode ms = (SpaceNode) c.getNodeFactory().createNode(space.getId(), space, c);
         Spaces.translate(space, ms);
         lev.attachChild(ms);
         c.addNode(ms);
@@ -28,7 +28,7 @@ public class Spaces {
     }
 
     public static Spatial createItem(final SceneContext c, final Item item) {
-        final Spatial s = c.getNodeFactory().createNode(item.getId(), item);
+        final Spatial s = c.getNodeFactory().createNode(item.getId(), item, c);
         return s;
     }
 
@@ -41,7 +41,7 @@ public class Spaces {
         final MatrixMSpace mms = (MatrixMSpace) ms;
         //s.setLocalTranslation(UIConstants.HORIZ_RATIO*mms.getI(), 0.0f, UIConstants.VERT_RATIO*mms.getJ());
         s.setLocalTranslation(UIConstants.HORIZ_RATIO*mms.getI(), UIConstants.HEIGHT_RATIO*((NHSpace)ms).getAltitude(), UIConstants.VERT_RATIO*mms.getJ());
-        if(((NHSpace)ms).getAltitude()!=0) System.err.println("alt: "+((NHSpace)ms).getAltitude());
+        //if(((NHSpace)ms).getAltitude()!=0) System.err.println("alt: "+((NHSpace)ms).getAltitude());
         return s;
     }
 

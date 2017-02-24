@@ -103,6 +103,18 @@ public class EventBusRelayer extends EverythingAdapter {
         throw new UnsupportedOperationException();
     }
 
+    @Override public void equipped(NHBot b, Item i) {
+        //post(TOPIC_CHANGES, new BotAttributeChangeEvent<Item>(b.getEnvironment().getSpace(), b, "equipped", null, i));
+    }
+
+    @Override public void unequipped(NHBot b, Item i) {
+        //post(TOPIC_CHANGES, new BotAttributeChangeEvent<Item>(b.getEnvironment().getSpace(), b, "equipped", i, null));
+    }
+
+    @Override public void attributeChanged(Bot b, String attribute, Object newValue) {
+        post(TOPIC_CHANGES, new BotAttributeChangeEvent(b.getEnvironment().getSpace(), b, attribute, null, newValue));
+    }
+
     private static void post(final String topic, final Event e) {
         LOG.debug("posting to {}: {}", topic, e);
         EventBus.instance().post(topic, e);

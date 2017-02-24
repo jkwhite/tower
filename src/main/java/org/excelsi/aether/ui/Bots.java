@@ -14,7 +14,7 @@ import com.jme3.math.Vector3f;
 public final class Bots {
     public static void attachBot(final SceneContext c, final Node lev, final NHBot b) {
         if(!c.containsNode(b.getId())) {
-            final Spatial bot = c.getNodeFactory().createNode(b.getId(), b);
+            final Spatial bot = c.getNodeFactory().createNode(b.getId(), b, c);
             final MatrixMSpace mms = (MatrixMSpace) b.getEnvironment().getMSpace();
             Spaces.translate(mms, bot);
             c.addNode(bot);
