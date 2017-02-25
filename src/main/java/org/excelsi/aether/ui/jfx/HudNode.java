@@ -23,7 +23,7 @@ public abstract class HudNode extends Group implements Hud {
     }
 
     public HudNode(final String style) {
-        //getStyleClass().add(style);
+        getStyleClass().add(style);
     }
 
     public final void addLogicHandler(final EventHandler<LogicEvent> h) {

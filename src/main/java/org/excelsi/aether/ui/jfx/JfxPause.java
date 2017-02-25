@@ -4,6 +4,7 @@ package org.excelsi.aether.ui.jfx;
 import javafx.scene.control.Label;
 import javafx.scene.Parent;
 import javafx.scene.Group;
+import javafx.scene.layout.BorderPane;
 
 
 public class JfxPause extends HudNode {
@@ -15,6 +16,8 @@ public class JfxPause extends HudNode {
                 notify.notify();
             }
         });
-        getChildren().add(new Label(m));
+        Label l = new Label(m);
+        l.getStyleClass().add("message");
+        getChildren().add(l);
     }
 }

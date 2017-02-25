@@ -71,6 +71,8 @@ public class JfxNarrative extends Group {
 
     private void pause(PauseEvent e) {
         final JfxPause m = new JfxPause("-- More --", e);
+        m.setTranslateX(200);
+        m.setTranslateY(200);
         getChildren().add(0, m);
     }
 }

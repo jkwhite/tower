@@ -332,15 +332,16 @@ public class Patsy extends DefaultNHBot {
         }
         setDeath(cause);
         //N.narrative().more();
-        N.narrative().print(this, "You die...");
+        //Context.c().n().print(this, "You die...");
         //N.narrative().more();
-        Actor.context().n().message("You die.");
-        N.narrative().quit(cause, false);
+        Actor.context().n().message(this, "You die.");
+        Actor.context().n().pause();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         }
         catch(InterruptedException e) {
         }
+        N.narrative().quit(cause, false);
         Actor.context().setState(new Quit());
     }
 
