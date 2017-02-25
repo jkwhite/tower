@@ -141,7 +141,8 @@ public final class Bots {
                 break;
             case foot:
                 offset = new Vector3f(0f,0.3f,-0.15f).multLocal(0.5f);
-                rot = new Quaternion(new float[]{FastMath.PI/2f,0f,FastMath.PI/2f});
+                //rot = new Quaternion(new float[]{FastMath.PI/2f,0f,FastMath.PI/2f});
+                rot = new Quaternion(new float[]{FastMath.PI/2f,0f,-FastMath.PI/2f});
                 break;
             case eyes:
                 break;

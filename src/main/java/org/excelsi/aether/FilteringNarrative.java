@@ -26,15 +26,15 @@ public class FilteringNarrative implements NNarrative {
         _delegate.message(m);
     }
 
-    @Override public void print(NHBot source, Object m) {
+    @Override public void print(NHBot source, Object m, DisplayHints h) {
         if(_pov.getEnvironment().getVisibleBots().contains(source)) {
-            _delegate.print(source, m);
+            _delegate.print(source, m, h);
         }
     }
 
-    @Override public void print(NHSpace source, Object m) {
+    @Override public void print(NHSpace source, Object m, DisplayHints h) {
         if(_pov.getEnvironment().getVisible().contains(source)) {
-            _delegate.print(source, m);
+            _delegate.print(source, m, h);
         }
     }
 

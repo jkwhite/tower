@@ -39,7 +39,25 @@ public class BotNodeFactory extends AssetNodeFactory<NHBot> {
         try {
             final Spatial n = loadModel(s.getModel(), s.getColor(), Display.single);
             n.setLocalRotation(new Quaternion(new float[]{FastMath.PI/2f, 0f, 0f}));
-            n.setLocalScale(3.0f);
+            float scale = 1f;
+            switch(s.getSize()) {
+                case tiny:
+                    scale = 0.4f;
+                    break;
+                case small:
+                    scale = 0.7f;
+                    break;
+                case medium:
+                default:
+                    break;
+                case large:
+                    scale = 1.3f;
+                    break;
+                case huge:
+                    scale = 1.6f;
+                    break;
+            }
+            n.setLocalScale(3.0f*scale);
             // duplicate center after scale/rot
             Nodes.centerAbove(n);
 

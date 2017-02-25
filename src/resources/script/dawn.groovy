@@ -31,6 +31,7 @@ l1.getMatrix().getSpace(0,0).add(new Apple())
 $c.pov = $c.universe.createBot({b -> 'Archeologist'.equals(b.profession)})
 $c.pov.name = System.getProperty("user.name")
 $c.pov.inventory.add(new ScrollOfSummoning())
+$c.pov.inventory.add(new Snowshoes())
 $c.pov.inventory.add(new Book() {
     String getName() { "book entitled 'The Lava Gatherers'" }
 

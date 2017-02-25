@@ -25,12 +25,12 @@ public class BlockingNarrative implements NNarrative {
         _e.post(TOPIC_UI, new MessageEvent(this, MessageEvent.Type.ephemeral, m));
     }
 
-    @Override public void print(NHBot source, Object m) {
-        _e.post(TOPIC_UI, new MessageEvent(source, MessageEvent.Type.ephemeral, m));
+    @Override public void print(NHBot source, Object m, DisplayHints h) {
+        _e.post(TOPIC_UI, new MessageEvent(source, MessageEvent.Type.ephemeral, m, h));
     }
 
-    @Override public void print(NHSpace source, Object m) {
-        _e.post(TOPIC_UI, new MessageEvent(source, MessageEvent.Type.ephemeral, m));
+    @Override public void print(NHSpace source, Object m, DisplayHints h) {
+        _e.post(TOPIC_UI, new MessageEvent(source, MessageEvent.Type.ephemeral, m, h));
     }
 
     @Override public void printf(NHBot source, String message, Object... args) {

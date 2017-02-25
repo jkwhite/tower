@@ -31,7 +31,7 @@ public class ItemController extends ChangeController<NHSpace,Item> {
     }
 
     @Override protected void removed(final SceneContext c, final RemoveEvent<NHSpace,Item> l) {
-        log().info("remove event: "+l);
+        //log().info("remove event: "+l);
         final SpaceNode sp = (SpaceNode) c.getNode(l.getContext().getId());
         if(sp!=null) {
             sp.detachItem(c, l.getRemoved());

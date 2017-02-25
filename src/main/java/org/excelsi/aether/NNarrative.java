@@ -9,11 +9,21 @@ public interface NNarrative {
     void title(String m);
     void message(String m);
     void printf(NHBot source, String message, Object... args);
+
     default void printfm(NHBot source, String message, Object... args) {
         printf(source, message, args);
     }
-    void print(NHBot source, Object m);
-    void print(NHSpace source, Object m);
+
+    default void print(NHBot source, Object m) {
+        print(source, m, DisplayHints.NONE);
+    }
+    void print(NHBot source, Object m, DisplayHints h);
+
+    default void print(NHSpace source, Object m) {
+        print(source, m, DisplayHints.NONE);
+    }
+    void print(NHSpace source, Object m, DisplayHints h);
+
     boolean confirm(String m);
     boolean confirm(NHBot source, String m);
     void poster(String m);

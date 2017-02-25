@@ -17,10 +17,10 @@ public class EmptyNarrative implements NNarrative {
     @Override public void message(String m) {
     }
 
-    @Override public void print(NHBot source, Object m) {
+    @Override public void print(NHBot source, Object m, DisplayHints h) {
     }
 
-    @Override public void print(NHSpace source, Object m) {
+    @Override public void print(NHSpace source, Object m, DisplayHints h) {
     }
 
     @Override public void printf(NHBot source, String message, Object... args) {

@@ -15,10 +15,11 @@ import javafx.scene.layout.BorderPane;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Spatial;
 
-import org.excelsi.matrix.Id;
+import org.excelsi.matrix.Typed;
 import org.excelsi.aether.MessageEvent;
 import org.excelsi.aether.NHBot;
 import org.excelsi.aether.Item;
+import org.excelsi.aether.Grammar;
 
 
 public class JfxMessages extends HudNode {
@@ -28,7 +29,12 @@ public class JfxMessages extends HudNode {
                 final MessageEvent e = (MessageEvent) le.e();
                 final Node t;
                 if(e.getMessage() instanceof Item) {
-                    t = new Label(e.getMessage().toString());
+                    if(e.getHints().isKeyed()) {
+                        t = new Label(Grammar.format((NHBot)e.getSource(), "%K", ((NHBot)e.getSource()).getInventory(), e.getMessage()));
+                    }
+                    else {
+                        t = new Label(e.getMessage().toString());
+                    }
                 }
                 else {
                     final String msg = e.getMessage().toString();
@@ -44,6 +50,8 @@ public class JfxMessages extends HudNode {
                 t.getStyleClass().add("message");
                 t.getStyleClass().add(e.getMessageType().toString());
                 if(e.getSource() instanceof NHBot) {
+                    Fx.localize(le.ctx(), (Typed)e.getSource(), t);
+                    /*
                     final Spatial src = le.ctx().getSpatial((Id)e.getSource());
                     if(src!=null) {
                         Vector3f wp = src.getWorldTranslation();
@@ -54,7 +62,8 @@ public class JfxMessages extends HudNode {
                         t.setTranslateY(h-40-sp.y);
                         //System.err.println("W****: "+((Label)t).getPrefWidth());
                         //System.err.println("setting screen coords: "+sp+" from "+wp+" for "+e.getSource()+" message: "+e.getMessage()+"; jfxx="+t.getTranslateX()+", jfxy="+t.getTranslateY()+"; jfxlx="+t.getLayoutX()+", jfxly="+t.getLayoutY());
-                      }
+                    }
+                    */
                 }
                 getChildren().add(t);
                 final SequentialTransition st = new SequentialTransition();
@@ -75,8 +84,8 @@ public class JfxMessages extends HudNode {
                 }
                 switch(e.getMessageType()) {
                     case ephemeral:
-                        st.getChildren().add(new PauseTransition(Duration.millis(3000)));
-                        final FadeTransition out = new FadeTransition(Duration.millis(1000), t);
+                        st.getChildren().add(new PauseTransition(Duration.millis(2000)));
+                        final FadeTransition out = new FadeTransition(Duration.millis(500), t);
                         out.setFromValue(1.0);
                         out.setToValue(0.0);
                         st.getChildren().add(out);

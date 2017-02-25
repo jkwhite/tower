@@ -28,14 +28,14 @@ public class SpaceNode extends Node {
     }
 
     public void detachItem(final SceneContext c, final Item item) {
-        System.err.println("initial children: "+getChildren());
+        //System.err.println("initial children: "+getChildren());
         final int idx = detachChildNamed(item.getId());
         if(idx==-1) {
-            System.err.println("no such child "+item+" for "+_space);
+            System.err.println("WARN: no such child "+item+" for "+_space);
         }
-        else {
-            System.err.println("removed child "+item+" for "+_space+" at "+idx);
-        }
-        System.err.println("remaining children: "+getChildren());
+        //else {
+            //System.err.println("removed child "+item+" for "+_space+" at "+idx);
+        //}
+        //System.err.println("remaining children: "+getChildren());
     }
 }

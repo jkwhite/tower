@@ -24,10 +24,12 @@ import org.excelsi.aether.Event;
 import org.excelsi.aether.QueryEvent;
 import org.excelsi.aether.KeyEvent;
 import org.excelsi.aether.ui.UI;
+import org.excelsi.aether.ui.SceneContext;
+import org.excelsi.matrix.Typed;
 
 
 public class JfxQuery extends HudRegion {
-    public JfxQuery(final QueryEvent e) {
+    public JfxQuery(final QueryEvent e, final SceneContext sc) {
         //getStyleClass().add("query");
         addLogicHandler((le)->{
             le.consume();
@@ -68,7 +70,9 @@ public class JfxQuery extends HudRegion {
         }
         final Label msg = new Label(m);
         final Centered c = new Centered(msg, "query");
+        log().info("added query message with message '"+m+"'");
         //msg.setAlignment(Pos.CENTER);
+        Fx.localize(sc, (Typed)e.getSource(), c);
         getChildren().add(c);
     }
 

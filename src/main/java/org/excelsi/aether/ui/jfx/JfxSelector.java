@@ -21,7 +21,7 @@ public class JfxSelector extends HudNode {
                 le.consume();
             }
             else if(le.e() instanceof QueryEvent) {
-                final JfxQuery q = new JfxQuery((QueryEvent)le.e());
+                final JfxQuery q = new JfxQuery((QueryEvent)le.e(), le.ctx());
                 getChildren().add(q);
                 transition(q, null);
                 le.consume();

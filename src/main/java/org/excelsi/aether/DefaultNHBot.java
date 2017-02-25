@@ -1867,10 +1867,11 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
                     //N.narrative().clear();
                 //}
                 if(it.getStackType()!=Item.StackType.singular) {
-                    c.n().print(c.getActor(), it /*Grammar.key(getBot().getInventory(), it)*/);
+                    c.n().print(c.getActor(), it /*Grammar.key(getBot().getInventory(), it)*/, DisplayHints.KEYED);
                 }
                 else {
-                    N.narrative().print(c.getActor(), it.getName()+".");
+                    //N.narrative().print(c.getActor(), it.getName()+".");
+                    c.n().print(c.getActor(), it, DisplayHints.KEYED);
                 }
             }
             else {

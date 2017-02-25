@@ -10,11 +10,15 @@ import javafx.scene.layout.Region;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+
 import org.excelsi.aether.ui.Hud;
 import org.excelsi.aether.ui.LogicEvent;
 
 
 public abstract class HudRegion extends Region implements Hud {
+    private final Logger _logger = LoggerFactory.getLogger(getClass());
     private String _transition;
     private List<EventHandler<LogicEvent>> _logicHandlers;
 
@@ -62,5 +66,9 @@ public abstract class HudRegion extends Region implements Hud {
                 notify.notify();
             }
         });
+    }
+
+    protected final Logger log() {
+        return _logger;
     }
 }
