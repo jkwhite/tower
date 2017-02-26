@@ -14,17 +14,22 @@ import com.jme3.math.Vector3f;
 
 public class Spaces {
     public static Spatial createSpace(final SceneContext c, final Node lev, final NHSpace space) {
-        final SpaceNode ms = (SpaceNode) c.getNodeFactory().createNode(space.getId(), space, c);
-        Spaces.translate(space, ms);
-        lev.attachChild(ms);
-        c.addNode(ms);
-        final Item[] items = space.getItem();
-        if(items!=null) {
-            for(int i=0;i<items.length;i++) {
-                ms.attachItem(c, items[i], i, false);
+        if(!c.containsNode(space)) {
+            final SpaceNode ms = (SpaceNode) c.getNodeFactory().createNode(space.getId(), space, c);
+            Spaces.translate(space, ms);
+            lev.attachChild(ms);
+            c.addNode(ms);
+            final Item[] items = space.getItem();
+            if(items!=null) {
+                for(int i=0;i<items.length;i++) {
+                    ms.attachItem(c, items[i], i, false);
+                }
             }
+            return ms;
         }
-        return ms;
+        else {
+            return c.getSpatial(space);
+        }
     }
 
     public static Spatial createItem(final SceneContext c, final Item item) {

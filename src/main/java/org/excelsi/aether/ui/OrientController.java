@@ -33,7 +33,7 @@ public class OrientController extends ChangeController<NHBot,Direction> {
                 s.setLocalRotation(new Quaternion(new float[]{0f, UIConstants.ROTATIONS[rot], 0f}));
             }
             else {
-                log().info("no spatial for "+me.getBot());
+                log().debug("no spatial for "+me.getBot());
             }
         }
     }

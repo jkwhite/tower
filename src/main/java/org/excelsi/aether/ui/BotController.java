@@ -23,7 +23,7 @@ public class BotController extends ChangeController<NHBot,NHSpace> {
             Bots.attachBot(c, lev, b.getContext());
         }
         else {
-            log().warn("no level for "+b);
+            log().debug("no level for "+b);
         }
     }
 
@@ -33,7 +33,7 @@ public class BotController extends ChangeController<NHBot,NHSpace> {
             Bots.detachBot(c, lev, b.getContext());
         }
         else {
-            log().warn("no level for "+b);
+            log().debug("no level for "+b);
         }
     }
 
@@ -42,12 +42,14 @@ public class BotController extends ChangeController<NHBot,NHSpace> {
             final MoveEvent me = (MoveEvent) e;
             final NHBot b = (NHBot) me.getBot();
             final Spatial s = c.getSpatial(me.getBot().getId());
-            if(s==null) {
-                throw new IllegalArgumentException("move for unknown bot "+me.getBot().getId());
+            if(s!=null) {
+                Animations.move(s, s.getLocalTranslation(), Spaces.translation(me.getBot().getEnvironment().getSpace()), 0.25f);
+                if(b.isPlayer()) {
+                    updateView(c, me.getBot().getEnvironment().getSpace());
+                }
             }
-            Animations.move(s, s.getLocalTranslation(), Spaces.translation(me.getBot().getEnvironment().getSpace()), 0.25f);
-            if(b.isPlayer()) {
-                updateView(c, me.getBot().getEnvironment().getSpace());
+            else {
+                log().debug("move for unknown bot "+me.getBot().getId());
             }
         }
     }

@@ -33,8 +33,8 @@ public class World implements State {
         Grammar.setPov(_player);
         EventBus.instance().post("keys", new BotAttributeChangeEvent<String>(this, _player, "created", "", ""));
 
-        setLevel(c, c.getBulk().findLevel(1));
         connectOnce();
+        setLevel(c, c.getBulk().findLevel(1));
         while(c.getState()==this) {
             try {
                 //System.err.println("tick: "+_level);
@@ -50,19 +50,20 @@ public class World implements State {
     }
 
     public void setLevel(final Context c, final Stage level) {
+        final Stage old = _level;
+        _level = level;
+        if(old!=null) {
+            disconnect(old.getEventSource());
+        }
+        connect(_level.getEventSource());
+        EventBus.instance().post("changes", new ChangeEvent<Bulk,Stage>(this, "level", c.getBulk(), old, _level));
+        EventBus.instance().post("keys", new ChangeEvent<Bulk,Stage>(this, "level", c.getBulk(), old, _level));
+
         MSpace m = level.getMatrix().getSpace(level.getMatrix().width()/2,level.getMatrix().height()/2);
         if(m==null||!m.isWalkable()) {
             m = ((Level)level).findRandomEmptySpace();
         }
         m.setOccupant(_player);
-        final Stage old = _level;
-        _level = level;
-        EventBus.instance().post("changes", new ChangeEvent<Bulk,Stage>(this, "level", c.getBulk(), old, _level));
-        EventBus.instance().post("keys", new ChangeEvent<Bulk,Stage>(this, "level", c.getBulk(), old, _level));
-        if(old!=null) {
-            disconnect(old.getEventSource());
-        }
-        connect(_level.getEventSource());
     }
 
     public Stage getLevel() {

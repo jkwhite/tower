@@ -154,21 +154,45 @@ public class EventRelayer extends EverythingAdapter implements EventSource {
     }
 
     public void forgot(Bot b, List<MSpace> s) {
+        //System.err.println("FORGOT");
+        for(NHEnvironmentListener e:_nhelisteners) {
+            e.forgot(b, s);
+        }
     }
 
     public void discovered(Bot b, List<MSpace> s) {
+        //System.err.println("DISCOVERED");
+        for(NHEnvironmentListener e:_nhelisteners) {
+            e.discovered(b, s);
+        }
     }
 
     public void seen(Bot b, List<MSpace> s) {
+        //System.err.println("SEEN");
+        for(NHEnvironmentListener e:_nhelisteners) {
+            e.seen(b, s);
+        }
     }
 
     public void obscured(Bot b, List<MSpace> s) {
+        //System.err.println("OBSCURED");
+        for(NHEnvironmentListener e:_nhelisteners) {
+            e.obscured(b, s);
+        }
     }
 
     public void noticed(Bot b, List<Bot> bots) {
+        //System.err.println("NOTICED");
+        for(NHEnvironmentListener e:_nhelisteners) {
+            e.noticed(b, bots);
+        }
     }
 
     public void missed(Bot b, List<Bot> bots) {
+        //System.err.println("MISSED");
+        for(NHEnvironmentListener e:_nhelisteners) {
+            e.missed(b, bots);
+        }
     }
 
     public void died(Bot b, MSource s) {

@@ -40,6 +40,7 @@ public class LevelController extends ChangeController<Bulk,Stage> {
             c.getRoot().attachChild(lev);
             c.addNode(lev);
 
+            /*
             for(final MSpace m:e.getTo().getMatrix().spaces()) {
                 final MatrixMSpace mms = (MatrixMSpace) m;
                 if(mms!=null) {
@@ -49,6 +50,7 @@ public class LevelController extends ChangeController<Bulk,Stage> {
             for(NHBot b:((Level)e.getTo()).bots()) {
                 addBot(c, lev, b);
             }
+            */
         }
     }
 

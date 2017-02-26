@@ -5,6 +5,7 @@ import org.excelsi.aether.Armament;
 import org.excelsi.aether.NHBot;
 import org.excelsi.aether.Item;
 import org.excelsi.aether.SlotType;
+import org.excelsi.matrix.Bot;
 import org.excelsi.matrix.MSpace;
 import org.excelsi.matrix.MatrixMSpace;
 
@@ -33,7 +34,7 @@ public final class Bots {
             c.addNode(bot);
             lev.attachChild(bot);
             if(b.isPlayer()) {
-                attachPatsy(lev, c, bot);
+                attachPatsy(lev, c, bot, b);
             }
         }
     }
@@ -42,6 +43,7 @@ public final class Bots {
         final Spatial s = c.getNode(b);
         if(s!=null) {
             lev.detachChild(s);
+            c.removeSpatial(b);
         }
     }
 
@@ -174,15 +176,17 @@ public final class Bots {
     }
 
 
-    private static void attachPatsy(final Node parent, final SceneContext c, final Spatial patsy) {
-        //c.<CloseView>getNode(View.NODE_CAMERA).setPlayer(patsy);
+    private static void attachPatsy(final Node lev, final SceneContext c, final Spatial patsy, final NHBot b) {
         c.<CloseView>getCameraNode().setPlayer(patsy);
         if(patsy instanceof Litten) {
             for(final Light light:((Litten)patsy).getAllLights()) {
-                System.err.println("****************  ADDING LIGHT: "+light);
-                parent.addLight(light);
+                //System.err.println("****************  ADDING LIGHT: "+light);
+                lev.addLight(light);
             }
-            //parent.addLight(((LightNode)patsy).getLight());;
+            //lev.addLight(((LightNode)patsy).getLight());;
+        }
+        for(Bot v:b.getEnvironment().getVisibleBots()) {
+            Bots.attachBot(c, lev, (NHBot)v);
         }
     }
 

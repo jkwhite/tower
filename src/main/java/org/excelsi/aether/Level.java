@@ -68,6 +68,7 @@ public final class Level extends Matrix implements Stage {
     public void setLight(float light) {
         float ol = _lightLevel;
         _lightLevel = light;
+        putProperty(Keys.LIGHT, light);
         if(ol!=_lightLevel) {
             for(MatrixListener l:getListeners()) {
                 l.attributeChanged(this, "light", ol, _lightLevel);

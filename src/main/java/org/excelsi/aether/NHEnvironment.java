@@ -26,6 +26,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.excelsi.matrix.*;
 import java.util.logging.Logger;
@@ -293,12 +294,13 @@ public class NHEnvironment extends MatrixEnvironment implements MatrixListener {
         }
     }
 
-    private List<MSpace> _tempVis = new ArrayList<MSpace>();
+    private List<MSpace> _tempVis = new CopyOnWriteArrayList<MSpace>();
     public void unhide() {
         unhide(null);
     }
 
     public void unhide(NHSpace touch) {
+        //if(getBot().isPlayer()) Thread.dumpStack();
         NHSpace s = (NHSpace) getSpace();
         Set<Bot> visibleBots = new HashSet<Bot>();
         List<MSpace> discovered;
@@ -381,25 +383,9 @@ public class NHEnvironment extends MatrixEnvironment implements MatrixListener {
                 break;
         }
         // AETHER
-        /*
         for(Bot b:((Level)((MatrixMSpace)getBot().getEnvironment().getMSpace()).getMatrix()).bots()) {
             if(((NHBot)b).isAudible()) {
                 visibleBots.add(b);
-            }
-        }
-        */
-        List noticedBots = new ArrayList();
-        List missedBots = new ArrayList();
-        for(Iterator i=visibleBots.iterator();i.hasNext();) {
-            NHBot b = (NHBot) i.next();
-            if(!_visibleBots.contains(b)) {
-                noticedBots.add(b);
-            }
-        }
-        for(Iterator i=_visibleBots.iterator();i.hasNext();) {
-            NHBot b = (NHBot) i.next();
-            if(!visibleBots.contains(b)) {
-                missedBots.add(b);
             }
         }
         _visibleBots = visibleBots;
@@ -409,15 +395,33 @@ public class NHEnvironment extends MatrixEnvironment implements MatrixListener {
             // optimization hack - technically we should send these events but
             // they're mostly irrelevant for non-human players since the ui
             // is the listener here and the ui is from the player's POV.
+
+            List noticedBots = new ArrayList();
+            List missedBots = new ArrayList();
+            for(Iterator i=visibleBots.iterator();i.hasNext();) {
+                NHBot b = (NHBot) i.next();
+                //TODO
+                //if(!_visibleBots.contains(b)) {
+                    noticedBots.add(b);
+                //}
+            }
+            for(Iterator i=_visibleBots.iterator();i.hasNext();) {
+                NHBot b = (NHBot) i.next();
+                if(!visibleBots.contains(b)) {
+                    missedBots.add(b);
+                }
+            }
+
             _tempVis.clear();
             _tempVis.addAll(_visible);
             for(Iterator i=getListeners().iterator();i.hasNext();) {
                 EnvironmentListener e = (EnvironmentListener) i.next();
                 //e.unhid(getBot(), uh);
-                e.discovered(getBot(), discovered);
-                e.seen(getBot(), _tempVis);
-                e.noticed(getBot(), noticedBots);
-                e.missed(getBot(), missedBots);
+                //if(!discovered.isEmpty()) System.err.println("notifying "+e+" d:"+discovered+", s:"+_tempVis+", n:"+noticedBots+", m:"+missedBots);
+                if(!discovered.isEmpty()) e.discovered(getBot(), discovered);
+                if(!_tempVis.isEmpty()) e.seen(getBot(), _tempVis);
+                if(!noticedBots.isEmpty()) e.noticed(getBot(), noticedBots);
+                if(!missedBots.isEmpty()) e.missed(getBot(), missedBots);
             }
         }
     }

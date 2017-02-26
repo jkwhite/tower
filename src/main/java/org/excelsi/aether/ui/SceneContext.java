@@ -81,6 +81,10 @@ public final class SceneContext {
         return _objects.containsKey(name);
     }
 
+    public boolean containsNode(final Typed id) {
+        return _objects.containsKey(id.getId());
+    }
+
     public void removeSpatial(final Typed id) {
         _objects.remove(id.getId());
     }

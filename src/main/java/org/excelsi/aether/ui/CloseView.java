@@ -225,7 +225,7 @@ class CloseView extends CameraNode implements View {
             _rotz = rz;
         }
         _move.set(_target.x-pos.x, _target.y-pos.y, _target.z-pos.z);
-        _move.multLocal(1.5f*dt);
+        _move.multLocal(1.8f*dt);
         if(_move.length()>_speed) {
             _move.normalizeLocal().multLocal(_speed);
         }

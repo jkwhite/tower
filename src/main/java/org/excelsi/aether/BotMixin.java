@@ -237,7 +237,7 @@ public class BotMixin implements Mixin {
         }
 
         public String getModel() {
-            return " ";
+            return "";
         }
 
         public String getColor() {

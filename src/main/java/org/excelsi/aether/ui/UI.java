@@ -41,6 +41,7 @@ public class UI {
                 "level", constant(new LevelController()),
                 "mechanics", constant(new MechanicsController()),
                 "space", constant(new SpaceController()),
+                "knowledge", constant(new KnowledgeController()),
                 "item", constant(new ItemController())
             )
         );

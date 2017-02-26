@@ -1,6 +1,8 @@
 package org.excelsi.aether;
 
 
+import java.util.List;
+
 import org.excelsi.aether.EverythingAdapter;
 import org.excelsi.aether.Container;
 import org.excelsi.aether.Item;
@@ -19,6 +21,7 @@ import static org.excelsi.aether.Events.TOPIC_MECHANICS;
 
 
 public class EventBusRelayer extends EverythingAdapter {
+    private static final String DEBUG_EVENT = "knowledge";
     private static final Logger LOG = LoggerFactory.getLogger(EventBusRelayer.class);
 
 
@@ -115,8 +118,37 @@ public class EventBusRelayer extends EverythingAdapter {
         post(TOPIC_CHANGES, new BotAttributeChangeEvent(b.getEnvironment().getSpace(), b, attribute, null, newValue));
     }
 
+    @Override public void forgot(Bot b, List<MSpace> s) {
+        post(TOPIC_CHANGES, new SpaceKnowledgeEvent(b, (Stage)b.getEnvironment().getSpace().getContainer(), (NHBot)b, "forgot", s));
+    }
+
+    @Override public void discovered(Bot b, List<MSpace> s) {
+        post(TOPIC_CHANGES, new SpaceKnowledgeEvent(b, (Stage)b.getEnvironment().getSpace().getContainer(), (NHBot)b, "discovered", s));
+    }
+
+    @Override public void seen(Bot b, List<MSpace> s) {
+        post(TOPIC_CHANGES, new SpaceKnowledgeEvent(b, (Stage)b.getEnvironment().getSpace().getContainer(), (NHBot)b, "seen", s));
+    }
+
+    @Override public void obscured(Bot b, List<MSpace> s) {
+        post(TOPIC_CHANGES, new SpaceKnowledgeEvent(b, (Stage)b.getEnvironment().getSpace().getContainer(), (NHBot)b, "obscured", s));
+    }
+
+    @Override public void noticed(Bot b, List<Bot> bots) {
+        post(TOPIC_CHANGES, new BotKnowledgeEvent(b, (Stage)b.getEnvironment().getSpace().getContainer(), (NHBot)b, "noticed", bots));
+    }
+
+    @Override public void missed(Bot b, List<Bot> bots) {
+        post(TOPIC_CHANGES, new BotKnowledgeEvent(b, (Stage)b.getEnvironment().getSpace().getContainer(), (NHBot)b, "missed", bots));
+    }
+
     private static void post(final String topic, final Event e) {
-        LOG.debug("posting to {}: {}", topic, e);
+        if(debug(e)) LOG.warn("posting to {}: {}", topic, e);
         EventBus.instance().post(topic, e);
+    }
+
+    private static boolean debug(Event e) {
+        //return e instanceof SpaceKnowledgeEvent && ((SpaceKnowledgeEvent)e).getKind().equals("discovered");
+        return false;
     }
 }

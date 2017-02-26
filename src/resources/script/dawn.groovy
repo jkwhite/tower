@@ -28,6 +28,7 @@ for(i=0;i<10;i++) {
 }
 l1.findRandomNormalEmptySpace().add(new Apple())
 l1.getMatrix().getSpace(0,0).add(new Apple())
+l1.light = 5f
 $c.pov = $c.universe.createBot({b -> 'Archeologist'.equals(b.profession)})
 $c.pov.name = System.getProperty("user.name")
 $c.pov.inventory.add(new ScrollOfSummoning())
@@ -37,8 +38,6 @@ $c.pov.inventory.add(new Book() {
     String getName() { "book entitled 'The Lava Gatherers'" }
 
     void invoke(NHBot b) {
-        //System.err.println("********** RUN*********");
-        //Thread.dumpStack();
         $c.state.setLevel(Context.c(), 
             new BasicStageGenerator(
                 Spacemaker.ca([160,160,150], 6, Rand.om.nextInt(), 0.6f, 'hi-i-u-ko',

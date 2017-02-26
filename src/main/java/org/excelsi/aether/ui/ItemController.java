@@ -26,7 +26,7 @@ public class ItemController extends ChangeController<NHSpace,Item> {
             sp.attachItem(c, e.getAdded(), ce.getIndex(), ce.getIncremented());
         }
         else {
-            log().warn("no space for "+mms.getId());
+            log().debug("no space for "+mms.getId());
         }
     }
 
@@ -37,7 +37,7 @@ public class ItemController extends ChangeController<NHSpace,Item> {
             sp.detachItem(c, l.getRemoved());
         }
         else {
-            log().warn("no space for "+l.getContext());
+            log().debug("no space for "+l.getContext());
         }
     }
 

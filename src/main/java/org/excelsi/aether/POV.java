@@ -29,8 +29,8 @@ import java.util.Arrays;
 
 /**
  * POV is an event relayer that restricts propagated events
- * to those within the purvey of a given bot. In other words
- * it provides an event system from the bot's point of view.
+ * to those within the purvey of a given bot.
+ * It provides an event system from the bot's point of view.
  */
 public class POV extends EventRelayer {
     private NHBot _b;
