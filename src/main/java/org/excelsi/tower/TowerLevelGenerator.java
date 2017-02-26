@@ -113,6 +113,18 @@ public class TowerLevelGenerator implements LevelGenerator, LevelGenerator.RoomM
                 new Layout(new int[]{10,4,_width-10,_height-4}));
     }
 
+    public static Spacemaker spacemaker() {
+        return (r,l)->{
+            TowerLevelGenerator g = new TowerLevelGenerator(r.getWidth(), r.getHeight());
+            for(int i=0;i<l.width();i++) {
+                for(int j=0;j<l.height();j++) {
+                    l.setSpace(new Blank(), i, j);
+                }
+            }
+            g.generate(l, l.getSpace(l.width()/2, l.height()/2));
+        };
+    }
+
     public int width() {
         return _width;
     }

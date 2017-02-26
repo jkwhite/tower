@@ -263,6 +263,10 @@ public class NullNHSpace extends NullMatrixMSpace implements NHSpace {
         throw new IllegalStateException("null spaces may not have loot");
     }
 
+    @Override public Architecture getArchitecture() {
+        return Architecture.structural;
+    }
+
     public void bloom(Transform t, int radius) {
     }
 

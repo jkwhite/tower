@@ -10,11 +10,12 @@
 
 import bpy, sys, getopt, os, mathutils, struct, string, types
 from mathutils import Vector
+from math import pi
 from os import path
 
 def main(argv):
   try:
-    opts, args = getopt.getopt(argv,"P:c:e:f:B:b:r:d:",[])
+    opts, args = getopt.getopt(argv,"P:c:e:f:B:b:r:d:x:y:z:",[])
   except getopt.GetoptError as a:
     print('generate_glyph.py -c glyph -e extrude -f filename -b bevel -r res -d dmg', a)
     sys.exit(2)
@@ -36,6 +37,12 @@ def main(argv):
       dmg = arg
     elif opt in ("-f"):
       filename = arg
+    elif opt in ("-x"):
+      rot_x = arg
+    elif opt in ("-y"):
+      rot_y = arg
+    elif opt in ("-z"):
+      rot_z = arg
 
   #bpy.ops.scene.new
   # Delete all old objects, so we start with a clean slate.
@@ -51,6 +58,7 @@ def main(argv):
   print('generating '+file+' ...')
   bpy.ops.object.text_add(location=(0,0,0))
   txt = bpy.context.object
+  txt.rotation_euler = (float(rot_x),float(rot_y),float(rot_z))
   curve = txt.data
   curve.body = glyph
   curve.font = bpy.data.fonts['CourierNewPSMT']

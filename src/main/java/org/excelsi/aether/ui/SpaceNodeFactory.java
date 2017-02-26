@@ -12,6 +12,8 @@ import com.jme3.scene.shape.Box;
 import com.jme3.asset.AssetManager;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
+import com.jme3.math.Quaternion;
+import com.jme3.math.FastMath;
 import com.jme3.export.binary.BinaryImporter;
 import com.jme3.scene.SceneGraphVisitor;
 import jme3tools.optimize.LodGenerator;
@@ -20,6 +22,7 @@ import org.slf4j.Logger;
 
 import org.excelsi.aether.NHSpace;
 import org.excelsi.aether.Rand;
+import org.excelsi.aether.Architecture;
 import java.io.File;
 
 
@@ -34,7 +37,10 @@ public class SpaceNodeFactory extends AssetNodeFactory<NHSpace> {
     @Override public Spatial createNode(final String name, final NHSpace s, final SceneContext sc) {
         if(!"".equals(s.getModel())) {
             try {
-                final Spatial n = loadModel(s.getModel(), s.getColor(), Display.scatter);
+                final Spatial n = loadModel(s.getModel(), s.getColor(), displayFor(s.getArchitecture()));
+                if(s.getArchitecture()==Architecture.structural) {
+                    n.setLocalRotation(new Quaternion(new float[]{-FastMath.PI/2f, 0f, 0f}));
+                }
                 n.setLocalScale(3.0f);
                 Nodes.centerBelow(n);
                 final SpaceNode sp = new SpaceNode(s);
@@ -51,5 +57,15 @@ public class SpaceNodeFactory extends AssetNodeFactory<NHSpace> {
     private static Spatial generateLod(final Geometry g) {
         final LodGenerator gen = new LodGenerator(g);
         return null;
+    }
+
+    private static Display displayFor(Architecture a) {
+        switch(a) {
+            case repeating:
+                return Display.scatter;
+            default:
+            case structural:
+                return Display.single;
+        }
     }
 }

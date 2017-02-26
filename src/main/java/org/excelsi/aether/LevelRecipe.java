@@ -10,6 +10,7 @@ import java.util.List;
 public class LevelRecipe {
     private int _w;
     private int _h;
+    private int _partitions = 1;
     private String _name;
     private String _realm;
     private int _ordinal;
@@ -19,6 +20,15 @@ public class LevelRecipe {
 
 
     public LevelRecipe() {
+    }
+
+    public LevelRecipe partitions(int partitions) {
+        _partitions = partitions;
+        return this;
+    }
+
+    public int getPartitions() {
+        return _partitions;
     }
 
     public LevelRecipe mixin(Mixin<Level> m) {

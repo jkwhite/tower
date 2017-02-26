@@ -3,7 +3,7 @@
 #`dirname $0`/generate2.py
 
 cd model
-for f in *.mesh.xml; do
+for f in lessthan.mesh.xml; do
     b=`basename $f .mesh.xml`
     OgreXMLConverter -l 5 -v 5 -f 50 -p 60 $f
     OgreXMLConverter $b.mesh $b.lod.mesh.xml

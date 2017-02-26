@@ -735,6 +735,10 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
         return _color;
     }
 
+    public Architecture getArchitecture() {
+        return Architecture.structural;
+    }
+
     public void update() {
         if(_parasites!=null) {
             List<Parasite> pars = getParasites();

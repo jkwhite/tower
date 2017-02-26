@@ -61,5 +61,6 @@ public interface NHSpace extends MSpace, Container, Material {
     boolean look(Context c, boolean nothing, boolean lootOnly);
     boolean isAutopickup();
     boolean pickup(NHBot b);
+    Architecture getArchitecture();
     void bloom(Transform t, int radius);
 }

@@ -14,8 +14,8 @@ $c.universe.keymap = Data.loadYaml('/data/keys.yaml')
 def l1 = 
     new ExpanseLevelGenerator().generate(
         new LevelRecipe()
-        .name("The Lower Reaches")
-        .realm("The Lower Reaches")
+        .name("Terra Firma")
+        .realm("Terra Firma")
         .ordinal(1)
         .width(80)
         .height(24)
@@ -28,7 +28,20 @@ for(i=0;i<10;i++) {
 }
 l1.findRandomNormalEmptySpace().add(new Apple())
 l1.getMatrix().getSpace(0,0).add(new Apple())
+l1.getSpace(41,12).replace(new Stairs(true))
 l1.light = 5f
+
+def l2 = 
+    new BasicStageGenerator(TowerLevelGenerator.spacemaker()).generate(
+        new LevelRecipe()
+        .name("The Lower Reaches")
+        .realm("The Lower Reaches")
+        .ordinal(2)
+        .width(80)
+        .height(24)
+        .random(Rand.om))
+$c.bulk.addLevel(l2)
+
 $c.pov = $c.universe.createBot({b -> 'Archeologist'.equals(b.profession)})
 $c.pov.name = System.getProperty("user.name")
 $c.pov.inventory.add(new ScrollOfSummoning())

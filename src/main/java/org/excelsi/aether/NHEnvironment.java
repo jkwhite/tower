@@ -178,19 +178,23 @@ public class NHEnvironment extends MatrixEnvironment implements MatrixListener {
     }
 
     public void setLevel(int level) {
-        getGame().setLevel(level);
+        //getGame().setLevel(level);
+        ((World)Context.c().getState()).setLevel(Context.c(), Context.c().getBulk().findLevel(level));
     }
 
     public void setLevel(int level, MSpace m) {
-        getGame().setLevel(level, m);
+        //getGame().setLevel(level, m);
+        ((World)Context.c().getState()).setLevel(Context.c(), Context.c().getBulk().findLevel(level));
     }
 
     public int getLevel() {
-        return getGame().getLevel();
+        //return getGame().getLevel();
+        return ((World)Context.c().getState()).getLevel().getOrdinal();
     }
 
     public Level getFloor(int floor) {
-        return getGame().getFloor(floor);
+        //return getGame().getFloor(floor);
+        return (Level) Context.c().getBulk().findLevel(floor);
     }
 
     public Outcome[] project(final NHBot defender, final Attack a) {

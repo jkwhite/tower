@@ -2028,7 +2028,7 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
         public void perform() {
             NHSpace sp = _d;
             if(sp==null) {
-                Direction d = N.narrative().direct(getBot(), "Which direction?");
+                Direction d = Context.c().n().direct(getBot(), "Which direction?");
                 getBot().getEnvironment().face(d);
                 sp = (NHSpace) getBot().getEnvironment().getMSpace().move(d, true);
             }
@@ -2037,10 +2037,10 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
             }
             else {
                 if(getBot().isBlind()) {
-                    N.narrative().print(getBot(), Grammar.start(getBot())+" can't find a door there.");
+                    Context.c().n().print(getBot(), Grammar.start(getBot())+" can't find a door there.");
                 }
                 else {
-                    N.narrative().print(getBot(), Grammar.start(getBot(), "see")+" no door there.");
+                    Context.c().n().print(getBot(), Grammar.start(getBot(), "see")+" no door there.");
                 }
                 throw new ActionCancelledException();
             }
@@ -2048,12 +2048,12 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
 
         public void open(Doorway door) {
             if(door.isLocked()) {
-                N.narrative().print(getBot(), "The door is locked.");
+                Context.c().n().print(getBot(), "The door is locked.");
             }
             else {
                 if(door.isOpen()&&(door.isOccupied()||door.numItems()>0)) {
                     if(getBot().isPlayer()) {
-                        N.narrative().print(getBot(), "There's something in the doorway!");
+                        Context.c().n().print(getBot(), "There's something in the doorway!");
                     }
                     throw new ActionCancelledException();
                 }
@@ -2064,7 +2064,7 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
                 }
                 if(door.isOpen()) {
                     if(!getBot().isPlayer()) {
-                        N.narrative().print(getBot(), "The door opens!");
+                        Context.c().n().print(getBot(), "The door opens!");
                     }
                     else {
                         throw new ActionCancelledException();

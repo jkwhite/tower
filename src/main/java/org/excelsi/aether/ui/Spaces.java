@@ -109,6 +109,14 @@ public class Spaces {
                 return "hash";
             case "|":
                 return "pipe";
+            case "<":
+                return "lessthan";
+            case ">":
+                return "greaterthan";
+            case "~":
+                return "tilde";
+            case "^":
+                return "caret";
             default:
                 if(Character.isUpperCase(c.charAt(0))) {
                     return "_"+c.toLowerCase();

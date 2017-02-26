@@ -12,6 +12,7 @@
 #import bpy
 import sys, os, struct, string, types
 from os import path
+from math import pi
 from subprocess import call
 #from types import TextCurve
 
@@ -23,6 +24,9 @@ class glyph:
 
     def damages(current):
         return [0]
+
+    def rot(current):
+        return [0,0,0]
 
 class char(glyph):
     def __init__(current, symbol, filename):
@@ -43,6 +47,9 @@ class uarch(glyph):
     def __init__(current, symbol, filename):
         glyph.__init__(current, symbol, 'uarch', filename)
 
+    def rot(current):
+        return [pi/2,0,0]
+
 class earth(glyph):
     def __init__(current, symbol, filename):
         glyph.__init__(current, symbol, 'earth', filename)
@@ -52,8 +59,7 @@ class item(glyph):
         glyph.__init__(current, symbol, 'item', filename)
 
 test_glyphs = [
-    char('@', 'atsign'),
-    char('&', 'ampersand'),
+    uarch('<', 'lessthan'),
 ]
 
 glyphs = [
@@ -145,12 +151,13 @@ glyphs = [
     uarch('<', 'lessthan'),
     uarch('/', 'fslash'),
     uarch('\\', 'fbackslash'),
-    uarch('^', 'carat'),
+    uarch('^', 'caret'),
     uarch('0', '0')
 ]
 
-for c in glyphs:
+for c in test_glyphs:
     for dmg in c.damages():
         for res in [6]:
-            call(["./generate_glyph.py", "-c", c.symbol, "-e", "0.04", "-b", "0.02", "-B", "2", "-f", '/tmp/blot/'+c.filename, "-r", str(res), "-d", str(dmg)])
+            rs = c.rot()
+            call(["./generate_glyph.py", "-c", c.symbol, "-x", str(rs[0]), "-y", str(rs[1]), "-z", str(rs[2]), "-e", "0.04", "-b", "0.02", "-B", "2", "-f", '/tmp/blot/'+c.filename, "-r", str(res), "-d", str(dmg)])
             call(["mv", "/tmp/blot/Mesh.mesh.xml", "model/"+c.filename+".mesh.xml"])
