@@ -6,7 +6,22 @@ public class Keymap {
 
 
     public Keymap(final String k) {
-        _k = k;
+        switch(k) {
+            case "TAB":
+                _k = "\t";
+                break;
+            default:
+                _k = k;
+        }
+    }
+
+    public static String encode(final String k) {
+        switch(k) {
+            case "\t":
+                return "TAB";
+            default:
+                return k;
+        }
     }
 
     @Override public boolean equals(Object o) {

@@ -21,6 +21,10 @@ import org.excelsi.nausicaa.ca.RandomInitializer;
 public interface Spacemaker {
     void build(LevelRecipe r, Level l);
 
+    default public Spacemaker and(Spacemaker m) {
+        return (r,l)->{ this.build(r,l); m.build(r,l); };
+    }
+
     public static Spacemaker expanse() {
         return (r,l)->{
             for(int i=0;i<r.getWidth();i++) {

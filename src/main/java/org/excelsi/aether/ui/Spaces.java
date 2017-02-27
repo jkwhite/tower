@@ -117,6 +117,10 @@ public class Spaces {
                 return "tilde";
             case "^":
                 return "caret";
+            case "'":
+                return "squote";
+            case "\"":
+                return "dquote";
             default:
                 if(Character.isUpperCase(c.charAt(0))) {
                     return "_"+c.toLowerCase();

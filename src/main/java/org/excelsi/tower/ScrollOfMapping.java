@@ -37,11 +37,11 @@ public class ScrollOfMapping extends Scroll {
             case blessed:
             case uncursed:
                 b.getEnvironment().revealAll();
-                N.narrative().print(b, "Deja vu... have you been here before?");
+                Context.c().n().print(b, "Deja vu... have you been here before?");
                 break;
             case cursed:
                 b.getEnvironment().hideAll();
-                N.narrative().print(b, "Look, a butterfly!");
+                Context.c().n().print(b, "Look, a butterfly!");
                 break;
         }
     }

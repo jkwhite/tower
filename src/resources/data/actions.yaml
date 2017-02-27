@@ -57,7 +57,7 @@ quit: !!org.excelsi.aether.Patsy$Exit {}
 forward: !!org.excelsi.aether.DefaultNHBot$Forward {}
 look: !!org.excelsi.aether.Patsy$Look {}
 eat: !!org.excelsi.tower.Consume {}
-#switchview: !!"" {}
+switchview: !!org.excelsi.aether.ui.SwitchViewAction {}
 dip: !!org.excelsi.tower.Dip {}
 extended: !!org.excelsi.aether.Extended {}
 build: !!org.excelsi.tower.Build {}

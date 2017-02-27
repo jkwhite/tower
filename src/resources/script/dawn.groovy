@@ -11,11 +11,14 @@ $c.universe.threats = Data.loadYaml('/data/threats.yaml')
 $c.universe.actions = Data.loadYaml('/data/actions.yaml')
 $c.universe.keymap = Data.loadYaml('/data/keys.yaml')
 
+$c.bulk.stagemaker = new TowerStagemaker()
+
+/*
 def l1 = 
     new ExpanseLevelGenerator().generate(
         new LevelRecipe()
-        .name("Terra Firma")
-        .realm("Terra Firma")
+        .name('Terra Obscura')
+        .realm('Terra Obscura')
         .ordinal(1)
         .width(80)
         .height(24)
@@ -30,7 +33,9 @@ l1.findRandomNormalEmptySpace().add(new Apple())
 l1.getMatrix().getSpace(0,0).add(new Apple())
 l1.getSpace(41,12).replace(new Stairs(true))
 l1.light = 5f
+*/
 
+/*
 def l2 = 
     new BasicStageGenerator(TowerLevelGenerator.spacemaker()).generate(
         new LevelRecipe()
@@ -41,12 +46,13 @@ def l2 =
         .height(24)
         .random(Rand.om))
 $c.bulk.addLevel(l2)
+*/
 
 $c.pov = $c.universe.createBot({b -> 'Archeologist'.equals(b.profession)})
 $c.pov.name = System.getProperty("user.name")
-$c.pov.inventory.add(new ScrollOfSummoning())
 $c.pov.inventory.add(new Snowshoes())
 $c.pov.inventory.add(new Pill(new Cyanide()))
+$c.pov.inventory.add(new ScrollOfMapping(count:30))
 $c.pov.inventory.add(new Book() {
     String getName() { "book entitled 'The Lava Gatherers'" }
 

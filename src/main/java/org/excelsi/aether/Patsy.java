@@ -709,7 +709,7 @@ public class Patsy extends DefaultNHBot {
                     getBot().getEnvironment().ascend(null);
                 }
                 else {
-                    N.narrative().print(getBot(), "There are no stairs here.");
+                    Context.c().n().print(getBot(), "There are no stairs here.");
                 }
             }
         }
