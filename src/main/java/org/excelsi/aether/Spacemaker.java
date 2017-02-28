@@ -35,6 +35,16 @@ public interface Spacemaker {
         };
     }
 
+    public static Spacemaker expanse(Class<? extends NHSpace>... spaces) {
+        return (r,l)->{
+            for(int i=0;i<r.getWidth();i++) {
+                for(int j=0;j<r.getHeight();j++) {
+                    l.setSpace(r.getSpaces().create(spaces[Rand.om.nextInt(spaces.length)]), i, j);
+                }
+            }
+        };
+    }
+
     public static Spacemaker ca(List<Integer> dims, int colors, int seed, float zeroWeight, String incantation,
         Function<Integer,Class<? extends NHSpace>> smap, BiConsumer<Integer,NHSpace> modulator) {
         final Archetype a = new Archetype(dims.size()-1, 1, colors);

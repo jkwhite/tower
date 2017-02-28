@@ -34,7 +34,9 @@ public class KnowledgeController extends Enloggened implements Controller {
                 case "discovered":
                     //System.err.println(e.getKind()+" adding: "+e.getSpaces());
                     for(MSpace m:e.getSpaces()) {
-                        Spaces.createSpace(c, lev, (NHSpace)m);
+                        if(m!=null) {
+                            Spaces.createSpace(c, lev, (NHSpace)m);
+                        }
                     }
                     break;
                 default:

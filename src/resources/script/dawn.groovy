@@ -58,12 +58,12 @@ $c.pov.inventory.add(new Book() {
 
     void invoke(NHBot b) {
         $c.state.setLevel(Context.c(), 
-            new BasicStageGenerator(
-                Spacemaker.ca([160,160,150], 6, Rand.om.nextInt(), 0.6f, 'hi-i-u-ko',
+            new BasicStageGenerator().generate(
+                new LevelRecipe()
+                .spacemaker(Spacemaker.ca([160,160,150], 6, Rand.om.nextInt(), 0.6f, 'hi-i-u-ko',
                     Spacemaker.mapIndex([null, Ground, Ground, Ground, Ground, Ground]),
                     Spacemaker.mapColor(['black', 'dark-gray', 'gray', 'blue', 'black', 'purple'])
-                )).generate(
-                new LevelRecipe()
+                ))
                 .name("The Lava Gatherers")
                 .realm("The Lava Gatherers")
                 .ordinal(999)

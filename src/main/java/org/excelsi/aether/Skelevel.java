@@ -1,24 +1,56 @@
 package org.excelsi.aether;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 /**
  * Contains enough structural information about a level
  * to infer properties of preceding and succeeding levels.
  */
 public class Skelevel {
-    private int _w;
-    private int _h;
-    private Partition[] _partitions;
+    private final List<Partition> _partitions = new ArrayList<>();
 
 
-    public Skelevel(int w, int h, Partition... partitions) {
-        _w = w;
-        _h = h;
-        _partitions = partitions;
+    public Skelevel() {
     }
 
-    public LevelRecipe createRecipe() {
-        return new LevelRecipe().width(_w).height(_h).partitions(_partitions.length);
+    public Skelevel(List<Partition> partitions) {
+        _partitions.addAll(partitions);
+    }
+
+    public Skelevel partition(Partition p) {
+        _partitions.add(p);
+        return this;
+    }
+
+    public List<Partition> getPartitions() {
+        return _partitions;
+    }
+
+    public int numParts() {
+        return _partitions.size();
+    }
+
+    public int numAscending() {
+        int n = 0;
+        for(Partition p:_partitions) {
+            n += p.ascending();
+        }
+        return n;
+    }
+
+    public int numDescending() {
+        int n = 0;
+        for(Partition p:_partitions) {
+            n += p.descending();
+        }
+        return n;
+    }
+
+    @Override public String toString() {
+        return "Skelevel::{partitions:"+_partitions+"}";
     }
 
     public static class Partition implements java.io.Serializable {
@@ -53,6 +85,10 @@ public class Skelevel {
 
         public void decDesc() {
             _d--;
+        }
+
+        @Override public String toString() {
+            return "Partition::{a:"+_a+", d:"+_d+"}";
         }
     }
 

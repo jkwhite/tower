@@ -30,6 +30,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
 import static org.excelsi.tower.Shops.Building;
+import static org.excelsi.aether.Skelevel.Partition;
+import static org.excelsi.aether.Skelevel.Layout;
+import static org.excelsi.aether.Skelevel.Pattern;
 
 
 public class TowerLevelGenerator implements LevelGenerator, LevelGenerator.RoomModulator {
@@ -115,12 +118,13 @@ public class TowerLevelGenerator implements LevelGenerator, LevelGenerator.RoomM
 
     public static Spacemaker spacemaker() {
         return (r,l)->{
-            TowerLevelGenerator g = new TowerLevelGenerator(r.getWidth(), r.getHeight());
-            for(int i=0;i<l.width();i++) {
-                for(int j=0;j<l.height();j++) {
-                    l.setSpace(new Blank(), i, j);
-                }
-            }
+            TowerLevelGenerator g = new TowerLevelGenerator(r.getWidth(), r.getHeight(), r.getSkel().getPartitions().toArray(new Partition[0]));
+            //for(int i=0;i<l.width();i++) {
+                //for(int j=0;j<l.height();j++) {
+                    //l.setSpace(new Blank(), i, j);
+                //}
+            //}
+            l.setSpace(new Ground(), l.width()/2, l.height()/2);
             g.generate(l, l.getSpace(l.width()/2, l.height()/2));
         };
     }
@@ -189,6 +193,7 @@ public class TowerLevelGenerator implements LevelGenerator, LevelGenerator.RoomM
         Vines.setInitialChance(10);
         Farming.setChance(10);
         _grass = 1;
+        /*
         if(f<10) {
             WaterMixin.setChance(30);
             _grass = 5;
@@ -823,10 +828,12 @@ public class TowerLevelGenerator implements LevelGenerator, LevelGenerator.RoomM
                 }
             }
         }
+        */
         if(follow) {
             runParts();
         }
 
+        /*
         if(level.getName().equals("Van Allen's Land")) {
             for(int i=0;i<level.width();i++) {
                 for(int j=0;j<level.height();j++) {
@@ -1050,6 +1057,7 @@ public class TowerLevelGenerator implements LevelGenerator, LevelGenerator.RoomM
                 }
             }
         }
+        */
     }
 
     private void runParts() {
@@ -1066,6 +1074,11 @@ public class TowerLevelGenerator implements LevelGenerator, LevelGenerator.RoomM
             }
             else {
                 level = new Level(_level.width(), _level.height());
+                //for(int j=0;j<level.width();j++) {
+                    //for(int k=0;k<level.height();k++) {
+                        //level.setSpace(new Blank(), j, k);
+                    //}
+                //}
                 level.setFloor(_level.getFloor());
                 if(level.getFloor()==28) {
                     addFFL1(level);
@@ -1539,6 +1552,7 @@ up:             for(int x=i-2;x<=i+2;x++) {
         }
     }
 
+    /*
     public static class Partition implements java.io.Serializable {
         private int _a;
         private int _d;
@@ -1599,4 +1613,5 @@ up:             for(int x=i-2;x<=i+2;x++) {
             return _layout;
         }
     }
+    */
 }

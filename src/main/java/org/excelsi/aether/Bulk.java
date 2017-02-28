@@ -23,9 +23,9 @@ public final class Bulk {
         return _s;
     }
 
-    public void addLevel(Stage level) {
-        _levels.put(level.getOrdinal(), level);
-    }
+    //public void addLevel(Stage level) {
+        //_levels.put(level.getOrdinal(), level);
+    //}
 
     public Stage findLevel(final int ordinal) {
         Stage s = _levels.get(ordinal);

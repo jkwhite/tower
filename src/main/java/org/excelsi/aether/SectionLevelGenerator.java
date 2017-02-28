@@ -224,11 +224,23 @@ public class SectionLevelGenerator extends AbstractLevelGenerator {
                 }
             }
             if(added.size()==0) {
-                r = rooms.get(Rand.om.nextInt(rooms.size()));
+                int idx = Rand.om.nextInt(rooms.size());
+                for(int i=0;i<pways.length;i++) {
+                    if(pways[i]<pways[idx]) {
+                        idx = i;
+                    }
+                }
+                r = rooms.get(idx);
                 Logger.global.fine("******* added was zero, getting random");
             }
             else {
-                r = added.get(Rand.om.nextInt(added.size()));
+                int idx = Rand.om.nextInt(added.size());
+                for(int i=0;i<pways.length&&i<added.size();i++) {
+                    if(pways[i]<pways[idx]) {
+                        idx = i;
+                    }
+                }
+                r = added.get(idx);
             }
             allConnected = true;
             for(int p:pways) {

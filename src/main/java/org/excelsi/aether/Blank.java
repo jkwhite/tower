@@ -42,6 +42,10 @@ public class Blank extends DefaultNHSpace implements Breakable {
         return _replaceable;
     }
 
+    @Override public boolean isNull() {
+        return true;
+    }
+
     public MatrixMSpace union(MatrixMSpace m) {
         return m;
     }

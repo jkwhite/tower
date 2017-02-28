@@ -10,25 +10,45 @@ import java.util.List;
 public class LevelRecipe {
     private int _w;
     private int _h;
-    private int _partitions = 1;
+    private Skelevel _skel = new Skelevel().partition(new Skelevel.Partition(1,1));
     private String _name;
     private String _realm;
     private int _ordinal;
     private Random _r;
     private SpaceFactory _spaces = Spaces.identity();
+    private Spacemaker _sm = Spacemaker.expanse();
     private List<Mixin<Level>> _mixins;
+    private List<String> _ingredients = new ArrayList<>();
 
 
     public LevelRecipe() {
     }
 
-    public LevelRecipe partitions(int partitions) {
-        _partitions = partitions;
+    public LevelRecipe spacemaker(Spacemaker sm) {
+        _sm = sm;
         return this;
     }
 
-    public int getPartitions() {
-        return _partitions;
+    public Spacemaker getSpacemaker() {
+        return _sm;
+    }
+
+    public LevelRecipe ingredient(final String ing) {
+        _ingredients.add(ing);
+        return this;
+    }
+
+    public boolean requires(final String req) {
+        return _ingredients.contains(req);
+    }
+
+    public LevelRecipe skel(Skelevel skel) {
+        _skel = skel;
+        return this;
+    }
+
+    public Skelevel getSkel() {
+        return _skel;
     }
 
     public LevelRecipe mixin(Mixin<Level> m) {
@@ -104,5 +124,10 @@ public class LevelRecipe {
 
     public int getOrdinal() {
         return _ordinal;
+    }
+
+    @Override public String toString() {
+        return String.format("LevelRecipe::{name:\"%s\", realm:\"%s\", ordinal:%d, width:%d, height:%d, skel:%s}",
+            _name, _realm, _ordinal, _w, _h, _skel.toString());
     }
 }

@@ -403,6 +403,7 @@ public abstract class MatrixMSpace extends Id implements MSpace, Cloneable {
         MSpace[][] ret = new MSpace[count][];
         int i=0;
         for(List<MatrixMSpace> p:paths) {
+            //System.err.println("TEMPPATH: "+p);
             if(p != null) {
                 ret[i] = (MSpace[]) p.toArray(new MSpace[p.size()]);
             }
@@ -620,7 +621,9 @@ public abstract class MatrixMSpace extends Id implements MSpace, Cloneable {
             if(sp.getI()<0||sp.getJ()<0||sp.getI()>_m.width()||sp.getJ()>_m.height()) {
                 return false;
             }
+            //System.err.println("ACCEPT: this: "+MatrixMSpace.this+", sp: "+sp);
             return sp instanceof NullMatrixMSpace
+                || sp.isNull()
                 || MatrixMSpace.this.getClass().isAssignableFrom(sp.getClass());
         }
     }

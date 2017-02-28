@@ -291,6 +291,7 @@ public class Matrix extends MapEnvirons implements java.io.Serializable, MSpaceL
             //for(MSpace s:check) {
                 MSpace s = check[i];
                 //if(!visited.contains(s)) {
+                //System.err.println("CHECK: "+s);
                 if(s!=null) {
                     //if(!s.equals(b)) {
                         //visited.add(s);

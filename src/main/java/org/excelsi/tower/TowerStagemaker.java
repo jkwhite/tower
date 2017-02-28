@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.excelsi.aether.BasicStageGenerator;
+import org.excelsi.aether.Ground;
+import org.excelsi.aether.Spaces;
 import org.excelsi.aether.LevelRecipe;
 import org.excelsi.aether.Rand;
 import org.excelsi.aether.Spacemaker;
@@ -17,7 +19,7 @@ import static org.excelsi.aether.Skelevel.Layout;
 
 
 public class TowerStagemaker implements Stagemaker {
-    private List<LParts> _partitions = new ArrayList<LParts>();
+    private List<Skelevel> _partitions = new ArrayList<>();
 
 
     @Override public Stage createStage(final int ordinal) {
@@ -35,21 +37,41 @@ public class TowerStagemaker implements Stagemaker {
     }
 
     private Stage createStage(final LevelRecipe r) {
-        final Spacemaker sm = r.getOrdinal()==1?
-            Spacemaker.expanse().and((r2,l)->{l.getSpace(l.width()/2,l.height()/2).replace(new Stairs(true));})
-            :TowerLevelGenerator.spacemaker();
-        final BasicStageGenerator g = new BasicStageGenerator(sm);
+        System.err.println("recipe: "+r);
+        final BasicStageGenerator g = new BasicStageGenerator();
         return g.generate(r);
     }
 
-    private LevelRecipe createRecipe(final int ordinal, final LParts lparts) {
-        return new LevelRecipe()
+    private LevelRecipe createRecipe(final int ordinal, final Skelevel skel) {
+        final LevelRecipe r = new LevelRecipe()
             .name("Terra Obscura")
             .realm("Terra Obscura")
             .ordinal(ordinal)
-            .width(20)
-            .height(20)
+            .width(160)
+            .height(160)
+            .skel(skel)
             .random(Rand.om);
+        switch(ordinal) {
+            case 1:
+                r.spacemaker(Spacemaker.expanse(Ground.class,Grass.class).and((r2,l)->{l.getSpace(l.width()/2,l.height()/2).replace(new Stairs(true));}));
+                r.spaces(Spaces.modulator((s)->{
+                    switch(Rand.om.nextInt(5)) {
+                        case 0:
+                            s.setColor("gray");
+                            break;
+                        case 1:
+                            s.setColor("brown");
+                            break;
+                        default:
+                    }
+                }));
+                r.ingredient("grass");
+                break;
+            default:
+                r.spacemaker(TowerLevelGenerator.spacemaker());
+                break;
+        }
+        return r;
     }
 
     private void ensureCapacity(final int ordinal) {
@@ -57,7 +79,7 @@ public class TowerStagemaker implements Stagemaker {
             int current = _partitions.size();
             int below = ordinal==1?1:_partitions.get(_partitions.size()-1).numAscending();
             int parts;
-            ArrayList<Partition> ps = new ArrayList<Partition>();
+            List<Partition> ps = new ArrayList<Partition>();
             if(current==899) {
                 ps.add(new Partition(0, 1));
             }
@@ -102,12 +124,15 @@ public class TowerStagemaker implements Stagemaker {
                     }
                 }
             }
-            LParts lp = new LParts();
-            lp.ps = (Partition[]) ps.toArray(new Partition[ps.size()]);
-            _partitions.add(lp);
+            Skelevel skel = new Skelevel(ps);
+            //LParts lp = new LParts();
+            //lp.ps = (Partition[]) ps.toArray(new Partition[ps.size()]);
+            //_partitions.add(lp);
+            _partitions.add(skel);
         }
     }
 
+    /*
     private static class LParts implements java.io.Serializable {
         public Partition[] ps;
 
@@ -131,4 +156,5 @@ public class TowerStagemaker implements Stagemaker {
             return n;
         }
     }
+    */
 }

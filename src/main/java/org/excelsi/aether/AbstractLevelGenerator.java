@@ -21,6 +21,7 @@ package org.excelsi.aether;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -244,6 +245,7 @@ public abstract class AbstractLevelGenerator implements LevelGenerator {
                 Ground end = new Ground();
                 setSpace(end, ex, ey);
                 MSpace[][] paths = start.paths(end, true, 1, createPassagewayFilter(start), mf(sanity), null);
+                //System.err.println("DRAWING PATH: "+Arrays.toString(paths[0]));
                 for(MSpace m:paths[Rand.om.nextInt(1)]) {
                     m.replace(new Ground());
                 }

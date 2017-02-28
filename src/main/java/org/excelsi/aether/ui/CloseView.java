@@ -84,7 +84,7 @@ class CloseView extends CameraNode implements View {
                 angle = new Angle("follow-right", 5f, new float[]{0.6f, 1f}, new float[]{1f, 8f*(float)Math.PI/7f, 0f}, 40f, new Vector3f(-10f, 0f, -9f), false, false);
             }
             else if("above".equals(a)) {
-                angle = new Angle("above", Float.MAX_VALUE, new float[]{0f, 0f}, new float[]{(float)Math.PI/2f, (float)Math.PI, 0f}, 0f, new Vector3f(UIConstants.HORIZ_RATIO*Constants.LEVEL_WIDTH/2f, 250f, UIConstants.VERT_RATIO*Constants.LEVEL_HEIGHT/2f), true, false);
+                angle = new Angle("above", Float.MAX_VALUE, new float[]{0f, 0f}, new float[]{(float)Math.PI/2f, (float)Math.PI, 0f}, 0f, new Vector3f(UIConstants.HORIZ_RATIO*Constants.LEVEL_WIDTH/2f, 500f, UIConstants.VERT_RATIO*Constants.LEVEL_HEIGHT/2f), true, false);
             }
             else if("first-person".equals(a)) {
                 angle = new Angle("first-person", 0f, new float[]{0f, 0f}, new float[]{0.1f, 0f, 0f}, 0f, new Vector3f(0f,2.0f,-0.4f), false, true);
