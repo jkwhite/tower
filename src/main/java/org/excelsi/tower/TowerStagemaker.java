@@ -14,13 +14,20 @@ import org.excelsi.aether.Stairs;
 import org.excelsi.aether.Stage;
 import org.excelsi.aether.Stagemaker;
 import org.excelsi.aether.Skelevel;
+import org.excelsi.aether.Heightmap;
+import org.excelsi.aether.StageGenerator;
 import static org.excelsi.aether.Skelevel.Partition;
 import static org.excelsi.aether.Skelevel.Layout;
 
 
 public class TowerStagemaker implements Stagemaker {
+    private final StageGenerator _g;
     private List<Skelevel> _partitions = new ArrayList<>();
 
+
+    public TowerStagemaker(final StageGenerator g) {
+        _g = g;
+    }
 
     @Override public Stage createStage(final int ordinal) {
         ensureCapacity(ordinal);
@@ -37,9 +44,7 @@ public class TowerStagemaker implements Stagemaker {
     }
 
     private Stage createStage(final LevelRecipe r) {
-        System.err.println("recipe: "+r);
-        final BasicStageGenerator g = new BasicStageGenerator();
-        return g.generate(r);
+        return _g.generate(r);
     }
 
     private LevelRecipe createRecipe(final int ordinal, final Skelevel skel) {
@@ -65,9 +70,11 @@ public class TowerStagemaker implements Stagemaker {
                         default:
                     }
                 }));
-                r.ingredient("grass");
+                r.ingredient("hills");
+                //r.mixin(new Heightmap(1f));
                 break;
             default:
+                r.ingredient("small");
                 r.spacemaker(TowerLevelGenerator.spacemaker());
                 break;
         }

@@ -21,7 +21,15 @@ package org.excelsi.aether;
 
 
 public class Heightmap implements Mixin<Level> {
+    private final float _coef;
+
+
     public Heightmap() {
+        this(1f);
+    }
+
+    public Heightmap(final float coef) {
+        _coef = coef;
     }
 
     public boolean match(Class c) {
@@ -31,7 +39,7 @@ public class Heightmap implements Mixin<Level> {
     public void mix(Level level) {
         final float[][] depths = new float[level.width()][level.height()];
         //mixBasin(level, depths);
-        mixHills(level, depths, -2f);
+        mixHills(level, depths, -_coef);
         for(int i=0;i<level.width();i++) {
             for(int j=0;j<level.height();j++) {
                 NHSpace s = level.getSpace(i,j);

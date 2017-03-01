@@ -127,7 +127,7 @@ public class LevelRecipe {
     }
 
     @Override public String toString() {
-        return String.format("LevelRecipe::{name:\"%s\", realm:\"%s\", ordinal:%d, width:%d, height:%d, skel:%s}",
-            _name, _realm, _ordinal, _w, _h, _skel.toString());
+        return String.format("LevelRecipe::{name:\"%s\", realm:\"%s\", ordinal:%d, width:%d, height:%d, skel:%s, requirements:%s, mixins:%s}",
+            _name, _realm, _ordinal, _w, _h, _skel.toString(), _ingredients, getMixins());
     }
 }

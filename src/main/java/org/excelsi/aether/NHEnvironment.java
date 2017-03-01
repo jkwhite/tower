@@ -179,12 +179,12 @@ public class NHEnvironment extends MatrixEnvironment implements MatrixListener {
 
     public void setLevel(int level) {
         //getGame().setLevel(level);
-        ((World)Context.c().getState()).setLevel(Context.c(), Context.c().getBulk().findLevel(level));
+        ((World)Context.c().getState()).setLevel(Context.c(), Context.c().getBulk().findLevel(level), null);
     }
 
     public void setLevel(int level, MSpace m) {
         //getGame().setLevel(level, m);
-        ((World)Context.c().getState()).setLevel(Context.c(), Context.c().getBulk().findLevel(level));
+        ((World)Context.c().getState()).setLevel(Context.c(), Context.c().getBulk().findLevel(level), m);
     }
 
     public int getLevel() {

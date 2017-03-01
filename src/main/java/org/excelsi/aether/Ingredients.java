@@ -20,11 +20,25 @@
 package org.excelsi.aether;
 
 
-public interface Mixin<E> extends java.io.Serializable {
-    default boolean matches(E e) {
-        return false;
+import java.util.function.Consumer;
+
+
+public final class Ingredients {
+    public static Ingredient mixin(String name, Mixin<Level> m) {
+        return new Ingredient(name) {
+            @Override public void mix(LevelRecipe r) {
+                r.mixin(m);
+            }
+        };
     }
 
-    boolean match(Class c);
-    void mix(E e);
+    public static Ingredient i(String name, Consumer<LevelRecipe> c) {
+        return new Ingredient(name) {
+            @Override public void mix(LevelRecipe r) {
+                c.accept(r);
+            }
+        };
+    }
+
+    private Ingredients() {}
 }

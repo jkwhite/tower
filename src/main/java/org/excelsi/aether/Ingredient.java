@@ -20,11 +20,19 @@
 package org.excelsi.aether;
 
 
-public interface Mixin<E> extends java.io.Serializable {
-    default boolean matches(E e) {
-        return false;
+public abstract class Ingredient implements Mixin<LevelRecipe> {
+    private final String _name;
+
+
+    public Ingredient(final String name) {
+        _name = name;
     }
 
-    boolean match(Class c);
-    void mix(E e);
+    @Override public boolean matches(LevelRecipe r) {
+        return r.requires(_name);
+    }
+
+    @Override public boolean match(Class c) {
+        return false;
+    }
 }

@@ -3,6 +3,7 @@ package org.excelsi.aether;
 
 import java.util.Random;
 import org.excelsi.matrix.MSpace;
+import org.excelsi.matrix.MatrixMSpace;
 import org.excelsi.aether.ActionCancelledException;
 import org.excelsi.aether.Grammar;
 import org.excelsi.aether.Patsy;
@@ -34,40 +35,114 @@ public class World implements State {
         EventBus.instance().post("keys", new BotAttributeChangeEvent<String>(this, _player, "created", "", ""));
 
         connectOnce();
-        setLevel(c, c.getBulk().findLevel(1));
+        setLevel(c, c.getBulk().findLevel(1), null);
         while(c.getState()==this) {
             try {
                 //System.err.println("tick: "+_level);
                 _level.tick(c);
             }
             catch(ActionCancelledException e) {
+                if(e.getMessage()!=null) {
+                    c.n().print(_player, e.getMessage());
+                }
             }
             catch(Exception e) {
                 e.printStackTrace();
             }
         }
-        System.err.println("***************************** DONE **********************");
     }
 
-    public void setLevel(final Context c, final Stage level) {
+    public void setLevel(final Context c, final Stage level, final MSpace start) {
         final Stage old = _level;
         _level = level;
         if(old!=null) {
             disconnect(old.getEventSource());
         }
+
         connect(_level.getEventSource());
         EventBus.instance().post("changes", new ChangeEvent<Bulk,Stage>(this, "level", c.getBulk(), old, _level));
         EventBus.instance().post("keys", new ChangeEvent<Bulk,Stage>(this, "level", c.getBulk(), old, _level));
 
-        MSpace m = level.getMatrix().getSpace(level.getMatrix().width()/2,level.getMatrix().height()/2);
-        if(m==null||!m.isWalkable()) {
-            m = ((Level)level).findRandomEmptySpace();
+        if(old!=null) {
+            switchLevel((Level)level, start);
         }
-        m.setOccupant(_player);
+        else {
+            MSpace m = level.getMatrix().getSpace(level.getMatrix().width()/2,level.getMatrix().height()/2);
+            if(m==null||!m.isWalkable()) {
+                m = ((Level)level).findRandomEmptySpace();
+            }
+            m.setOccupant(_player);
+        }
     }
 
     public Stage getLevel() {
         return _level;
+    }
+
+    private final void switchLevel(Level l, MSpace start) {
+        //Logger.global.info("setting level "+level);
+        MSpace[] surr = _player.getEnvironment().getMSpace().surrounding();
+        int partition = 0;
+        boolean ascended = false;
+        if(_player.getEnvironment().getMSpace() instanceof Stairs) {
+            Stairs str = (Stairs)_player.getEnvironment().getMSpace();
+            partition = str.getPartition();
+            ascended = str.isAscending();
+        }
+        //System.err.println("move with partition "+partition);
+        _player.getEnvironment().getMSpace().clearOccupant();
+        //Level l = getFloor(level);
+        //final boolean ascended = _currentLevel<level;
+        //_currentLevel = level;
+        MSpace s = start;
+        if(s==null) {
+            for(MSpace sp:l.spaces()) {
+                if(sp instanceof Stairs) {
+                    Stairs st = (Stairs) sp;
+                    if(ascended!=st.isAscending() && st.getPartition()==partition) {
+                        //System.err.println("found stairs "+sp);
+                        s = sp;
+                        break;
+                    }
+                }
+            }
+        }
+        if(s==null||s.isOccupied()) {
+            s = l.findRandomNormalEmptySpace();
+            if(s==null||s.isOccupied()) {
+                s = l.findNearestEmpty(Ground.class, (MatrixMSpace) l.findRandomEmptySpace());
+            }
+        }
+        MSpace[] nsurr = s.surrounding();
+        for(MSpace a:surr) {
+            if(a!=null&&a.isOccupied()) {
+                NHBot b = (NHBot) a.getOccupant();
+                if(b.threat(_player)==Threat.familiar||Rand.d100(50)) {
+                    for(MSpace pl:nsurr) {
+                        if(pl!=null&&pl.isWalkable()&&!pl.isOccupied()&&b.canOccupy((NHSpace)pl)) {
+                            a.clearOccupant();
+                            pl.setOccupant(b);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        //_player.setLevel(getCurrentLevel());
+        //Logger.global.info(_player+" moved to level "+l.getFloor());
+        //if(getCurrentLevel().getFloor()!=_currentLevel) {
+            //throw new IllegalStateException("level mismatch: "+getCurrentLevel().getFloor()+"/"+_currentLevel);
+        //}
+        s.setOccupant(_player);
+
+        //for(GameListener gl:_listeners) {
+            //if(ascended) {
+                //gl.ascended(this);
+            //}
+            //else {
+                //gl.descended(this);
+            //}
+        //}
     }
 
     private void connectOnce() {

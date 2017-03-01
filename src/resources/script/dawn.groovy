@@ -11,7 +11,12 @@ $c.universe.threats = Data.loadYaml('/data/threats.yaml')
 $c.universe.actions = Data.loadYaml('/data/actions.yaml')
 $c.universe.keymap = Data.loadYaml('/data/keys.yaml')
 
-$c.bulk.stagemaker = new TowerStagemaker()
+$c.bulk.stagemaker = new TowerStagemaker(
+    new BasicStageGenerator([
+        Ingredients.mixin('hills', new Heightmap()),
+        Ingredients.i('small', { r -> r.width(30); r.height(30); })
+    ])
+)
 
 /*
 def l1 = 

@@ -27,6 +27,9 @@ public class JfxMessages extends HudNode {
         addLogicHandler((le)->{
             if(le.e() instanceof MessageEvent) {
                 final MessageEvent e = (MessageEvent) le.e();
+                if(e.getMessage()==null) {
+                    return;
+                }
                 final Node t;
                 if(e.getMessage() instanceof Item) {
                     if(e.getHints().isKeyed()) {
