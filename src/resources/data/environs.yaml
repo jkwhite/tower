@@ -1,0 +1,20 @@
+---
+  classic:
+    - medium
+    - rooms
+  crumbling:
+    - ruins
+  narrow:
+    - small
+    - rooms
+  overgrowth:
+    - grass
+  plains:
+    - grass
+    - large
+  rolling:
+    - hills
+    - grass
+  winchester:
+    - large
+    - rooms

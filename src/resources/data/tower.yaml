@@ -1,0 +1,77 @@
+---
+- !!org.excelsi.tower.Segment
+  realm: Illorumn
+  names:
+    '*': The Base of the Tower
+  height: 1
+  unique: true
+  environs:
+    - plains
+    - rolling
+- !!org.excelsi.tower.Segment
+  realm: The Lower Reaches
+  names:
+    '*': The Lower Reaches
+  height: 10
+  stretchy: true
+  environs:
+    - narrow
+    - classic
+    - crumbling
+    - overgrowth
+- !!org.excelsi.tower.Segment
+  realm: The Old Waterway
+  names:
+    '*': Lower Waterway
+  height: 5
+  environs:
+    - watery
+    - crumbling
+- !!org.excelsi.tower.Segment
+  realm: The Old Waterway
+  names:
+    '*': Center Ground
+  height: 1
+  unique: true
+  environs:
+    - classic
+- !!org.excelsi.tower.Segment
+  realm: The Old Waterway
+  names:
+    '*': Upper Waterway
+  height: 5
+  environs:
+    - watery
+    - crumbling
+- !!org.excelsi.tower.Segment
+  realm: The Old Waterway
+  names:
+    '*': Current Control
+  height: 1
+  unique: true
+  environs:
+    - watery
+- !!org.excelsi.tower.Segment
+  realm: The Old Waterway
+  names:
+    '*': Beset by Creatures of the Deep
+  height: 1
+  unique: true
+  environs:
+    - watery
+    - conflict
+- !!org.excelsi.tower.Segment
+  realm: The Disputed Zone
+  names:
+    '*': The Disputed Zone
+  height: 5
+  environs:
+    - classic
+- !!org.excelsi.tower.Segment
+  realm: The Town
+  names:
+    '*': The Town
+  height: 1
+  unique: true
+  environs:
+    - town
