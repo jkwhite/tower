@@ -22,11 +22,13 @@ import static org.excelsi.aether.Skelevel.Layout;
 
 public class TowerStagemaker implements Stagemaker {
     private final StageGenerator _g;
+    private final List<Segment> _tower;
     private List<Skelevel> _partitions = new ArrayList<>();
 
 
-    public TowerStagemaker(final StageGenerator g) {
+    public TowerStagemaker(final StageGenerator g, final List<Segment> tower) {
         _g = g;
+        _tower = tower;
     }
 
     @Override public Stage createStage(final int ordinal) {
@@ -48,17 +50,22 @@ public class TowerStagemaker implements Stagemaker {
     }
 
     private LevelRecipe createRecipe(final int ordinal, final Skelevel skel) {
+        final Segment seg = findSegment(ordinal);
         final LevelRecipe r = new LevelRecipe()
-            .name("Terra Obscura")
-            .realm("Terra Obscura")
+            .name(seg.findName(ordinal))
+            .realm(seg.getRealm())
             .ordinal(ordinal)
             .width(160)
             .height(160)
             .skel(skel)
             .random(Rand.om);
+        for(String env:seg.getEnvirons()) {
+            r.ingredient(env);
+        }
         switch(ordinal) {
             case 1:
-                r.spacemaker(Spacemaker.expanse(Ground.class,Grass.class).and((r2,l)->{l.getSpace(l.width()/2,l.height()/2).replace(new Stairs(true));}));
+                //r.spacemaker(Spacemaker.expanse(Ground.class,Grass.class).and((r2,l)->{l.getSpace(l.width()/2,l.height()/2).replace(new Stairs(true));}));
+                /*
                 r.spaces(Spaces.modulator((s)->{
                     switch(Rand.om.nextInt(5)) {
                         case 0:
@@ -70,15 +77,27 @@ public class TowerStagemaker implements Stagemaker {
                         default:
                     }
                 }));
-                r.ingredient("hills");
+                */
+                //r.ingredient("hills");
                 //r.mixin(new Heightmap(1f));
                 break;
             default:
-                r.ingredient("small");
-                r.spacemaker(TowerLevelGenerator.spacemaker());
+                //r.ingredient("small");
+                //r.spacemaker(TowerLevelGenerator.spacemaker());
                 break;
         }
         return r;
+    }
+
+    private Segment findSegment(final int ordinal) {
+        int i = 0;
+        for(Segment s:_tower) {
+            if(i>=ordinal) {
+                return s;
+            }
+            i += s.getHeight();
+        }
+        throw new IllegalStateException("too high: "+ordinal);
     }
 
     private void ensureCapacity(final int ordinal) {

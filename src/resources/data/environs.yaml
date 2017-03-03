@@ -1,9 +1,15 @@
 ---
+  base:
+    - base
+  blight:
+    - blight
   classic:
     - medium
     - rooms
   crumbling:
     - ruins
+  expanse:
+    - expanse
   narrow:
     - small
     - rooms

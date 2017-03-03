@@ -12,10 +12,37 @@ $c.universe.actions = Data.loadYaml('/data/actions.yaml')
 $c.universe.keymap = Data.loadYaml('/data/keys.yaml')
 
 $c.bulk.stagemaker = new TowerStagemaker(
-    new BasicStageGenerator([
-        Ingredients.mixin('hills', new Heightmap()),
-        Ingredients.i('small', { r -> r.width(30); r.height(30); })
-    ])
+    new BasicStageGenerator(
+        Data.loadYaml('/data/environs.yaml'),
+        [
+            Ingredients.mixin('hills', new Heightmap(0.5f)),
+            Ingredients.mixin('foothills', new Heightmap()),
+            Ingredients.mixin('mountains', new Heightmap(2f)),
+            Ingredients.i('tiny', { r -> r.width(20); r.height(20) }),
+            Ingredients.i('small', { r -> r.width(30); r.height(30) }),
+            Ingredients.i('medium', { r -> r.width(80); r.height(80) }),
+            Ingredients.i('large', { r -> r.width(160); r.height(160) }),
+            Ingredients.i('huge', { r -> r.width(300); r.height(300) }),
+            Ingredients.i('rooms', { r -> r.spacemaker(TowerLevelGenerator.spacemaker()) }),
+            Ingredients.i('expanse', { r -> r.spacemaker(Spacemaker.expanse()) }),
+            Ingredients.i('base', { r -> r.spacemaker(Spacemaker.expanse(Ground,Grass).and({ r2,l -> l.getSpace((int)(l.width()/2),(int)(l.height()/2)).replace(new Stairs(true)) })) }),
+            Ingredients.i('blight', { r -> 
+                r.spaces(Spaces.modulator({ s ->
+                    switch(Rand.om.nextInt(5)) {
+                        case 0:
+                            s.setColor("gray");
+                            break;
+                        case 1:
+                            s.setColor("brown");
+                            break;
+                        default:
+                            break;
+                    }
+                }))
+            })
+        ]
+    ),
+    Data.loadYaml('/data/tower.yaml')
 )
 
 /*

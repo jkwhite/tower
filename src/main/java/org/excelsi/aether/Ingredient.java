@@ -28,6 +28,10 @@ public abstract class Ingredient implements Mixin<LevelRecipe> {
         _name = name;
     }
 
+    public String getName() {
+        return _name;
+    }
+
     @Override public boolean matches(LevelRecipe r) {
         return r.requires(_name);
     }

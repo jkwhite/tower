@@ -42,6 +42,10 @@ public class LevelRecipe {
         return _ingredients.contains(req);
     }
 
+    public List<String> getIngredients() {
+        return _ingredients;
+    }
+
     public LevelRecipe skel(Skelevel skel) {
         _skel = skel;
         return this;

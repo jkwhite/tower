@@ -1,5 +1,14 @@
 ---
 - !!org.excelsi.tower.Segment
+  realm: Terran Subterraine
+  names:
+    '*': Relm
+  height: 1
+  unique: true
+  environs:
+    - huge
+    - expanse
+- !!org.excelsi.tower.Segment
   realm: Illorumn
   names:
     '*': The Base of the Tower
@@ -8,6 +17,8 @@
   environs:
     - plains
     - rolling
+    - blight
+    - base
 - !!org.excelsi.tower.Segment
   realm: The Lower Reaches
   names:
@@ -16,7 +27,6 @@
   stretchy: true
   environs:
     - narrow
-    - classic
     - crumbling
     - overgrowth
 - !!org.excelsi.tower.Segment
