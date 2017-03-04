@@ -3,7 +3,6 @@ import org.excelsi.tower.*
 import org.excelsi.sketch.*
 
 $c.universe.colormap = Data.loadYaml('/data/colors.yaml')
-
 $c.universe.items = Data.loadYaml('/items.yaml')
 $c.universe.finds = Data.loadYaml('/data/finds.yaml')
 $c.universe.bots = Data.loadYaml('/bots.yaml')
@@ -18,6 +17,12 @@ $c.bulk.stagemaker = new TowerStagemaker(
             Ingredients.mixin('hills', new Heightmap(0.5f)),
             Ingredients.mixin('foothills', new Heightmap()),
             Ingredients.mixin('mountains', new Heightmap(2f)),
+            Ingredients.mixin('bots', new BotMixin()),
+            Ingredients.mixin('neon', new Illumination(1f, 'light-green')),
+            Ingredients.mixin('bright', new Illumination(1f, 'white')),
+            Ingredients.mixin('dim', new Illumination(0.6f, 'light-gray')),
+            Ingredients.mixin('dark', new Illumination(0.3f, 'dark-gray')),
+            Ingredients.mixin('pitch-black', new Illumination(0f, 'black')),
             Ingredients.i('tiny', { r -> r.width(20); r.height(20) }),
             Ingredients.i('small', { r -> r.width(30); r.height(30) }),
             Ingredients.i('medium', { r -> r.width(80); r.height(80) }),

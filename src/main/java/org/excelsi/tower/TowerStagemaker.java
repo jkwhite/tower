@@ -59,7 +59,7 @@ public class TowerStagemaker implements Stagemaker {
             .height(160)
             .skel(skel)
             .random(Rand.om);
-        for(String env:seg.getEnvirons()) {
+        for(final String env:seg.randomEnvirons()) {
             r.ingredient(env);
         }
         switch(ordinal) {

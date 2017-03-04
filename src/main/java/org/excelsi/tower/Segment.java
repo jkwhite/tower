@@ -4,6 +4,8 @@ package org.excelsi.tower;
 import java.util.List;
 import java.util.Map;
 
+import org.excelsi.aether.Rand;
+
 
 public class Segment {
     private String _realm;
@@ -72,5 +74,9 @@ public class Segment {
 
     public List<String> getEnvirons() {
         return _environs;
+    }
+
+    public String[] randomEnvirons() {
+        return _environs.get(Rand.om.nextInt(_environs.size())).split(" ");
     }
 }

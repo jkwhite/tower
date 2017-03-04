@@ -1,18 +1,18 @@
 ---
 light-brown: "0.70, 0.4, 0.0, 1.0"
 turquoise: "0.20, 0.45, 0.58, 1.0"
-white: #ffffffff
-pink: #faa9d3ff
-black: #000000ff
+white: '#ffffffff'
+pink: '#faa9d3ff'
+black: '#000000ff'
 bright-green: "0.0, 1.0, 0.0, 1.0"
 light-green: "0.5, 1.0, 0.5, 1.0"
 bright-red: "1.0, 0.0, 0.0, 1.0"
 ultramarine: "0.18, 0.30, 0.86, 1.0"
-aquamarine: #3ea2ddff
+aquamarine: '#3ea2ddff'
 maroon: "0.79, 0.01, 0.28, 1.0"
 blue: "0.0, 0.0, 0.7, 1.0"
 dark-blue: "0.0, 0.0, 0.3, 1.0"
-tan: #bd986eff
+tan: '#bd986eff'
 purple: "0.7, 0.0, 0.7, 1.0"
 phthalo blue: "0.07, 0.36, 0.63, 1.0"
 lavender: "0.56, 0.38, 0.78, 1.0"
@@ -34,13 +34,13 @@ magenta: "0.93, 0.21, 0.55, 1.0"
 dark-gray: "0.3, 0.3, 0.3, 1.0"
 sepia: "0.35, 0.26, 0.11, 1.0"
 dark-green: "0.0, 0.3, 0.0, 1.0"
--salmon: #d17f45ff
--translucent: #66666666
+-salmon: '#d17f45ff'
+-translucent: '#66666666'
 -translucent-lavender: "0.56, 0.38, 0.78, 0.7"
 -translucent-orange: "1.0, 0.48, 0.0, 0.7"
--puke-green: #99a440ff
+-puke-green: '#99a440ff'
 -clear: "0.5, 0.5, 1.0, 0.3"
--alien: #d1ef5aff
+-alien: '#d1ef5aff'
 -transparent: "0.3, 0.3, 0.3, 0.1"
--frozen: #b9defbff
+-frozen: '#b9defbff'
 -camphor: "0.18, 0.43, 0.01, 1.0"

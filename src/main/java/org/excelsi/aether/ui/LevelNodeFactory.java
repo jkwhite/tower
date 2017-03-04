@@ -14,13 +14,17 @@ import com.jme3.light.DirectionalLight;
 import com.jme3.math.ColorRGBA;
 
 import org.excelsi.aether.Stage;
+import org.excelsi.aether.Keys;
 
 
 public class LevelNodeFactory implements NodeFactory<Stage> {
     @Override public Spatial createNode(final String name, final Stage s, final SceneContext c) {
-        //return new Node(name);
         final DirectionalLight light = new DirectionalLight(new Vector3f(0, -1, 0));
-        light.setColor(ColorRGBA.White);
+        final float intensity = s.findFloat(Keys.LIGHT, 1f);
+        final String color = s.findString(Keys.LIGHT_COLOR, "white");
+        //final ColorRGBA col = new ColorRGBA(intensity, intensity, intensity, 1f);
+        final ColorRGBA col = Materials.colorFor(color);
+        light.setColor(col);
         //final Node n = new LightNode(name, light);
         final Node n = new Node(name);
         n.addLight(light);

@@ -1,8 +1,10 @@
 ---
-  base:
+  foundation:
     - base
-  blight:
+  blighted:
     - blight
+  cavernous:
+    - dark
   classic:
     - medium
     - rooms
@@ -21,6 +23,10 @@
   rolling:
     - hills
     - grass
+  sunlit:
+    - bright
+  wild:
+    - bots
   winchester:
     - large
     - rooms

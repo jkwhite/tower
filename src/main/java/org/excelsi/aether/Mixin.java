@@ -25,6 +25,9 @@ public interface Mixin<E> extends java.io.Serializable {
         return false;
     }
 
-    boolean match(Class c);
+    default boolean match(Class c) {
+        return false;
+    }
+
     void mix(E e);
 }

@@ -6,8 +6,7 @@
   height: 1
   unique: true
   environs:
-    - huge
-    - expanse
+    - huge cavernous expanse
 - !!org.excelsi.tower.Segment
   realm: Illorumn
   names:
@@ -15,10 +14,7 @@
   height: 1
   unique: true
   environs:
-    - plains
-    - rolling
-    - blight
-    - base
+    - sunlit rolling blighted plains foundation
 - !!org.excelsi.tower.Segment
   realm: The Lower Reaches
   names:
@@ -26,17 +22,15 @@
   height: 10
   stretchy: true
   environs:
-    - narrow
-    - crumbling
-    - overgrowth
+    - narrow crumbling wild overgrowth
+    - classic crumbling wild overgrowth
 - !!org.excelsi.tower.Segment
   realm: The Old Waterway
   names:
     '*': Lower Waterway
   height: 5
   environs:
-    - watery
-    - crumbling
+    - crumbling watery
 - !!org.excelsi.tower.Segment
   realm: The Old Waterway
   names:
@@ -51,8 +45,7 @@
     '*': Upper Waterway
   height: 5
   environs:
-    - watery
-    - crumbling
+    - crumbling watery
 - !!org.excelsi.tower.Segment
   realm: The Old Waterway
   names:
@@ -68,8 +61,7 @@
   height: 1
   unique: true
   environs:
-    - watery
-    - conflict
+    - watery conflict
 - !!org.excelsi.tower.Segment
   realm: The Disputed Zone
   names:
