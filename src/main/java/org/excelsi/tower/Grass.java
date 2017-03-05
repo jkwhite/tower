@@ -51,6 +51,10 @@ public class Grass extends Floor implements Combustible, Fertile {
         return true;
     }
 
+    @Override public Orientation getOrientation() {
+        return Orientation.upright;
+    }
+
     public boolean isCombustible() {
         return _combustible==0;
     }

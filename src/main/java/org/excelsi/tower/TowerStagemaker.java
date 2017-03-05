@@ -22,12 +22,14 @@ import static org.excelsi.aether.Skelevel.Layout;
 
 public class TowerStagemaker implements Stagemaker {
     private final StageGenerator _g;
+    private final int _initialLevel;
     private final List<Segment> _tower;
     private List<Skelevel> _partitions = new ArrayList<>();
 
 
-    public TowerStagemaker(final StageGenerator g, final List<Segment> tower) {
+    public TowerStagemaker(final StageGenerator g, final int initialLevel, final List<Segment> tower) {
         _g = g;
+        _initialLevel = initialLevel;
         _tower = tower;
     }
 
@@ -55,6 +57,7 @@ public class TowerStagemaker implements Stagemaker {
             .name(seg.findName(ordinal))
             .realm(seg.getRealm())
             .ordinal(ordinal)
+            .displayedOrdinal(seg.getIncognita()?"??":Integer.toString(1+ordinal-_initialLevel))
             .width(160)
             .height(160)
             .skel(skel)
@@ -62,37 +65,13 @@ public class TowerStagemaker implements Stagemaker {
         for(final String env:seg.randomEnvirons()) {
             r.ingredient(env);
         }
-        switch(ordinal) {
-            case 1:
-                //r.spacemaker(Spacemaker.expanse(Ground.class,Grass.class).and((r2,l)->{l.getSpace(l.width()/2,l.height()/2).replace(new Stairs(true));}));
-                /*
-                r.spaces(Spaces.modulator((s)->{
-                    switch(Rand.om.nextInt(5)) {
-                        case 0:
-                            s.setColor("gray");
-                            break;
-                        case 1:
-                            s.setColor("brown");
-                            break;
-                        default:
-                    }
-                }));
-                */
-                //r.ingredient("hills");
-                //r.mixin(new Heightmap(1f));
-                break;
-            default:
-                //r.ingredient("small");
-                //r.spacemaker(TowerLevelGenerator.spacemaker());
-                break;
-        }
         return r;
     }
 
     private Segment findSegment(final int ordinal) {
         int i = 0;
         for(Segment s:_tower) {
-            if(i>=ordinal) {
+            if(i+s.getHeight()>=ordinal) {
                 return s;
             }
             i += s.getHeight();
@@ -103,10 +82,14 @@ public class TowerStagemaker implements Stagemaker {
     private void ensureCapacity(final int ordinal) {
         while(_partitions.size()<=1+ordinal) {
             int current = _partitions.size();
-            int below = ordinal==1?1:_partitions.get(_partitions.size()-1).numAscending();
+            //int below = ordinal==1?1:_partitions.get(_partitions.size()-1).numAscending();
+            int below = current==0?1:_partitions.get(_partitions.size()-1).numAscending();
             int parts;
             List<Partition> ps = new ArrayList<Partition>();
-            if(current==899) {
+            if(current==_initialLevel) {
+                ps.add(new Partition(1, 0));
+            }
+            else if(current==_initialLevel-1 || current==899) {
                 ps.add(new Partition(0, 1));
             }
             else if(current>=900) {

@@ -2,9 +2,36 @@
 - !!org.excelsi.tower.Segment
   realm: Terran Subterraine
   names:
+    '*': Agartha
+  height: 30
+  environs:
+    - huge dim expanse
+- !!org.excelsi.tower.Segment
+  realm: Terran Subterraine
+  names:
+    '*': N'kai
+  height: 20
+  environs:
+    - lightless huge cavernous expanse
+- !!org.excelsi.tower.Segment
+  realm: Terran Subterraine
+  names:
+    '*': K'n-yan
+  height: 20
+  environs:
+    - blue-litten huge cavernous expanse
+- !!org.excelsi.tower.Segment
+  realm: Terran Subterraine
+  names:
+    '*': Yoth
+  height: 20
+  environs:
+    - red-litten huge cavernous expanse
+- !!org.excelsi.tower.Segment
+  realm: Terran Subterraine
+  names:
     '*': Relm
-  height: 1
-  unique: true
+  height: 10
   environs:
     - huge cavernous expanse
 - !!org.excelsi.tower.Segment

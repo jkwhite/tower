@@ -14,6 +14,7 @@ public class LevelRecipe {
     private String _name;
     private String _realm;
     private int _ordinal;
+    private String _displayedOrdinal;
     private Random _r;
     private SpaceFactory _spaces = Spaces.identity();
     private Spacemaker _sm = Spacemaker.expanse();
@@ -128,6 +129,15 @@ public class LevelRecipe {
 
     public int getOrdinal() {
         return _ordinal;
+    }
+
+    public LevelRecipe displayedOrdinal(String ordinal) {
+        _displayedOrdinal = ordinal;
+        return this;
+    }
+
+    public String getDisplayedOrdinal() {
+        return _displayedOrdinal;
     }
 
     @Override public String toString() {

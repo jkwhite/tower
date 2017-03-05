@@ -28,6 +28,15 @@ class glyph:
     def rot(current):
         return [0,0,0]
 
+    def extrude(current):
+        return "0.04"
+
+    def bevel_res(current):
+        return "1"
+
+    def bevel_depth(current):
+        return "0.01"
+
 class char(glyph):
     def __init__(current, symbol, filename):
         glyph.__init__(current, symbol, 'char', filename)
@@ -35,13 +44,25 @@ class char(glyph):
     def damages(current):
         return [0, 1, 2]
 
+    def bevel_res(current):
+        return "2"
+
+    def bevel_depth(current):
+        return "0.02"
+
 class arch(glyph):
     def __init__(current, symbol, filename):
         glyph.__init__(current, symbol, 'arch', filename)
 
+    def extrude(current):
+        return "0.4"
+
 class harch(glyph):
     def __init__(current, symbol, filename):
         glyph.__init__(current, symbol, 'harch', filename)
+
+    def extrude(current):
+        return "0.2"
 
 class uarch(glyph):
     def __init__(current, symbol, filename):
@@ -49,6 +70,9 @@ class uarch(glyph):
 
     def rot(current):
         return [pi/2,0,0]
+
+    def extrude(current):
+        return "0.1"
 
 class earth(glyph):
     def __init__(current, symbol, filename):
@@ -60,6 +84,7 @@ class item(glyph):
 
 test_glyphs = [
     uarch('<', 'lessthan'),
+    arch('+', 'plus'),
 ]
 
 glyphs = [
@@ -155,9 +180,12 @@ glyphs = [
     uarch('0', '0')
 ]
 
-for c in test_glyphs:
+for c in glyphs:
     for dmg in c.damages():
         for res in [6]:
             rs = c.rot()
-            call(["./generate_glyph.py", "-c", c.symbol, "-x", str(rs[0]), "-y", str(rs[1]), "-z", str(rs[2]), "-e", "0.04", "-b", "0.02", "-B", "2", "-f", '/tmp/blot/'+c.filename, "-r", str(res), "-d", str(dmg)])
+            call(["./generate_glyph.py", "-c", c.symbol, "-x", str(rs[0]), "-y", str(rs[1]), "-z", str(rs[2]), "-e", c.extrude(), "-b", c.bevel_depth(), "-B", c.bevel_res(), "-f", '/tmp/blot/'+c.filename, "-r", str(res), "-d", str(dmg)])
             call(["mv", "/tmp/blot/Mesh.mesh.xml", "model/"+c.filename+".mesh.xml"])
+            call(["OgreXMLConverter", "-l", "5", "-v", "5", "-f", "50", "-p", "60", "model/"+c.filename+".mesh.xml"])
+            call(["OgreXMLConverter", "model/"+c.filename+".mesh", "model/"+c.filename+".lod.mesh.xml"])
+            call(["rm", "-f", "model/"+c.filename+".mesh", "model/"+c.filename+".mesh.xml"])

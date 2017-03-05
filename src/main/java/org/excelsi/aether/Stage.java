@@ -11,6 +11,7 @@ import org.excelsi.aether.EventSource;
 
 public interface Stage extends Typed, Temporal, Environs {
     String getName();
+    String getRealm();
     String getDisplayedFloor();
     int getOrdinal();
     Matrix getMatrix();

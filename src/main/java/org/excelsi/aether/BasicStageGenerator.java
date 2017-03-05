@@ -56,7 +56,9 @@ public class BasicStageGenerator implements StageGenerator {
         System.err.println("final recipe: "+r);
         final Level m = new Level(r.getWidth(), r.getHeight());
         m.setName(r.getName());
+        m.setRealm(r.getRealm());
         m.setFloor(r.getOrdinal());
+        m.setDisplayedFloor(r.getDisplayedOrdinal());
         r.getSpacemaker().build(r, m);
         for(Mixin a:r.getMixins()) {
             a.mix(m);

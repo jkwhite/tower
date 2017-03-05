@@ -21,7 +21,7 @@ public class JfxStatus extends HudNode {
                     if(!getChildren().isEmpty()) {
                         getChildren().remove(0);
                     }
-                    final Label t = new Label(String.format("%s, Lv %d", level.getName(), level.getOrdinal()));
+                    final Label t = new Label(String.format("%s - %s, Lv %s", level.getRealm(), level.getName(), level.getDisplayedFloor()));
                     t.getStyleClass().add("status");
                     getChildren().add(t);
                 }

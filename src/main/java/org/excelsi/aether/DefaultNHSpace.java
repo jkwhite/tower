@@ -735,8 +735,12 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
         return _color;
     }
 
-    public Architecture getArchitecture() {
+    @Override public Architecture getArchitecture() {
         return Architecture.structural;
+    }
+
+    @Override public Orientation getOrientation() {
+        return Orientation.natural;
     }
 
     public void update() {

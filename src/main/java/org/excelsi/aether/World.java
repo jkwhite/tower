@@ -11,13 +11,19 @@ import org.excelsi.aether.EventSource;
 
 
 public class World implements State {
+    private final int _initial;
+    private final EventBusRelayer _relay = new EventBusRelayer();
     private Stage _level;
     private Patsy _player;
     private StageGenerator _gen = new ExpanseLevelGenerator();
-    private final EventBusRelayer _relay = new EventBusRelayer();
 
 
     public World() {
+        this(1);
+    }
+
+    public World(int initial) {
+        _initial = initial;
     }
 
     @Override public String getName() {
@@ -35,7 +41,7 @@ public class World implements State {
         EventBus.instance().post("keys", new BotAttributeChangeEvent<String>(this, _player, "created", "", ""));
 
         connectOnce();
-        setLevel(c, c.getBulk().findLevel(1), null);
+        setLevel(c, c.getBulk().findLevel(_initial), null);
         while(c.getState()==this) {
             try {
                 //System.err.println("tick: "+_level);

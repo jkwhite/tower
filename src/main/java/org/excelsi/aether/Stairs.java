@@ -80,4 +80,8 @@ public class Stairs extends DefaultNHSpace implements Climbable, Flooring {
     public String getName() {
         return "staircase";
     }
+
+    @Override public Orientation getOrientation() {
+        return Orientation.upright;
+    }
 }

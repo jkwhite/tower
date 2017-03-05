@@ -41,6 +41,7 @@ public final class Level extends Matrix implements Stage {
     private LevelGenerator _generator;
     private int _floor;
     private String _displayedFloor;
+    private String _realm;
     private String _name;
     private ActQueue _queue = new ActQueue();
     private EventRelayer _relayer = new EventRelayer();
@@ -86,6 +87,14 @@ public final class Level extends Matrix implements Stage {
 
     @Override public String getName() {
         return _name;
+    }
+
+    public void setRealm(String realm) {
+        _realm = realm;
+    }
+
+    @Override public String getRealm() {
+        return _realm;
     }
 
     public void setDisplayedFloor(String displayedFloor) {

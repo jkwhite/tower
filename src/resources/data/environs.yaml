@@ -3,6 +3,8 @@
     - base
   blighted:
     - blight
+  blue-litten:
+    - blue-litten
   cavernous:
     - dark
   classic:
@@ -12,6 +14,8 @@
     - ruins
   expanse:
     - expanse
+  lightless:
+    - pitch-black
   narrow:
     - small
     - rooms
@@ -20,6 +24,8 @@
   plains:
     - grass
     - large
+  red-litten:
+    - red-litten
   rolling:
     - hills
     - grass

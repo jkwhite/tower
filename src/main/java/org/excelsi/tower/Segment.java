@@ -13,6 +13,7 @@ public class Segment {
     private int _height;
     private boolean _unique;
     private boolean _stretchy;
+    private boolean _incognita;
     private List<String> _environs;
 
 
@@ -56,6 +57,10 @@ public class Segment {
         _unique = unique;
     }
 
+    public boolean getUnique() {
+        return _unique;
+    }
+
     public boolean getStretchy() {
         return _stretchy;
     }
@@ -64,8 +69,12 @@ public class Segment {
         _stretchy = stretchy;
     }
 
-    public boolean getUnique() {
-        return _unique;
+    public boolean getIncognita() {
+        return _incognita;
+    }
+
+    public void setIncognita(boolean incognita) {
+        _incognita = incognita;
     }
 
     public void setEnvirons(List<String> environs) {

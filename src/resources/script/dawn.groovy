@@ -2,6 +2,8 @@ import org.excelsi.aether.*
 import org.excelsi.tower.*
 import org.excelsi.sketch.*
 
+int initialLevel = 101
+
 $c.universe.colormap = Data.loadYaml('/data/colors.yaml')
 $c.universe.items = Data.loadYaml('/items.yaml')
 $c.universe.finds = Data.loadYaml('/data/finds.yaml')
@@ -18,16 +20,20 @@ $c.bulk.stagemaker = new TowerStagemaker(
             Ingredients.mixin('foothills', new Heightmap()),
             Ingredients.mixin('mountains', new Heightmap(2f)),
             Ingredients.mixin('bots', new BotMixin()),
-            Ingredients.mixin('neon', new Illumination(1f, 'light-green')),
+            Ingredients.mixin('green-litten', new Illumination(1f, 'light-green')),
+            Ingredients.mixin('blue-litten', new Illumination(1f, 'light-blue')),
+            Ingredients.mixin('red-litten', new Illumination(1f, 'light-red')),
             Ingredients.mixin('bright', new Illumination(1f, 'white')),
             Ingredients.mixin('dim', new Illumination(0.6f, 'light-gray')),
             Ingredients.mixin('dark', new Illumination(0.3f, 'dark-gray')),
             Ingredients.mixin('pitch-black', new Illumination(0f, 'black')),
             Ingredients.i('tiny', { r -> r.width(20); r.height(20) }),
             Ingredients.i('small', { r -> r.width(30); r.height(30) }),
+            Ingredients.i('smallish', { r -> r.width(60); r.height(60) }),
             Ingredients.i('medium', { r -> r.width(80); r.height(80) }),
             Ingredients.i('large', { r -> r.width(160); r.height(160) }),
             Ingredients.i('huge', { r -> r.width(300); r.height(300) }),
+            Ingredients.i('enormous', { r -> r.width(600); r.height(600) }),
             Ingredients.i('rooms', { r -> r.spacemaker(TowerLevelGenerator.spacemaker()) }),
             Ingredients.i('expanse', { r -> r.spacemaker(Spacemaker.expanse()) }),
             Ingredients.i('base', { r -> r.spacemaker(Spacemaker.expanse(Ground,Grass).and({ r2,l -> l.getSpace((int)(l.width()/2),(int)(l.height()/2)).replace(new Stairs(true)) })) }),
@@ -47,6 +53,7 @@ $c.bulk.stagemaker = new TowerStagemaker(
             })
         ]
     ),
+    initialLevel,
     Data.loadYaml('/data/tower.yaml')
 )
 
@@ -147,7 +154,7 @@ def title = new State() {
         c.n.choose(new SelectionMenu<Runnable>(
             new MenuItem<Runnable>("n", "New game", {
                 //c.state = new Prelude(Data.resource("/script/prelude-text"))
-                c.state = new World()
+                c.state = new World(initialLevel)
             }),
             new MenuItem<Runnable>("l", "Load game", null),
             new MenuItem<Runnable>("h", "High scores", { c.state = new HighScores() }),
