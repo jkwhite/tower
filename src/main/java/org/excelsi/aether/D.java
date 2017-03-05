@@ -18,8 +18,12 @@ public final class D {
         return false;
     }
 
-    public static float distance(int x1, int y1, int x2, int y2) {
+    public static float distance(final int x1, final int y1, final int x2, final int y2) {
         return (float)Math.hypot(x1-x2, y1-y2);
+    }
+
+    public static int distance2(final int x1, final int y1, final int x2, final int y2) {
+        return (x1-x2)*(x1-x2)+(y1-y2)*(y1-y2);
     }
 
     private D() {}

@@ -37,14 +37,10 @@ public class SpaceNodeFactory extends AssetNodeFactory<NHSpace> {
     @Override public Spatial createNode(final String name, final NHSpace s, final SceneContext sc) {
         if(!"".equals(s.getModel().trim())) {
             try {
-                final Spatial n = loadModel(s.getModel(), s.getColor(), displayFor(s.getArchitecture()));
-                switch(s.getOrientation()) {
-                    case upright:
-                        n.setLocalRotation(new Quaternion(new float[]{-FastMath.PI/2f, 0f, 0f}));
-                        break;
-                    default:
-                    case natural:
-                        break;
+                final Spatial n = loadModel(s.getModel(), s.getColor(), displayFor(s.getArchitecture()), s.getOrientation());
+                // TODO: ogre3d exporter needs bounds adjusted
+                if("\"".equals(s.getModel()) || "'".equals(s.getModel())) {
+                    n.setLocalTranslation(new Vector3f(0f,0.9f,0f));
                 }
                 n.setLocalScale(3.0f);
                 Nodes.centerBelow(n);
@@ -53,7 +49,7 @@ public class SpaceNodeFactory extends AssetNodeFactory<NHSpace> {
                 return sp;
             }
             catch(Exception e) {
-                e.printStackTrace();
+                LOG.info("failed loading "+name+" for "+s+": "+e, e);
             }
         }
         return new SpaceNode(s);

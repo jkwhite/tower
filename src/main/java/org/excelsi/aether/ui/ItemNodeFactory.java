@@ -20,6 +20,7 @@ import org.slf4j.Logger;
 
 import org.excelsi.aether.Item;
 import org.excelsi.aether.Rand;
+import org.excelsi.aether.Orientation;
 import java.io.File;
 
 
@@ -33,7 +34,7 @@ public class ItemNodeFactory extends AssetNodeFactory<Item> {
 
     @Override public Spatial createNode(final String name, final Item i, final SceneContext c) {
         try {
-            final Spatial n = loadModel(i.getModel(), i.getColor(), Display.single);
+            final Spatial n = loadModel(i.getModel(), i.getColor(), Display.single, Orientation.natural);
             //n.setLocalScale(2.0f);
             n.setLocalScale(2.0f*(0.60f+(float)Math.log10(1+i.getSize()/4f)));
             Nodes.center(n);

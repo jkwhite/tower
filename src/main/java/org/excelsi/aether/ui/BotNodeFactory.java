@@ -24,6 +24,7 @@ import org.slf4j.Logger;
 import org.excelsi.aether.NHBot;
 import org.excelsi.aether.Armament;
 import org.excelsi.aether.Item;
+import org.excelsi.aether.Orientation;
 import java.io.File;
 
 
@@ -37,7 +38,7 @@ public class BotNodeFactory extends AssetNodeFactory<NHBot> {
 
     @Override public Spatial createNode(final String name, final NHBot s, final SceneContext sc) {
         try {
-            final Spatial n = loadModel(s.getModel(), s.getColor(), Display.single);
+            final Spatial n = loadModel(s.getModel(), s.getColor(), Display.single, Orientation.natural);
             n.setLocalRotation(new Quaternion(new float[]{FastMath.PI/2f, 0f, 0f}));
             float scale = 1f;
             switch(s.getSize()) {

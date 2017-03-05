@@ -27,15 +27,21 @@ public interface Spacemaker {
 
     public static Spacemaker circle(int x, int y, int rad, Class<? extends NHSpace> line, Class<? extends NHSpace> fill, int chance) {
         return (r,l)->{
-            for(int i=0;i<r.getWidth();i++) {
-                for(int j=0;j<r.getHeight();j++) {
-                    final float d = D.distance(x, y, i, j);
-                    if(d>=rad && d <= 1+rad) {
+            final int minI = Math.max(0,x-rad);
+            final int minJ = Math.max(0,y-rad);
+            final int maxI = Math.min(x+rad,r.getWidth());
+            final int maxJ = Math.min(y+rad,r.getHeight());
+            final int rad2 = rad*rad;
+            final int rad21 = (1+rad)*(1+rad);
+            for(int i=minI;i<=maxI;i++) {
+                for(int j=minJ;j<=maxJ;j++) {
+                    final float d = D.distance2(x, y, i, j);
+                    if(d>=rad2 && d <= rad21) {
                         if(line!=null && Rand.d100(chance)) {
                             l.setSpace(r.getSpaces().create(line), i, j);
                         }
                     }
-                    else if(d<rad) {
+                    else if(d<rad2) {
                         if(fill!=null && Rand.d100(chance)) {
                             l.setSpace(r.getSpaces().create(fill), i, j);
                         }
