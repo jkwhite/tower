@@ -83,8 +83,7 @@ class item(glyph):
         glyph.__init__(current, symbol, 'item', filename)
 
 test_glyphs = [
-    uarch('<', 'lessthan'),
-    arch('+', 'plus'),
+    char('@', 'atsign'),
 ]
 
 glyphs = [
@@ -186,6 +185,7 @@ for c in glyphs:
             rs = c.rot()
             call(["./generate_glyph.py", "-c", c.symbol, "-x", str(rs[0]), "-y", str(rs[1]), "-z", str(rs[2]), "-e", c.extrude(), "-b", c.bevel_depth(), "-B", c.bevel_res(), "-f", '/tmp/blot/'+c.filename, "-r", str(res), "-d", str(dmg)])
             call(["mv", "/tmp/blot/Mesh.mesh.xml", "model/"+c.filename+".mesh.xml"])
-            call(["OgreXMLConverter", "-l", "5", "-v", "5", "-f", "50", "-p", "60", "model/"+c.filename+".mesh.xml"])
+            #call(["OgreXMLConverter", "-l", "5", "-v", "5", "-f", "50", "-p", "60", "model/"+c.filename+".mesh.xml"])
+            call(["OgreXMLConverter", "-l", "4", "-v", "6", "-p", "3", "model/"+c.filename+".mesh.xml"])
             call(["OgreXMLConverter", "model/"+c.filename+".mesh", "model/"+c.filename+".lod.mesh.xml"])
             call(["rm", "-f", "model/"+c.filename+".mesh", "model/"+c.filename+".mesh.xml"])
