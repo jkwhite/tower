@@ -20,40 +20,7 @@
 package org.excelsi.aether;
 
 
-import java.util.List;
-
-import org.excelsi.matrix.*;
-
-
-public class Bots extends Ingredient {
-    public Bots(final String name) {
-        super(name);
-    }
-
-    @Override public void mix(LevelRecipe r) {
-        r.mixin(new BMixin(BotFactory.environs(r.getIngredients())));
-    }
-
-    public static class BMixin implements Mixin<Level> {
-        private final BotFactory.Constraints _c;
-
-
-        public BMixin() {
-            this(BotFactory.any());
-        }
-
-        public BMixin(BotFactory.Constraints c) {
-            _c = c;
-        }
-
-        public boolean match(Class c) {
-            return c==Level.class;
-        }
-
-        public void mix(Level level) {
-            final BotMixin m = new BotMixin(_c);
-            m.setOffset(10);
-            m.mix(level);
-        }
-    }
+public enum Origin {
+    natural,
+    artificial
 }

@@ -210,6 +210,8 @@ public interface NHBot extends Bot, Scoreable, Cloneable {
     int getLoot();
     void setForm(Form f);
     Form getForm();
+    List<String> getEnvirons();
+    void setEnvirons(List<String> environs);
 
     Inventory getInventory();
     boolean isEquipped(Item i);

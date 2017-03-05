@@ -23,4 +23,5 @@ package org.excelsi.aether;
 public interface Material {
     String getColor();
     float getShininess();
+    Origin getOrigin();
 }

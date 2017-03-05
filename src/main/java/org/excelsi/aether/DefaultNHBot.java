@@ -94,6 +94,7 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
     private List<Affliction> _afflictions = new ArrayList<Affliction>(1);
     private List<Modifier> _modifiers = new ArrayList<Modifier>(1);
     private Map<String, Integer> _skills = new HashMap<String, Integer>(5);
+    private List<String> _environs;
     // TODO: if this is transient then doesn't survive save/load
     // but right now it's ok since you can't save while performing
     // an action anyway.
@@ -899,6 +900,14 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
 
     public Form getForm() {
         return _inventory.getForm();
+    }
+
+    @Override public List<String> getEnvirons() {
+        return _environs;
+    }
+
+    @Override public void setEnvirons(List<String> environs) {
+        _environs = environs;
     }
 
     public Inventory getInventory() {

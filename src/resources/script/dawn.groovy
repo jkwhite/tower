@@ -19,7 +19,7 @@ $c.bulk.stagemaker = new TowerStagemaker(
             Ingredients.mixin('hills', new Heightmap(0.5f)),
             Ingredients.mixin('foothills', new Heightmap()),
             Ingredients.mixin('mountains', new Heightmap(2f)),
-            Ingredients.mixin('bots', new BotMixin()),
+            new Bots('bots'),
             Ingredients.mixin('green-litten', new Illumination(1f, 'light-green')),
             Ingredients.mixin('blue-litten', new Illumination(1f, 'light-blue')),
             Ingredients.mixin('red-litten', new Illumination(1f, 'light-red')),
@@ -36,18 +36,27 @@ $c.bulk.stagemaker = new TowerStagemaker(
             Ingredients.i('enormous', { r -> r.width(600); r.height(600) }),
             Ingredients.i('rooms', { r -> r.spacemaker(TowerLevelGenerator.spacemaker()) }),
             Ingredients.i('expanse', { r -> r.spacemaker(Spacemaker.expanse()) }),
-            Ingredients.i('base', { r -> r.spacemaker(Spacemaker.expanse(Ground,Grass).and({ r2,l -> l.getSpace((int)(l.width()/2),(int)(l.height()/2)).replace(new Stairs(true)) })) }),
+            Ingredients.i('base', { r -> r.spacemaker(
+                Spacemaker.expanse(Ground,Grass)
+                .and(Spacemaker.circle(150,-100,300,Wall,Ground,75))
+                .and(Spacemaker.circle(150,-100,303,Wall,null,75))
+                .and(Spacemaker.line(150,0,150,250,Floor,99))
+                .and(Spacemaker.line(151,0,151,250,Floor,97))
+                .and(Spacemaker.line(149,0,149,250,Floor,96))
+                .and({ r2,l -> l.getSpace((int)(l.width()/2),(int)(l.height()/2-40)).replace(new Stairs(true)) })) }),
             Ingredients.i('blight', { r -> 
                 r.spaces(Spaces.modulator({ s ->
-                    switch(Rand.om.nextInt(5)) {
-                        case 0:
-                            s.setColor("gray");
-                            break;
-                        case 1:
-                            s.setColor("brown");
-                            break;
-                        default:
-                            break;
+                    if(s.origin == Origin.natural) {
+                        switch(Rand.om.nextInt(5)) {
+                            case 0:
+                                s.setColor("gray");
+                                break;
+                            case 1:
+                                s.setColor("brown");
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }))
             })
@@ -131,7 +140,7 @@ $c.pov.inventory.add(new Book() {
                 }))
                 .mixin(new Items($c.universe, 50, ItemFilter.named('lava rock')))
                 .mixin(new Heightmap())
-                .mixin(new Bots(BotFactory.exact('lava gatherer')))
+                .mixin(new Bots.BMixin(BotFactory.exact('lava gatherer')))
             )
         )
         Context.c().n().print(b, "Another time, another space")

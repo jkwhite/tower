@@ -20,6 +20,9 @@
 package org.excelsi.aether;
 
 
+import java.util.List;
+
+
 public interface BotFactory extends java.io.Serializable {
     NHBot createBot(Constraints c);
     NHBot createBot(String common);
@@ -38,5 +41,9 @@ public interface BotFactory extends java.io.Serializable {
 
     public static Constraints exact(String common) {
         return (b)->{ return common.equals(b.getCommon()); };
+    }
+
+    public static Constraints environs(final List<String> environs) {
+        return (b)->{ return D.intersects(b.getEnvirons(), environs); };
     }
 }

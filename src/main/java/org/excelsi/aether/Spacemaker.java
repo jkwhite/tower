@@ -25,6 +25,46 @@ public interface Spacemaker {
         return (r,l)->{ this.build(r,l); m.build(r,l); };
     }
 
+    public static Spacemaker circle(int x, int y, int rad, Class<? extends NHSpace> line, Class<? extends NHSpace> fill, int chance) {
+        return (r,l)->{
+            for(int i=0;i<r.getWidth();i++) {
+                for(int j=0;j<r.getHeight();j++) {
+                    final float d = D.distance(x, y, i, j);
+                    if(d>=rad && d <= 1+rad) {
+                        if(line!=null && Rand.d100(chance)) {
+                            l.setSpace(r.getSpaces().create(line), i, j);
+                        }
+                    }
+                    else if(d<rad) {
+                        if(fill!=null && Rand.d100(chance)) {
+                            l.setSpace(r.getSpaces().create(fill), i, j);
+                        }
+                    }
+                }
+            }
+        };
+    }
+
+    public static Spacemaker line(int x1, int y1, int x2, int y2, Class<? extends NHSpace> line, int chance) {
+        return (r,l)->{
+            if(x1==x2&&y1==y2) {
+                return;
+            }
+            float dist = D.distance(x1,y1,x2,y2);
+            for(float p=0;p<=1f;p+=1f/dist) {
+                float i = ((x2*p)+(x1*(1f-p)));
+                float j = ((y2*p)+(y1*(1f-p)));
+                int ii = (int) i;
+                int ij = (int) j;
+                if(ii>=0 && ii<l.width() && ij>=0 && ij<l.height()) {
+                    if(Rand.d100(chance)) {
+                        l.setSpace(r.getSpaces().create(line), ii, ij);
+                    }
+                }
+            }
+        };
+    }
+
     public static Spacemaker expanse() {
         return (r,l)->{
             for(int i=0;i<r.getWidth();i++) {

@@ -83,6 +83,10 @@ public class Water extends Liquid implements Drinkable, Surface {
         }
     }
 
+    @Override public Origin getOrigin() {
+        return Origin.natural;
+    }
+
     public void pour(NHBot adder, Potion p) {
         N.narrative().print(adder, Grammar.start(adder, "pour out")+" "+Grammar.specific(p)+".");
         List<Infliction> infs = p.removeInflictions();

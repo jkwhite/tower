@@ -56,6 +56,10 @@ public class Ground extends DefaultNHSpace {
         return Architecture.repeating;
     }
 
+    @Override public Origin getOrigin() {
+        return Origin.natural;
+    }
+
     public boolean push(MSpace pusher, Direction dir) {
         return super.push(pusher, dir);
     }

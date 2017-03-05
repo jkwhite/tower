@@ -1580,6 +1580,8 @@
   maxLevel: 12
   minLevel: 2
   slithering: true
+  environs:
+    - overgrowth
   ai: 
     daemons: 
       - !!org.excelsi.aether.AttackDaemon {}
@@ -2102,6 +2104,9 @@
     unarmed: 30
   sociality: pack
   temperament: hungry
+  environs:
+    - overgrowth
+    - crumbling
   ai: 
     daemons: 
       - !!org.excelsi.aether.AttackDaemon {}

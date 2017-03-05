@@ -42,6 +42,10 @@ public class Floor extends DefaultNHSpace implements Flooring {
         return true;
     }
 
+    @Override public Architecture getArchitecture() {
+        return Architecture.repeating;
+    }
+
     public boolean isTransparent() {
         return numItems()<8;
     }

@@ -1,6 +1,7 @@
 ---
   foundation:
     - base
+    - ruins
   blighted:
     - blight
   blue-litten:
@@ -23,7 +24,7 @@
     - grass
   plains:
     - grass
-    - large
+    - huge
   red-litten:
     - red-litten
   rolling:

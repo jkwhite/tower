@@ -291,6 +291,10 @@ public abstract class Item extends Id implements java.io.Serializable, Material,
         return 1f;
     }
 
+    @Override public Origin getOrigin() {
+        return Origin.artificial;
+    }
+
     /**
      * Gets the find rate of this item including all fragments.
      * The occurrence is the base find rate multiplied by the

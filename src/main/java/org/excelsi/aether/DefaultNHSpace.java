@@ -743,6 +743,10 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
         return Orientation.natural;
     }
 
+    @Override public Origin getOrigin() {
+        return Origin.artificial;
+    }
+
     public void update() {
         if(_parasites!=null) {
             List<Parasite> pars = getParasites();

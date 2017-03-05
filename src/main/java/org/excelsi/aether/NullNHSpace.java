@@ -271,6 +271,10 @@ public class NullNHSpace extends NullMatrixMSpace implements NHSpace {
         return Orientation.natural;
     }
 
+    @Override public Origin getOrigin() {
+        return Origin.artificial;
+    }
+
     public void bloom(Transform t, int radius) {
     }
 
