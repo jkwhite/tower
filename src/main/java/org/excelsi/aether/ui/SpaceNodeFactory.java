@@ -40,7 +40,7 @@ public class SpaceNodeFactory extends AssetNodeFactory<NHSpace> {
                 final Spatial n = loadModel(s.getModel(), s.getColor(), displayFor(s.getArchitecture()), s.getOrientation());
                 // TODO: ogre3d exporter needs bounds adjusted
                 if("\"".equals(s.getModel()) || "'".equals(s.getModel())) {
-                    n.setLocalTranslation(new Vector3f(0f,0.9f,0f));
+                    n.setLocalTranslation(new Vector3f(0f,-0.9f,0f));
                 }
                 n.setLocalScale(3.0f);
                 Nodes.centerBelow(n);

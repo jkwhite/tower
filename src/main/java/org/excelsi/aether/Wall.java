@@ -39,27 +39,39 @@ public class Wall extends DefaultNHSpace {
     public MatrixListener getWallListener() {
         return new MatrixListener() {
             public void spacesRemoved(Matrix m, MSpace[] spaces, Bot b) {
+                boolean any = false;
                 for(MSpace s:spaces) {
                     if(s==Wall.this) {
                         m.removeListener(this);
                         return;
                     }
+                    if(isCardinalTo(s)) {
+                        any = true;
+                    }
                 }
-                int newType = getType();
-                if(_lastType!=newType) {
-                    notifyAttr("model", null, null);
+                if(any) {
+                    int newType = getType();
+                    if(_lastType!=newType) {
+                        notifyAttr("model", null, null);
+                    }
                 }
             }
 
             public void spacesAdded(Matrix m, MSpace[] spaces, Bot b) {
+                boolean any = false;
                 for(MSpace s:spaces) {
                     if(s==Wall.this) {
                         return;
                     }
+                    if(isCardinalTo(s)) {
+                        any = true;
+                    }
                 }
-                int newType = getType();
-                if(_lastType!=newType) {
-                    notifyAttr("model", null, null);
+                if(any) {
+                    int newType = getType();
+                    if(_lastType!=newType) {
+                        notifyAttr("model", null, null);
+                    }
                 }
             }
 

@@ -1,12 +1,16 @@
 package org.excelsi.aether.ui;
 
 
+import java.util.List;
+
 import org.excelsi.aether.Item;
+import org.excelsi.aether.Parasite;
 import org.excelsi.aether.NHBot;
 import org.excelsi.aether.NHSpace;
 import org.excelsi.matrix.MSpace;
 import org.excelsi.matrix.MatrixMSpace;
 import org.excelsi.matrix.Typed;
+
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.math.Vector3f;
@@ -25,6 +29,12 @@ public class Spaces {
                     ms.attachItem(c, items[i], i, false);
                 }
             }
+            final List<Parasite> ps = space.getParasites();
+            if(ps!=null) {
+                for(int i=0;i<ps.size();i++) {
+                    ms.attachParasite(c, ps.get(i));
+                }
+            }
             return ms;
         }
         else {
@@ -34,6 +44,11 @@ public class Spaces {
 
     public static Spatial createItem(final SceneContext c, final Item item) {
         final Spatial s = c.getNodeFactory().createNode(item.getId(), item, c);
+        return s;
+    }
+
+    public static Spatial createParasite(final SceneContext c, final Parasite p) {
+        final Spatial s = c.getNodeFactory().createNode(p.getId(), p, c);
         return s;
     }
 

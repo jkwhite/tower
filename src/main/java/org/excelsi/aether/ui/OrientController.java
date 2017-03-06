@@ -7,6 +7,7 @@ import org.excelsi.aether.NHBot;
 import org.excelsi.aether.ChangeEvent;
 import org.excelsi.aether.OrientEvent;
 import org.excelsi.aether.AddEvent;
+import org.excelsi.aether.AttributeChangeEvent;
 import org.excelsi.aether.RemoveEvent;
 import org.excelsi.matrix.Direction;
 
@@ -36,6 +37,9 @@ public class OrientController extends ChangeController<NHBot,Direction> {
                 log().debug("no spatial for "+me.getBot());
             }
         }
+    }
+
+    @Override protected void attributeChanged(SceneContext c, AttributeChangeEvent<NHBot,Direction> e) {
     }
 
     private int rotFor(Direction d) {

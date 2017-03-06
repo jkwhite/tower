@@ -36,7 +36,7 @@ import org.excelsi.matrix.*;
  * as parasites, because they have no dependency to the type of space
  * on which they exist.
  */
-public abstract class Parasite implements java.io.Serializable {
+public abstract class Parasite extends Id implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
     /** whether or not this parasite is hidden */
     private boolean _hidden;
@@ -58,6 +58,10 @@ public abstract class Parasite implements java.io.Serializable {
      */
     public Parasite(boolean hidden) {
         _hidden = hidden;
+    }
+
+    @Override public String getObjectType() {
+        return "parasite";
     }
 
     /**

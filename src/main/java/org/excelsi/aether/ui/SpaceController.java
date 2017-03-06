@@ -4,6 +4,7 @@ package org.excelsi.aether.ui;
 import org.excelsi.matrix.MSpace;
 import org.excelsi.matrix.MatrixMSpace;
 import org.excelsi.aether.AddEvent;
+import org.excelsi.aether.AttributeChangeEvent;
 import org.excelsi.aether.ChangeEvent;
 import org.excelsi.aether.ContainerAddEvent;
 import org.excelsi.aether.RemoveEvent;
@@ -40,5 +41,9 @@ public class SpaceController extends ChangeController<Level,NHSpace> {
     }
 
     @Override protected void changed(final SceneContext c, final ChangeEvent<Level,NHSpace> e) {
+        log().info("SPACE CHANGE: "+e);
+    }
+
+    @Override protected void attributeChanged(SceneContext c, AttributeChangeEvent<Level,NHSpace> e) {
     }
 }

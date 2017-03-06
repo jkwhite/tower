@@ -923,6 +923,7 @@ fast:       for(int i=ro.getX1();i<ro.getX2();i++) {
         }
     }
 
+    @FunctionalInterface
     public interface SpaceFilter {
         boolean accept(MSpace m);
     }

@@ -142,6 +142,22 @@ public class EventBusRelayer extends EverythingAdapter {
         post(TOPIC_CHANGES, new BotKnowledgeEvent(b, (Stage)b.getEnvironment().getSpace().getContainer(), (NHBot)b, "missed", bots));
     }
 
+    @Override public void parasiteAdded(NHSpace s, Parasite p) {
+        post(TOPIC_CHANGES, new AddEvent<NHSpace,Parasite>(s, "parasite", s, p));
+    }
+
+    @Override public void parasiteAttributeChanged(NHSpace s, Parasite p, String attr, Object oldValue, Object newValue) {
+        post(TOPIC_CHANGES, new AttributeChangeEvent<NHSpace,Parasite>(s, "parasite", s, p, attr, oldValue, newValue));
+    }
+
+    @Override public void parasiteRemoved(NHSpace s, Parasite p) {
+        post(TOPIC_CHANGES, new RemoveEvent<NHSpace,Parasite>(s, "parasite", s, p));
+    }
+
+    @Override public void parasiteMoved(NHSpace s, NHSpace to, Parasite p) {
+        Thread.dumpStack();
+    }
+
     private static void post(final String topic, final Event e) {
         if(debug(e)) LOG.warn("posting to {}: {}", topic, e);
         EventBus.instance().post(topic, e);

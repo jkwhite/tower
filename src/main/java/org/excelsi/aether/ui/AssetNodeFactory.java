@@ -54,7 +54,7 @@ public abstract class AssetNodeFactory<E extends Typed> extends Enloggened imple
         });
         switch(o) {
             case upright:
-                n.setLocalRotation(new Quaternion(new float[]{-FastMath.PI/2f, 0f, 0f}));
+                n.setLocalRotation(new Quaternion(new float[]{FastMath.PI/2f, 0f, 0f}));
                 break;
             default:
             case natural:

@@ -24,7 +24,7 @@ import org.excelsi.aether.*;
 import java.util.*;
 
 
-public class Farming implements Mixin {
+public class Farming implements Mixin<Level> {
     private static int _chance = 10;
 
 
@@ -40,8 +40,7 @@ public class Farming implements Mixin {
         return c==Level.class;
     }
 
-    public void mix(Object o) {
-        Level level = (Level) o;
+    @Override public void mix(Level level) {
         List<Level.Room> normals = level.normalRooms();
         Collections.shuffle(normals);
         int amt = 1;

@@ -22,8 +22,10 @@
     - rooms
   overgrowth:
     - grass
+    - trees
   plains:
     - grass
+    - trees
     - huge
   red-litten:
     - red-litten

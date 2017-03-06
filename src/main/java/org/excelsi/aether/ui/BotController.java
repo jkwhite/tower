@@ -9,6 +9,7 @@ import org.excelsi.aether.NHBot;
 import org.excelsi.aether.ChangeEvent;
 import org.excelsi.aether.MoveEvent;
 import org.excelsi.aether.AddEvent;
+import org.excelsi.aether.AttributeChangeEvent;
 import org.excelsi.aether.RemoveEvent;
 
 import com.jme3.math.Vector3f;
@@ -52,6 +53,9 @@ public class BotController extends ChangeController<NHBot,NHSpace> {
                 log().debug("move for unknown bot "+me.getBot().getId());
             }
         }
+    }
+
+    @Override protected void attributeChanged(SceneContext c, AttributeChangeEvent<NHBot,NHSpace> e) {
     }
 
     private void updateView(final SceneContext c, final MSpace m) {

@@ -54,7 +54,9 @@ public class Heightmap implements Mixin<Level> {
     }
 
     private void mixHills(final Level level, final float[][] depths, final float coef) {
-        final int tot = Rand.om.nextInt(20)+3;
+        //final int tot = Rand.om.nextInt(20)+3;
+        final int tot = (int)(Math.sqrt(level.width()*level.height())/10f*Rand.om.nextFloat()+3);
+        System.err.println("making "+tot+" hills");
         for(int i=0;i<tot;i++) {
             final int cx = Rand.om.nextInt(level.width());
             final int cy = Rand.om.nextInt(level.height());

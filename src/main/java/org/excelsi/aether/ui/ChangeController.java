@@ -3,6 +3,7 @@ package org.excelsi.aether.ui;
 
 import org.excelsi.aether.Event;
 import org.excelsi.aether.AddEvent;
+import org.excelsi.aether.AttributeChangeEvent;
 import org.excelsi.aether.ChangeEvent;
 import org.excelsi.aether.RemoveEvent;
 
@@ -18,9 +19,13 @@ public abstract class ChangeController<C,E> extends Enloggened implements Contro
         else if(e instanceof RemoveEvent) {
             removed(c, (RemoveEvent)e);
         }
+        else if(e instanceof AttributeChangeEvent) {
+            attributeChanged(c, (AttributeChangeEvent)e);
+        }
     }
 
     abstract protected void added(SceneContext c, AddEvent<C,E> e);
     abstract protected void removed(SceneContext c, RemoveEvent<C,E> e);
     abstract protected void changed(SceneContext c, ChangeEvent<C,E> e);
+    abstract protected void attributeChanged(SceneContext c, AttributeChangeEvent<C,E> e);
 }

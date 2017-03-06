@@ -19,11 +19,12 @@ $c.bulk.stagemaker = new TowerStagemaker(
             Ingredients.mixin('hills', new Heightmap(0.5f)),
             Ingredients.mixin('foothills', new Heightmap()),
             Ingredients.mixin('mountains', new Heightmap(2f)),
+            Ingredients.mixin('trees', new Stands()),
             new Bots('bots'),
             Ingredients.mixin('green-litten', new Illumination(1f, 'light-green')),
             Ingredients.mixin('blue-litten', new Illumination(1f, 'light-blue')),
             Ingredients.mixin('red-litten', new Illumination(1f, 'light-red')),
-            Ingredients.mixin('bright', new Illumination(1f, 'white')),
+            Ingredients.mixin('bright', new Illumination(2f, 'white')),
             Ingredients.mixin('dim', new Illumination(0.6f, 'light-gray')),
             Ingredients.mixin('dark', new Illumination(0.3f, 'dark-gray')),
             Ingredients.mixin('pitch-black', new Illumination(0f, 'black')),
@@ -40,10 +41,14 @@ $c.bulk.stagemaker = new TowerStagemaker(
                 Spacemaker.expanse(Ground,Grass)
                 .and(Spacemaker.circle(150,-100,300,Wall,Ground,75))
                 .and(Spacemaker.circle(150,-100,303,Wall,null,75))
-                .and(Spacemaker.line(150,0,150,250,Floor,99))
-                .and(Spacemaker.line(151,0,151,250,Floor,97))
-                .and(Spacemaker.line(149,0,149,250,Floor,96))
-                .and({ r2,l -> l.getSpace((int)(l.width()/2),(int)(l.height()/2-40)).replace(new Stairs(true)) })) }),
+                .and(Spacemaker.line(150,90,150,250,Floor,99))
+                .and(Spacemaker.line(151,90,151,250,Floor,97))
+                .and(Spacemaker.line(149,90,149,250,Floor,96))
+                .and(Spacemaker.line(148,90,148,200,Wall,30))
+                .and(Spacemaker.line(152,90,152,200,Wall,30))
+                .and({ r2,l -> l.getSpace((int)(l.width()/2),(int)(l.height()/2-40)).replace(new Stairs(true)) })
+                .and({ r2,l -> l.getSpace((int)(l.width()/2),(int)(l.height()/2-39)).addParasite(new CamphorTree()) })
+            ) }),
             Ingredients.i('blight', { r -> 
                 r.spaces(Spaces.modulator({ s ->
                     if(s.origin == Origin.natural) {

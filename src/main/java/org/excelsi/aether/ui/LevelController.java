@@ -9,6 +9,7 @@ import org.excelsi.aether.Level;
 import org.excelsi.aether.Stage;
 import org.excelsi.aether.ChangeEvent;
 import org.excelsi.aether.AddEvent;
+import org.excelsi.aether.AttributeChangeEvent;
 import org.excelsi.aether.RemoveEvent;
 import org.excelsi.aether.NHSpace;
 import org.excelsi.aether.Item;
@@ -52,6 +53,9 @@ public class LevelController extends ChangeController<Bulk,Stage> {
             }
             */
         }
+    }
+
+    @Override protected void attributeChanged(SceneContext c, AttributeChangeEvent<Bulk,Stage> e) {
     }
 
     private void addBot(final SceneContext c, final Node lev, final NHBot b) {

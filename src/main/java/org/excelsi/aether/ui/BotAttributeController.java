@@ -8,6 +8,7 @@ import org.excelsi.aether.Item;
 import org.excelsi.aether.ChangeEvent;
 import org.excelsi.aether.BotAttributeChangeEvent;
 import org.excelsi.aether.AddEvent;
+import org.excelsi.aether.AttributeChangeEvent;
 import org.excelsi.aether.RemoveEvent;
 
 import com.jme3.math.Vector3f;
@@ -41,5 +42,8 @@ public class BotAttributeController extends ChangeController {
                 Bots.takeOff((SlotNode)bot.getChild("ornaments"), (NHBot)be.getBot(), (Item)be.getTo(), c);
                 break;
         }
+    }
+
+    @Override protected void attributeChanged(SceneContext c, AttributeChangeEvent e) {
     }
 }

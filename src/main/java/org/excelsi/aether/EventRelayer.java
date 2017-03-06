@@ -89,6 +89,30 @@ public class EventRelayer extends EverythingAdapter implements EventSource {
         }
     }
 
+    public void parasiteAdded(NHSpace s, Parasite p) {
+        for(NHSpaceListener l:_nhslisteners) {
+            l.parasiteAdded(s, p);
+        }
+    }
+
+    public void parasiteAttributeChanged(NHSpace s, Parasite p, String attr, Object oldValue, Object newValue) {
+        for(NHSpaceListener l:_nhslisteners) {
+            l.parasiteAttributeChanged(s, p, attr, oldValue, newValue);
+        }
+    }
+
+    public void parasiteRemoved(NHSpace s, Parasite p) {
+        for(NHSpaceListener l:_nhslisteners) {
+            l.parasiteRemoved(s, p);
+        }
+    }
+
+    public void parasiteMoved(NHSpace s, NHSpace to, Parasite p) {
+        for(NHSpaceListener l:_nhslisteners) {
+            l.parasiteMoved(s, to, p);
+        }
+    }
+
     public void overlayAdded(NHSpace n, Overlay o) {
     }
 

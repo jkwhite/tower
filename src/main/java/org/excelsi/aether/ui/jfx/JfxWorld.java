@@ -78,12 +78,13 @@ public class JfxWorld extends HudNode {
         //final Action a = _actions.get(m);
         final String dk = Keymap.encode(e.key());
         final String aname = c.ctx().getUniverse().getKeymap().get(dk);
-        LOG.info("found action name: '"+aname+"' for key '"+dk+"'");
+        //LOG.info("found action name: '"+aname+"' for key '"+dk+"'");
         if(aname==null) {
+            LOG.info("no action name for key: "+e);
             return false;
         }
         final Action a = c.ctx().getUniverse().getActions().get(aname);
-        LOG.info("found action: "+a+" for key: "+e);
+        LOG.debug("found action: "+a+" for key: "+e);
         if(a!=null) {
             try {
                 final Action inst = a.getClass().newInstance();
