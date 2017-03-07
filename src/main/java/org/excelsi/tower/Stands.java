@@ -38,24 +38,36 @@ public class Stands implements Mixin<Level> {
     }
 
     @Override public void mix(Level level) {
-        for(int i=0;i<100;i++) {
+        final int max = (int)(Math.sqrt(level.width()*level.height())/10);
+        System.err.println("adding "+max+" stands");
+        for(int i=0;i<max;i++) {
             final NHSpace r = (NHSpace) level.findRandom((s)->{
                 if(s instanceof Grass) {
                     final MSpace[] sur = s.cardinal();
                     return !((NHSpace)s).hasParasite(Plant.class)
-                        && sur[0] instanceof Grass
-                        && sur[1] instanceof Grass
-                        && sur[2] instanceof Grass
-                        && sur[3] instanceof Grass;
+                        && (sur[0] instanceof Grass
+                        || sur[1] instanceof Grass
+                        || sur[2] instanceof Grass
+                        || sur[3] instanceof Grass);
                 }
                 else {
                     return false;
                 }
             });
             if(r!=null) {
-                ((NHSpace)r).addParasite(new CamphorTree());
-                for(MSpace m:r.cardinal()) {
-                    ((NHSpace)m).addParasite(new CamphorTree());
+                int size = Rand.om.nextInt(50)+3;
+                List<NHSpace> frontier = new LinkedList<>();
+                frontier.add(r);
+                while(size-->0 && !frontier.isEmpty()) {
+                    final NHSpace s = frontier.remove(0);
+                    if(!s.hasParasite(Plant.class)) {
+                        ((NHSpace)s).addParasite(new CamphorTree());
+                    }
+                    for(MSpace m:s.surrounding()) {
+                        if(m instanceof Grass && !((NHSpace)m).hasParasite(Plant.class)) {
+                            frontier.add((NHSpace)m);
+                        }
+                    }
                 }
             }
         }
