@@ -64,6 +64,10 @@ public abstract class Parasite extends Id implements java.io.Serializable {
         return "parasite";
     }
 
+    public Architecture getArchitecture() {
+        return Architecture.structural;
+    }
+
     /**
      * Tests if this parasite is hidden. If hidden,
      * bots do not know the parasite is present.

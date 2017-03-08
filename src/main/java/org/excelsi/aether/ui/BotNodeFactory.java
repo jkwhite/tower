@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 import org.excelsi.aether.NHBot;
+import org.excelsi.aether.Architecture;
 import org.excelsi.aether.Armament;
 import org.excelsi.aether.Item;
 import org.excelsi.aether.Orientation;
@@ -38,7 +39,7 @@ public class BotNodeFactory extends AssetNodeFactory<NHBot> {
 
     @Override public Spatial createNode(final String name, final NHBot s, final SceneContext sc) {
         try {
-            final Spatial n = loadModel(s.getModel(), s.getColor(), Display.single, Orientation.natural);
+            final Spatial n = loadModel(s.getModel(), s.getColor(), Architecture.structural, Orientation.natural);
             n.setLocalRotation(new Quaternion(new float[]{FastMath.PI/2f, 0f, 0f}));
             float scale = 1f;
             switch(s.getSize()) {
@@ -58,7 +59,7 @@ public class BotNodeFactory extends AssetNodeFactory<NHBot> {
                     scale = 1.6f;
                     break;
             }
-            n.setLocalScale(3.0f*scale);
+            n.setLocalScale(3.5f*scale);
             // duplicate center after scale/rot
             Nodes.centerAbove(n);
 

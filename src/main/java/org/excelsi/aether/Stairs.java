@@ -51,7 +51,7 @@ public class Stairs extends DefaultNHSpace implements Climbable, Flooring {
     @Override public boolean look(Context c, boolean nothing, boolean lootOnly) {
         boolean any  = super.look(c, false, lootOnly);
         if(!lootOnly) {
-            c.n().print(this, "There is a"+(_ascending?"n ascending":" descending")+" staircase here.");
+            c.n().print(c.actor(), "There is a"+(_ascending?"n ascending":" descending")+" staircase here.");
             return true;
         }
         return any;

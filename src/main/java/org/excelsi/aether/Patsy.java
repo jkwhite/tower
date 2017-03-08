@@ -768,11 +768,11 @@ public class Patsy extends DefaultNHBot {
                     }
                     */
                     if(getBot().isLevitating()) {
-                        N.narrative().print(getBot(), "You cannot reach the ground.");
+                        Context.c().n().print(getBot(), "You cannot reach the ground.");
                         return;
                     }
                     if(((Patsy)getBot()).getLevel().getFloor()==1) {
-                        if(N.narrative().confirm(getBot(), "Exit the Tower?")) {
+                        if(Context.c().n().confirm(getBot(), "Exit the Tower?")) {
                             ((Patsy)getBot()).setDeath("Cowardly turned back.");
                             N.narrative().quit("Cowardly turned back.", false);
                         }
@@ -789,7 +789,7 @@ public class Patsy extends DefaultNHBot {
                     lh.perform();
                 }
                 else {
-                    N.narrative().print(getBot(), "You are already at the bottom of this "+cl.getName()+".");
+                    Context.c().n().print(getBot(), "You are already at the bottom of this "+cl.getName()+".");
                     throw new ActionCancelledException();
                 }
             }
@@ -798,7 +798,7 @@ public class Patsy extends DefaultNHBot {
                     getBot().getEnvironment().descend(null);
                 }
                 else {
-                    N.narrative().print(getBot(), "There are no stairs here.");
+                    Context.c().n().print(getBot(), "There are no stairs here.");
                 }
             }
         }

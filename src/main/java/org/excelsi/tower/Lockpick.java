@@ -26,7 +26,7 @@ import org.excelsi.aether.*;
 
 public class Lockpick extends Tool implements Useable {
     public void use(NHBot b) {
-        Direction chosen = N.narrative().direct(b, "Which direction?");
+        Direction chosen = Context.c().n().direct(b, "Which direction?");
         pick(b, chosen);
     }
 
@@ -49,22 +49,22 @@ public class Lockpick extends Tool implements Useable {
     public void pick(final NHBot b, Direction d) {
         NHSpace s = (NHSpace) b.getEnvironment().getMSpace().move(d);
         if(s==null||!(s instanceof Doorway)) {
-            N.narrative().print(b, "There is nothing to unlock there.");
+            Context.c().n().print(b, "There is nothing to unlock there.");
             throw new ActionCancelledException();
         }
         final Doorway door = (Doorway) s;
         if(door.isOpen()) {
-            N.narrative().print(b, "The door is already open!");
+            Context.c().n().print(b, "The door is already open!");
             throw new ActionCancelledException();
         }
         else if(!door.isLocked()) {
-            N.narrative().print(b, "On closer inspection, that door is not locked.");
+            Context.c().n().print(b, "On closer inspection, that door is not locked.");
         }
         else if(!door.isUnlockable()) {
-            N.narrative().print(b, "Something is stuck in the lock.");
+            Context.c().n().print(b, "Something is stuck in the lock.");
         }
         else {
-            N.narrative().print(b, Grammar.start(b, "start")+" picking the lock.");
+            Context.c().n().print(b, Grammar.start(b, "start")+" picking the lock.");
             b.start(new ProgressiveAction() {
                 int time = 10;
                 public int getInterruptRate() { return 100; }
@@ -72,19 +72,19 @@ public class Lockpick extends Tool implements Useable {
                 public String getExcuse() { return "picking a lock"; }
 
                 public void interrupted() {
-                    N.narrative().print(b, Grammar.start(b, "stop")+" picking the lock.");
+                    Context.c().n().print(b, Grammar.start(b, "stop")+" picking the lock.");
                 }
 
                 public boolean iterate() {
                     if(--time==0) {
                         int sk = b.getSkill("lockpicking");
                         if(getStatus()==Status.cursed) {
-                            N.narrative().print(b, "The lockpick breaks off in the lock!");
+                            Context.c().n().print(b, "The lockpick breaks off in the lock!");
                             b.getInventory().consume(Lockpick.this);
                             door.setUnlockable(false);
                         }
                         else if(Rand.d100(sk+(getStatus()==Status.blessed?30:0))) {
-                            N.narrative().print(b, "Click! The door opens.");
+                            Context.c().n().print(b, "Click! The door opens.");
                             door.setLocked(false);
                             door.setOpen(true);
                             b.getEnvironment().unhide();
@@ -92,11 +92,11 @@ public class Lockpick extends Tool implements Useable {
                         }
                         else {
                             if(Rand.d100(40)) {
-                                N.narrative().print(b, "The lockpick breaks! No luck...");
+                                Context.c().n().print(b, "The lockpick breaks! No luck...");
                                 b.getInventory().consume(Lockpick.this);
                             }
                             else {
-                                N.narrative().print(b, "No luck...");
+                                Context.c().n().print(b, "No luck...");
                             }
                             b.skillUp("lockpicking");
                         }

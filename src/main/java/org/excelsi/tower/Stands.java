@@ -38,7 +38,7 @@ public class Stands implements Mixin<Level> {
     }
 
     @Override public void mix(Level level) {
-        final int max = (int)(Math.sqrt(level.width()*level.height())/10);
+        final int max = (int)(Math.sqrt(level.width()*level.height())/30);
         System.err.println("adding "+max+" stands");
         for(int i=0;i<max;i++) {
             final NHSpace r = (NHSpace) level.findRandom((s)->{
@@ -55,7 +55,7 @@ public class Stands implements Mixin<Level> {
                 }
             });
             if(r!=null) {
-                int size = Rand.om.nextInt(50)+3;
+                int size = Rand.om.nextInt(50)+2;
                 List<NHSpace> frontier = new LinkedList<>();
                 frontier.add(r);
                 while(size-->0 && !frontier.isEmpty()) {

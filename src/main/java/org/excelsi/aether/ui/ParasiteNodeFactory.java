@@ -34,7 +34,7 @@ public class ParasiteNodeFactory extends AssetNodeFactory<Parasite> {
 
     @Override public Spatial createNode(final String name, final Parasite p, final SceneContext c) {
         try {
-            final Spatial n = loadModel(p.getModel(), p.getColor(), Display.single, Orientation.upright);
+            final Spatial n = loadModel(p.getModel(), p.getColor(), p.getArchitecture(), Orientation.upright);
             float scale = 1f;
             switch(p.getSize()) {
                 case tiny:
@@ -50,11 +50,10 @@ public class ParasiteNodeFactory extends AssetNodeFactory<Parasite> {
                     scale = 1.3f;
                     break;
                 case huge:
-                    scale = 1.6f;
+                    scale = 2.0f;
                     break;
             }
             n.setLocalScale(3.0f*scale);
-            //n.setLocalScale(2.0f*(0.60f+(float)Math.log10(1+p.getSize()/4f)));
             Nodes.centerAbove(n);
             final Node par = new Node(name);
             par.attachChild(n);

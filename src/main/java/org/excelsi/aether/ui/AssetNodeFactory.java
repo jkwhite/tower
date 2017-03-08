@@ -15,6 +15,7 @@ import com.jme3.math.FastMath;
 import com.jme3.export.binary.BinaryImporter;
 
 import org.excelsi.aether.NHSpace;
+import org.excelsi.aether.Architecture;
 import org.excelsi.aether.Orientation;
 import org.excelsi.aether.Rand;
 import org.excelsi.matrix.Typed;
@@ -22,7 +23,7 @@ import java.io.File;
 
 
 public abstract class AssetNodeFactory<E extends Typed> extends Enloggened implements NodeFactory<E> {
-    public enum Display { single, scatter };
+    //public enum Display { single, scatter };
 
     private final AssetManager _assets;
 
@@ -35,7 +36,7 @@ public abstract class AssetNodeFactory<E extends Typed> extends Enloggened imple
         return _assets;
     }
 
-    protected Spatial loadModel(final String model, final String color, Display display, final Orientation o) {
+    protected Spatial loadModel(final String model, final String color, Architecture display, final Orientation o) {
         final String asset = String.format("/model/%s.lod.mesh.xml", Spaces.format(model));
         final Spatial n = assets().loadModel(asset);
         Nodes.center(n);
@@ -73,7 +74,7 @@ public abstract class AssetNodeFactory<E extends Typed> extends Enloggened imple
         }
         //log().debug("loaded spatial "+n);
         switch(display) {
-            case scatter:
+            case repeating:
                 Node sc = new Node();
                 for(int i=0;i<4;i++) {
                     final Spatial cl = n.clone();
@@ -82,7 +83,13 @@ public abstract class AssetNodeFactory<E extends Typed> extends Enloggened imple
                     sc.attachChild(cl);
                 }
                 return sc;
-            case single:
+            case random:
+                Node nr = new Node();
+                nr.setLocalRotation(new Quaternion(new float[]{0f, Rand.om.nextFloat()*FastMath.PI*2f, 0f}));
+                n.setLocalTranslation(0.3f*UIConstants.HORIZ_RATIO*Rand.om.nextFloat(), 0f, 0.3f*UIConstants.VERT_RATIO*Rand.om.nextFloat());
+                nr.attachChild(n);
+                return nr;
+            case structural:
             default:
                 return n;
         }

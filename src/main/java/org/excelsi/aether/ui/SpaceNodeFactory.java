@@ -37,7 +37,7 @@ public class SpaceNodeFactory extends AssetNodeFactory<NHSpace> {
     @Override public Spatial createNode(final String name, final NHSpace s, final SceneContext sc) {
         if(!"".equals(s.getModel().trim())) {
             try {
-                final Spatial n = loadModel(s.getModel(), s.getColor(), displayFor(s.getArchitecture()), s.getOrientation());
+                final Spatial n = loadModel(s.getModel(), s.getColor(), s.getArchitecture(), s.getOrientation());
                 // TODO: ogre3d exporter needs bounds adjusted
                 if("\"".equals(s.getModel()) || "'".equals(s.getModel())) {
                     n.setLocalTranslation(new Vector3f(0f,-0.9f,0f));
@@ -60,13 +60,13 @@ public class SpaceNodeFactory extends AssetNodeFactory<NHSpace> {
         return null;
     }
 
-    private static Display displayFor(Architecture a) {
-        switch(a) {
-            case repeating:
-                return Display.scatter;
-            default:
-            case structural:
-                return Display.single;
-        }
-    }
+    //private static Display displayFor(Architecture a) {
+        //switch(a) {
+            //case repeating:
+                //return Display.scatter;
+            //default:
+            //case structural:
+                //return Display.single;
+        //}
+    //}
 }

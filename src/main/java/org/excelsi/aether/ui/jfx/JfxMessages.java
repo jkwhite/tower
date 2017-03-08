@@ -52,21 +52,8 @@ public class JfxMessages extends HudNode {
                 }
                 t.getStyleClass().add("message");
                 t.getStyleClass().add(e.getMessageType().toString());
-                if(e.getSource() instanceof NHBot) {
+                if(e.getSource() instanceof Typed) {
                     Fx.localize(le.ctx(), (Typed)e.getSource(), t);
-                    /*
-                    final Spatial src = le.ctx().getSpatial((Id)e.getSource());
-                    if(src!=null) {
-                        Vector3f wp = src.getWorldTranslation();
-                        Vector3f sp = le.ctx().getCamera().getScreenCoordinates(wp);
-                        final int w = le.ctx().getCamera().getWidth();
-                        final int h = le.ctx().getCamera().getHeight();
-                        t.setTranslateX(sp.x-50);
-                        t.setTranslateY(h-40-sp.y);
-                        //System.err.println("W****: "+((Label)t).getPrefWidth());
-                        //System.err.println("setting screen coords: "+sp+" from "+wp+" for "+e.getSource()+" message: "+e.getMessage()+"; jfxx="+t.getTranslateX()+", jfxy="+t.getTranslateY()+"; jfxlx="+t.getLayoutX()+", jfxly="+t.getLayoutY());
-                    }
-                    */
                 }
                 getChildren().add(t);
                 final SequentialTransition st = new SequentialTransition();

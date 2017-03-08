@@ -37,8 +37,12 @@ public abstract class Plant extends Parasite implements Nourishable {
 
 
     public void attacked(Armament a) {
-        N.narrative().print(getSpace(), "Goodbye "+getName()+"!");
+        Context.c().n().print(getSpace(), "Goodbye "+getName()+"!");
         getSpace().removeParasite(this);
+    }
+
+    @Override public Architecture getArchitecture() {
+        return Architecture.random;
     }
 
     public boolean isMoveable() {
@@ -96,7 +100,7 @@ public abstract class Plant extends Parasite implements Nourishable {
         if(b.isPlayer()) {
             // could have planned this better...
             String adj = isDust()?"dead ":isDead()?"dying ":isDying()?"sickly ":"";
-            N.narrative().print(getSpace(), "There is "+Grammar.nonspecific(adj+getName())+" here.");
+            Context.c().n().print(b, "There is "+Grammar.nonspecific(adj+getName())+" here.");
             //System.err.println("is dying: "+isDying());
             //System.err.println("is dead: "+isDead());
             //System.err.println("is dust: "+isDust());
