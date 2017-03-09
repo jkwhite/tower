@@ -41,4 +41,8 @@ public class AttributeChangeEvent<C,E> extends ContextualEvent<C> {
     public Object getTo() {
         return _to;
     }
+
+    @Override public String toString() {
+        return "AttributeChangeEvent::{source:"+getSource()+", ctx:"+getContext()+", e: "+getE()+", attr:"+getAttribute()+", from:"+getFrom()+", to:"+getTo()+"}";
+    }
 }

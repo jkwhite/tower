@@ -41,9 +41,14 @@ public class SpaceController extends ChangeController<Level,NHSpace> {
     }
 
     @Override protected void changed(final SceneContext c, final ChangeEvent<Level,NHSpace> e) {
-        log().info("SPACE CHANGE: "+e);
+        //log().info("SPACE CHANGE: "+e);
     }
 
     @Override protected void attributeChanged(SceneContext c, AttributeChangeEvent<Level,NHSpace> e) {
+        //log().info("SPACE ATTR CHANGE: "+e);
+        final Node lev = c.getNode(e.getContext());
+        if(lev!=null) {
+            Spaces.updateSpace(c, lev, e.getE());
+        }
     }
 }

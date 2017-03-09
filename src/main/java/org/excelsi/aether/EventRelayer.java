@@ -117,6 +117,9 @@ public class EventRelayer extends EverythingAdapter implements EventSource {
     }
 
     public void attributeChanged(NHSpace s, String attr, Object oldValue, Object newValue) {
+        for(NHSpaceListener l:_nhslisteners) {
+            l.attributeChanged(s, attr, oldValue, newValue);
+        }
     }
 
     public void overlayRemoved(NHSpace n, Overlay o) {

@@ -154,6 +154,10 @@ public class EventBusRelayer extends EverythingAdapter {
         post(TOPIC_CHANGES, new RemoveEvent<NHSpace,Parasite>(s, "parasite", s, p));
     }
 
+    @Override public void attributeChanged(NHSpace s, String attr, Object oldValue, Object newValue) {
+        post(TOPIC_CHANGES, new AttributeChangeEvent<Level,NHSpace>(s, "space", (Level)s.getContainer(), s, attr, oldValue, newValue));
+    }
+
     @Override public void parasiteMoved(NHSpace s, NHSpace to, Parasite p) {
         Thread.dumpStack();
     }

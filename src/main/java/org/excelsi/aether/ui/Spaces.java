@@ -17,6 +17,15 @@ import com.jme3.math.Vector3f;
 
 
 public class Spaces {
+    public static Spatial updateSpace(final SceneContext c, final Node lev, final NHSpace space) {
+        final Spatial doomed = c.getNode(space);
+        if(doomed!=null) {
+            Nodes.detachFromParent(doomed);
+            c.removeSpatial(space);
+        }
+        return createSpace(c, lev, space);
+    }
+
     public static Spatial createSpace(final SceneContext c, final Node lev, final NHSpace space) {
         if(!c.containsNode(space)) {
             final SpaceNode ms = (SpaceNode) c.getNodeFactory().createNode(space.getId(), space, c);
