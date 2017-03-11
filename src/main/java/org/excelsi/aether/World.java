@@ -45,6 +45,7 @@ public class World implements State {
         while(c.getState()==this) {
             try {
                 //System.err.println("tick: "+_level);
+                Time.tick();
                 _level.tick(c);
             }
             catch(ActionCancelledException e) {
@@ -73,7 +74,7 @@ public class World implements State {
             switchLevel((Level)level, start);
         }
         else {
-            MSpace m = level.getMatrix().getSpace(level.getMatrix().width()/2,level.getMatrix().height()/2);
+            MSpace m = level.getMatrix().getSpace(level.getMatrix().width()/2,level.getMatrix().height()-12);
             if(m==null||!m.isWalkable()) {
                 m = ((Level)level).findRandomEmptySpace();
             }

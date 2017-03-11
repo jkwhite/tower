@@ -30,11 +30,20 @@ import java.util.Collections;
 
 
 public abstract class Plant extends Parasite implements Nourishable {
+    private final int _spawnTime;
     private long _cycle = Time.now();
     private long _creation = Time.now();
     private String _color = getNormalColor();
     private List<Fragment> _fragments = null;
 
+
+    public Plant() {
+        this(Rand.om.nextInt(40)+180);
+    }
+
+    public Plant(final int spawnTime) {
+        _spawnTime = spawnTime;
+    }
 
     public void attacked(Armament a) {
         Context.c().n().print(getSpace(), "Goodbye "+getName()+"!");
@@ -209,7 +218,7 @@ public abstract class Plant extends Parasite implements Nourishable {
     }
 
     protected int getSpawnTime() {
-        return 200;
+        return _spawnTime;
     }
 
     protected abstract Item fruit();

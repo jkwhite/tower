@@ -199,21 +199,31 @@ public class Matrix extends MapEnvirons implements java.io.Serializable, MSpaceL
                 }
             }
         }
+    }
 
-        /*
-        for(int i=0;i<_matrix.length;i++) {
-            MatrixMSpace s = m._matrix[i];
-            if(s==null) {
-                continue;
-            }
-            if(_matrix[i]!=null) {
-                _matrix[i] = _matrix[i].union(s);
-            }
-            else {
-                _matrix[i] = s;
+    public void union(Matrix m, int x1, int y1, boolean replace) {
+        if(m.width()+x1>width()||m.height()+y1>height()) {
+            throw new IllegalArgumentException("incompatible matrix dimensions");
+        }
+        for(int i=0;i<m.width();i++) {
+            for(int j=0;j<m.height();j++) {
+                MatrixMSpace s = m.getSpace(i,j);
+                if(s==null) {
+                    continue;
+                }
+                MatrixMSpace r = getSpace(x1+i,y1+j);
+                m.setSpace(null, i, j);
+                if(r==null) {
+                    setSpace(s, x1+i, y1+j);
+                }
+                else {
+                    MatrixMSpace rep = replace?s:r.union(s);
+                    if(rep!=r) {
+                        setSpace(rep, x1+i, y1+j);
+                    }
+                }
             }
         }
-        */
     }
 
     /** 

@@ -23,6 +23,7 @@
   overgrowth:
     - grass
     - trees
+    - vines
   plains:
     - grass
     - trees

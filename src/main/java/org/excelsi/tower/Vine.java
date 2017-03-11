@@ -26,6 +26,10 @@ import org.excelsi.aether.*;
 
 
 public class Vine extends Plant {
+    public Vine() {
+        super(Rand.om.nextInt(40)+780);
+    }
+
     public Size getSize() {
         return Size.small;
     }
@@ -46,17 +50,13 @@ public class Vine extends Plant {
         return 8000L;
     }
 
-    protected int getSpawnTime() {
-        return 800;
-    }
-
     public boolean canLeave(MSpace to) {
         NHBot b = getSpace().getOccupant();
         if(Rand.d100(b.getModifiedAgility())) {
             return true;
         }
         else {
-            N.narrative().printf(b, "%v entangled in a vine!");
+            Context.c().n().printf(b, "%v entangled in a vine!");
             for(Item i:b.getWearing()) {
                 if(i instanceof Tearable && Rand.d100(25)) {
                     ((Tearable)i).tear(b, new Source("vine"), b.getInventory());

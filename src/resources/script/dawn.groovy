@@ -19,7 +19,8 @@ $c.bulk.stagemaker = new TowerStagemaker(
             Ingredients.mixin('hills', new Heightmap(0.5f)),
             Ingredients.mixin('foothills', new Heightmap()),
             Ingredients.mixin('mountains', new Heightmap(2f)),
-            Ingredients.mixin('trees', new Stands()),
+            Ingredients.mixin('trees', new Stands(OrangeTree,AppleTree)),
+            Ingredients.mixin('vines', new Vines()),
             new Bots('bots'),
             Ingredients.mixin('green-litten', new Illumination(1f, 'light-green')),
             Ingredients.mixin('blue-litten', new Illumination(1f, 'light-blue')),
@@ -41,13 +42,15 @@ $c.bulk.stagemaker = new TowerStagemaker(
                 Spacemaker.expanse(Ground,Grass)
                 .and(Spacemaker.circle(150,-100,300,Wall,Ground,75))
                 .and(Spacemaker.circle(150,-100,303,Wall,null,75))
-                .and(Spacemaker.line(150,90,150,250,Floor,99))
-                .and(Spacemaker.line(151,90,151,250,Floor,97))
-                .and(Spacemaker.line(149,90,149,250,Floor,96))
+                .and(Spacemaker.line(150,90,150,290,Floor,99))
+                .and(Spacemaker.line(151,90,151,290,Floor,97))
+                .and(Spacemaker.line(149,90,149,290,Floor,96))
+                .and(Spacemaker.line(149,250,280,250,Floor,96))
                 .and(Spacemaker.line(148,90,148,200,Wall,30))
                 .and(Spacemaker.line(152,90,152,200,Wall,30))
+                .and(TowerLevelGenerator.town(220,220,70,60))
                 .and({ r2,l -> l.getSpace((int)(l.width()/2),(int)(l.height()/2-40)).replace(new Stairs(true)) })
-                .and({ r2,l -> l.getSpace((int)(l.width()/2),(int)(l.height()/2-39)).addParasite(new CamphorTree()) })
+                .and({ r2,l -> l.getSpace((int)(l.width()/2),(int)(l.height()/2-42)).addParasite(new CamphorTree()) })
             ) }),
             Ingredients.i('blight', { r -> 
                 r.spaces(Spaces.modulator({ s ->

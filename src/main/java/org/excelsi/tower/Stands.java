@@ -26,8 +26,14 @@ import java.util.*;
 
 
 public class Stands implements Mixin<Level> {
+    private final List<Class<? extends Plant>> _types;
     private int _chance = 10;
 
+
+    //public Stands(List<Class<? extends Plant>> types) {
+    public Stands(Class<? extends Plant>... types) {
+        _types = Arrays.asList(types);
+    }
 
     public void setChance(int chance) {
         _chance = chance;
@@ -55,19 +61,28 @@ public class Stands implements Mixin<Level> {
                 }
             });
             if(r!=null) {
-                int size = Rand.om.nextInt(50)+2;
-                List<NHSpace> frontier = new LinkedList<>();
-                frontier.add(r);
-                while(size-->0 && !frontier.isEmpty()) {
-                    final NHSpace s = frontier.remove(0);
-                    if(!s.hasParasite(Plant.class)) {
-                        ((NHSpace)s).addParasite(new CamphorTree());
-                    }
-                    for(MSpace m:s.surrounding()) {
-                        if(m instanceof Grass && !((NHSpace)m).hasParasite(Plant.class)) {
-                            frontier.add((NHSpace)m);
-                        }
-                    }
+                try {
+                    mixFlora(r, _types.get(Rand.om.nextInt(_types.size())));
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void mixFlora(final NHSpace r, final Class<? extends Plant> type) throws Exception {
+        int size = Rand.om.nextInt(50)+2;
+        List<NHSpace> frontier = new LinkedList<>();
+        frontier.add(r);
+        while(size-->0 && !frontier.isEmpty()) {
+            final NHSpace s = frontier.remove(0);
+            if(!s.hasParasite(Plant.class)) {
+                ((NHSpace)s).addParasite(type.newInstance());
+            }
+            for(MSpace m:s.surrounding()) {
+                if(m instanceof Grass && !((NHSpace)m).hasParasite(Plant.class)) {
+                    frontier.add((NHSpace)m);
                 }
             }
         }
