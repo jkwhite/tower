@@ -114,6 +114,7 @@ $c.pov.name = System.getProperty("user.name")
 $c.pov.inventory.add(new Snowshoes())
 $c.pov.inventory.add(new Pill(new Cyanide()))
 $c.pov.inventory.add(new ScrollOfMapping(count:30))
+$c.pov.inventory.add(new Diary(Data.resource('/script/diary-town.txt')))
 $c.pov.inventory.add(new Book() {
     String getName() { "book entitled 'The Lava Gatherers'" }
 
@@ -168,7 +169,7 @@ def title = new State() {
 
     void run(Context c) {
         c.n.title("")
-        c.n.choose(new SelectionMenu<Runnable>(
+        c.n.choose(null, new SelectionMenu<Runnable>(
             new MenuItem<Runnable>("n", "New game", {
                 //c.state = new Prelude(Data.resource("/script/prelude-text"))
                 c.state = new World(initialLevel)

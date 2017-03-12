@@ -1,6 +1,9 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
+
+
 public class MessageEvent extends Event {
     public enum Type { ephemeral, permanent };
 
@@ -10,11 +13,11 @@ public class MessageEvent extends Event {
     private final DisplayHints _h;
 
 
-    public MessageEvent(Object source, Type t, Object m) {
+    public MessageEvent(Typed source, Type t, Object m) {
         this(source, t, m, DisplayHints.NONE);
     }
 
-    public MessageEvent(Object source, Type t, Object m, DisplayHints h) {
+    public MessageEvent(Typed source, Type t, Object m, DisplayHints h) {
         super(source);
         _t = t;
         _m = m;

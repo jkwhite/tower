@@ -1,12 +1,15 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
+
+
 public class StateChangeEvent extends Event {
     private final State _old;
     private final State _new;
 
 
-    public StateChangeEvent(Object source, State oldValue, State newValue) {
+    public StateChangeEvent(Typed source, State oldValue, State newValue) {
         super(source);
         _old = oldValue;
         _new = newValue;

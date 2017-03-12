@@ -14,15 +14,15 @@ public class BlockingNarrative implements NNarrative {
     }
 
     @Override public void pause() {
-        EventBus.instance().await(TOPIC_UI, new PauseEvent(this));
+        EventBus.instance().await(TOPIC_UI, new PauseEvent(null));
     }
 
     @Override public void title(String title) {
-        _e.post(TOPIC_UI, new TitleEvent(this, title));
+        _e.post(TOPIC_UI, new TitleEvent(null, title));
     }
 
     @Override public void message(String m) {
-        _e.post(TOPIC_UI, new MessageEvent(this, MessageEvent.Type.ephemeral, m));
+        _e.post(TOPIC_UI, new MessageEvent(null, MessageEvent.Type.ephemeral, m));
     }
 
     @Override public void print(NHBot source, Object m, DisplayHints h) {
@@ -40,7 +40,7 @@ public class BlockingNarrative implements NNarrative {
     }
 
     @Override public boolean confirm(String m) {
-        return _e.await(TOPIC_UI, new QueryEvent(this, QueryEvent.Type.bool, m)).<Boolean>getAnswer();
+        return _e.await(TOPIC_UI, new QueryEvent(null, QueryEvent.Type.bool, m)).<Boolean>getAnswer();
     }
 
     @Override public boolean confirm(final NHBot source, String m) {
@@ -48,11 +48,15 @@ public class BlockingNarrative implements NNarrative {
     }
 
     @Override public void poster(String m) {
-        _e.post(TOPIC_UI, new MessageEvent(this, MessageEvent.Type.permanent, m));
+        _e.post(TOPIC_UI, new MessageEvent(null, MessageEvent.Type.permanent, m));
     }
 
-    @Override public <E> E choose(SelectionMenu<E> m) {
-        return _e.await(TOPIC_UI, new SelectEvent<E>(this, m)).getMenu().getChoice().item();
+    @Override public void poster(NHBot source, String m) {
+        _e.post(TOPIC_UI, new MessageEvent(source, MessageEvent.Type.permanent, m));
+    }
+
+    @Override public <E> E choose(NHBot source, SelectionMenu<E> m) {
+        return _e.await(TOPIC_UI, new SelectEvent<E>(source, m)).getMenu().getChoice().item();
     }
 
     @Override public void show(NHBot source, Object shown) {

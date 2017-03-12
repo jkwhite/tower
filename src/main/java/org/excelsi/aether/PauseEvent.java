@@ -1,8 +1,11 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
+
+
 public class PauseEvent extends Event {
-    public PauseEvent(final Object source) {
+    public PauseEvent(final Typed source) {
         super(source);
     }
 

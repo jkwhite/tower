@@ -21,7 +21,8 @@ package org.excelsi.tower;
 
 
 import org.excelsi.aether.NHBot;
-import org.excelsi.aether.N;
+import org.excelsi.aether.Context;
+import org.excelsi.aether.DisplayHints;
 
 
 public class Diary extends Book {
@@ -49,6 +50,6 @@ public class Diary extends Book {
     }
 
     public void invoke(NHBot b) {
-        N.narrative().display(b, _text, false);
+        Context.c().n().show(b, _text, DisplayHints.MODAL);
     }
 }

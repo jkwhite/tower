@@ -67,9 +67,13 @@ public class FilteringNarrative implements NNarrative {
         _delegate.poster(m);
     }
 
-    @Override public <E> E choose(SelectionMenu<E> m) {
+    @Override public void poster(NHBot source, String m) {
+        _delegate.poster(source, m);
+    }
+
+    @Override public <E> E choose(NHBot source, SelectionMenu<E> m) {
         if(_pov.isHuman()) {
-            return _delegate.choose(m);
+            return _delegate.choose(source, m);
         }
         else {
             throw new UnsupportedOperationException();

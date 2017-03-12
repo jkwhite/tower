@@ -57,9 +57,9 @@ public class Writing extends Parasite {
 
     public boolean notice(NHBot b) {
         if(b.isPlayer()) {
-            N.narrative().print(b, "There is something written here.");
+            Context.c().n().print(b, "There is something written here.");
             if(getSpace().getOccupant()==b) {
-                N.narrative().print(b, "You read: \""+_text+"\".");
+                Context.c().n().print(b, "You read: \""+_text+"\".");
             }
             return true;
         }
@@ -67,7 +67,7 @@ public class Writing extends Parasite {
     }
 
     public String getColor() { return "white"; }
-    public String getModel() { return " "; }
+    public String getModel() { return ""; }
     public int getHeight() { return 0; }
     public void attacked(Armament a) {}
 

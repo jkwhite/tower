@@ -37,7 +37,10 @@ public class EmptyNarrative implements NNarrative {
     @Override public void poster(String m) {
     }
 
-    @Override public <E> E choose(SelectionMenu<E> m) {
+    @Override public void poster(NHBot source, String m) {
+    }
+
+    @Override public <E> E choose(NHBot source, SelectionMenu<E> m) {
         throw new IllegalStateException();
     }
 

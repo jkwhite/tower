@@ -2,6 +2,7 @@ package org.excelsi.aether;
 
 
 import java.util.Random;
+import org.excelsi.matrix.Id;
 import org.excelsi.matrix.MSpace;
 import org.excelsi.matrix.MatrixMSpace;
 import org.excelsi.aether.ActionCancelledException;
@@ -10,7 +11,7 @@ import org.excelsi.aether.Patsy;
 import org.excelsi.aether.EventSource;
 
 
-public class World implements State {
+public class World extends Id implements State {
     private final int _initial;
     private final EventBusRelayer _relay = new EventBusRelayer();
     private Stage _level;
@@ -24,6 +25,10 @@ public class World implements State {
 
     public World(int initial) {
         _initial = initial;
+    }
+
+    @Override public String getObjectType() {
+        return "world";
     }
 
     @Override public String getName() {

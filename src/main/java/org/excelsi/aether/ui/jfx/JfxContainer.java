@@ -28,6 +28,9 @@ import org.excelsi.aether.Item;
 import org.excelsi.aether.DisplayHints;
 
 
+/**
+ * Displays container contents.
+ */
 public class JfxContainer extends HudRegion {
     private static final String SEP = " - ";
 
@@ -50,6 +53,7 @@ public class JfxContainer extends HudRegion {
                 line.getChildren().add(lkey);
             }
             line.getChildren().add(new Label(text.toString()));
+            Fx.decorate(line, (ev)->{});
             v.getChildren().add(line);
             key.setLength(0);
             text.setLength(0);

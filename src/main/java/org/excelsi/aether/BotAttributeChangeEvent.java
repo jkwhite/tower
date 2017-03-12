@@ -1,6 +1,7 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
 import org.excelsi.matrix.MSpace;
 import org.excelsi.matrix.Bot;
 
@@ -10,7 +11,7 @@ public class BotAttributeChangeEvent<E> extends ChangeEvent<Bot,E> {
     private final String _attr;
 
 
-    public BotAttributeChangeEvent(Object source, Bot b, String attr, E from, E to) {
+    public BotAttributeChangeEvent(Typed source, Bot b, String attr, E from, E to) {
         super(source, "bot", b, from, to);
         _b = b;
         _attr = attr;

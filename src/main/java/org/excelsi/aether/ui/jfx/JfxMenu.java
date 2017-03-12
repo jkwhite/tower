@@ -22,6 +22,9 @@ import org.excelsi.aether.Menu;
 import org.excelsi.aether.MenuItem;
 
 
+/**
+ * Displays a selection menu.
+ */
 public class JfxMenu extends HudRegion {
     public JfxMenu(final Object notify, final Menu m) {
         addLogicHandler((le)->{
@@ -44,6 +47,9 @@ public class JfxMenu extends HudRegion {
             HBox line = new HBox();
             line.getChildren().add(key);
             line.getChildren().add(desc);
+            Fx.decorate(line, (e)->{ choose(m, item, notify); });
+            System.err.println("DECORATED: "+desc);
+            /*
             line.setOnMouseEntered(new EventHandler<MouseEvent>() {
                 @Override public void handle(MouseEvent e) {
                     line.setEffect(new Glow());
@@ -59,6 +65,7 @@ public class JfxMenu extends HudRegion {
                     choose(m, item, notify);
                 }
             });
+            */
             menu.getChildren().add(line);
             menu.getStyleClass().add("menu");
         }
@@ -66,6 +73,7 @@ public class JfxMenu extends HudRegion {
     }
 
     private void choose(final Menu m, final MenuItem item, final Object notify) {
+        System.err.println("************ CHOSEN: "+item);
         ((Group)getParent()).getChildren().remove(this);
         m.getF().apply(item);
         m.setChoice(item);

@@ -43,6 +43,7 @@ public class UI {
                 "mechanics", constant(new MechanicsController()),
                 "space", constant(new SpaceController()),
                 "knowledge", constant(new KnowledgeController()),
+                "parasite", constant(new ParasiteController()),
                 "item", constant(new ItemController())
             )
         );

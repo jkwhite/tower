@@ -1,6 +1,11 @@
 package org.excelsi.aether.ui.jfx;
 
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+
 import javafx.scene.control.Label;
 import javafx.scene.Parent;
 import javafx.scene.Node;
@@ -23,6 +28,9 @@ import org.excelsi.aether.Grammar;
 
 
 public class JfxMessages extends HudNode {
+    private final Map<Typed,List<MessageEvent>> _stacks = new HashMap<>();
+
+
     public JfxMessages() {
         addLogicHandler((le)->{
             if(le.e() instanceof MessageEvent) {
@@ -30,6 +38,7 @@ public class JfxMessages extends HudNode {
                 if(e.getMessage()==null) {
                     return;
                 }
+                final int offset = stack(e);
                 final Node t;
                 if(e.getMessage() instanceof Item) {
                     if(e.getHints().isKeyed()) {
@@ -54,6 +63,8 @@ public class JfxMessages extends HudNode {
                 t.getStyleClass().add(e.getMessageType().toString());
                 if(e.getSource() instanceof Typed) {
                     Fx.localize(le.ctx(), (Typed)e.getSource(), t);
+                    System.err.println("setting offset "+offset);
+                    t.setLayoutY(18*offset);
                 }
                 getChildren().add(t);
                 final SequentialTransition st = new SequentialTransition();
@@ -79,6 +90,10 @@ public class JfxMessages extends HudNode {
                         out.setFromValue(1.0);
                         out.setToValue(0.0);
                         st.getChildren().add(out);
+                        st.setOnFinished((ev)->{
+                            JfxMessages.this.getChildren().remove(t);
+                            unstack(e);
+                        });
                         break;
                     case permanent:
                     default:
@@ -87,5 +102,25 @@ public class JfxMessages extends HudNode {
                 st.play();
             }
         });
+    }
+
+    private synchronized int stack(final MessageEvent e) {
+        List<MessageEvent> ms = _stacks.get(e.getSource());
+        if(ms==null) {
+            ms = new LinkedList<>();
+            _stacks.put(e.getSource(), ms);
+        }
+        ms.add(e);
+        return ms.size()-1;
+    }
+
+    private synchronized void unstack(final MessageEvent e) {
+        List<MessageEvent> ms = _stacks.get(e.getSource());
+        if(ms!=null) {
+            ms.remove(e);
+            if(ms.isEmpty()) {
+                _stacks.remove(e.getSource());
+            }
+        }
     }
 }

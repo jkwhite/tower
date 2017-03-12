@@ -1,11 +1,14 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
+
+
 public class SelectEvent<E> extends Event {
     private final Menu<E> _m;
 
 
-    public SelectEvent(Object source, Menu<E> m) {
+    public SelectEvent(Typed source, Menu<E> m) {
         super(source);
         _m = m;
     }

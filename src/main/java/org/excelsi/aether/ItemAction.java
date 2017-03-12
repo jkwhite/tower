@@ -82,7 +82,7 @@ public abstract class ItemAction extends DefaultNHBotAction {
         if(!useSpace(c) || !useSpace()) {
             if(_prompt&&c.actor().isPlayer()&&getItem()==null) {
                 //setItem(c.n().choose(c.actor(), new ItemConstraints(c.actor().getInventory(), _verb, _filter, _acceptNull), _remove));
-                setItem(c.n().choose(/*c.actor(),*/ Menus.asMenu(new ItemConstraints(c.actor().getInventory(), _verb, _filter, _acceptNull), c.actor()) /*, _remove*/));
+                setItem(c.n().choose(c.actor(), Menus.asMenu(new ItemConstraints(c.actor().getInventory(), _verb, _filter, _acceptNull), c.actor()) /*, _remove*/));
                 //System.err.println("****** ITEM: "+_item);
             }
             else {

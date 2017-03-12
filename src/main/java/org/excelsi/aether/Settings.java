@@ -28,22 +28,26 @@ public class Settings extends DefaultNHBotAction {
     }
 
     public String getDescription() {
-        return "Changes game settings.";
+        return "Changes settings.";
     }
 
     public void perform() {
         //N.narrative().uiSettings();
-        Object[] choice = N.narrative().choose(getBot(), "", "Game",
-            new String[]{"Settings", "Save & Quit", "Quit"}, null, 1);
-        String s = (String) choice[0];
-        if("Settings".equals(s)) {
+        //Object[] choice = Context.c().n().choose(getBot(), "", "Game",
+            //new String[]{"Settings", "Save & Quit", "Quit"}, null, 1);
+        final String s = Context.c().n().choose(getBot(), new SelectionMenu<String>(
+            new MenuItem<String>("u", "Settings", "settings"),
+            new MenuItem<String>("S", "Save & Quit", "sq"),
+            new MenuItem<String>("Q", "Quit", "quit")));
+        //String s = (String) choice[0];
+        if("settings".equals(s)) {
             N.narrative().uiSettings();
         }
-        else if("Save & Quit".equals(s)) {
+        else if("sq".equals(s)) {
             Patsy.Save save = new Patsy.Save();
             save.perform();
         }
-        else if("Quit".equals(s)) {
+        else if("quit".equals(s)) {
             Patsy.Exit e = new Patsy.Exit();
             e.setBot(getBot());
             e.perform();

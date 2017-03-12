@@ -8,7 +8,7 @@ public class Title implements State {
 
     @Override public void run(final Context c) {
         c.n().title("");
-        final Runnable r = c.n().choose(new SelectionMenu<Runnable>(
+        final Runnable r = c.n().choose(null, new SelectionMenu<Runnable>(
             new MenuItem<Runnable>("n", "New game", ()->{
                 //c.setState(new Prelude(Data.resource("prelude-text")));
                 c.setState(new World());

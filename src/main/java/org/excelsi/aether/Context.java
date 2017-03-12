@@ -78,7 +78,7 @@ public final class Context {
     public void setState(final State state) {
         final State oldValue = _state;
         _state = state;
-        EventBus.instance().post("keys", new StateChangeEvent(this, oldValue, _state));
+        EventBus.instance().post("keys", new StateChangeEvent(null, oldValue, _state));
     }
 
     public Context state(final State state) {
@@ -127,6 +127,6 @@ public final class Context {
     private void setPatsy(final Patsy patsy) {
         final Patsy old = _patsy;
         _patsy = patsy;
-        EventBus.instance().post("keys", new ChangeEvent<Context,Patsy>(this, "player", this, old, _patsy));
+        EventBus.instance().post("keys", new ChangeEvent<Context,Patsy>(null, "player", this, old, _patsy));
     }
 }

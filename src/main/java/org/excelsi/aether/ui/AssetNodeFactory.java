@@ -37,6 +37,9 @@ public abstract class AssetNodeFactory<E extends Typed> extends Enloggened imple
     }
 
     protected Spatial loadModel(final String model, final String color, Architecture display, final Orientation o) {
+        if("".equals(model)) {
+            return new Node();
+        }
         final String asset = String.format("/model/%s.lod.mesh.xml", Spaces.format(model));
         final Spatial n = assets().loadModel(asset);
         Nodes.center(n);

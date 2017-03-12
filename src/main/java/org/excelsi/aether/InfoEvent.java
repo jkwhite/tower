@@ -1,16 +1,19 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
+
+
 public class InfoEvent extends Event {
     private final Object _shown;
     private final DisplayHints _hints;
 
 
-    public InfoEvent(Object source, Object shown) {
+    public InfoEvent(Typed source, Object shown) {
         this(source, shown, DisplayHints.NONE);
     }
 
-    public InfoEvent(Object source, Object shown, DisplayHints hints) {
+    public InfoEvent(Typed source, Object shown, DisplayHints hints) {
         super(source);
         _shown = shown;
         _hints = hints;

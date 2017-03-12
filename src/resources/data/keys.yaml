@@ -13,7 +13,7 @@ H: westward
 '^': untrap
 '#': extended
 q: quaff
-TAB: switchview
+Tab: switchview
 ;: look
 i: inventory
 a: apply
@@ -62,5 +62,5 @@ e: eat
 M-m: togglefs
 M-u: uisettings
 M-,: settings
-ESCAPE: settings
+Esc: settings
 '?': help

@@ -84,15 +84,15 @@ public class JfxWorld extends HudNode {
             return false;
         }
         final Action a = c.ctx().getUniverse().getActions().get(aname);
-        LOG.debug("found action: "+a+" for key: "+e);
+        LOG.info("found action: "+a+" for key: "+e);
         if(a!=null) {
             try {
                 final Action inst = a.getClass().newInstance();
                 if(inst instanceof UIAction) {
-                    EventBus.instance().post("jme", new ActionEvent(this, inst));
+                    EventBus.instance().post("jme", new ActionEvent(null, inst));
                 }
                 else {
-                    EventBus.instance().post("actions", new ActionEvent(this, inst));
+                    EventBus.instance().post("actions", new ActionEvent(null, inst));
                 }
             }
             catch(Exception ex) {

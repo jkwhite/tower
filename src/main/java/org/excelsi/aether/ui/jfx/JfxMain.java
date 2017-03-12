@@ -4,6 +4,7 @@ package org.excelsi.aether.ui.jfx;
 import java.util.function.Function;
 
 import com.jme3.app.LegacyApplication;
+import com.jme3.app.SimpleApplication;
 import com.jme3.app.StatsAppState;
 import com.jme3.app.FlyCamAppState;
 import com.jme3.audio.AudioListenerState;
@@ -27,6 +28,7 @@ import com.jme3.input.event.MouseButtonEvent;
 import com.jme3.input.event.MouseMotionEvent;
 import com.jme3.input.event.TouchEvent;
 import com.jme3.input.KeyNames;
+import com.jme3.input.KeyInput;
 import com.jme3.renderer.queue.RenderQueue.Bucket;
 import com.jme3.scene.Spatial.CullHint;
 import com.jme3.profile.AppStep;
@@ -83,7 +85,8 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 
-public class JfxMain extends LegacyApplication implements EventBus.Handler {
+//public class JfxMain extends LegacyApplication implements EventBus.Handler {
+public class JfxMain extends SimpleApplication implements EventBus.Handler {
     private static final Logger LOG = LoggerFactory.getLogger(JfxMain.class);
     private Runnable _events;
     private EventBus.Handler _jmeEvents;
@@ -92,11 +95,11 @@ public class JfxMain extends LegacyApplication implements EventBus.Handler {
     private GuiManager _guiManager;
     private SceneContext _ctx;
 
-    private com.jme3.scene.Node rootNode = new com.jme3.scene.Node("Root Node");
-    private com.jme3.scene.Node guiNode = new com.jme3.scene.Node("Gui Node");
-    protected BitmapText fpsText;
-    protected BitmapFont guiFont;
-    private boolean showSettings = true;
+    //private com.jme3.scene.Node rootNode = new com.jme3.scene.Node("Root Node");
+    //private com.jme3.scene.Node guiNode = new com.jme3.scene.Node("Gui Node");
+    //protected BitmapText fpsText;
+    //protected BitmapFont guiFont;
+    //private boolean showSettings = true;
 
 
     public static void main(String[] args){
@@ -111,6 +114,7 @@ public class JfxMain extends LegacyApplication implements EventBus.Handler {
         super(new FlyCamAppState(), new AudioListenerState(), new DebugKeysAppState());
     }
 
+    /*
     @Override
     public void start() {
         // set some default settings in-case
@@ -131,7 +135,9 @@ public class JfxMain extends LegacyApplication implements EventBus.Handler {
         setSettings(settings);
         super.start();
     }
+    */
 
+    /*
     @Override
     public void initialize() {
         super.initialize();
@@ -144,30 +150,30 @@ public class JfxMain extends LegacyApplication implements EventBus.Handler {
         viewPort.attachScene(rootNode);
         guiViewPort.attachScene(guiNode);
 
+        stateManager.attach(new StatsAppState(guiNode, guiFont));
+
         if (inputManager != null) {
 
             // We have to special-case the FlyCamAppState because too
             // many SimpleApplication subclasses expect it to exist in
             // simpleInit().  But at least it only gets initialized if
             // the app state is added.
-            /*
-            if (stateManager.getState(FlyCamAppState.class) != null) {
-                flyCam = new FlyByCamera(cam);
-                flyCam.setMoveSpeed(1f); // odd to set this here but it did it before
-                stateManager.getState(FlyCamAppState.class).setCamera( flyCam );
-            }
-
-            if (context.getType() == Type.Display) {
-                inputManager.addMapping(INPUT_MAPPING_EXIT, new KeyTrigger(KeyInput.KEY_ESCAPE));
-            }
-
-            if (stateManager.getState(StatsAppState.class) != null) {
-                inputManager.addMapping(INPUT_MAPPING_HIDE_STATS, new KeyTrigger(KeyInput.KEY_F5));
-                inputManager.addListener(actionListener, INPUT_MAPPING_HIDE_STATS);
-            }
-
-            inputManager.addListener(actionListener, INPUT_MAPPING_EXIT);
-            */
+            //if (stateManager.getState(FlyCamAppState.class) != null) {
+                //flyCam = new FlyByCamera(cam);
+                //flyCam.setMoveSpeed(1f); // odd to set this here but it did it before
+                //stateManager.getState(FlyCamAppState.class).setCamera( flyCam );
+            //}
+//
+            //if (context.getType() == Type.Display) {
+                //inputManager.addMapping(INPUT_MAPPING_EXIT, new KeyTrigger(KeyInput.KEY_ESCAPE));
+            //}
+//
+            //if (stateManager.getState(StatsAppState.class) != null) {
+                //inputManager.addMapping(INPUT_MAPPING_HIDE_STATS, new KeyTrigger(KeyInput.KEY_F5));
+                //inputManager.addListener(actionListener, INPUT_MAPPING_HIDE_STATS);
+            //}
+//
+            //inputManager.addListener(actionListener, INPUT_MAPPING_EXIT);
         }
 
         if (stateManager.getState(StatsAppState.class) != null) {
@@ -180,22 +186,24 @@ public class JfxMain extends LegacyApplication implements EventBus.Handler {
         // call user code
         simpleInitApp();
     }
+    */
 
     /**
      *  Creates the font that will be set to the guiFont field
      *  and subsequently set as the font for the stats text.
      */
-    protected BitmapFont loadGuiFont() {
-        return assetManager.loadFont("Interface/Fonts/Default.fnt");
-    }
+    //protected BitmapFont loadGuiFont() {
+        //return assetManager.loadFont("Interface/Fonts/Default.fnt");
+    //}
 
     public void simpleInitApp() {
-        if(inputManager==null) {
-            return;
-        }
+        //if(inputManager==null) {
+            //return;
+        //}
         assetManager.registerLocator("/", ClasspathLocator.class);
 
-        final GuiManager guiManager = new GuiManager(this.guiNode, this.assetManager, this, true, new ProtonCursorProvider(this, this.assetManager, this.inputManager));
+        final GuiManager guiManager = new GuiManager(this.guiNode, this.assetManager, this, true,
+            new ProtonCursorProvider(this, this.assetManager, this.inputManager));
         guiManager.setEverListeningRawInputListener(new RawInputListener() {
             public void beginInput() {
             }
@@ -209,8 +217,12 @@ public class JfxMain extends LegacyApplication implements EventBus.Handler {
             public void onJoyButtonEvent(JoyButtonEvent e) {
             }
 
+            private final KeyNames _knames = new KeyNames();
             private long _lastRepeat;
+            private boolean _ctrlDown = false;
+            private boolean _shiftDown = false;
             public void onKeyEvent(KeyInputEvent e) {
+                mouseInput.setCursorVisible(false);
                 if(e.isRepeating()) {
                     long repeat = System.currentTimeMillis();
                     if(_lastRepeat+300>repeat) {
@@ -218,25 +230,52 @@ public class JfxMain extends LegacyApplication implements EventBus.Handler {
                     }
                     _lastRepeat = repeat;
                 }
-                //LOG.info(System.nanoTime()+" "+String.format("key char %s for code %d, repeating %s, string %s", e.getKeyChar(), e.getKeyCode(), e.isRepeating(), e.toString())+": "+new KeyNames().getName(e.getKeyCode()));
+                final String kname = _knames.getName(e.getKeyCode());
+                LOG.info(String.format("key char %s for code %d, repeating %s, string %s", e.getKeyChar(), e.getKeyCode(), e.isRepeating(), e.toString())+": "+kname);
                 boolean meta = e.getKeyCode()==219;
-                if(e.isPressed() && !meta) {
+                if(e.getKeyCode()==KeyInput.KEY_LCONTROL||e.getKeyCode()==KeyInput.KEY_RCONTROL) {
+                    _ctrlDown = e.isPressed();
+                }
+                else if(e.getKeyCode()==KeyInput.KEY_LSHIFT||e.getKeyCode()==KeyInput.KEY_RSHIFT) {
+                    _shiftDown = e.isPressed();
+                }
+                else if(e.isPressed() && !meta) {
+                    String key = kname;
                     char c = e.getKeyChar();
+                    String nkey = key.toString(); //key.length()>1?key:(e.getKeyChar()+"");
+                    if(nkey.length()==1) {
+                        if(_shiftDown) {
+                            nkey = key.toUpperCase();
+                        }
+                        else {
+                            nkey = key.toLowerCase();
+                        }
+                    }
+                    if(_ctrlDown) {
+                        nkey = "C-"+nkey;
+                    }
 
-                    final KeyEvent ke = new KeyEvent(this, e.getKeyChar()+"");
+                    final KeyEvent ke = new KeyEvent(null, nkey);
                     EventBus.instance().post("keys", ke);
                 }
             }
 
             public void onMouseButtonEvent(MouseButtonEvent e) {
+                mouseInput.setCursorVisible(true);
+                //System.err.println("MOUSEBUTTON: "+e);
             }
 
             public void onMouseMotionEvent(MouseMotionEvent e) {
+                mouseInput.setCursorVisible(true);
+                //System.err.println("MOUSE: "+e);
             }
 
             public void onTouchEvent(TouchEvent e) {
+                mouseInput.setCursorVisible(true);
+                //System.err.println("TOUCH: "+e);
             }
         });
+        //NO
         //this.inputManager.addRawInputListener(guiManager.getInputRedirector());
         try {
             Thread.sleep(200);
@@ -244,10 +283,13 @@ public class JfxMain extends LegacyApplication implements EventBus.Handler {
             e.printStackTrace();
         }
 
-        //flyCam.setEnabled(false);
+        flyCam.setEnabled(false);
         inputManager.setCursorVisible(true);
         mouseInput.setCursorVisible(true);
         _guiManager = guiManager;
+
+        /* ESC key quits */
+        inputManager.deleteMapping(INPUT_MAPPING_EXIT);
 
         Platform.runLater(new Runnable() {
             public void run() {
@@ -267,6 +309,7 @@ public class JfxMain extends LegacyApplication implements EventBus.Handler {
         });
     }
 
+    /*
     @Override
     public void update() {
         if (prof!=null) prof.appStep(AppStep.BeginFrame);
@@ -303,9 +346,10 @@ public class JfxMain extends LegacyApplication implements EventBus.Handler {
 
         if (prof!=null) prof.appStep(AppStep.EndFrame);
     }
+    */
 
     public void simpleUpdate(final float tpf) {
-        //super.simpleUpdate(tpf);
+        super.simpleUpdate(tpf);
         if(_jfxSubscription!=null && EventBus.instance().hasEvents(_jfxSubscription)) {
             Platform.runLater(_events);
         }
@@ -348,6 +392,7 @@ public class JfxMain extends LegacyApplication implements EventBus.Handler {
         logic.start();
     }
 
+    /*
     public void setDisplayFps(boolean show) {
         if (stateManager.getState(StatsAppState.class) != null) {
             stateManager.getState(StatsAppState.class).setDisplayFps(show);
@@ -362,4 +407,5 @@ public class JfxMain extends LegacyApplication implements EventBus.Handler {
 
     public void simpleRender(RenderManager rm) {
     }
+    */
 }

@@ -1,11 +1,14 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
+
+
 public class TitleEvent extends Event {
     private final String _title;
 
 
-    public TitleEvent(Object source, String title) {
+    public TitleEvent(Typed source, String title) {
         super(source);
         _title = title;
     }

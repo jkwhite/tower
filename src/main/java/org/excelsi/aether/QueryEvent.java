@@ -1,6 +1,9 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
+
+
 public class QueryEvent extends Event {
     public enum Type { bool, direction };
 
@@ -10,7 +13,7 @@ public class QueryEvent extends Event {
     private Object _answer;
 
 
-    public QueryEvent(Object source, Type t, String m) {
+    public QueryEvent(Typed source, Type t, String m) {
         super(source);
         _t = t;
         _m = m;

@@ -1,6 +1,7 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
 import org.excelsi.matrix.MSpace;
 import org.excelsi.matrix.Bot;
 
@@ -13,7 +14,7 @@ public class AttributeChangeEvent<C,E> extends ContextualEvent<C> {
     private final Object _to;
 
 
-    public AttributeChangeEvent(Object source, String type, C ctx, E e, String attr, Object from, Object to) {
+    public AttributeChangeEvent(Typed source, String type, C ctx, E e, String attr, Object from, Object to) {
         super(source, ctx);
         _type = type;
         _e = e;
@@ -43,6 +44,6 @@ public class AttributeChangeEvent<C,E> extends ContextualEvent<C> {
     }
 
     @Override public String toString() {
-        return "AttributeChangeEvent::{source:"+getSource()+", ctx:"+getContext()+", e: "+getE()+", attr:"+getAttribute()+", from:"+getFrom()+", to:"+getTo()+"}";
+        return "AttributeChangeEvent::{type:"+getType()+", source:"+getSource()+", ctx:"+getContext()+", e: "+getE()+", attr:"+getAttribute()+", from:"+getFrom()+", to:"+getTo()+"}";
     }
 }

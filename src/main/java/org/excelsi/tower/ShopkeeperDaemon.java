@@ -86,7 +86,7 @@ public class ShopkeeperDaemon extends Daemon {
                         if(c.getComestible().hasFragment(PriceTag.class)) {
                             if(Rand.d100(b.getModifiedPresence())) {
                                 in.b.getEnvironment().face(b);
-                                N.narrative().print(in.b, Grammar.start(in.b, "say")+" \"Hey, those aren't free, you know.\"");
+                                Context.c().n().print(in.b, Grammar.start(in.b, "say")+" \"Hey, those aren't free, you know.\"");
                             }
                             else {
                                 handleThievery(b, c.getComestible(), false);
@@ -109,7 +109,7 @@ public class ShopkeeperDaemon extends Daemon {
                                 int mult = Rand.om.nextInt(2)+1;
                                 int discount = (5*Rand.om.nextInt(5)+1) *
                                     Rand.om.nextInt(2)+1;
-                                N.narrative().print(in.b, Grammar.start(in.b, "say")+" \"Hey, you like that? It's "+discount+"% off!\"");
+                                Context.c().n().print(in.b, Grammar.start(in.b, "say")+" \"Hey, you like that? It's "+discount+"% off!\"");
                                 tag.setDiscount(discount);
                             }
                             else {
@@ -148,13 +148,13 @@ public class ShopkeeperDaemon extends Daemon {
                     }
                 }
                 if(wall) {
-                    N.narrative().print(in.b, Grammar.start(in.b, "yell")+" \"Hey, my favorite wall!\"");
+                    Context.c().n().print(in.b, Grammar.start(in.b, "yell")+" \"Hey, my favorite wall!\"");
                 }
                 else if(floor) {
-                    N.narrative().print(in.b, Grammar.start(in.b, "yell")+" \"Hey, my floor!\"");
+                    Context.c().n().print(in.b, Grammar.start(in.b, "yell")+" \"Hey, my floor!\"");
                 }
                 else if(rfid) {
-                    N.narrative().print(in.b, Grammar.start(in.b, "yell")+" \"Hey, that was expensive!\"");
+                    Context.c().n().print(in.b, Grammar.start(in.b, "yell")+" \"Hey, that was expensive!\"");
                 }
                 if((wall||floor||rfid)&&Actor.current()!=null) {
                     in.b.setThreat((NHBot)Actor.current(), Threat.kos);
@@ -178,17 +178,17 @@ public class ShopkeeperDaemon extends Daemon {
                         if(p.getAmount()==0) {
                             p.setAmount(1);
                         }
-                        if(adder.isInvisible()||adder.isDead()||N.narrative().confirm(adder, Grammar.start(in.b, "offer")+" you "+p.getAmount()+" gold for "+Grammar.nounp(item)+". Pay?")) {
+                        if(adder.isInvisible()||adder.isDead()||Context.c().n().confirm(adder, Grammar.start(in.b, "offer")+" you "+p.getAmount()+" gold for "+Grammar.nounp(item)+". Pay?")) {
                             Gold g = new Gold();
                             g.setCount(p.getAmount());
                             adder.getInventory().add(g);
                             p.setAmount(2*p.getAmount());
                             item.addFragment(p);
                             if(adder.isInvisible()||adder.isDead()) {
-                                N.narrative().print(in.b, "Ah, extra inventory!");
+                                Context.c().n().print(in.b, "Ah, extra inventory!");
                             }
                             else {
-                                N.narrative().print(in.b, "Thanks!");
+                                Context.c().n().print(in.b, "Thanks!");
                             }
                         }
                         //N.narrative().clear();
@@ -206,7 +206,7 @@ public class ShopkeeperDaemon extends Daemon {
         //System.err.println("ASSUME: "+assume+" PLAYER: "+b.isPlayer());
         if(b.isPlayer()) { // too complex otherwise right now
             if(assume||i.hasFragment(PriceTag.class)) {
-                N.narrative().print(in.b, Grammar.start(in.b, "yell")+" \"Stop! Thief!\"");
+                Context.c().n().print(in.b, Grammar.start(in.b, "yell")+" \"Stop! Thief!\"");
                 in.b.setThreat(b, Threat.kos);
                 for(Bot v:in.b.getEnvironment().getVisibleBots()) {
                     if(((NHBot)v).threat(b)==Threat.familiar) {
@@ -238,10 +238,10 @@ public class ShopkeeperDaemon extends Daemon {
             if(in.b.threat(b)!=Threat.kos) {
                 if(from instanceof ShopFloor) {
                     if(Rand.om.nextBoolean()) {
-                        N.narrative().print(in.b, "\"Goodbye!\"");
+                        Context.c().n().print(in.b, "\"Goodbye!\"");
                     }
                     else {
-                        N.narrative().print(in.b, "\"Come again!\"");
+                        Context.c().n().print(in.b, "\"Come again!\"");
                     }
                 }
                 else {
@@ -249,7 +249,7 @@ public class ShopkeeperDaemon extends Daemon {
                     if(name==null) {
                         name = b.getCommon();
                     }
-                    N.narrative().print(in.b, "\"Welcome, "+name+"!\"");
+                    Context.c().n().print(in.b, "\"Welcome, "+name+"!\"");
                 }
             }
         }

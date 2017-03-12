@@ -1,11 +1,14 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
+
+
 public class KeyEvent extends Event {
     private final String _k;
 
 
-    public KeyEvent(Object source, String k) {
+    public KeyEvent(Typed source, String k) {
         super(source);
         _k = k;
     }

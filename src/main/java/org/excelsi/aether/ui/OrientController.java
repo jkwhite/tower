@@ -42,7 +42,7 @@ public class OrientController extends ChangeController<NHBot,Direction> {
     @Override protected void attributeChanged(SceneContext c, AttributeChangeEvent<NHBot,Direction> e) {
     }
 
-    private int rotFor(Direction d) {
+    public static int rotFor(Direction d) {
         if(d==null) {
             return 0;
         }

@@ -78,6 +78,8 @@ public class BotNodeFactory extends AssetNodeFactory<NHBot> {
             parent.attachChild(localMove);
             parent.addChildLight(light);
 
+            final int rot = OrientController.rotFor(s.getEnvironment().getFacing());
+            parent.setLocalRotation(new Quaternion(new float[]{0f, UIConstants.ROTATIONS[rot], 0f}));
             return parent;
         }
         catch(Exception e) {

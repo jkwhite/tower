@@ -1,11 +1,14 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
+
+
 public abstract class StageEvent extends Event {
     private final Stage _s;
 
 
-    public StageEvent(Object source, Stage s) {
+    public StageEvent(Typed source, Stage s) {
         super(source);
         _s = s;
     }

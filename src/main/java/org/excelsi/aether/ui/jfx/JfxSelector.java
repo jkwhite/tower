@@ -11,12 +11,16 @@ import org.excelsi.aether.SelectEvent;
 import org.excelsi.aether.QueryEvent;
 
 
+/**
+ * Creates displays for selection events.
+ */
 public class JfxSelector extends HudNode {
     public JfxSelector() {
         addLogicHandler((le)->{
             if(le.e() instanceof SelectEvent) {
                 final JfxMenu menu = new JfxMenu(le.e(), ((SelectEvent)le.e()).getMenu());
                 getChildren().add(menu);
+                System.err.println("***AADDDED MENU*****");
                 transition(menu, null);
                 le.consume();
             }

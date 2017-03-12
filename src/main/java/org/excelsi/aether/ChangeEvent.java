@@ -1,13 +1,16 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
+
+
 public class ChangeEvent<C,E> extends ContextualEvent<C> {
     private final String _type;
     private final E _old;
     private final E _new;
 
 
-    public ChangeEvent(Object source, String type, C ctx, E oldValue, E newValue) {
+    public ChangeEvent(Typed source, String type, C ctx, E oldValue, E newValue) {
         super(source, ctx);
         _type = type;
         _old = oldValue;

@@ -57,20 +57,28 @@ public class JfxQuery extends HudRegion {
                 }
             }
         });
-        final String m;
+        final HBox line = new HBox();
+        //final String m;
         switch(e.getQueryType()) {
             case bool:
-                m = e.getMessage()+" (y/n)";
+                //m = e.getMessage()+" (y/n)";
+                line.getChildren().add(new Label(e.getMessage()+" ("));
+                line.getChildren().add(Fx.decorate(new Label("Yes"), (ev)->{choose(e, true);}));
+                line.getChildren().add(new Label("/"));
+                line.getChildren().add(Fx.decorate(new Label("No"), (ev)->{choose(e, false);}));
+                line.getChildren().add(new Label(")"));
                 break;
             case direction:
-                m = e.getMessage();
+                //m = e.getMessage();
+                line.getChildren().add(new Label(e.getMessage()));
                 break;
             default:
                 throw new IllegalStateException();
         }
-        final Label msg = new Label(m);
-        final Centered c = new Centered(msg, "query");
-        log().info("added query message with message '"+m+"'");
+        //final Label msg = new Label(m);
+        final Centered c = new Centered(line, "query");
+        //final Centered c = new Centered(msg, "query");
+        //log().info("added query message with message '"+m+"'");
         //msg.setAlignment(Pos.CENTER);
         Fx.localize(sc, (Typed)e.getSource(), c);
         getChildren().add(c);

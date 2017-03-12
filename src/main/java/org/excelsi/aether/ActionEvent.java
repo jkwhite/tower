@@ -1,11 +1,14 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
+
+
 public class ActionEvent extends Event {
     private final Action _a;
 
 
-    public ActionEvent(Object source, Action a) {
+    public ActionEvent(Typed source, Action a) {
         super(source);
         _a = a;
     }

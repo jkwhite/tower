@@ -366,7 +366,7 @@ down:       for(int i=minx;i<maxx;i++) {
                         // TODO: hack to generate event
                         b.getInventory().remove(g);
                         b.getInventory().add(g);
-                        N.narrative().print(b, Grammar.nonspecific(i));
+                        Context.c().n().print(b, Grammar.nonspecific(i));
                         i.removeFragment(p);
                     }
                     else {
@@ -375,12 +375,12 @@ down:       for(int i=minx;i<maxx;i++) {
                 }
             }
             if(ranout) {
-                N.narrative().print(b, "Your funds have run dry!");
+                Context.c().n().print(b, "Your funds have run dry!");
                 //N.narrative().more();
                 if(!_shopkeeper.isDead()&&_shopkeeper.getBlind()==0&&
                     b.getEnvironment().getVisibleBots().contains(_shopkeeper)) {
                     _shopkeeper.getEnvironment().face(b);
-                    N.narrative().print(b, Grammar.start(_shopkeeper, "eye")+" "+Grammar.noun(b)+" warily.");
+                    Context.c().n().print(b, Grammar.start(_shopkeeper, "eye")+" "+Grammar.noun(b)+" warily.");
                 }
             }
         }

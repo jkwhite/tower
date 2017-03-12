@@ -581,9 +581,10 @@ public class Patsy extends DefaultNHBot {
             return "Abandon the game.";
         }
 
-        @Override public void perform(final Context c) {
+        @Override public void perform() {
             //N.narrative().clear();
-            if(c.n().confirm(c.actor(), "Really quit?")) {
+            final Context c = Context.c();
+            if(c.n().confirm(getBot(), "Really quit?")) {
                 String disp = ((World)c.getState()).getLevel().getDisplayedFloor();
                 if(disp.equals("??")) {
                     disp = "";

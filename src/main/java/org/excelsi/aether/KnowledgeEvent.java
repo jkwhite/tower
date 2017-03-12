@@ -1,6 +1,9 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
+
+
 public abstract class KnowledgeEvent extends StageEvent {
     private final String _kind;
     private final NHBot _b;
@@ -9,7 +12,7 @@ public abstract class KnowledgeEvent extends StageEvent {
     @Override public String getType() { return "knowledge"; }
 
 
-    public KnowledgeEvent(final Object source, final Stage stage, final NHBot bot, final String kind) {
+    public KnowledgeEvent(final Typed source, final Stage stage, final NHBot bot, final String kind) {
         super(source, stage);
         _b = bot;
         _kind = kind;

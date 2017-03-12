@@ -1,15 +1,18 @@
 package org.excelsi.aether;
 
 
+import org.excelsi.matrix.Typed;
+
+
 public abstract class Event {
-    private final Object _source;
+    private final Typed _source;
 
 
-    public Event(final Object source) {
+    public Event(final Typed source) {
         _source = source;
     }
 
-    public Object getSource() {
+    public Typed getSource() {
         return _source;
     }
 

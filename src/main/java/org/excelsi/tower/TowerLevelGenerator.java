@@ -129,7 +129,7 @@ public class TowerLevelGenerator implements LevelGenerator, LevelGenerator.RoomM
             //g._level = town;
             g.generate(town, null);
             //g.runParts();
-            g.generateTown(town, null);
+            new TownGenerator(true).generateTown(town, null);
             l.union(town, x, y, true);
         };
     }
