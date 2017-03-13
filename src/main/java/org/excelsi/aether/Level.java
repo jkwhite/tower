@@ -478,8 +478,12 @@ fast:       for(int i=ro.getX1();i<ro.getX2();i++) {
         }
         for(NHBot b:_queue.getBots()) {
             Actor.setCurrent(b);
+            Actor.setContext(c);
+            c.setActor(b);
             b.tick();
+            c.setActor(null);
             Actor.setCurrent(null);
+            Actor.setContext(null);
         }
         for(MSpace m:spaces()) {
             if(m!=null) {

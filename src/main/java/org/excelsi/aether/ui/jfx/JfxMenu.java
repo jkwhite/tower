@@ -48,7 +48,7 @@ public class JfxMenu extends HudRegion {
             line.getChildren().add(key);
             line.getChildren().add(desc);
             Fx.decorate(line, (e)->{ choose(m, item, notify); });
-            System.err.println("DECORATED: "+desc);
+            //System.err.println("DECORATED: "+desc);
             /*
             line.setOnMouseEntered(new EventHandler<MouseEvent>() {
                 @Override public void handle(MouseEvent e) {
@@ -73,7 +73,7 @@ public class JfxMenu extends HudRegion {
     }
 
     private void choose(final Menu m, final MenuItem item, final Object notify) {
-        System.err.println("************ CHOSEN: "+item);
+        //System.err.println("************ CHOSEN: "+item);
         ((Group)getParent()).getChildren().remove(this);
         m.getF().apply(item);
         m.setChoice(item);

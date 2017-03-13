@@ -42,8 +42,16 @@ public class SpaceNodeFactory extends AssetNodeFactory<NHSpace> {
                 if("\"".equals(s.getModel()) || "'".equals(s.getModel())) {
                     n.setLocalTranslation(new Vector3f(0f,-0.9f,0f));
                 }
+                //else if(">".equals(s.getModel()) || "<".equals(s.getModel())) {
+                    //n.setLocalTranslation(new Vector3f(0f,0.9f,0f));
+                //}
                 n.setLocalScale(3.0f);
-                Nodes.centerBelow(n);
+                if(! ">".equals(s.getModel()) && ! "<".equals(s.getModel())) {
+                    Nodes.centerBelow(n);
+                }
+                else {
+                    Nodes.centerAbove(n);
+                }
                 final SpaceNode sp = new SpaceNode(s);
                 sp.attachChild(n);
                 return sp;

@@ -37,6 +37,9 @@ import com.jme3.font.BitmapText;
 import com.jme3.system.AppSettings;
 import com.jme3.system.JmeSystem;
 import com.jme3.renderer.RenderManager;
+import com.jme3.collision.CollisionResult;
+import com.jme3.collision.CollisionResults;
+import com.jme3.math.Ray;
 
 import com.jme3x.jfx.GuiManager;
 import com.jme3x.jfx.cursor.proton.ProtonCursorProvider;
@@ -58,6 +61,7 @@ import javafx.scene.input.MouseEvent;
 
 import org.lwjgl.opengl.Display;
 
+import org.excelsi.matrix.Typed;
 import org.excelsi.aether.EventBus;
 import org.excelsi.aether.Event;
 import org.excelsi.aether.Historian;
@@ -68,12 +72,15 @@ import org.excelsi.aether.Script;
 import org.excelsi.aether.ScriptedState;
 import org.excelsi.aether.BlockingNarrative;
 import org.excelsi.aether.Logic;
+import org.excelsi.aether.ActionEvent;
 import org.excelsi.aether.KeyEvent;
 import org.excelsi.aether.Events;
 import org.excelsi.aether.BusInputSource;
 import org.excelsi.aether.Universe;
+import org.excelsi.aether.PickAction;
 import org.excelsi.aether.Bulk;
 import org.excelsi.aether.ui.LogicEvent;
+import org.excelsi.aether.ui.Nodes;
 import org.excelsi.aether.ui.UIConstants;
 import org.excelsi.aether.ui.Resources;
 import org.excelsi.aether.ui.UI;
@@ -242,18 +249,21 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
                 else if(e.isPressed() && !meta) {
                     String key = kname;
                     char c = e.getKeyChar();
-                    String nkey = key.toString(); //key.length()>1?key:(e.getKeyChar()+"");
-                    if(nkey.length()==1) {
+                    //String nkey = key.toString(); //key.length()>1?key:(e.getKeyChar()+"");
+                    String nkey = key.length()>1?key:(e.getKeyChar()+"");
+                    //System.err.println("1 nkey: '"+nkey+"'");
+                    if(nkey.length()==1 && Character.isAlphabetic(nkey.charAt(0))) {
                         if(_shiftDown) {
                             nkey = key.toUpperCase();
                         }
-                        else {
-                            nkey = key.toLowerCase();
-                        }
+                        //else {
+                            //nkey = key.toLowerCase();
+                        //}
                     }
                     if(_ctrlDown) {
                         nkey = "C-"+nkey;
                     }
+                    //System.err.println("2 nkey: '"+nkey+"'");
 
                     final KeyEvent ke = new KeyEvent(null, nkey);
                     EventBus.instance().post("keys", ke);
@@ -261,8 +271,26 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
             }
 
             public void onMouseButtonEvent(MouseButtonEvent e) {
-                mouseInput.setCursorVisible(true);
-                //System.err.println("MOUSEBUTTON: "+e);
+                if(e.isPressed()) {
+                    mouseInput.setCursorVisible(true);
+                    //System.err.println("MOUSEBUTTON: "+e);
+                    Vector3f origin    = _ctx.getCamera().getWorldCoordinates(inputManager.getCursorPosition(), 0.0f);
+                    Vector3f direction = _ctx.getCamera().getWorldCoordinates(inputManager.getCursorPosition(), 0.3f);
+                    direction.subtractLocal(origin).normalizeLocal();
+
+                    Ray ray = new Ray(origin, direction);
+                    CollisionResults results = new CollisionResults();
+                    _ctx.getRoot().collideWith(ray, results);
+                    if(results.size()>0) {
+                        CollisionResult closest = results.getClosestCollision();
+                        final Typed col = Nodes.findTyped(closest.getGeometry());
+                        System.err.println("COLLISION: "+col);
+                        EventBus.instance().post("actions", new ActionEvent(null, new PickAction(col)));
+                    }
+                    //else {
+                        //System.err.println("NO COLLISION");
+                    //}
+                }
             }
 
             public void onMouseMotionEvent(MouseMotionEvent e) {

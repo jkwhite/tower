@@ -1,20 +1,25 @@
 package org.excelsi.aether.ui;
 
 
+import com.jme3.bounding.BoundingVolume;
+import com.jme3.collision.Collidable;
+import com.jme3.collision.CollisionResult;
+import com.jme3.collision.CollisionResults;
+import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
-import com.jme3.math.Vector3f;
+
 import org.excelsi.aether.Item;
 import org.excelsi.aether.Parasite;
 import org.excelsi.aether.NHSpace;
 
 
-public class SpaceNode extends Node {
+public class SpaceNode extends TypedNode {
     private final NHSpace _space;
 
 
     public SpaceNode(final NHSpace space) {
-        super(space.getId());
+        super(space);
         _space = space;
     }
 
@@ -57,5 +62,16 @@ public class SpaceNode extends Node {
         if(idx==-1) {
             System.err.println("WARN: no such child "+p+" for "+_space);
         }
+    }
+
+    @Override public int collideWith(Collidable other, CollisionResults results) {
+        BoundingVolume v = getWorldBound();
+        if(v.collideWith(other)>0) {
+            //System.err.println("found collision with "+_space);
+            results.addCollision(new CollisionResult(Nodes.findGeometry(this), new Vector3f(), 0, 0));
+            return 1;
+        }
+        return 0;
+        //return super.collideWith(other, results);
     }
 }

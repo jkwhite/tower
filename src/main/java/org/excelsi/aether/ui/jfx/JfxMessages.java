@@ -28,7 +28,7 @@ import org.excelsi.aether.Grammar;
 
 
 public class JfxMessages extends HudNode {
-    private final Map<Typed,List<MessageEvent>> _stacks = new HashMap<>();
+    //private final Map<Typed,List<MessageEvent>> _stacks = new HashMap<>();
 
 
     public JfxMessages() {
@@ -38,7 +38,7 @@ public class JfxMessages extends HudNode {
                 if(e.getMessage()==null) {
                     return;
                 }
-                final int offset = stack(e);
+                final int offset = Messages.instance().stack(e);
                 final Node t;
                 if(e.getMessage() instanceof Item) {
                     if(e.getHints().isKeyed()) {
@@ -63,8 +63,8 @@ public class JfxMessages extends HudNode {
                 t.getStyleClass().add(e.getMessageType().toString());
                 if(e.getSource() instanceof Typed) {
                     Fx.localize(le.ctx(), (Typed)e.getSource(), t);
-                    System.err.println("setting offset "+offset);
-                    t.setLayoutY(18*offset);
+                    //System.err.println("m setting offset "+offset);
+                    t.setLayoutY(Messages.UI_PX_OFFSET*offset);
                 }
                 getChildren().add(t);
                 final SequentialTransition st = new SequentialTransition();
@@ -85,14 +85,14 @@ public class JfxMessages extends HudNode {
                 }
                 switch(e.getMessageType()) {
                     case ephemeral:
-                        st.getChildren().add(new PauseTransition(Duration.millis(2000)));
+                        st.getChildren().add(new PauseTransition(Duration.millis(2000+Messages.TIME_MS_OFFSET*offset)));
                         final FadeTransition out = new FadeTransition(Duration.millis(500), t);
                         out.setFromValue(1.0);
                         out.setToValue(0.0);
                         st.getChildren().add(out);
                         st.setOnFinished((ev)->{
                             JfxMessages.this.getChildren().remove(t);
-                            unstack(e);
+                            Messages.instance().unstack(e);
                         });
                         break;
                     case permanent:
@@ -104,6 +104,7 @@ public class JfxMessages extends HudNode {
         });
     }
 
+    /*
     private synchronized int stack(final MessageEvent e) {
         List<MessageEvent> ms = _stacks.get(e.getSource());
         if(ms==null) {
@@ -123,4 +124,5 @@ public class JfxMessages extends HudNode {
             }
         }
     }
+    */
 }

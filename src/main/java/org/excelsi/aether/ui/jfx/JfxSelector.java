@@ -20,12 +20,15 @@ public class JfxSelector extends HudNode {
             if(le.e() instanceof SelectEvent) {
                 final JfxMenu menu = new JfxMenu(le.e(), ((SelectEvent)le.e()).getMenu());
                 getChildren().add(menu);
-                System.err.println("***AADDDED MENU*****");
+                //System.err.println("***AADDDED MENU*****");
                 transition(menu, null);
                 le.consume();
             }
             else if(le.e() instanceof QueryEvent) {
                 final JfxQuery q = new JfxQuery((QueryEvent)le.e(), le.ctx());
+                final int offset = Messages.instance().stack(le.e());
+                //System.err.println("q setting offset "+offset);
+                q.setLayoutY(Messages.OFFSET*offset);
                 getChildren().add(q);
                 transition(q, null);
                 le.consume();

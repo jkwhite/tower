@@ -35,6 +35,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.io.ObjectStreamClass;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 import java.util.WeakHashMap;
@@ -100,6 +101,28 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
     // an action anyway.
     private transient ProgressiveAction _progress;
     private Map<NHBot, Threat> _threats = new HashMap<NHBot, Threat>(3);
+    private Filter _pathFilter = new Filter() {
+        public boolean accept(MSpace s) {
+            if(s!=null) {
+                if(s.isOccupied()) {
+                    Threat t = threat((NHBot)s.getOccupant());
+                    if((getTemperament()==Temperament.hostile&&(t==Threat.kos||t==Threat.none))
+                        || (getTemperament()!=Temperament.hostile&&(t==Threat.kos))) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                //if(s instanceof Doorway) {
+                    //System.err.println(NPC.this+" would but: "+getForm().hasOpposableThumb());
+                //}
+                return s.isWalkable() || (s instanceof Doorway&&!((Doorway)s).isLocked()&&getForm().hasOpposableThumb());
+                //return s.isWalkable();
+            }
+            return false;
+        }
+    };
 
 
     public DefaultNHBot() {
@@ -125,6 +148,14 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
                 }
             }
         });
+    }
+
+    public void setPathFilter(Filter pathFilter) {
+        _pathFilter = pathFilter;
+    }
+
+    public Filter getPathFilter() {
+        return _pathFilter;
     }
 
     public static NHBot copy(NHBot orig) {
@@ -1305,6 +1336,203 @@ public abstract class DefaultNHBot extends DefaultBot implements NHBot {
     public void notifyListeners(String attr, Object oldValue) {
         for(EnvironmentListener e:getListeners()) {
             e.attributeChanged(this, attr, oldValue);
+        }
+    }
+
+    public void approach(Bot b, int max) {
+        approach(b, max, true, null);
+    }
+
+    public boolean approach(NHSpace space, int max) {
+        return approach(space, max, true);
+    }
+
+    private boolean occupy(MSpace s, boolean overrun) {
+        //if(s instanceof Doorway) {
+            //System.err.println(this+" DOOR: thumb="+getForm().hasOpposableThumb());
+        //}
+        getEnvironment().face(s);
+        if(s instanceof Doorway && getForm().hasOpposableThumb()) {
+            if(((Doorway)s).isLocked()) {
+                return false;
+            }
+            if(!((Doorway)s).isOpen()) {
+                Open o = new Open((Doorway)s);
+                o.setBot(this);
+                o.perform();
+                return true;
+            }
+        }
+        if(overrun||!s.isOccupied()) {
+            _move.setBot(this);
+            _move.perform();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private Map<MSpace,MSpace[]> _paths = new LinkedHashMap<MSpace,MSpace[]>(10, 0.7f, true) {
+        protected boolean removeEldestEntry(Map.Entry<MSpace,MSpace[]> e) {
+            return Time.now()%10==0;
+        }
+    };
+    private static MoveAction _move = new Forward();
+    public boolean approach(final NHSpace s, int max, boolean overrun) {
+        MSpace[] path = _paths.get(s);
+        if(path==null) {
+            path = getEnvironment().getMSpace().path(s, false, _pathFilter, Math.max(1f, sanity()), getAffinityEvaluator());
+            _paths.put(s, path);
+            //System.err.println(toString()+": found new path");
+        }
+        else {
+            //System.err.println(toString()+": found cached path");
+        }
+        //System.err.println("Path to "+s+": "+Arrays.asList(path));
+        if(path.length>1&&path.length<=max) {
+            MSpace f = null;
+            for(int i=path.length-1;i>=0;i--) {
+                if(path[i].equals(getEnvironment().getMSpace())) {
+                    if(i!=path.length-1) {
+                        f = path[i+1];
+                    }
+                    break;
+                }
+            }
+            //System.err.println("trying to move to: "+f);
+            if(f!=null) {
+                getEnvironment().face(f);
+                return occupy(f, overrun);
+            }
+            else {
+                _paths.remove(s);
+            }
+        }
+        return false;
+    }
+
+    protected Affinity getAffinityEvaluator() {
+        return null;
+    }
+
+    public void withdraw(final NHBot b) {
+        getEnvironment().faceAway(b);
+        MSpace to = getEnvironment().getMSpace().move(getEnvironment().getFacing());
+        if(to!=null&&!to.isOccupied()&&to.isWalkable()) {
+            _move.setBot(this);
+            if(getEnvironment().getMSpace().isOccupied()) {
+                _move.perform();
+            }
+        }
+        else {
+            MSpace chose = null;
+            float dist = getEnvironment().getMSpace().distance(b.getEnvironment().getMSpace());
+            for(MSpace m:getEnvironment().getMSpace().surrounding()) {
+                if(m!=null&&m.isWalkable()&&dist<m.distance(b.getEnvironment().getMSpace())) {
+                    if(m.isOccupied()&&threat((NHBot)m.getOccupant())==Threat.familiar) {
+                        continue;
+                    }
+                    if(chose==null) {
+                        chose = m;
+                    }
+                    else {
+                        if(chose.isOccupied()&&!m.isOccupied()) {
+                            chose = m;
+                        }
+                    }
+                }
+            }
+            if(chose!=null) {
+                getEnvironment().face(chose);
+                _move.setBot(this);
+                _move.perform();
+            }
+            else {
+                Context.c().n().print(this, Grammar.start(this, "cower")+".");
+            }
+        }
+    }
+
+    private MSpace[] findPath(final Bot b, final Filter f) {
+        MSpace[] path = getEnvironment().getMSpace().path(((MatrixEnvironment)b.getEnvironment()).getMSpace(), false, new Filter() {
+                public boolean accept(MSpace s) {
+                    return s!=null&&(s.getOccupant()==b||(_pathFilter.accept(s)&&(f==null||f.accept(s))));
+                } }, Math.max(1f, sanity()), getAffinityEvaluator());
+        return path;
+    }
+
+    private MSpace findSpaceInPath(MSpace[] path, MSpace m) {
+        MSpace d = null;
+        for(int i=path.length-1;i>=0;i--) {
+            if(path[i].equals(m)) {
+                if(i!=path.length-1) {
+                    d = path[i+1];
+                }
+                break;
+            }
+        }
+        return d;
+    }
+
+    public void approach(final Bot b, int max, boolean overrun, final Filter f) {
+        MSpace s = ((MatrixEnvironment)b.getEnvironment()).getMSpace();
+        MSpace[] path = _paths.get(s);
+        if(path==null) {
+            path = findPath(b, f);
+            /*
+            path = getEnvironment().getMSpace().path(((MatrixEnvironment)b.getEnvironment()).getMSpace(), false, new Filter() {
+                    public boolean accept(MSpace s) {
+                        return s!=null&&(s.getOccupant()==b||(_pathFilter.accept(s)&&(f==null||f.accept(s))));
+                    } }, Math.max(1f, sanity()), getAffinityEvaluator());
+                    */
+            _paths.put(s, path);
+            //System.err.println(toString()+" found new path "+path);
+        }
+        else {
+            //System.err.println(toString()+" using cached path "+path);
+        }
+        if(path.length>1) {
+            if(path.length<=max) {
+                MSpace d = findSpaceInPath(path, getEnvironment().getMSpace());
+                /*for(int i=path.length-1;i>=0;i--) {
+                    if(path[i].equals(getEnvironment().getMSpace())) {
+                        if(i!=path.length-1) {
+                            d = path[i+1];
+                        }
+                        break;
+                    }
+                }*/
+                if(d==null) {
+                    path = findPath(b, f);
+                    d = findSpaceInPath(path, getEnvironment().getMSpace());
+                }
+                //System.err.println("next space: "+d);
+                if(d!=null) {
+                    getEnvironment().face(d);
+                    if(overrun||d.getOccupant()!=b) {
+                        if(!getEnvironment().getMSpace().isOccupied()) {
+                            Logger.global.severe("bot "+this+" has come unstuck; dead: "+isDead());
+                        }
+                        else {
+                            occupy(d, true);
+                            /*
+                            _move.setBot(this);
+                            _move.perform();
+                            */
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            //System.err.println("NO LUCK!");
+            getEnvironment().face(b);
+            MSpace m = getEnvironment().getMSpace().move(getEnvironment().getFacing());
+            if(_pathFilter.accept(m)) {
+                _move.setBot(this);
+                _move.perform();
+            }
         }
     }
 

@@ -3,7 +3,6 @@ package org.excelsi.aether.ui;
 
 import com.jme3.scene.Node;
 import com.jme3.material.Material;
-import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.SceneGraphVisitor;
 import com.jme3.scene.Geometry;
@@ -43,11 +42,15 @@ public abstract class AssetNodeFactory<E extends Typed> extends Enloggened imple
         final String asset = String.format("/model/%s.lod.mesh.xml", Spaces.format(model));
         final Spatial n = assets().loadModel(asset);
         Nodes.center(n);
+        //Geometry fg = null;
         n.breadthFirstTraversal(new SceneGraphVisitor() {
             @Override public void visit(final Spatial child) {
                 //System.err.println("child: "+child+", class: "+child.getClass());
                 if(child instanceof Geometry) {
                     final Geometry g = (Geometry) child;
+                    //if(fg==null) {
+                        //fg = g;
+                    //}
                     final LodControl c = new LodControl();
                     g.addControl(c);
                     //g.setLodLevel(5);

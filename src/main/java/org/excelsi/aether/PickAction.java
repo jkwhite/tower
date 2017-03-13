@@ -17,33 +17,32 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
-package org.excelsi.tower;
+package org.excelsi.aether;
 
 
-import org.excelsi.matrix.MSpace;
+import org.excelsi.matrix.Bot;
+import org.excelsi.matrix.Typed;
 import org.excelsi.matrix.Direction;
-import org.excelsi.aether.*;
-import java.util.List;
 
 
-public abstract class PlantSeed extends Seed {
-    private List<Fragment> _fragments;
+public class PickAction extends DefaultNHBotAction {
+    private final Typed _picked;
 
 
-    public PlantSeed(List<Fragment> fragments) {
-        _fragments = fragments;
+    public PickAction(Typed picked) {
+        _picked = picked;
     }
 
-    protected final Parasite next() {
-        Context.c().n().print(getSpace(), "The seed sprouts.");
-        Plant p = toPlant();
-        if(_fragments!=null) {
-            for(Fragment i:_fragments) {
-                p.addFragment((Fragment)DefaultNHBot.deepCopy(i));
-            }
+    @Override public String getDescription() { return "Picks an object."; }
+
+    public Typed getPicked() {
+        return _picked;
+    }
+
+    @Override public void perform() {
+        if(_picked instanceof NHSpace) {
+            //((DefaultNHBot)getBot()).approach((NHSpace)_picked, 10);
+            getBot().start(new FollowPath(getBot(), (NHSpace)_picked));
         }
-        return p;
     }
-
-    abstract protected Plant toPlant();
 }

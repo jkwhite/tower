@@ -86,6 +86,7 @@ public class JfxQuery extends HudRegion {
 
     private void choose(final QueryEvent e, final Object choice) {
         ((Group)getParent()).getChildren().remove(this);
+        Messages.instance().unstack(e);
         e.setAnswer(choice);
         synchronized(e) {
             e.notify();

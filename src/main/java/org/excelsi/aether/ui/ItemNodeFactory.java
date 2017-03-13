@@ -37,7 +37,7 @@ public class ItemNodeFactory extends AssetNodeFactory<Item> {
         try {
             final Spatial n = loadModel(i.getModel(), i.getColor(), Architecture.structural, Orientation.natural);
             //n.setLocalScale(2.0f);
-            n.setLocalScale(2.0f*(0.60f+(float)Math.log10(1+i.getSize()/4f)));
+            n.setLocalScale(2.3f*(0.60f+(float)Math.log10(1+i.getSize()/4f)));
             Nodes.center(n);
             final Node item = new Node(name);
             item.attachChild(n);

@@ -17,33 +17,42 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
-package org.excelsi.tower;
+package org.excelsi.aether;
 
 
 import org.excelsi.matrix.MSpace;
-import org.excelsi.matrix.Direction;
-import org.excelsi.aether.*;
-import java.util.List;
 
 
-public abstract class PlantSeed extends Seed {
-    private List<Fragment> _fragments;
+public class FollowPath implements ProgressiveAction {
+    private final NHBot _b;
+    private final MSpace _dest;
+    private int _max = 20;
 
 
-    public PlantSeed(List<Fragment> fragments) {
-        _fragments = fragments;
+    public FollowPath(final NHBot b, final MSpace dest) {
+        _b = b;
+        _dest = dest;
     }
 
-    protected final Parasite next() {
-        Context.c().n().print(getSpace(), "The seed sprouts.");
-        Plant p = toPlant();
-        if(_fragments!=null) {
-            for(Fragment i:_fragments) {
-                p.addFragment((Fragment)DefaultNHBot.deepCopy(i));
-            }
-        }
-        return p;
+    @Override public boolean iterate() {
+        ((DefaultNHBot)_b).approach((NHSpace)_dest, 20);
+        return _max-->0 && !_b.getEnvironment().getMSpace().equals(_dest);
     }
 
-    abstract protected Plant toPlant();
+    @Override public int getInterruptRate() {
+        return 100;
+    }
+
+    @Override public void stopped() {
+        //System.err.println("FOLLOW STPOPED");
+        //Thread.dumpStack();
+    }
+
+    @Override public void interrupted() {
+        //System.err.println("FOLLOW INTERRUPT");
+    }
+
+    @Override public String getExcuse() {
+        return "walking along";
+    }
 }

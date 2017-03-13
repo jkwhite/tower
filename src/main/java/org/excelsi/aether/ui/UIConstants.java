@@ -8,9 +8,9 @@ public class UIConstants {
     public static final String QUEUE_JME = "jme";
     public static final String QUEUE_JFX = "jfx";
 
-    public static final float SCALE = 2.1f;
+    public static final float SCALE = 2.0f;
     public static final float HORIZ_RATIO = SCALE;
-    public static final float VERT_MULT = 1.8f;
+    public static final float VERT_MULT = 1.7f;
     public static final float VERT_RATIO = VERT_MULT*SCALE;
     public static final float HEIGHT_RATIO = SCALE/2f;
     public static final float STACK_HEIGHT = 0.30f;

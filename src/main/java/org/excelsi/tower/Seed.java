@@ -51,7 +51,7 @@ public abstract class Seed extends Parasite {
 
     public boolean notice(NHBot b) {
         if(b.isPlayer()) {
-            N.narrative().print(getSpace(), "There is "+Grammar.nonspecific(getName())+" here.");
+            Context.c().n().print(getSpace(), "There is "+Grammar.nonspecific(getName())+" here.");
         }
         return true;
     }
