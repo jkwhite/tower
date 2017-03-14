@@ -25,15 +25,15 @@ import org.excelsi.matrix.Typed;
 import org.excelsi.matrix.Direction;
 
 
-public class PickAction extends DefaultNHBotAction {
+public class HoverAction extends DefaultNHBotAction {
     private final Typed _picked;
 
 
-    public PickAction(Typed picked) {
+    public HoverAction(Typed picked) {
         _picked = picked;
     }
 
-    @Override public String getDescription() { return "Picks an object."; }
+    @Override public String getDescription() { return "Hovers over an object."; }
 
     public Typed getPicked() {
         return _picked;
@@ -41,7 +41,8 @@ public class PickAction extends DefaultNHBotAction {
 
     @Override public void perform() {
         if(_picked instanceof NHSpace) {
-            getBot().start(new FollowPath(getBot(), (NHSpace)_picked));
+            //getBot().start(new FollowPath(getBot(), (NHSpace)_picked));
+            ((NHSpace)_picked).look(Context.c(), false, false);
         }
     }
 }

@@ -342,6 +342,7 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
                     c.n().print(this, "You see nothing here.");
                 }
             }
+            c.n().show(b, this);
         }
         else {
             saw = true;
@@ -395,7 +396,7 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
             else {
                 //N.narrative().showLoot(s);
                 //NEXT
-                //c.n().showLoot(s);
+                c.n().show(b, s);
             }
         }
         return saw;

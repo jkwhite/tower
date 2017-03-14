@@ -77,6 +77,7 @@ import org.excelsi.aether.KeyEvent;
 import org.excelsi.aether.Events;
 import org.excelsi.aether.BusInputSource;
 import org.excelsi.aether.Universe;
+import org.excelsi.aether.HoverAction;
 import org.excelsi.aether.PickAction;
 import org.excelsi.aether.Bulk;
 import org.excelsi.aether.ui.LogicEvent;
@@ -284,18 +285,34 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
                     if(results.size()>0) {
                         CollisionResult closest = results.getClosestCollision();
                         final Typed col = Nodes.findTyped(closest.getGeometry());
-                        System.err.println("COLLISION: "+col);
+                        System.err.println("PCOLLISION: "+col);
                         EventBus.instance().post("actions", new ActionEvent(null, new PickAction(col)));
                     }
-                    //else {
-                        //System.err.println("NO COLLISION");
-                    //}
                 }
             }
 
+            private Typed _lastHover;
             public void onMouseMotionEvent(MouseMotionEvent e) {
                 mouseInput.setCursorVisible(true);
                 //System.err.println("MOUSE: "+e);
+                Vector3f origin    = _ctx.getCamera().getWorldCoordinates(inputManager.getCursorPosition(), 0.0f);
+                Vector3f direction = _ctx.getCamera().getWorldCoordinates(inputManager.getCursorPosition(), 0.3f);
+                direction.subtractLocal(origin).normalizeLocal();
+
+                Ray ray = new Ray(origin, direction);
+                CollisionResults results = new CollisionResults();
+                _ctx.getRoot().collideWith(ray, results);
+                if(results.size()>0) {
+                    CollisionResult closest = results.getClosestCollision();
+                    final Typed col = Nodes.findTyped(closest.getGeometry());
+                    if(col!=_lastHover) {
+                        System.err.println("HCOLLISION: "+col);
+                        EventBus.instance().post("actions", new ActionEvent(null, new HoverAction(col)));
+                        _lastHover = col;
+                    }
+                }
+                else {
+                }
             }
 
             public void onTouchEvent(TouchEvent e) {

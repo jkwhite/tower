@@ -19,6 +19,7 @@ public class JfxInfo extends HudNode {
     public JfxInfo() {
         addLogicHandler((le)->{
             if(le.e() instanceof InfoEvent) {
+                Fx.removeAll(this);
                 final InfoEvent ie = le.<InfoEvent>e();
                 final NHBot src = (NHBot) ie.getSource();
                 //getChildren().add(new JfxShown(ie));

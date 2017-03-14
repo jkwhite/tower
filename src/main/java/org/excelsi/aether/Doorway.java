@@ -105,7 +105,7 @@ public class Doorway extends DefaultNHSpace {
     @Override public boolean look(Context c, boolean nothing, boolean lootOnly) {
         boolean ret = super.look(c, nothing, lootOnly);
         if(!lootOnly) {
-            c.n().print(c.actor(), "There is a"+(_locked?" locked":_open?"n open":" closed")+" door here.");
+            c.n().print(this, "There is a"+(_locked?" locked":_open?"n open":" closed")+" door here.");
             return true;
         }
         return ret;
