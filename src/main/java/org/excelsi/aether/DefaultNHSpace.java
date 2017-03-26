@@ -43,6 +43,7 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
     private String _color;
     private int _alt;
     private Status _s = Status.uncursed;
+    private String _narrative;
     //private int _depth;
 
 
@@ -318,9 +319,12 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
                     saw = p.notice(b) || saw;
                 }
             }
-            if(getOccupant()!=null&&!getOccupant().isPlayer()) {
+            if(getOccupant()!=null /*&&!getOccupant().isPlayer()*/) {
                 saw = true;
-                if(getOccupant().isUnique()||getOccupant().getName()!=null) {
+                if(getOccupant().isPlayer()) {
+                    c.n().print(this, "You are here.");
+                }
+                else if(getOccupant().isUnique()||getOccupant().getName()!=null) {
                     //N.narrative().print(this, "You see "+Grammar.nonspecific(getOccupant())+" here.");
                     c.n().print(this, "You see "+Grammar.nonspecific(getOccupant())+" here.");
                 }
@@ -331,6 +335,9 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
                 //if(numItems()>0) {
                     //N.narrative().more();
                 //}
+            }
+            if(getNarrative()!=null) {
+                c.n().print(this, getNarrative());
             }
         }
         Inventory in = getLoot();
@@ -746,6 +753,14 @@ public abstract class DefaultNHSpace extends MatrixMSpace implements NHSpace, Co
 
     @Override public Origin getOrigin() {
         return Origin.artificial;
+    }
+
+    @Override public String getNarrative() {
+        return _narrative;
+    }
+
+    @Override public void setNarrative(String narrative) {
+        _narrative = narrative;
     }
 
     public void update() {

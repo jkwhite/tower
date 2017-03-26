@@ -26,7 +26,7 @@ import org.excelsi.matrix.MSpace;
 import java.util.List;
 
 
-public interface NHSpace extends MSpace, Container, Material {
+public interface NHSpace extends MSpace, Container, Material, Described {
     void removeParasite(Parasite p);
     void addParasite(Parasite p);
     List<Parasite> getParasites();

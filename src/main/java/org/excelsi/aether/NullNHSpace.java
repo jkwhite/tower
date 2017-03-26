@@ -275,6 +275,13 @@ public class NullNHSpace extends NullMatrixMSpace implements NHSpace {
         return Origin.artificial;
     }
 
+    @Override public String getNarrative() {
+        return null;
+    }
+
+    @Override public void setNarrative(String narrative) {
+    }
+
     public void bloom(Transform t, int radius) {
     }
 

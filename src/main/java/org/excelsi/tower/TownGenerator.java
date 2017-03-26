@@ -37,10 +37,12 @@ import static org.excelsi.aether.Skelevel.Pattern;
 
 public class TownGenerator {
     private final boolean _shops;
+    private final boolean _stairs;
 
 
-    public TownGenerator(boolean shops) {
+    public TownGenerator(boolean shops, boolean stairs) {
         _shops = shops;
+        _stairs = stairs;
     }
 
     public void generateTown(final Level level, final String guardian) {
@@ -66,26 +68,27 @@ public class TownGenerator {
         for(MSpace m:stairs) {
             m.replace(new Floor());
         }
-        for(MSpace m:stairs) {
-            boolean found = false;
-            do {
-                int i = Rand.om.nextInt(max-min)+min;
-                int j = Rand.om.nextInt(level.height());
-                if(level.getSpace(i,j)!=null) {
-                    continue;
-                }
-up:             for(int x=i-2;x<=i+2;x++) {
-                    for(int y=j-2;y<=j+2;y++) {
-                        if(level.getSpace(x,y) instanceof Wall) {
-                            level.setSpace((MatrixMSpace)m, i, j);
-                            found = true;
-                            break up;
+        if(_stairs) {
+            for(MSpace m:stairs) {
+                boolean found = false;
+                do {
+                    int i = Rand.om.nextInt(max-min)+min;
+                    int j = Rand.om.nextInt(level.height());
+                    if(level.getSpace(i,j)!=null) {
+                        continue;
+                    }
+up:                 for(int x=i-2;x<=i+2;x++) {
+                        for(int y=j-2;y<=j+2;y++) {
+                            if(level.getSpace(x,y) instanceof Wall) {
+                                level.setSpace((MatrixMSpace)m, i, j);
+                                found = true;
+                                break up;
+                            }
                         }
                     }
-                }
-            } while(!found);
+                } while(!found);
+            }
         }
-
 
         // for each room,
         //   create path to other room,

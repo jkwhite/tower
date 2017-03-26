@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
+import java.util.function.Consumer;
 
 import org.excelsi.nausicaa.ca.Archetype;
 import org.excelsi.nausicaa.ca.CA;
@@ -71,6 +72,11 @@ public interface Spacemaker {
         };
     }
 
+    public static Spacemaker nothing() {
+        return (r,l)->{
+        };
+    }
+
     public static Spacemaker expanse() {
         return (r,l)->{
             for(int i=0;i<r.getWidth();i++) {
@@ -86,6 +92,16 @@ public interface Spacemaker {
             for(int i=0;i<r.getWidth();i++) {
                 for(int j=0;j<r.getHeight();j++) {
                     l.setSpace(r.getSpaces().create(spaces[Rand.om.nextInt(spaces.length)]), i, j);
+                }
+            }
+        };
+    }
+
+    public static Spacemaker modulator(final Consumer<NHSpace> m) {
+        return (r,l)->{
+            for(int i=0;i<r.getWidth();i++) {
+                for(int j=0;j<r.getHeight();j++) {
+                    m.accept(l.getSpace(i,j));
                 }
             }
         };

@@ -17,7 +17,7 @@ public class LevelRecipe {
     private String _displayedOrdinal;
     private Random _r;
     private SpaceFactory _spaces = Spaces.identity();
-    private Spacemaker _sm = Spacemaker.expanse();
+    private Spacemaker _sm = Spacemaker.nothing();
     private List<Mixin<Level>> _mixins;
     private List<String> _ingredients = new ArrayList<>();
 

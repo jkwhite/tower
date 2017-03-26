@@ -24,14 +24,35 @@ import org.excelsi.matrix.*;
 
 
 public class Items implements Mixin<Level> {
+    public enum Strategy { rooms, area };
+
     private static final long serialVersionUID = 1L;
     private final ItemFactory _f;
     private final int _offset;
     private final ItemFilter _filter;
+    private Strategy _s = Strategy.rooms;
 
 
     public Items() {
         this(0);
+    }
+
+    public Items(Strategy s) {
+        this(s, 0);
+    }
+
+    public Items(Strategy s, int offset) {
+        this(Universe.getUniverse(), s, offset);
+    }
+
+    public Items(ItemFactory f, Strategy s, int offset) {
+        this(f, offset);
+        _s = s;
+    }
+
+    public Items(ItemFactory f, Strategy s, int offset, ItemFilter filter) {
+        this(f, offset, filter);
+        _s = s;
     }
 
     public Items(int offset) {
@@ -53,7 +74,11 @@ public class Items implements Mixin<Level> {
     }
 
     public void mix(Level level) {
-        for(int i=0;i<level.getRooms().size()+_offset;i++) {
+        final int max = _s==Strategy.rooms?
+            level.getRooms().size()+_offset
+            : (int)Math.sqrt(level.width()*level.height())+_offset;
+
+        for(int i=0;i<max;i++) {
             //final String cat = _f.randomCategory();
             /*
             float chance = level.getFloor()/77f;
@@ -77,6 +102,7 @@ public class Items implements Mixin<Level> {
             while(!(ms instanceof Floor) && tries-->0) {
                 ms = (NHSpace) level.findRandomEmptySpace();
             }
+            //System.err.println("adding to "+ms+": "+it);
             ms.add(it);
         }
     }

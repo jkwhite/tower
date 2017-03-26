@@ -2,6 +2,7 @@
   foundation:
     - base
     - ruins
+    - scattered-items
   blighted:
     - blight
   blue-litten:

@@ -116,7 +116,7 @@ public class TowerLevelGenerator implements LevelGenerator, LevelGenerator.RoomM
                 new Layout(new int[]{10,4,_width-10,_height-4}));
     }
 
-    public static Spacemaker town(final int x, final int y, final int w, final int h) {
+    public static Spacemaker town(final int x, final int y, final int w, final int h, final boolean shops, final boolean stairs) {
         return (r,l)->{
             Level town = new Level(w,h);
             town.setName("No Man's Land");
@@ -129,7 +129,7 @@ public class TowerLevelGenerator implements LevelGenerator, LevelGenerator.RoomM
             //g._level = town;
             g.generate(town, null);
             //g.runParts();
-            new TownGenerator(true).generateTown(town, null);
+            new TownGenerator(shops, stairs).generateTown(town, null);
             l.union(town, x, y, true);
         };
     }
