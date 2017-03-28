@@ -40,6 +40,8 @@
     '*': The Base of the Tower
   height: 1
   unique: true
+  triggers:
+    - patsy approaching north at 210, narrative tower-view once
   environs:
     - sunlit rolling blighted plains foundation
 - !!org.excelsi.tower.Segment

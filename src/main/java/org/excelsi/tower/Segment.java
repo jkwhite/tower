@@ -15,6 +15,7 @@ public class Segment {
     private boolean _stretchy;
     private boolean _incognita;
     private List<String> _environs;
+    private List<String> _triggers;
 
 
     public Segment() {
@@ -75,6 +76,14 @@ public class Segment {
 
     public void setIncognita(boolean incognita) {
         _incognita = incognita;
+    }
+
+    public void setTriggers(List<String> triggers) {
+        _triggers = triggers;
+    }
+
+    public List<String> getTriggers() {
+        return _triggers;
     }
 
     public void setEnvirons(List<String> environs) {

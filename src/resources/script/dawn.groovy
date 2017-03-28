@@ -56,7 +56,7 @@ $c.bulk.stagemaker = new TowerStagemaker(
                 .and(Spacemaker.line(149,250,280,250,Floor,96))
                 .and(Spacemaker.line(148,90,148,200,Wall,30))
                 .and(Spacemaker.line(152,90,152,200,Wall,30))
-                .and(TowerLevelGenerator.town(220,220,70,60,true,false))
+                .and(TowerLevelGenerator.town(220,220,50,40,true,false))
                 .and(TowerLevelGenerator.town(20,220,20,20,false,false))
                 .and({ r2,l -> l.getSpace((int)(l.width()/2),(int)(l.height()/2-40)).replace(new Stairs(true)) })
                 .and({ r2,l -> l.getSpace((int)(l.width()/2),(int)(l.height()/2-42)).addParasite(new CamphorTree()) })

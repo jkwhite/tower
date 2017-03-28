@@ -147,4 +147,31 @@ public enum Direction {
     public static Direction random() {
         return ALL_DIRS.get(Matrix._rand.nextInt(ALL_DIRS.size()));
     }
+
+    public static Direction named(final String d) {
+        switch(d.toLowerCase()) {
+            case "north":
+                return Direction.north;
+            case "northeast":
+                return Direction.northeast;
+            case "east":
+                return Direction.east;
+            case "southeast":
+                return Direction.southeast;
+            case "south":
+                return Direction.south;
+            case "southwest":
+                return Direction.southwest;
+            case "west":
+                return Direction.west;
+            case "northwest":
+                return Direction.northwest;
+            case "up":
+                return Direction.up;
+            case "down":
+                return Direction.down;
+            default:
+                throw new IllegalArgumentException("no direction '"+d+"'");
+        }
+    }
 }

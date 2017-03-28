@@ -516,12 +516,20 @@ public abstract class MatrixMSpace extends Id implements MSpace, Cloneable {
         if(other==this) {
             return true;
         }
+        for(Direction d:ALL_DIRS) {
+            if(move(d, false)==other) {
+                return true;
+            }
+        }
+        return false;
+        /*
         for(MSpace m:surrounding()) {
             if(m==other) {
                 return true;
             }
         }
         return false;
+        */
     }
 
     @Override public Environs getEnvirons() {

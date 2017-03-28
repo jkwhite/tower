@@ -108,7 +108,11 @@ public class Data {
     public static final String resource(final String url) {
         try {
             final URI uri = Data.class.getResource(url).toURI();
-            final FileSystem fs = FileSystems.newFileSystem(uri, new HashMap<String,String>(){{ put("create", "true");}});
+            try {
+                final FileSystem fs = FileSystems.newFileSystem(uri, new HashMap<String,String>(){{ put("create", "true");}});
+            }
+            catch(java.nio.file.FileSystemAlreadyExistsException x) {
+            }
             return new String(Files.readAllBytes(Paths.get(uri)), "UTF-8");
         }
         catch(Exception e) {

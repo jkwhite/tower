@@ -65,6 +65,11 @@ public class TowerStagemaker implements Stagemaker {
         for(final String env:seg.randomEnvirons()) {
             r.ingredient(env);
         }
+        if(seg.getTriggers()!=null) {
+            for(String t:seg.getTriggers()) {
+                r.mixin(new Trigger(t));
+            }
+        }
         return r;
     }
 

@@ -22,15 +22,16 @@ package org.excelsi.aether;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 import org.excelsi.matrix.*;
 import java.util.Arrays;
 
 
 public class EventRelayer extends EverythingAdapter implements EventSource {
-    private List<ContainerListener> _clisteners = new ArrayList<ContainerListener>();
-    private List<NHEnvironmentListener> _nhelisteners = new ArrayList<NHEnvironmentListener>();
-    private List<NHSpaceListener> _nhslisteners = new ArrayList<NHSpaceListener>();
-    protected List<MatrixListener> _mlisteners = new ArrayList<MatrixListener>();
+    private List<ContainerListener> _clisteners = new CopyOnWriteArrayList<ContainerListener>();
+    private List<NHEnvironmentListener> _nhelisteners = new CopyOnWriteArrayList<NHEnvironmentListener>();
+    private List<NHSpaceListener> _nhslisteners = new CopyOnWriteArrayList<NHSpaceListener>();
+    protected List<MatrixListener> _mlisteners = new CopyOnWriteArrayList<MatrixListener>();
 
 
     public void addNHEnvironmentListener(NHEnvironmentListener l) {
