@@ -37,6 +37,9 @@ public class EmptyNarrative implements NNarrative {
     @Override public void poster(String m) {
     }
 
+    @Override public void chronicle(String m) {
+    }
+
     @Override public void poster(NHBot source, String m) {
     }
 

@@ -74,3 +74,11 @@
     -fx-text-fill: #000;
     -fx-background-image: url('/ui/parchment-small2.jpg');
 }
+
+.narrative {
+    -fx-font: normal normal 14pt "Georgia";
+    -fx-text-fill: #fff;
+    -fx-fill: #fff;
+    -fx-background-image: none;
+    -fx-background-color: rgba(0,0,0,0.5);
+}

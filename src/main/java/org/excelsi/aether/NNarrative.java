@@ -29,6 +29,7 @@ public interface NNarrative {
     boolean confirm(String m);
     boolean confirm(NHBot source, String m);
     void poster(String m);
+    void chronicle(String m);
     void poster(NHBot source, String m);
     //void act(Menu<E> m);
     <E> E choose(NHBot source, SelectionMenu<E> m);

@@ -67,6 +67,10 @@ public class FilteringNarrative implements NNarrative {
         _delegate.poster(m);
     }
 
+    @Override public void chronicle(String m) {
+        _delegate.chronicle(m);
+    }
+
     @Override public void poster(NHBot source, String m) {
         _delegate.poster(source, m);
     }

@@ -51,6 +51,10 @@ public class BlockingNarrative implements NNarrative {
         _e.post(TOPIC_UI, new MessageEvent(null, MessageEvent.Type.permanent, m));
     }
 
+    @Override public void chronicle(String m) {
+        _e.await(TOPIC_UI, new MessageEvent(null, MessageEvent.Type.narrative, m, DisplayHints.MODAL));
+    }
+
     @Override public void poster(NHBot source, String m) {
         _e.post(TOPIC_UI, new MessageEvent(source, MessageEvent.Type.permanent, m));
     }

@@ -41,7 +41,7 @@
   height: 1
   unique: true
   triggers:
-    - patsy approaching north at 210, narrative tower-view once
+    - patsy approaching north at 310, narrative tower-view once
   environs:
     - sunlit rolling blighted plains foundation
 - !!org.excelsi.tower.Segment

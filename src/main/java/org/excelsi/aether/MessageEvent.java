@@ -5,7 +5,7 @@ import org.excelsi.matrix.Typed;
 
 
 public class MessageEvent extends Event {
-    public enum Type { ephemeral, permanent };
+    public enum Type { ephemeral, permanent, narrative };
 
 
     private final Object _m;

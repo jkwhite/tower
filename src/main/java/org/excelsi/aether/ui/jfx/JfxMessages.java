@@ -55,9 +55,19 @@ public class JfxMessages extends HudNode {
                     }
                     else {
                         BorderPane bt = new BorderPane();
-                        bt.setCenter(new Text(msg.trim()));
+                        final Text txt = new Text(msg.trim());
+                        txt.getStyleClass().add("message");
+                        txt.getStyleClass().add(e.getMessageType().toString());
+                        bt.setCenter(txt);
+                        if(e.getMessageType()==MessageEvent.Type.narrative) {
+                            bt.relocate(0,0);
+                            bt.setPrefSize(300,300);
+                        }
                         t = bt;
                     }
+                }
+                if(e.getHints().isModal()) {
+                    addModalHandler(e, t);
                 }
                 t.getStyleClass().add("message");
                 t.getStyleClass().add(e.getMessageType().toString());
