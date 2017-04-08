@@ -42,6 +42,7 @@
   unique: true
   triggers:
     - patsy approaching north at 310, narrative tower-view once
+    - patsy inside 220x220+50+40, narrative base-town once
   environs:
     - sunlit rolling blighted plains foundation
 - !!org.excelsi.tower.Segment

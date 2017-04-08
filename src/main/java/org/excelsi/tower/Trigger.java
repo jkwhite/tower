@@ -59,7 +59,7 @@ public class Trigger implements Mixin<Level> {
         switch(action) {
             case "narrative":
                 String res = Data.resource("/script/"+p.next()+".txt");
-                a = (b)->{ System.err.println("SHOWING: "+res); Context.c().n().chronicle(res); };
+                a = (b)->{ Context.c().n().chronicle(res); };
                 break;
             default:
                 System.err.println("************ UNKNOWN: '"+action+"'");

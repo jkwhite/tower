@@ -21,4 +21,4 @@ uses:
     - slf4j-log4j12-1.7.7.jar
     - log4j-1.2.15.jar
 main: org.excelsi.aether.ui.jfx.JfxMain
-sysargs: -Djavafx.verbose=true -Dprism.verbose=true
+sysargs: -Djavafx.verbose=true -Dprism.verbose=true -Dprism.lcdtext=false -Dprism.text=t2k

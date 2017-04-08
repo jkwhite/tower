@@ -3,6 +3,7 @@ package org.excelsi.aether.ui.jfx;
 
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.layout.Region;
 import javafx.event.EventHandler;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
@@ -41,6 +42,13 @@ public final class Fx {
             n.setTranslateX(w/2-20);
             n.setTranslateY(h/2-10);
         }
+    }
+
+    public static void center(SceneContext c, Region n) {
+        final int w = c.getCamera().getWidth();
+        final int h = c.getCamera().getHeight();
+        n.setTranslateX(w/2-n.getPrefWidth()/2);
+        n.setTranslateY(h/2-n.getPrefHeight()/2);
     }
 
     public static Node decorate(final Node n, final EventHandler<MouseEvent> onClick) {

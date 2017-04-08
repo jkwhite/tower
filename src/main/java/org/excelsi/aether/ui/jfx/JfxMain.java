@@ -210,8 +210,17 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
         //}
         assetManager.registerLocator("/", ClasspathLocator.class);
 
-        final GuiManager guiManager = new GuiManager(this.guiNode, this.assetManager, this, true,
-            new ProtonCursorProvider(this, this.assetManager, this.inputManager));
+        final Material dm = new Material(assetManager, "Common/MatDefs/Gui/Gui.j3md");
+        dm.setColor("Color", ColorRGBA.White);
+        final GuiManager guiManager = new GuiManager(
+            this.guiNode, // guiParent
+            this.assetManager, // assets
+            this, // application
+            true, // fullscreen
+            new ProtonCursorProvider(this, this.assetManager, this.inputManager), // cursor
+            dm,
+            false // use recommended jfx settings
+        );
         guiManager.setEverListeningRawInputListener(new RawInputListener() {
             public void beginInput() {
             }

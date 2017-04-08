@@ -58,10 +58,11 @@ public class JfxMessages extends HudNode {
                         final Text txt = new Text(msg.trim());
                         txt.getStyleClass().add("message");
                         txt.getStyleClass().add(e.getMessageType().toString());
-                        bt.setCenter(txt);
+                        bt.setTop(txt);
                         if(e.getMessageType()==MessageEvent.Type.narrative) {
                             bt.relocate(0,0);
-                            bt.setPrefSize(300,300);
+                            bt.setPrefSize(600,600);
+                            Fx.center(le.ctx(), bt);
                         }
                         t = bt;
                     }
