@@ -18,6 +18,11 @@ public class BasicStageGenerator implements StageGenerator {
     private final Map<String,Ingredient> _ings;
 
 
+    public BasicStageGenerator() {
+        _environs = new HashMap<>();
+        _ings = new HashMap<>();
+    }
+
     public BasicStageGenerator(final Map<String,List<String>> environs, final List<Ingredient> ings) {
         _environs = environs;
         _ings = new HashMap<>();

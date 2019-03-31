@@ -66,7 +66,7 @@ public class SpaceNode extends TypedNode {
 
     @Override public int collideWith(Collidable other, CollisionResults results) {
         BoundingVolume v = getWorldBound();
-        if(v.collideWith(other)>0) {
+        if(v!=null&&v.collideWith(other)>0) {
             //System.err.println("found collision with "+_space);
             results.addCollision(new CollisionResult(Nodes.findGeometry(this), new Vector3f(), 0, 0));
             return 1;

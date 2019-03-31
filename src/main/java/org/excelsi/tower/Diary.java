@@ -49,7 +49,18 @@ public class Diary extends Book {
         return "gray";
     }
 
+    public String[] getPages() {
+        String[] texts = _text.split("--");
+        for(int i=0;i<texts.length;i++) {
+            texts[i] = texts[i].trim();
+        }
+        return texts;
+    }
+
     public void invoke(NHBot b) {
-        Context.c().n().show(b, _text, DisplayHints.MODAL);
+        String[] texts = _text.split("--");
+        for(String t:texts) {
+            Context.c().n().show(b, t.trim(), DisplayHints.MODAL);
+        }
     }
 }

@@ -33,4 +33,8 @@ public class Menu<E> {
     public void setChoice(MenuItem<E> choice) {
         _choice = choice;
     }
+
+    @Override public String toString() {
+        return "Menu::{items:"+java.util.Arrays.toString(_items)+", f:"+_f+"}";
+    }
 }

@@ -315,7 +315,7 @@ public class JfxMain extends SimpleApplication implements EventBus.Handler {
                     CollisionResult closest = results.getClosestCollision();
                     final Typed col = Nodes.findTyped(closest.getGeometry());
                     if(col!=_lastHover) {
-                        System.err.println("HCOLLISION: "+col);
+                        //System.err.println("HCOLLISION: "+col);
                         EventBus.instance().post("actions", new ActionEvent(null, new HoverAction(col)));
                         _lastHover = col;
                     }

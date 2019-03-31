@@ -161,7 +161,7 @@ $c.pov.inventory.add(new Book() {
                 .mixin(new Bots.BMixin(BotFactory.exact('lava gatherer')))
             )
         )
-        Context.c().n().print(b, "Another time, another space")
+        Context.c().n().print(b, "THe nights are cold on Oriab...")
     }
 })
 $c.pov.inventory.add(new Book() {

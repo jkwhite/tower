@@ -22,6 +22,6 @@ public class TitleEvent extends Event {
     }
 
     @Override public String toString() {
-        return "title::{t:"+_title+"\"}";
+        return "title::{t:\""+_title+"\"}";
     }
 }

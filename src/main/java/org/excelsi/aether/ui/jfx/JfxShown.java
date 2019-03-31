@@ -39,6 +39,7 @@ public class JfxShown extends HudRegion {
             bt.setCenter(new Text(ie.getShown().toString().trim()));
             bt.getStyleClass().add("message");
             getChildren().add(bt);
+            getChildren().add(new Label("-- More --"));
             //le.consume();
         }
     }

@@ -64,6 +64,10 @@ public class World extends Id implements State {
         }
     }
 
+    public void setLevel(final Context c, final Stage level) {
+        setLevel(c, level, null);
+    }
+
     public void setLevel(final Context c, final Stage level, final MSpace start) {
         final Stage old = _level;
         _level = level;

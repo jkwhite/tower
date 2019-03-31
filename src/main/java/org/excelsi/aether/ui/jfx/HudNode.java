@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.Region;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
 
 import org.excelsi.aether.ui.Hud;
 import org.excelsi.aether.ui.LogicEvent;
@@ -65,6 +66,7 @@ public abstract class HudNode extends Group implements Hud {
     }
 
     protected final void addModalHandler(final Object notify, final Node remove) {
+        getChildren().add(new Label("-- More --"));
         addLogicHandler(new EventHandler<LogicEvent>() {
             @Override public void handle(LogicEvent le) {
                 le.consume();
