@@ -14,5 +14,23 @@ public final class Resources {
         });
     }
 
+    public static Props props() {
+        return new Props(
+            Display.getWidth(),
+            Display.getHeight()
+        );
+    }
+
+    static public class Props {
+        public final int width;
+        public final int height;
+
+
+        public Props(int w, int h) {
+            width = w;
+            height = h;
+        }
+    }
+
     private Resources() {}
 }

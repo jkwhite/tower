@@ -18,6 +18,10 @@ public final class EventBus {
     private final Map<String,EQueue<Event>> _queues = new HashMap<>();
 
 
+    public static EventBus i() {
+        return instance();
+    }
+
     public static EventBus instance() {
         return _b;
     }

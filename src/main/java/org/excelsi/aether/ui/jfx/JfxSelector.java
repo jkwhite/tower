@@ -28,7 +28,7 @@ public class JfxSelector extends HudNode {
                 final JfxQuery q = new JfxQuery((QueryEvent)le.e(), le.ctx());
                 final int offset = Messages.instance().stack(le.e());
                 //System.err.println("q setting offset "+offset);
-                q.setLayoutY(Messages.OFFSET*offset);
+                q.setLayoutY(Messages.UI_PX_OFFSET*offset);
                 getChildren().add(q);
                 transition(q, null);
                 le.consume();

@@ -63,6 +63,7 @@ public class LemurMain extends SimpleApplication implements EventBus.Handler {
     private String _jfxSubscription;
     private String _jmeSubscription;
     private SceneContext _ctx;
+    private Dispatcher _dispatcher;
 
     public static void main( String... args ) {
         //GuiDemo main = new GuiDemo();
@@ -79,20 +80,13 @@ public class LemurMain extends SimpleApplication implements EventBus.Handler {
     
     public void simpleInitApp() {
         GuiGlobals.initialize(this);
-        BaseStyles.loadGlassStyle();
-        GuiGlobals.getInstance().getStyles().setDefaultStyle("glass");
-        Container myWindow = new Container();
-        guiNode.attachChild(myWindow);
-        myWindow.setLocalTranslation(300, 300, 0);
-        myWindow.addChild(new Label("Hello, World."));
-        Button clickMe = myWindow.addChild(new Button("Click Me"));
-        clickMe.addClickCommands(new Command<Button>() {
-                @Override public void execute( Button source ) {
-                    System.out.println("The world is yours.");
-                }
-            });            
+        //BaseStyles.loadGlassStyle();
+        //GuiGlobals.getInstance().getStyles().setDefaultStyle("glass");
 
         assetManager.registerLocator("/", ClasspathLocator.class);
+
+        _dispatcher = new Dispatcher(guiNode, _ctx);
+        _dispatcher.attach("state", new StateController());
 
         initState();
     }
@@ -143,6 +137,7 @@ public class LemurMain extends SimpleApplication implements EventBus.Handler {
 
     @Override public void handleEvent(final Event e) {
         LOG.info("got event: "+e);
+        _dispatcher.handleEvent(e);
     }
 
     private void initState() {
